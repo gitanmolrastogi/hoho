@@ -1,0 +1,20 @@
+defaults: &defaults
+  adapter: postgresql
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+  pool: 10
+  timeout: 5000
+
+development:
+  database: delhi_airport_development
+  <<: *defaults
+
+test:
+  database: delhi_airport_test
+  <<: *defaults
+
+production:
+  database: delhi_airport_production
+  <<: *defaults

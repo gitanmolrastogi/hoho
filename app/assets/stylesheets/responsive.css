@@ -1,0 +1,33 @@
+@media(max-width:767px) {
+.already-usr-a {padding: 15px 10px 36px;}
+.login-top {padding: 0 10px;}	
+/*--------global classes-------*/
+/*-----margin-bottom-----*/
+.xs-m-b-5{margin-bottom:5px;}
+.xs-m-b-10{margin-bottom:10px;}
+.xs-m-b-15{margin-bottom:15px;}
+.xs-m-b-20{margin-bottom:20px;}
+
+/*-----margin-top----*/
+.xs-m-t-5{margin-top:5px;}
+.xs-m-t-10{margin-top:10px;}
+.xs-m-t-15{margin-top:15px;}
+.xs-m-t-20{margin-top:20px;}	
+/*--------/global classes-------*/	
+
+}
+
+
+@media(min-width:768px) and (max-width:1024px) {
+	
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+body{font-family: 'Lato', sans-serif;  color:#1e333f; width:100%;height:auto; min-height:100%;overflow-x:hidden;}
+@import 'https://fonts.googleapis.com/css?family=Lato:100,300,400,400i,700,700i,900';
+li{list-style:none;}
+a:hover, a:active, a:focus{text-decoration:none;}
+a:focus, a:active, button:focus{outline:0;}
+a:hover{cursor:pointer;}
+
+/*=========main section========*/
+.navbar-default {background-color: #fff;border-color: #e7e7e7; height: 80px; padding: 12px;border-bottom:2px solid #EE5351;}
+.navbar-default .navbar-nav > li > a{font-size: 1.2em; color: #000; font-weight: 400;}
+footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;padding: 2% 0px;}
+.navbar-default .navbar-nav > li > a:hover{color:#ee5351;}
+.quick-links li a{color:#000;}
+.footer-bottom{background: rgb(238, 83, 81) none repeat scroll 0% 0%; height: 45px; text-align: center; color: rgb(255, 255, 255); padding: 10px 0px;}
+.border-top{height:2px;background:#EE5351;}
+.main-section {min-height: 661px;margin-top: 80px;}
+.para-text{font-size:1.1em;color:#000;line-height: 27px;}
+.head-line{width:83px; height:2px; background-color:#EE5351;}
+.heading{color:#EE5351;font-weight:300;}
+/*============login & signup============*/
+
+.login-screen {background: rgba(0, 0, 0, 0) url("../img/bg.png") repeat scroll 0 0 / cover;background-size: cover; position: relative; padding: 3% 0 3%;margin-top: 76px;min-height: 661px;}
+.login-box-msg {font-size: 41px;color: #fff;font-weight: 400;padding: 28px 24px 28px;}
+
+
+.login-box {margin: 0px auto;padding: 5% 0; width: 100%; z-index: 3;position: relative;}
+.login-box-body {margin: 0px 17px;background-color: rgba(0, 0, 0, 0.43);}
+.login-box-msg {font-size: 29px;color: #fff;font-weight: 300;padding: 28px 24px 0px;text-align: center;}
+.des-msg {font-size: 1.2em;text-align: center;color: #fff;margin-bottom: 30px;}
+.fblogin {width: 53%;margin: 0 auto;}
+.sgnupsec{width: 46%;margin: 0 auto;}
+.fblogin a{width: 100%;display: block;text-align: center;margin: 12px 0;}
+.login-form-a {padding: 15px 0px;}
+.login-form-a .form-control {font-size: 18px;height: 40px;border-radius: 0;border: none;font-weight: 300;box-shadow:none;}
+.forget-pwd a, .login-check label {color: #fff;}
+.already-usr-a {background-color: rgba(238, 83, 81, 0.55);padding: 15px 75px 36px;}
+.login-top{padding: 0 50px;}
+.submit-btn{background: #ee5351;border-radius: 4px;color: #fff;font-size: 20px;font-weight: 500;}
+.blue-btn2{background: #65c8ec;border-radius: 0px;color: #fff;font-weight: 500;}
+.darkb-btn{background: #0a4d96;border-radius: 0px;color: #fff;font-size: 20px;font-weight: 500;}
+.darkb-btn2{background: #0a4d96;border-radius: 0px;color: #fff;font-weight: 500;}
+.red-btn2{background: #ed1c24;border-radius: 0px;color: #fff;font-weight: 500;}
+.blue-btn2:hover, .blue-btn:hover {background:#46B9E2;color:#fff;}
+.darkb-btn2:hover, .darkb-btn:hover	{background:#09407A;color:#fff;}
+.red-btn2:hover	{background:#be0000;color:#fff;}
+.mrg-tb{margin: 30px 0;}
+.already-usr-a h2{font-weight: 300;color: rgb(255, 255, 255); margin-top: 0px;}
+.user-icon {background: #fff url("../img/user_icon.png") no-repeat scroll 3% 36%;padding:0px 0px 0px 44px;}
+.lock-icon {background: #fff url("../img/lock_icon.png") no-repeat scroll 3% 36%;padding:0px 0px 0px 44px;} 
+
+
