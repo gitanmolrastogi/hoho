@@ -1,16 +1,29 @@
-<h2>Resend confirmation instructions</h2>
-
+<section class="login-screen">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+          <div class="login-box">
+            <div class="login-box-body">
+              <div class="login-top">
+                
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  <div class="form-group has-feedback">
+    <%= f.email_field :email, autofocus: true, placeholder: "Email",:class=>"form-control",value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "Resend confirmation instructions",:class=>"btn btn-block submit-btn mrg-tb" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+              
+  </div>
+            <!-- /.login-box-body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<%#= render "devise/shared/links" %>

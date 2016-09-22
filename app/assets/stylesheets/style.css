@@ -19,7 +19,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;padding: 2% 0px;}
 .heading{color:#EE5351;font-weight:300;}
 /*============login & signup============*/
 
-.login-screen {background: rgba(0, 0, 0, 0) url("../img/bg.png") repeat scroll 0 0 / cover;background-size: cover; position: relative; padding: 3% 0 3%;margin-top: 76px;min-height: 661px;}
+.login-screen {background: rgba(0, 0, 0, 0) url("/assets/bg.png") repeat scroll 0 0 / cover;background-size: cover; position: relative; padding: 3% 0 3%;margin-top: 76px;min-height: 661px;}
 .login-box-msg {font-size: 41px;color: #fff;font-weight: 400;padding: 28px 24px 28px;}
 
 
@@ -45,7 +45,11 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;padding: 2% 0px;}
 .red-btn2:hover	{background:#be0000;color:#fff;}
 .mrg-tb{margin: 30px 0;}
 .already-usr-a h2{font-weight: 300;color: rgb(255, 255, 255); margin-top: 0px;}
-.user-icon {background: #fff url("../img/user_icon.png") no-repeat scroll 3% 36%;padding:0px 0px 0px 44px;}
-.lock-icon {background: #fff url("../img/lock_icon.png") no-repeat scroll 3% 36%;padding:0px 0px 0px 44px;} 
+.user-icon {background: #fff url("/assets/user_icon.png") no-repeat scroll 3% 36%;padding:0px 0px 0px 44px;}
+.lock-icon {background: #fff url("/assets/lock_icon.png") no-repeat scroll 3% 36%;padding:0px 0px 0px 44px;} 
 
+
+.error{
+	color: red;
+}
 

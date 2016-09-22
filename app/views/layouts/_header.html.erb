@@ -26,11 +26,18 @@
 						<li class="page-scroll">
 							<a href="">Activities</a>
 						</li>
+						<% p "==================#{current_user.inspect}" %>
+						<% if current_user %>
 						<li class="page-scroll">
-							<a href="">Login</a>
+							<a href="/users/sign_out">Logout</a>
 						</li>
+						<% else%>
+                         <li class="page-scroll">
+							<a href="/users/sign_in">Login</a>
+						</li>
+						<%end%>
 						<li class="page-scroll">
-							<a href="">Sign Up</a>
+							<a href="/users/sign_up">Sign Up</a>
 						</li>
 					</ul>
 				</div>
