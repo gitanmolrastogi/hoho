@@ -8,9 +8,11 @@
                 <p class="login-box-msg">LOGIN</p>
                 <p class="des-msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name),:class=>"login-form-a") do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),:class=>"login-form-a",:html=>{id: "login_form"}) do |f| %>
 <%#= resource.validate %>
 <%#= devise_error_messages! %>
+<p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
+<% flash[:notice] = ""%>
   <div class="form-group has-feedback user-icon">
     <%= f.email_field :email, autofocus: true,:class=>"form-control",placeholder: "LoginId" %>
   </div>
@@ -37,7 +39,7 @@
                     </div>
                     <!-- /.col -->
                   </div>
-                  <%= f.submit "Sign in" ,:class=>"btn btn-block submit-btn mrg-tb",:id=>"signin"%>
+                  <%= f.submit "Sign in" ,:class=>"btn btn-block submit-btn mrg-tb"%>
                 </div>
             <% end %>
 
@@ -57,28 +59,40 @@
 
 
 
+
 <script type="text/javascript">
-//  $(document).ready(function(){
-//   $("#signin").click(function(){
-//       alert("signin");
-//       email=$('#user_email').val();
-//       password=$('#user_password').val();
-//       alert(email)
-//       $.ajax({
-//            type: "GET",
-//            url: "/users/check_login",
-//            data : {email: email,password: password},
-//            dataType: "json",
-//            success: function (result) {
-//               //do somthing here
-//               window.alert("success!!");
-//            },
-//            error: function (){
-//               window.alert("something wrong!");
-//            }
-//       });
+  $(document).ready(function(){
+   $("#login_form").validate({
+        // Specify the validation rules
+        rules: {
+           
+            "user[email]": {
+                 required: true,
+               },
+            "user[password]": {
+                 required: true,
+                
+            },
+           
+        },
+        // // Specify the validation error messages
+        messages: {
+             
+            "user[email]": {
+                required: "Please enter email",
 
-//    });
-// }); 
+            },
+            "user[password]": {
+                required: "Please enter password",
+                
+            },
+            
+            
+        },
+       submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    });
 
-// </script>
+</script>
