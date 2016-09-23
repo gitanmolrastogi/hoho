@@ -9,7 +9,8 @@
                 <p class="des-msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name),:class=>"login-form-a") do |f| %>
-<%= devise_error_messages! %>
+<%#= resource.validate %>
+<%#= devise_error_messages! %>
   <div class="form-group has-feedback user-icon">
     <%= f.email_field :email, autofocus: true,:class=>"form-control",placeholder: "LoginId" %>
   </div>
@@ -31,7 +32,7 @@
                     <!-- /.col -->
                     <div class="col-sm-6 col-xs-6">
                       <div class="forget-pwd pull-right">
-                        <a href="" data-toggle="modal" data-target="#myModal">Forgot Password ?</a>
+                        <a href="/users/password/new" data-toggle="modal" data-target="#myModal">Forgot Password ?</a>
                       </div>
                     </div>
                     <!-- /.col -->
@@ -56,4 +57,28 @@
 
 
 
+<script type="text/javascript">
+//  $(document).ready(function(){
+//   $("#signin").click(function(){
+//       alert("signin");
+//       email=$('#user_email').val();
+//       password=$('#user_password').val();
+//       alert(email)
+//       $.ajax({
+//            type: "GET",
+//            url: "/users/check_login",
+//            data : {email: email,password: password},
+//            dataType: "json",
+//            success: function (result) {
+//               //do somthing here
+//               window.alert("success!!");
+//            },
+//            error: function (){
+//               window.alert("something wrong!");
+//            }
+//       });
 
+//    });
+// }); 
+
+// </script>
