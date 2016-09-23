@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: localhost-3000
+  api_key: '843299485414129'
+  api_secret: Buruay69LiQ-L06unxKUPPFsjdo
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: localhost-3000
+  api_key: '843299485414129'
+  api_secret: Buruay69LiQ-L06unxKUPPFsjdo
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: localhost-3000
+  api_key: '843299485414129'
+  api_secret: Buruay69LiQ-L06unxKUPPFsjdo
+  enhance_image_tag: true
+  static_image_support: false

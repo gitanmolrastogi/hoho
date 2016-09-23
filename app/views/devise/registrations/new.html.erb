@@ -33,7 +33,7 @@
   <div >
     <%= f.submit "Sign up" ,:class=>"btn btn-block submit-btn mrg-tb"%>
   </div>
-  <div class="text-center" style="color:#fff;">Already have an account?<a href="/users/sign_in" class="p-l-10" style="color:#fff;text-decoration:underline;">Login here<a></div>
+  <div class="text-center" style="color:#fff;">Already have an account?<a href="/users/sign_in" class="p-l-10" style="color:#fff;text-decoration:underline;">Login here<a></div></br>
 <% end %>
   </div>
               
@@ -49,61 +49,72 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-  alert("hello");
-  
-  $("#new_user").validate({
+   $("#new_user").validate({
         // Specify the validation rules
-        // alert("inside");
         rules: {
             "user[first_name]": {
-                 required: true
+                 required: true,
+                 pattern: /^[a-z A-Z]+$/,
+                 maxlength: 10
                 
             },
             "user[last_name]": {
-                 required: true
+                 required: true,
+                 pattern: /^[a-z A-Z]+$/,
+                 maxlength: 10
                 
             },
             "user[email]": {
                  required: true,
-                  email: true
+                 email: true,
+                 remote:"/users/check_email"
+
                 
             },
             "user[password]": {
-                 required: true
+                 required: true,
+                 minlength:6
                 
             },
             "user[password_confirmation]": {
-                 required: true
+                 required: true,
+                 equalTo: "#user_password"
                 
             },
         },
         // // Specify the validation error messages
         messages: {
              "user[first_name]": {
-                required: "Please provide a first name"
+                required: "Please provide a first name",
+                pattern: "please enter only letters",
+                maxlength: "Should not exceed limit 10"
                 
             },
             "user[last_name]": {
-                required: "Please provide a last name"
+                required: "Please provide a last name",
+                pattern: "please enter only letters",
+                maxlength: "Should not exceed limit 10"
                 
             },
             "user[email]": {
                 required: "Please provide a email",
-                email: "Please enter valid email"
+                email: "Please enter valid email",
+                remote: "Email already registered",
+
             },
             "user[password]": {
-                required: "Please provide a password"
+                required: "Please provide a password",
+                minlength: "should be atleast 6 characters"
                 
             },
             "user[password_confirmation]": {
-                required: "Please provide a password confirmation"
+                required: "Please provide a password confirmation",
+                equalTo: "Password confirmation doesn't match"
                 
             },
             
         },
-
-        
-        submitHandler: function(form) {
+       submitHandler: function(form) {
             form.submit();
         }
     });

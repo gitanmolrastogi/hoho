@@ -1,7 +1,19 @@
 source 'https://rubygems.org'
 
+#Image Uploading
+gem 'carrierwave'
+gem 'cloudinary'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+#Ck editor
+gem "ckeditor"
+gem 'mini_magick'
+
+
+#Admin and theme
+gem 'active_skin'
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
