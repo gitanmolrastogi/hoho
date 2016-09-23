@@ -221,13 +221,13 @@ ActiveAdmin.setup do |config|
 
 config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add :label => "About Us", :priority => 1,:url => "/admin/static_pages/1/edit" 
-      menu.add :label => "Privacy Policy", :priority => 2,:url=>"/admin/static_pages/2/edit"
-      menu.add :label => "Terms and Conditions", :priority => 3,:url=>"/admin/static_pages/3/edit"
-      menu.add :label => "Contact Us", :priority => 4,:url=>"/admin/static_pages/4/edit"
-      menu.add :label => "Reservation and Sales", :priority => 5,:url=>"/admin/static_pages/5/edit"
-      menu.add :label => "Information", :priority => 6,:url=>"/admin/static_pages/6/edit"
-      menu.add :label => "Tips", :priority => 7,:url=>"/admin/static_pages/7/edit"
+      menu.add :label => "About Us", :priority => 1,:url => "/admin/static_pages/1" 
+      menu.add :label => "Privacy Policy", :priority => 2,:url=>"/admin/static_pages/2"
+      menu.add :label => "Terms and Conditions", :priority => 3,:url=>"/admin/static_pages/3"
+      menu.add :label => "Contact Us", :priority => 4,:url=>"/admin/static_pages/4"
+      menu.add :label => "Reservation and Sales", :priority => 5,:url=>"/admin/static_pages/5"
+      menu.add :label => "Information", :priority => 6,:url=>"/admin/static_pages/6"
+      menu.add :label => "Tips", :priority => 7,:url=>"/admin/static_pages/7"
     end
   end
 

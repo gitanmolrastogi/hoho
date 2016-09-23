@@ -4,6 +4,7 @@ menu false
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 permit_params :title, :content, :type
+actions :all, :except => [:destroy]
 #
 # or
 #
@@ -31,7 +32,7 @@ permit_params :title, :content, :type
  show :title=> "Content" do |ad|
     attributes_table do	 
     row  :title 
-    row  ":content" do 
+    row  "Content" do 
     	ad.content.html_safe
     end
    end

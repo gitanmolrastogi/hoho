@@ -40,7 +40,6 @@
             },
          
         },
-
         submitHandler: function(form) {
             form.submit();
         }

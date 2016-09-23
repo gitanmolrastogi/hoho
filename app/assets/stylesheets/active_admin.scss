@@ -11,10 +11,6 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-$skinActiveColor:  #ff3300;
-$skinHeaderBck: #009900;
-$panelHeaderBck: #000099;
-
 @import "active_skin";
 
 // Overriding any non-variable SASS must be done after the fact.
