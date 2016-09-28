@@ -10,15 +10,15 @@ class ApplicationController < ActionController::Base
 
   private
   def after_sign_in_path_for(resource)
-      p "------after signin----#{resource}---------"
+      p "------after signin----#{resource.inspect}---------"
        root_path
   end
-
-  def after_sign_up_path_for(resource)
-      p "======after signup==========#{resource}======"
-  	   flash[:notice] = "You will receive an email with instructions for how to confirm your email address in a few minutes."
-       redirect_to new_user_session_path
+  def after_sign_out_path_for(resource)
+      p "------after signout----#{resource.inspect}---------"
+       new_user_session_path
   end
-
+  
+ 
 
 end
+

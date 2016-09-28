@@ -51,7 +51,6 @@
                 
             },
             "user[password_confirmation]": {
-                 required: true,
                  equalTo: "#user_password"
                 
             },
@@ -60,12 +59,11 @@
         messages: {
              
             "user[password]": {
-                required: "Please provide a password",
+                required: "Please enter a password",
                 minlength: "should be atleast 6 characters"
                 
             },
             "user[password_confirmation]": {
-                required: "Please provide a password confirmation",
                 equalTo: "Password confirmation doesn't match"
                 
             },
