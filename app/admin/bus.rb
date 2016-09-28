@@ -17,8 +17,8 @@ permit_params :start_date ,:end_date ,:start_time,:end_time ,:no_of_seats ,:star
 
 form do  |f|
   f.inputs do
-    f.input :start_date
-    f.input :end_date
+    f.input :start_date,as: :datepicker
+    f.input :end_date,as: :datepicker
     f.input :start_time
     f.input :end_time 
     f.input :no_of_seats
