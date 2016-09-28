@@ -19,12 +19,9 @@ form do  |f|
   f.inputs do
     f.input :start_date
     f.input :end_date
-
-    
     f.input :start_time
-    f.input :end_time ,:label => 'Duration in Days'
+    f.input :end_time 
     f.input :no_of_seats
-
     f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}
     f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}
     # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false

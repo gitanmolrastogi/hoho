@@ -23,10 +23,10 @@ form do  |f|
     f.input :image, as: :file
     f.input :zoomed_image , as: :file
     # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
-
   end
   actions
 end
+
 
 show :title=> "Route Management" do |route|
     attributes_table do	 
