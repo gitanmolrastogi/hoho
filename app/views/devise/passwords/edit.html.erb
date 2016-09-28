@@ -1,25 +1,80 @@
-<h2>Change your password</h2>
+<section class="login-screen">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+          <div class="login-box">
+            <div class="login-box-body">
+              <div class="login-top">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put ,id: "change_password"}) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
+  <div class="form-group has-feedback">
+    <%#= f.label :password, "New password" %><br />
+   <!--  <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+    <% end %> -->
+    <%= f.password_field :password, autofocus: true, autocomplete: "off",placeholder: "New password",:class=>"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="form-group has-feedback">
+    <%#= f.label :password_confirmation, "Confirm new password" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off",placeholder: "Confirm new password",:class=>"form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
+    <%= f.submit "Change my password",:class=>"btn btn-block submit-btn mrg-tb" %>
+  </div></br>
 <% end %>
+</div>
+              
+  </div>
+            <!-- /.login-box-body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+   $("#change_password").validate({
+        // Specify the validation rules
+        rules: {
+            
+            "user[password]": {
+                 required: true,
+                 minlength:6
+                
+            },
+            "user[password_confirmation]": {
+                 required: true,
+                 equalTo: "#user_password"
+                
+            },
+        },
+        // // Specify the validation error messages
+        messages: {
+             
+            "user[password]": {
+                required: "Please provide a password",
+                minlength: "should be atleast 6 characters"
+                
+            },
+            "user[password_confirmation]": {
+                required: "Please provide a password confirmation",
+                equalTo: "Password confirmation doesn't match"
+                
+            },
+            
+        },
+       submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    });
+
+</script>

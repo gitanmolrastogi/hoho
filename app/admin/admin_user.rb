@@ -20,8 +20,6 @@ show :title=> "Admin User Info" do |ad|
     row  :current_sign_in_ip
     row  :last_sign_in_ip
     row  :last_sign_in_at
-
-
    end
 end
 

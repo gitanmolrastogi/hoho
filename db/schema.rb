@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922214348) do
+ActiveRecord::Schema.define(version: 20160926074137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommodations", force: :cascade do |t|
+    t.string   "title"
+    t.text     "information"
+    t.string   "redirection_link"
+    t.string   "where_we_stay"
+    t.integer  "city_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["city_id"], name: "index_accommodations_on_city_id", using: :btree
+  end
+
+  create_table "acitvities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "overview"
+    t.text     "information"
+    t.integer  "city_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_acitvities_on_category_id", using: :btree
+    t.index ["city_id"], name: "index_acitvities_on_city_id", using: :btree
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -27,6 +50,18 @@ ActiveRecord::Schema.define(version: 20160922214348) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "overview"
+    t.text     "information"
+    t.integer  "city_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_activities_on_category_id", using: :btree
+    t.index ["city_id"], name: "index_activities_on_city_id", using: :btree
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -44,6 +79,53 @@ ActiveRecord::Schema.define(version: 20160922214348) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "buses", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "start_point"
+    t.string   "end_point"
+    t.integer  "no_of_seats"
+    t.boolean  "is_full"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "overview"
+    t.text     "important"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "city_categories", force: :cascade do |t|
+    t.integer  "city_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_city_categories_on_category_id", using: :btree
+    t.index ["city_id"], name: "index_city_categories_on_city_id", using: :btree
+  end
+
+  create_table "city_routes", force: :cascade do |t|
+    t.integer  "line_color_route_id"
+    t.integer  "city_id"
+    t.integer  "priority"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["city_id"], name: "index_city_routes_on_city_id", using: :btree
+    t.index ["line_color_route_id"], name: "index_city_routes_on_line_color_route_id", using: :btree
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -66,6 +148,28 @@ ActiveRecord::Schema.define(version: 20160922214348) do
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "line_color_routes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "start_point"
+    t.string   "end_point"
+    t.string   "price"
+    t.string   "duration"
+    t.string   "image"
+    t.string   "zoomed_image"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "image"
+    t.boolean  "status"
+    t.string   "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id", using: :btree
   end
 
   create_table "questions_and_answers", force: :cascade do |t|
@@ -106,4 +210,13 @@ ActiveRecord::Schema.define(version: 20160922214348) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "accommodations", "cities"
+  add_foreign_key "acitvities", "categories"
+  add_foreign_key "acitvities", "cities"
+  add_foreign_key "activities", "categories"
+  add_foreign_key "activities", "cities"
+  add_foreign_key "city_categories", "categories"
+  add_foreign_key "city_categories", "cities"
+  add_foreign_key "city_routes", "cities"
+  add_foreign_key "city_routes", "line_color_routes"
 end

@@ -8,8 +8,11 @@
                 <p class="login-box-msg">LOGIN</p>
                 <p class="des-msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name),:class=>"login-form-a") do |f| %>
-<%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),:class=>"login-form-a",:html=>{id: "login_form"}) do |f| %>
+<%#= resource.validate %>
+<%#= devise_error_messages! %>
+<p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
+<% flash[:notice] = ""%>
   <div class="form-group has-feedback user-icon">
     <%= f.email_field :email, autofocus: true,:class=>"form-control",placeholder: "LoginId" %>
   </div>
@@ -31,12 +34,12 @@
                     <!-- /.col -->
                     <div class="col-sm-6 col-xs-6">
                       <div class="forget-pwd pull-right">
-                        <a href="" data-toggle="modal" data-target="#myModal">Forgot Password ?</a>
+                        <a href="/users/password/new" data-toggle="modal" data-target="#myModal">Forgot Password ?</a>
                       </div>
                     </div>
                     <!-- /.col -->
                   </div>
-                  <%= f.submit "Sign in" ,:class=>"btn btn-block submit-btn mrg-tb",:id=>"signin"%>
+                  <%= f.submit "Sign in" ,:class=>"btn btn-block submit-btn mrg-tb"%>
                 </div>
             <% end %>
 
@@ -57,3 +60,39 @@
 
 
 
+<script type="text/javascript">
+  $(document).ready(function(){
+   $("#login_form").validate({
+        // Specify the validation rules
+        rules: {
+           
+            "user[email]": {
+                 required: true,
+               },
+            "user[password]": {
+                 required: true,
+                
+            },
+           
+        },
+        // // Specify the validation error messages
+        messages: {
+             
+            "user[email]": {
+                required: "Please enter email",
+
+            },
+            "user[password]": {
+                required: "Please enter password",
+                
+            },
+            
+            
+        },
+       submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    });
+
+</script>

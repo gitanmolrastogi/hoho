@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  information: MyText
+  redirection_link: MyString
+  where_we_stay: MyString
+  city: one
+
+two:
+  title: MyString
+  information: MyText
+  redirection_link: MyString
+  where_we_stay: MyString
+  city: two

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line_color_route: one
+  city: one
+  priority: 1
+
+two:
+  line_color_route: two
+  city: two
+  priority: 1

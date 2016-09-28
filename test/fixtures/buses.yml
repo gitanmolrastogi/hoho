@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 
+  end_date: 
+  start_time: 
+  end_time: 
+  start_point: MyString
+  end_point: MyString
+  no_of_seats: 1
+  is_full: false
+
+two:
+  start_date: 
+  end_date: 
+  start_time: 
+  end_time: 
+  start_point: MyString
+  end_point: MyString
+  no_of_seats: 1
+  is_full: false

@@ -212,7 +212,7 @@ ActiveAdmin.setup do |config|
     config.namespace :admin do |admin|
       admin.build_menu :utility_navigation do |menu|
         menu.add label: "My Website", url: "http://localhost:3000", html_options: { target: :blank }
-        menu.add label: "Admin Info", url: "/admin/admin_users/2"
+        menu.add label: "Admin Info", url: "/admin/admin_users/1"
 
         admin.add_logout_button_to_menu menu
       end

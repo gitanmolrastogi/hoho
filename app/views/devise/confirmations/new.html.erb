@@ -6,7 +6,7 @@
             <div class="login-box-body">
               <div class="login-top">
                 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post,id: "confirm_email" }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group has-feedback">
@@ -14,7 +14,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions",:class=>"btn btn-block submit-btn mrg-tb" %>
+    <%= f.submit "Resend confirmation instructions",:class=>"btn btn-block submit-btn mrg-tb" %></br>
   </div>
 <% end %>
 </div>
@@ -27,3 +27,37 @@
     </div>
   </section>
 <%#= render "devise/shared/links" %>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+   $("#confirm_email").validate({
+        // Specify the validation rules
+        rules: {
+            "user[email]": {
+                 required: true,
+                 email: true,
+                 remote:"/users/find_email"
+
+                
+            },
+            
+        },
+        // // Specify the validation error messages
+        messages: {
+             "user[email]": {
+                required: "Please provide a email",
+                email: "Please enter valid email",
+                remote: "Email not found ",
+                
+            },
+            
+            
+        },
+       submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    });
+
+</script>

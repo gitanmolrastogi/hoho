@@ -17,3 +17,28 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+
+#header{
+	height: 80px!important;
+
+
+}
+
+#header ul.tabs > li{
+	height: 30px!important
+}
+
+#header ul.tabs > li a:hover{
+    background-color: #e73c3c!important;
+    padding: 7px 20px!important;
+}
+
+#header ul.tabs > li.current > a {
+	background: #e73c3c none repeat scroll 0 0!important;
+    border-radius: 0!important;
+    color: #fff!important;
+    margin: -10px 0!important;
+    padding: 7px 20px!important;
+
+}
