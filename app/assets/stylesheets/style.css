@@ -19,7 +19,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;padding: 2% 0px;}
 .heading{color:#EE5351;font-weight:300;}
 /*============login & signup============*/
 
-.login-screen {background: rgba(0, 0, 0, 0) url("/assets/bg.png") repeat scroll 0 0 / cover;background-size: cover; position: relative; padding: 3% 0 3%;margin-top: 76px;min-height: 661px;}
+.login-screen {background: rgba(0, 0, 0, 0) url("/assets/bg.png") repeat scroll 0 0 / cover;background-size: cover; position: relative; padding: 3% 0 3%;margin-top: 76px;min-height: 661px;background-attachment: fixed;}
 .login-box-msg {font-size: 41px;color: #fff;font-weight: 400;padding: 28px 24px 28px;}
 
 

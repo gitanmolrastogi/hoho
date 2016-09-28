@@ -77,7 +77,6 @@
                 
             },
             "user[password_confirmation]": {
-                 required: true,
                  equalTo: "#user_password"
                 
             },
@@ -85,30 +84,29 @@
         // // Specify the validation error messages
         messages: {
              "user[first_name]": {
-                required: "Please provide a first name",
+                required: "Please enter a first name",
                 pattern: "please enter only letters",
                 maxlength: "Should not exceed limit 10"
                 
             },
             "user[last_name]": {
-                required: "Please provide a last name",
+                required: "Please enter a last name",
                 pattern: "please enter only letters",
                 maxlength: "Should not exceed limit 10"
                 
             },
             "user[email]": {
-                required: "Please provide a email",
+                required: "Please enter a email",
                 email: "Please enter valid email",
                 remote: "Email already registered",
 
             },
             "user[password]": {
-                required: "Please provide a password",
+                required: "Please enter a password",
                 minlength: "should be atleast 6 characters"
                 
             },
             "user[password_confirmation]": {
-                required: "Please provide a password confirmation",
                 equalTo: "Password confirmation doesn't match"
                 
             },

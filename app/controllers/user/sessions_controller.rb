@@ -1,4 +1,3 @@
-
 #overrided devise session controller 
 class User::SessionsController < Devise::SessionsController
 	def create
@@ -12,7 +11,7 @@ class User::SessionsController < Devise::SessionsController
            redirect_to new_user_session_path
 	    elsif @user && @user.confirmed_at == nil
 	    	p "-----------confirmation---------"
-		  flash[:notice] = "Account not activated yet."
+		  flash[:notice] = "Your email address not confirmed yet."
           redirect_to new_user_session_path
 	   else
 	   	 super
