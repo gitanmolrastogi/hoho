@@ -1,5 +1,5 @@
 ActiveAdmin.register Bus do
-
+# before_filter :date_format
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -30,7 +30,26 @@ form do  |f|
   actions
 end
 
+controller do 
+   def date_format
+      # p "-----#{params[:city][:name].inspect}---------"
+      if params[:bus].present?
+           start_date= params[:bus][:start_date].to_s
+            # start_date =start_date.gsub("/", "-")
+            # start_date = start_date.gsub(' \" ', "")
 
+           p "=======sdddd===#{start_date.inspect}======="
+           # params[:bus][:start_date] = start_date
+           params[:bus][:end_date] = params[:bus][:end_date].gsub("/", "-")
+
+      end
+
+  end 
+
+ end
 
 
 end
+
+
+#.gsub("abc", "---")
