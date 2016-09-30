@@ -32,7 +32,7 @@ end
 
 
   form do |f|
-    f.inputs "New Static Content" do     
+    f.inputs "New Home Page Image" do     
       f.input :image,:as => :file
       f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
     end
