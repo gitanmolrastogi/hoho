@@ -23,10 +23,10 @@ form do  |f|
           f.has_many :city_routes  do |l|
               l.input :city_id ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]}
               l.input :priority , :as => :select, :collection => 1..100
-              l.input :_destroy, :as => :boolean, :label => "Delete"
+              # l.input :_destroy, :as => :boolean, :label => "Delete"
           end
       end
-    f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}
+    f.input :end_point, :as => :select, :collection => [],:include_blank => false
     f.input :price
     f.input :duration ,:label => 'Duration in Days'
     f.input :image, as: :file

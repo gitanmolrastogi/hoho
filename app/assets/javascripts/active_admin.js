@@ -3,26 +3,30 @@
 #= require jquery.validate.additional-methods
 
 
-// $( document ).ready(function() {
+$( document ).ready(function() {
 
-//    $('#line_color_route_start_point').select(function(){
-//         var dest=$('#line_color_route_start_point').val();
-//          alert("dest");
+// a = document.getElementById('line_color_route_start_point_input').value;
+// console.log(a);
+
+    $('#line_color_route_start_point').change(function(){
+      $(this).prop("disabled", true);
+      $('#line_color_route_end_point').append('<option value='+$(this).val()+'>'+$(this).val()+'</option>')
+      $('#line_color_route_end_point').prop("disabled", true);
+      
+    });
+});
 
 
-//          if (dest == ""){
 
-//          	alert("Not Present");
-//          }else{
-//          	alert("Present");
-// $('#line_color_route_start_point').val() = dest
-//          }
 
-//    });
-// });
+
+
 
 
   $(document).ready(function(){
+
+
+
   $('#new_home_page_image').validate({
       errorElement: "div",
 
@@ -50,14 +54,61 @@
             form.submit();
         }
     });
+// ===================== New Activity Validation Start=========================
+   $('#new_activity').validate({
+   errorElement: "div",
+    rules: {
+            "activity[city_id]": {
+                 required: true
+                
+            },
+            "activity[category_id]": {
+                 required: true
+            },
+
+            "activity[name]": {
+                 required: true
+            },
+            "activity[overview]": {
+                 required: true
+            },
+            "activity[information]": {
+                 required: true
+            },
+  },
+
+    messages: {
+             "activity[city_id]": {
+                required: "Please select a city"
+                
+            },
+            "activity[category_id]": {
+                required: "Please select a category"
+            },
+
+            "activity[name]": {
+                required: "Please enter a activity name"
+            },
+            "activity[overview]": {
+                required: "Enter overview"
+            },
+
+            "activity[information]": {
+                required: "Enter information"
+            },
+         
+         
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
     });
+//==================New Activity Validation End==================================
 
 
-
-  $(document).ready(function(){
-  $('#new_line_color_route').validate({
-      errorElement: "div",
-
+//==================New Route validation=========================================
+$('#new_line_color_route').validate({
+   errorElement: "div",
     rules: {
             "line_color_route[name]": {
                  required: true
@@ -75,6 +126,7 @@
             "line_color_route[duration]": {
                  required: true
             },
+
             "line_color_route[image]": {
                  required: true
             },
@@ -84,38 +136,106 @@
   },
 
     messages: {
-             "line_color_route[name]": {
-                required: "Route name can't be blank"
+            "line_color_route[name]": {
+                 required: "Please enter a route name"
                 
             },
             "line_color_route[start_point]": {
-                required: "Please select a start point"
-            },
-             "line_color_route[end_point]": {
-                required: "Please select a end point"
+                 required: "Select start point"
             },
 
+            "line_color_route[end_point]": {
+                 required: "Select end point"
+            },
             "line_color_route[price]": {
-                required: "Please select a end point"
+                 required: "Enter price"
             },
             "line_color_route[duration]": {
-                required: "Specify duration in days"
+                 required: "Enter duration"
             },
+
             "line_color_route[image]": {
-                required: "Image cant be blank"
+                 required: "Please upload image"
             },
-             "line_color_route[zoomed_image]": {
-                required: "Please select zoomed image for the same route please"
+            "line_color_route[zoomed_image]": {
+                 required: "Please upload zoomed image"
             },
+  },
 
-
-         
-        },
         submitHandler: function(form) {
             form.submit();
         }
     });
+
+  //===========New route validation END=====
+
+  //===========New city validation start====
+  $('#new_city').validate({
+   errorElement: "div",
+    rules: {
+            "city[name]": {
+                 required: true
+                
+            },
+            "city[overview]": {
+                 required: true
+                
+            },
+            "city[important]": {
+                 required: true
+            },
+
+  },
+
+    messages: {
+            "city[name]": {
+                 required: "Enter city"
+                
+            },
+            "city[overview]": {
+                 required: "Enter overview of city "
+                
+            },
+            "city[important]": {
+                 required: "Enter important of city"
+            },
+  },
+
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+//=====================New city validation END==================
+
+//=============datepicker======
+$("#bus_start_date").datepicker({
+        // showButtonPanel: true,
+         minDate: 0,
+         dateFormat: 'yy/mm/dd',
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate());
+            $("#bus_end_date").datepicker("option", "minDate", dt);
+        }
     });
 
+ $("#bus_end_date").datepicker({
+        dateFormat: 'yy/mm/dd',
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate());
+            $("#bus_start_date").datepicker("option", "maxDate", dt);
+        }
+    });
+ //=========datepicker=========
 
 
+
+
+
+
+ 
+
+});
