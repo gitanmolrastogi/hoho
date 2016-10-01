@@ -9,6 +9,13 @@ Rails.application.routes.draw do
  get  '/users/check_email', to: 'user/users#check_email'
  get  '/users/find_email', to: 'user/users#find_email'
  
+#Routes To Check Admin Side  Request (START)
+get '/admin/check_city',to: 'user/static_content#check_city'
+get '/admin/check_category',to: 'user/static_content#check_category'
+
+#Routes To Check Admin Side  Request (END)
+
+
  namespace :user do
  resources :static_content, only: [] do
        collection do

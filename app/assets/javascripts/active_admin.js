@@ -18,15 +18,13 @@
 
   $(document).ready(function(){
   $('#new_home_page_image').validate({
-
-  	rules: {
+    
+    rules: {
             "home_page_image[image]": {
                  required: true
                 
             },
-            "home_page_image[ststus]": {
-                 required: true
-            },
+         
   },
 
     messages: {
@@ -34,10 +32,8 @@
                 required: "Please select a image to upload name"
                 
             },
-            "home_page_image[ststus]": {
-                required: "Please select a status"
-            },
-         
+            
+        
         },
         submitHandler: function(form) {
             form.submit();
@@ -160,13 +156,16 @@ $('#new_line_color_route').validate({
     });
 
   //===========New route validation END=====
-
-  //===========New city validation start====
+//===========New city validation start====
   $('#new_city').validate({
    errorElement: "div",
+   // ignore: "input:hidden:not(input:hidden.required)",
     rules: {
             "city[name]": {
-                 required: true
+                 required: true,
+                 remote:"/admin/check_city",
+                 maxlength: 20,
+                 lettersonly: true
                 
             },
             "city[overview]": {
@@ -181,7 +180,10 @@ $('#new_line_color_route').validate({
 
     messages: {
             "city[name]": {
-                 required: "Enter city"
+                 required: "Enter city",
+                 remote: "City already exists",
+                 maxlength: "Should not exceed limit 20 characters",
+                 lettersonly: "Enter only letters"
                 
             },
             "city[overview]": {
@@ -201,6 +203,115 @@ $('#new_line_color_route').validate({
     });
 //=====================New city validation END==================
 
+//===========New category validation start====
+  $('#new_category').validate({
+    errorElement: "div",
+   rules: {
+            "category[name]": {
+                 required: true,
+                 maxlength: 20,
+                 remote:"/admin/check_category",
+                 
+                
+            },
+           
+
+  },
+
+    messages: {
+            "category[name]": {
+                 required: "Enter category",
+                 maxlength: "Should not exceed limit 20 characters",
+                 remote: "Category already exists",
+                
+                
+            },
+           
+  },
+
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+//=====================New category validation END==================
+
+//===========New FAQ validation start====
+  $('#new_questions_and_answer').validate({
+    errorElement: "div",
+   rules: {
+            "questions_and_answer[question]": {
+                 required: true,
+                 
+             },
+
+
+             "questions_and_answer[answer]": {
+                 required: true,
+                 
+             },
+           
+
+  },
+
+    messages: {
+            "questions_and_answer[question]": {
+                 required: "Enter question",
+                 
+             },
+           
+            "questions_and_answer[answer]": {
+                 required: "Enter answer",
+                 
+             },
+  },
+
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+//=====================New FAQ validation END==================
+
+//===========EDIT FAQ validation start====
+  $('#edit_questions_and_answer').validate({
+    errorElement: "div",
+   rules: {
+            "questions_and_answer[question]": {
+                 required: true,
+                 
+             },
+
+
+             "questions_and_answer[answer]": {
+                 required: true,
+                 
+             },
+           
+
+  },
+
+    messages: {
+            "questions_and_answer[question]": {
+                 required: "Enter question",
+                 
+             },
+           
+            "questions_and_answer[answer]": {
+                 required: "Enter answer",
+                 
+             },
+  },
+
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+//=====================EDIT FAQ validation END==================
 //=============datepicker======
 $("#bus_start_date").datepicker({
         // showButtonPanel: true,
@@ -231,3 +342,6 @@ $("#bus_start_date").datepicker({
  
 
 });
+
+
+//=====fdfdfdfdfddf=============================
