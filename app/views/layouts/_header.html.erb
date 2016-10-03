@@ -1,55 +1,45 @@
-<header class="">
-		<nav class="navbar navbar-default navbar-fixed-top">
+<!-- Navigation -->
+	<header>
+		<nav class="navbar navbar-default navbar-fixed-top custom-header">
 			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
+					 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#page-top">Logo Here</a>
+					<a class="navbar-brand" href="#page-top"><img src="/assets/logo.png" alt="" /></a>
 				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				
+				<div class="collapse navbar-collapse" id="collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="hidden">
-							<a href=""></a>
+						<li>
+							<a href="#">Home </a>
 						</li>
-						<li class="page-scroll">
-							<a href="">Home </a>
+						<li>
+							<a href="#">Routes</a>
 						</li>
-						<li class="page-scroll">
-							<a href="">Routes</a>
+						<li>
+							<a href="#">Activities</a>
 						</li>
-						<li class="page-scroll">
-							<a href="">Activities</a>
-						</li>
-						<% p "==================#{current_user.inspect}" %>
-						<% if current_user %>
-						<li class="page-scroll">
+						<% if current_user%>
+						<li>
 							<a href="/users/sign_out">Logout</a>
 						</li>
+						<li>
+							<a href=""><%= current_user.try(:first_name)%></a>
+						</li>
 						<% else%>
-                         <li class="page-scroll">
+                         <li>
 							<a href="/users/sign_in">Login</a>
 						</li>
-						<%end%>
-						<% if current_user %>
-						<li class="page-scroll">
-							<a href=""><%= current_user.first_name %></a>
-						</li>
-						<% else%>
-
-						<li class="page-scroll">
+						<li>
 							<a href="/users/sign_up">Sign Up</a>
 						</li>
+                         
 						<% end %>
 					</ul>
 				</div>
-				<!-- /.navbar-collapse -->
 			</div>
-			<!-- /.container-fluid -->
 		</nav>
 	</header>
