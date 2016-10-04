@@ -16,5 +16,5 @@ test:
   <<: *defaults
 
 production:
-  database: delhi_airport_development
+  database: delhi_airport_production
   <<: *defaults
