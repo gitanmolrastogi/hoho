@@ -1,6 +1,6 @@
-#= require active_admin/base
-#= require jquery.validate
-#= require jquery.validate.additional-methods
+//= require active_admin/base
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 
 
 $( document ).ready(function() {
