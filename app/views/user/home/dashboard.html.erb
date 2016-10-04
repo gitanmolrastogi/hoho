@@ -1,44 +1,6 @@
-<header id="myCarousel" class="home-cro carousel slide">
-			<div class="carousel-inner custom-carousel">
-				<div class="item">
-					<div class="fill bg1"></div>
-					<div class="carousel-caption">
-						<div class="main-t-h">Track your Routes</div>
-						<div class="sub-t-h">Lorem Ipsum is simply dummy text of the printing and</div>
-						<div class="clearfix text-center">
-							<a href="#" class="btn btn-custom">Read More</a>
-						</div>
-					</div>
-				</div>
-				<div class="item">
-					<div class="fill bg2"></div>
-					 <div class="carousel-caption">
-						<div class="main-t-h">Track your Routes</div>
-						<div class="sub-t-h">Lorem Ipsum is simply dummy text of the printing and</div>
-						<div class="clearfix text-center">
-							<a href="#" class="btn btn-custom">Read More</a>
-						</div>
-					</div>
-				</div>
-				<div class="item active">
-					<div class="fill bg3"></div>
-					 <div class="carousel-caption">
-						<div class="main-t-h">Track your Routes</div>
-						<div class="sub-t-h">Lorem Ipsum is simply dummy text of the printing and</div>
-						<div class="clearfix text-center">
-							<a href="#" class="btn btn-lg btn-custom">Read More</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a class="left carousel-control arrow" href="#myCarousel" data-slide="prev">
-				<span class="icon-ar"></span>
-			</a>
-			<a class="right carousel-control arrow" href="#myCarousel" data-slide="next">
-				<span class="icon-ar"></span>
-			</a>
-		</header>
-		<section class="home-f">
+<%= render :partial => 'layouts/slider_top'%>
+<%= render :partial => 'layouts/slider_bottom'%>
+<section class="home-f">
 			<div class="container">
 				<div class="heading-crat text-center">
 					<h2>HOW IT WORKS</h2>
@@ -48,20 +10,21 @@
 					<div class="col-xs-12 col-sm-4 col-md-4">
 						<div class="sec_contain">
 							<figure class="post-thumb"> 
-								<img src="img/img-1.png" alt="" class="img-responsive" />
+								<img src="/assets/img-1.png" alt="" class="img-responsive" />
 								<figcaption><span><img src="/assets/t1.png" alt="" /></span></figcaption>	
 							</figure>
 							<div class="thumb-info text-center">
-								<h4>Cupiditate laudantium Velit</h4>
-								<p>Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit</p>
-								<a href="#"> Read More >> </a>
+							<% c1 =StaticPage.find_by(title: "Cupiditate laudantium Velit1").try(:content)%>
+								<h4>Cupiditate laudantium Velit1</h4>
+								<div id= "read_more"><p><%= truncate(c1, :length =>10, :escape => false) %></p>
+								<a href="#"> Read More >> </a></div>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4">
 						<div class="sec_contain">
 							<figure class="post-thumb"> 
-								<img src="img/img-2.png" alt="" class="img-responsive" />
+								<img src="/assets/img-2.png" alt="" class="img-responsive" />
 								<figcaption><span><img src="/assets/t2.png" alt="" /></span></figcaption>	
 							</figure>
 							<div class="thumb-info text-center">
@@ -74,7 +37,7 @@
 					<div class="col-xs-12 col-sm-4 col-md-4">
 						<div class="sec_contain">
 							<figure class="post-thumb"> 
-								<img src="img/img-3.png" alt="" class="img-responsive" />
+								<img src="/assets/img-3.png" alt="" class="img-responsive" />
 								<figcaption><span><img src="/assets/t3.png" alt="" /></span></figcaption>	
 							</figure>
 							<div class="thumb-info text-center">

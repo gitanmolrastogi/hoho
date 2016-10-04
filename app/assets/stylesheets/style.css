@@ -181,7 +181,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 
 
 /*==============contact-us==============*/
-.contact-img{background:url('/assets/contact.png'); background-position: 86%;}
+.contact-img{background:url('/assets/contact.png'); background-position: 90%;}
 .header-img{background-size:cover; height:250px;}
 .contact-list li{position:relative; padding:15px 5px 15px 40px; border:solid #dcdbd7; border-width:1px 0 1px 0; margin:-1px 0; font-size:14px; font-weight:regular; color: #000;}
 .contact-list li:first-child{border-top:0;}

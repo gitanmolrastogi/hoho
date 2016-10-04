@@ -1,16 +1,26 @@
 class User::StaticContentController < ApplicationController
 
 	def about_us
-		@about_us=StaticPage.first.try(:content)
+		@about_us=StaticPage.find_by(title: "About Us").try(:content)
 	end
 
 	def terms_and_condition
-		@terms_and_condition=StaticPage.third.try(:content)
+		@terms_and_condition=StaticPage.find_by(title: "Terms and Conditions").try(:content)
 	end
 
 	def privacy_policy
-		@privacy_policy=StaticPage.second.try(:content)
+		@privacy_policy=StaticPage.find_by(title: "Privacy Policy").try(:content)
 	end
+
+  def contact_us
+    # @privacy_policy=StaticPage.second.try(:content)
+  end
+
+  def contact_admin
+    p "=========#{params.inspect}==="
+    # NotifyMailer.inform_admin(contact_params).deliver
+    redirect_to dashboard_path, flash[:alert]=>"Information sent successfully."
+  end
 
  #Admin side check request methods(START)
   def check_city
@@ -33,9 +43,13 @@ class User::StaticContentController < ApplicationController
     	render :json=>true
     end		
   end
+#Admin side check request methods(END)
 
- #Admin side check request methods(END)
+private
 
-
+def contact_params
+  params.permit(:first_name,:last_name,:email,:mobile_number,:subject,:help)
+  
+end
 
 end

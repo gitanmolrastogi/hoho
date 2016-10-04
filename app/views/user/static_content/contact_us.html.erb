@@ -1,0 +1,61 @@
+			<div class="container">
+				<div class="header-img contact-img"></div>
+			</div>
+	
+		
+		<section class="page-content contact-us">
+			<div class="container">
+				<div class="heading-block">
+					<h2 class="heading">Contact US</h2>
+					<div class="head-line m-b-10"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-7">
+				    <%= form_tag(contact_admin_user_static_content_index_path,:id=>"contact_form" ,:class=>"form-block row") do %>
+							<div class="form-group col-md-6">
+							<%= text_field_tag "first_name",nil,:class=>"form-control", :placeholder=>"First Name"%>
+							</div>
+							
+							<div class="form-group col-md-6">
+							<%= text_field_tag "last_name",nil,:class=>"form-control", :placeholder=>"Last Name"%>
+							</div>
+
+							<div class="form-group col-md-6">
+                            <%= text_field_tag "email",nil,:class=>"form-control", :placeholder=>"Email"%>
+                            </div>
+
+							<div class="form-group col-md-6">
+							<%= text_field_tag "mobile_number",nil,:class=>"form-control", :placeholder=>"Mobile Number"%>
+
+							</div>
+							<div class="form-group col-md-12">
+							<%= select_tag :subject,options_for_select(["Hindi","English"]),:class=>"form-control",:prompt=>"Select subject"%>
+							</div>
+							<div class="form-group col-md-12">
+                            <%= text_area_tag "help",nil,:class=>"form-control", :placeholder=>"How Can We Help"%>						
+                            </div>
+
+							<div class="form-group col-md-12">
+								 <%=submit_tag "Submit",:class=>"btn red-btn"%>
+                           </div>
+                           <% end %>
+					</div>
+					<div class="col-md-5">
+						<ul class="contact-list">
+							<li>
+								<i class="fa fa-map-marker"></i>
+								PO Box 16122 Collins Street West<br> Arizna Victoria 8007 Australia
+							</li>
+							<li>
+								<i class="fa fa-phone"></i>
+								+ 91 98765432100
+							</li>
+							<li>
+								<i class="fa fa-envelope"></i>
+								info@yourdomain.com
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
