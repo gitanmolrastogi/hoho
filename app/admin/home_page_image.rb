@@ -1,5 +1,5 @@
 ActiveAdmin.register HomePageImage do
- before_filter :skip_sidebar!
+ # before_filter :skip_sidebar!
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -13,20 +13,24 @@ permit_params :image, :status
 #   permitted
 # end
   index do
-  	selectable_column
+    selectable_column
     column :image do |img|
       image_tag img.image_url(:homepage_images)
     end
     column :status
+    column :created_at
+    column :updated_at
     actions
   end
  
 show :title=> "Image" do |ad|
-    attributes_table do	 
+    attributes_table do  
     row  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
     row  :status
+    row :created_at
+    row :updated_at
    end
 end
 
@@ -40,5 +44,11 @@ end
   end
 
 
+  filter :status
+ 
+
 
 end
+
+
+

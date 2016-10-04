@@ -10,6 +10,7 @@ Rails.application.routes.draw do
  get  '/users/find_email', to: 'user/users#find_email'
  
  namespace :user do
+  get '/cities' => "users#get_city"
  resources :static_content, only: [] do
        collection do
           get 'about_us'
@@ -19,4 +20,6 @@ Rails.application.routes.draw do
        end
     end
 end
+
+
 end

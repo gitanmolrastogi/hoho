@@ -3,6 +3,15 @@ ActiveAdmin.register LineColorRoute do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
+
+
+filter :name 
+filter :start_point 
+filter :end_point 
+filter :price 
+filter :duration
+
+
 permit_params :name , :start_point , :end_point , :price , :duration , :image, :zoomed_image, city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
 # accepts_nested_attributes_for :cities, :allow_destroy => true
 
@@ -18,11 +27,12 @@ permit_params :name , :start_point , :end_point , :price , :duration , :image, :
 form do  |f|
   f.inputs do
     f.input :name
-    f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}
+    f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}, input_html: {class: "select_city",id: "select_city_id"}
       f.inputs "Please select the stops points and their sequences!!" do
           f.has_many :city_routes  do |l|
-              l.input :city_id ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]}
-              l.input :priority , :as => :select, :collection => 1..100
+              l.input :city_id ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]},:include_blank => true, input_html: {class: "select_city"}
+              a = 1..100
+              # l.input :priority , :label => 'Sequence Number', :as => :select, :collection => a , input_html: {class: "priority",id: "priority_id"}
               # l.input :_destroy, :as => :boolean, :label => "Delete"
           end
       end
@@ -32,12 +42,6 @@ form do  |f|
     f.input :image, as: :file
     f.input :zoomed_image , as: :file
   end
-    # f.has_many :cities do |r|
-    # r.input :city ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]}
-    # end
-  
-
-
 
   actions
 end
@@ -51,6 +55,12 @@ show :title=> "Route Management" do |route|
     row  :zoomed_image do |img|
       image_tag img.image_url(:homepage_images)
     end
+ a = route.cities.pluck(:name)
+ p a
+    row :hops do |route|
+    route.cities.pluck(:name).join(", ")
+    end
+
 	row :name
 	row :start_point
 	row :end_point
@@ -59,6 +69,14 @@ show :title=> "Route Management" do |route|
     # row  :status
    end
 end
+
+
+
+controller do
+  def to_s
+    self.name.to_s
+  end
+  end
 
 
 end

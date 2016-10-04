@@ -3,6 +3,12 @@ ActiveAdmin.register Activity do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
+
+filter :neme
+filter :overview
+filter :information
+
+
 permit_params :name ,:overview ,:information ,:city_id, :category_id
 #
 # or

@@ -6,6 +6,7 @@
             <div class="login-box-body">
               <div class="login-top">
                 <p class="login-box-msg">FORGOT YOUR PASSWORD</p>
+                <span class="">Link text</span>
                 <p class="des-msg">Enter your registered email to retrieve your password.</p>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post,id: "forgot_form" }) do |f| %>
   <%= devise_error_messages! %>

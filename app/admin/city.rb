@@ -3,6 +3,10 @@ ActiveAdmin.register City do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
+filter :name
+filter :overview
+filter :important
+
 permit_params :name , :overview ,:important , photos_attributes: [:id, :image ,:status ,:_destroy]
 #
 # or
@@ -34,7 +38,6 @@ controller do
    def downcase_params
    	  # p "-----#{params[:city][:name].inspect}---------"
    	  if params[:city].present?
-   	  	   p "==========#{params[:city].inspect}======="
    	       params[:city][:name] = params[:city][:name].downcase
       end
 
