@@ -1,0 +1,26 @@
+<div class="login-screen clearfix">
+    <div id="myCarousel" class="home-cro carousel slide">
+       <div class="carousel-inner">
+          <% first_image= HomePageImage.where(status: "Active").first %>
+           <div class="item active" style="width:100%;">
+             <img src="<%= first_image.try(:image).try(:url) %>" alt="">
+           </div>
+            <% (HomePageImage.all.where(status: "Active")-Array(first_image)).each do |f| %>
+             <div class="item" style="width:100%;">
+              <img src="<%= f.try(:image).try(:url) %>" alt="" >
+             </div>
+             <% end %>
+             </div>
+      <a class="left carousel-control arrow" href="#myCarousel" data-slide="prev">
+        <span class="icon-ar"></span>
+      </a>
+      <a class="right carousel-control arrow" href="#myCarousel" data-slide="next">
+        <span class="icon-ar"></span>
+      </a>
+      <div class="slider-content">
+        <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+          <div class="login-box">
+            <div class="login-box-body">
+              <div class="login-top">
