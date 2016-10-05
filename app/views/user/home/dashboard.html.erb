@@ -1,0 +1,128 @@
+<%= render :partial => 'layouts/slider_top'%>
+<%= render :partial => 'layouts/slider_bottom'%>
+<section class="home-f">
+			<div class="container">
+				<div class="heading-crat text-center">
+					<h2>HOW IT WORKS</h2>
+					<span></span>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="sec_contain">
+							<figure class="post-thumb"> 
+								<img src="/assets/img-1.png" alt="" class="img-responsive" />
+								<figcaption><span><img src="/assets/t1.png" alt="" /></span></figcaption>	
+							</figure>
+							<div class="thumb-info text-center">
+							<% c1 =StaticPage.find_by(title: "Cupiditate laudantium Velit1").try(:content)%>
+								<h4>Cupiditate laudantium Velit1</h4>
+								<div id= "read_more"><p><%= truncate(c1, :length =>10, :escape => false) %></p>
+								<a href="#"> Read More >> </a></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="sec_contain">
+							<figure class="post-thumb"> 
+								<img src="/assets/img-2.png" alt="" class="img-responsive" />
+								<figcaption><span><img src="/assets/t2.png" alt="" /></span></figcaption>	
+							</figure>
+							<div class="thumb-info text-center">
+								<h4>Cupiditate laudantium Velit</h4>
+								<p>Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit</p>
+								<a href="#"> Read More >> </a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="sec_contain">
+							<figure class="post-thumb"> 
+								<img src="/assets/img-3.png" alt="" class="img-responsive" />
+								<figcaption><span><img src="/assets/t3.png" alt="" /></span></figcaption>	
+							</figure>
+							<div class="thumb-info text-center">
+								<h4>Cupiditate laudantium Velit</h4>
+								<p>Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit</p>
+								<a href="#"> Read More >> </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="who_sec">
+			<div class="container">
+				<div class="who_info text-center">
+					<div class="inner_content">
+						<div class="heading-crat heading-white text-center">
+							<h2>HOW IT WORKS</h2>
+							<span></span>
+						</div>
+						<div class="who-cont">
+							<p>This is Photoshop’s version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="home-f">
+			<div class="container">
+				<div class="heading-crat text-center">
+					<h2>Our Feeds</h2>
+					<span></span>
+				</div> 
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="sec_contain1">
+							<figure class="post-thumb"> 
+								<img src="/assets/img1.png" alt="" class="img-responsive" />
+							</figure>
+							<div class="thumb-info1">
+								<div class="feeds-in text-center">
+									<h4>James Jackson</h4>
+									<p>#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit</p>
+									<div class="date-link">
+										<label class="pull-left">12-08-2016</label>
+										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="sec_contain1">
+							<figure class="post-thumb"> 
+								<img src="/assets/img2.png" alt="" class="img-responsive" />
+							</figure>
+							<div class="thumb-info1">
+								<div class="feeds-in text-center">
+									<h4>James Jackson</h4>
+									<p>#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit</p>
+									<div class="date-link">
+										<label class="pull-left">12-08-2016</label>
+										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4">
+						<div class="sec_contain1">
+							<figure class="post-thumb"> 
+								<img src="/assets/img3.png" alt="" class="img-responsive" />
+							</figure>
+							<div class="thumb-info1">
+								<div class="feeds-in text-center">
+									<h4>James Jackson</h4>
+									<p>#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit</p>
+									<div class="date-link">
+										<label class="pull-left">12-08-2016</label>
+										<a href="#" class="pull-right"><img src="/assets/twit.png" alt="" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> 
+		</section>

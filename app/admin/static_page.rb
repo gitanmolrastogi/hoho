@@ -17,9 +17,18 @@ actions :all, :except => [:destroy , :new]
 
 
 
-  form do |f|
-    f.inputs "New Static Content" do     
-     
+
+index do |f|
+    column :title
+    column :content
+    column :created_at
+    column :updated_at
+ actions
+end
+
+
+  form :title => "Edit content" do |f|
+    f.inputs "#{f.title}" do     
       f.input :title, :label => "Title" ,:input_html => {:placeholder => "Please Enter alphabets only! and length should be 5-30", :disabled => true}
       f.input :content, as:  :ckeditor,  :label => "Description" ,:input_html => {:placeholder => "Add a description min. length should be 30"}
 

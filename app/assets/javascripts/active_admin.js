@@ -2,7 +2,6 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 
-
 $( document ).ready(function() {
       $('#select_city_id').change(function(){
       $('#line_color_route_end_point option').remove();
@@ -172,6 +171,57 @@ $( document ).ready(function() {
 //==================New Activity Validation End==================================
 
 
+   $('#edit_activity').validate({
+   errorElement: "div",
+    rules: {
+            "activity[city_id]": {
+                 required: true
+            },
+            "activity[category_id]": {
+                 required: true
+            },
+            "activity[name]": {
+                 required: true
+            },
+            "activity[overview]": {
+                 required: true
+            },
+            "activity[information]": {
+                 required: true
+            },
+  },
+
+    messages: {
+             "activity[city_id]": {
+                required: "Please select a city"
+                
+            },
+            "activity[category_id]": {
+                required: "Please select a category"
+            },
+
+            "activity[name]": {
+                required: "Please enter a activity name"
+            },
+            "activity[overview]": {
+                required: "Enter overview"
+            },
+
+            "activity[information]": {
+                required: "Enter information"
+            },
+         
+         
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
+
+
+
 //==================New Route validation=========================================
 $('#new_line_color_route').validate({
    errorElement: "div",
@@ -212,8 +262,8 @@ $('#new_line_color_route').validate({
             },
             "line_color_route[price]": {
                  required: "Enter price",
-                 number: "Ammount should be in integer only.",
-                 range: "Please enter a valid ammount.(Enter Positive Integer Only)"
+                 number: "Amount should be in integer only.",
+                 range: "Please enter a valid amount.(Enter Positive Integer Only)"
             },
             "line_color_route[duration]": {
                  required: "Enter duration",

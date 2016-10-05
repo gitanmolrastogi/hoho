@@ -1,11 +1,4 @@
-<section class="login-screen">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
-          <div class="login-box">
-            <div class="login-box-body">
-              <div class="login-top">
-
+<%= render :partial => 'layouts/slider_top'%>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put ,id: "change_password"}) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
@@ -27,15 +20,8 @@
     <%= f.submit "Change my password",:class=>"btn btn-block submit-btn mrg-tb" %>
   </div></br>
 <% end %>
-</div>
-              
-  </div>
-            <!-- /.login-box-body -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<%= render :partial => 'layouts/slider_bottom'%>
+
 
 <%#= render "devise/shared/links" %>
 

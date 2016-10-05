@@ -28,12 +28,15 @@ form do  |f|
   f.inputs do
     f.input :name
     f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}, input_html: {class: "select_city",id: "select_city_id"}
-      f.inputs "Please select the stops points and their sequences!!" do
+      f.inputs "Please select the stops points as their sequences!!" do
           f.has_many :city_routes  do |l|
               l.input :city_id ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]},:include_blank => true, input_html: {class: "select_city"}
               a = 1..100
               # l.input :priority , :label => 'Sequence Number', :as => :select, :collection => a , input_html: {class: "priority",id: "priority_id"}
-              # l.input :_destroy, :as => :boolean, :label => "Delete"
+              puts "-----------------------------------------------------------------------------"
+              if  request.original_url.include?("edit") 
+               l.input :_destroy, :as => :boolean, :label => "Delete"
+              end
           end
       end
     f.input :end_point, :as => :select, :collection => [],:include_blank => false
@@ -53,7 +56,7 @@ show :title=> "Route Management" do |route|
       image_tag img.image_url(:homepage_images)
     end
     row  :zoomed_image do |img|
-      image_tag img.image_url(:homepage_images)
+      image_tag zoomed_img.image_url(:homepage_images)
     end
  a = route.cities.pluck(:name)
  p a

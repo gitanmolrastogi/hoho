@@ -1,19 +1,25 @@
 ActiveAdmin.register Category do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
+before_filter :downcase_category
 filter :name
-
 permit_params :name, :image
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
 
+form do  |f|
+  f.inputs do
+    f.input :name,:input_html=>{:disabled=>true} if params[:action]=="edit"
+    f.input :name  if params[:action]=="new"
+    f.input :image, as:  :file
 
+  end
+  actions
+end
+
+controller do 
+   def downcase_category
+   	   p "====#{params[:category].inspect}=="
+   	  if params[:category].present?
+   	       params[:category][:name] = params[:category][:name].downcase
+      end
+   end	
+  end
 end
