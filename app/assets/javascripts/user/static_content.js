@@ -3,7 +3,6 @@
 
 $(document).ready(function(){
 	
-  alert("dfdfdf");
    $('#contact_form').validate({
         // Specify the validation rules
         rules: {
