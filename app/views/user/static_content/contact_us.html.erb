@@ -59,3 +59,89 @@
 				</div>
 			</div>
 		</section>
+
+
+<script type="text/javascript">
+		$('#contact_form').validate({
+        // Specify the validation rules
+        rules: {
+            "first_name": {
+                 required: true,
+                 pattern: /^[a-z A-Z]+$/,
+                 maxlength: 10
+                
+            },
+            "last_name": {
+                 required: true,
+                 pattern: /^[a-z A-Z]+$/,
+                 maxlength: 10
+                
+            },
+            "email": {
+                 required: true,
+                 email: true,
+                 },
+                 
+            "mobile_number": {
+                 required: true,
+                 number: true,
+                 maxlength: 10,
+                 minlength: 10
+
+                
+            },
+            "subject": {
+                 required: true,
+                
+            },
+
+            "help": {
+                 required: true,
+                 maxlength: 250
+                
+            },
+        },
+        // // Specify the validation error messages
+        messages: {
+             "first_name": {
+                required: "Enter first name",
+                pattern: "Enter only letters",
+                maxlength: "Should not exceed limit 10"
+                
+            },
+            "last_name": {
+                required: "Enter last name",
+                pattern: "Enter only letters",
+                maxlength: "Should not exceed limit 10"
+                
+            },
+            "email": {
+                required: "Enter email",
+                email: "Enter valid email",
+                
+
+            },
+            "mobile_number": {
+                required: "Enter mobile number",
+                number: "Enter only numbers",
+                maxlength: "Equal to only 10 characters",
+                minlength: "Equal to only 10 characters"
+                
+            },
+            "subject": {
+                required: "Select subject"
+                
+            },
+
+            "help": {
+                required: "Enter your view.",
+                maxlength: "Should not exceed limit 250"
+                
+            },
+            
+        },
+       submitHandler: function(form) {
+            form.submit();
+        }
+    }); 
+		</script>

@@ -9,7 +9,10 @@ Rails.application.routes.draw do
  get  '/users/find_email', to: 'user/users#find_email'
  
  get  '/dashboard', to: 'user/home#dashboard'
-get  '/user/contact_us', to: 'user/static_content#contact_us'
+ get '/user/home/read_more',to: 'user/home#read_more'
+ get '/user/home/read_less',to: 'user/home#read_less'
+
+ get  '/user/contact_us', to: 'user/static_content#contact_us'
 
 #Routes To Check Admin Side  Request (START)
 get '/admin/check_city',to: 'user/static_content#check_city'
