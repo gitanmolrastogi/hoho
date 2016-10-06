@@ -14,6 +14,17 @@ form do  |f|
   actions
 end
 
+show do |route|
+    attributes_table do  
+    row :name
+      row  :image do |img|
+        image_tag img.image_url(:homepage_images)
+      end
+      row :created_at
+      row :updated_at
+    end
+end
+
 controller do 
    def downcase_category
    	   p "====#{params[:category].inspect}=="

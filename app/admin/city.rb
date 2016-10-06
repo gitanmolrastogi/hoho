@@ -17,7 +17,7 @@ permit_params :name , :overview ,:important , photos_attributes: [:id, :image ,:
 # end
 before_filter :downcase_city
 
-form do  |f|
+form do |f|
   f.inputs do
     f.input :name
     f.input :overview 
@@ -25,7 +25,12 @@ form do  |f|
           f.has_many :photos  do |l|
               l.input :image , as: :file
               l.input :status ,:as => :select, :collection => [['Active',true],['Inactive',false]] ,:include_blank => false
-              l.input :_destroy, :as => :boolean, :label => "Delete"
+
+
+               if  request.original_url.include?("edit") 
+                    l.input :_destroy, :as => :boolean, :label => "Delete"
+               end
+
           end
       end
     f.input :important

@@ -33,6 +33,45 @@ form do  |f|
   actions
 end
 
+
+
+
+
+show :title=> "Route Management" do |route|
+    attributes_table do  
+  row :start_date
+  row :end_date
+  
+  row "start_time" do |r|
+    r.start_time.strftime("%H:%M")
+  end 
+   row "end_time" do |r|
+    r.end_time.strftime("%H:%M")
+  end 
+  row :no_of_seats
+  row :start_point
+  row :end_point
+
+
+    # row  :status
+   end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 controller do 
    def date_format
       # p "-----#{params[:city][:name].inspect}---------"

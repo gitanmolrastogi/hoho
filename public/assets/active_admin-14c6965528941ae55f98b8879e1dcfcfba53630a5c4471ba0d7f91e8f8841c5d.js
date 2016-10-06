@@ -574,7 +574,7 @@ $("#bus_start_date").datepicker({
                  required: "Please select minute"
             },
             "bus[no_of_seats]": {
-                 required: "Select bunber of seats available in bus",
+                 required: "Select number of seats available in bus",
                  number: "Enter integers only.",
                  range: "Seats could be between 1 to 50"
             },

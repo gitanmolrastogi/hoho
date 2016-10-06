@@ -56,7 +56,7 @@ show :title=> "Route Management" do |route|
       image_tag img.image_url(:homepage_images)
     end
     row  :zoomed_image do |img|
-      image_tag zoomed_img.image_url(:homepage_images)
+      image_tag zoomed_image.image_url(:homepage_images)
     end
  a = route.cities.pluck(:name)
  p a
