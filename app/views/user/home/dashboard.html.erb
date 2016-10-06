@@ -1,4 +1,4 @@
-
+         <h3><%= flash[:alert] if flash[:alert].present?%></h3>
 		<div id="myCarousel" class="home-cro carousel slide">
 			<div class="carousel-inner custom-carousel">
 				<% first_image= HomePageImage.where(status: "Active").first %>

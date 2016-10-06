@@ -183,7 +183,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 
 
 /*==============contact-us==============*/
-.contact-img{background:url('/assets/contact.png'); background-position: 90%;}
+.contact-img{background:url('/assets/contact.png'); background-position: 90%; margin-top: 80px;}
 .header-img{background-size:cover; height:250px;}
 .contact-list li{position:relative; padding:15px 5px 15px 40px; border:solid #dcdbd7; border-width:1px 0 1px 0; margin:-1px 0; font-size:14px; font-weight:regular; color: #000;}
 .contact-list li:first-child{border-top:0;}
@@ -222,7 +222,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 /*==============tips==============*/
 
 .tips-section{margin:20px 0;}
-.artical-block{border-bottom:2px solid #ee5351; margin:20px 0;}
+.artical-block{border-bottom:2px solid #ee5351; margin:20px 0; width: 300px;}
 .artical-block .panel-group{margin:0;}
 .background-list, .city-img6{margin:0; padding:0;}
 .background-list li{margin: 0 0 15px;}
@@ -260,3 +260,9 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 #line_color_route_image div{
 	color: #EE5351 !important;
 }
+
+/*for tips page*/
+.row1{
+	margin-top: 70px!important;
+}
+

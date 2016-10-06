@@ -25,7 +25,9 @@ get '/admin/check_category',to: 'user/static_content#check_category'
        collection do
           get 'about_us'
           get 'terms_and_condition'
+          get 'tips'
           get 'privacy_policy'
+          get 'faq'
           get 'contact_us'
           post 'contact_admin'
 
