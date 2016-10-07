@@ -1,12 +1,12 @@
 class User::StaticContentController < ApplicationController
 
   def tips
-    
+    @tips= params[:tip_id].present? ? Tip.find_by(id: params[:tip_id]) : Tip.all 
   end
 
   def faq
-    @faq=QuestionsAndAnswer.all
-    
+    @faq=QuestionsAndAnswer.first
+    @faqs=((QuestionsAndAnswer.all) - Array(@faq))
   end
 
 	def about_us
