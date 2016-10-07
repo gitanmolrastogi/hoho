@@ -72,6 +72,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 /*.home-cro .item{width:100%; height:678px; overflow:hidden;}
 .home-cro .item img{width:100%; height:auto; min-height:678px;}*/
 
+
 /*==============post==============*/
 .post{border: 1px solid #ededed;}
 .home-f{padding: 5% 0;}
@@ -124,6 +125,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 
 .home-slide.slider-content{top:22%;}
 .carousel-caption-a{color:#fff; width: 80%;  margin: 0 auto;}
+
 /*==============activities-details==============*/
 .map-block{position:relative;}
 .search-route{position:absolute; width:95%; margin:0 auto; left:0; right:0; bottom:0px;}
@@ -184,6 +186,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 
 /*==============contact-us==============*/
 .contact-img{background:url('/assets/contact.png'); background-position: 90%; margin-top: 80px;}
+
 .header-img{background-size:cover; height:250px;}
 .contact-list li{position:relative; padding:15px 5px 15px 40px; border:solid #dcdbd7; border-width:1px 0 1px 0; margin:-1px 0; font-size:14px; font-weight:regular; color: #000;}
 .contact-list li:first-child{border-top:0;}
@@ -223,6 +226,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 
 .tips-section{margin:20px 0;}
 .artical-block{border-bottom:2px solid #ee5351; margin:20px 0; width: 300px;}
+
 .artical-block .panel-group{margin:0;}
 .background-list, .city-img6{margin:0; padding:0;}
 .background-list li{margin: 0 0 15px;}

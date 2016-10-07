@@ -21,7 +21,7 @@
 							<% @faq.each do |faq|%>
 								<div class="panel-heading" role="tab" id="heading_<%= faq.id%>">
 									 <h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= faq.id%>" aria-expanded="true" aria-controls="collapse_<%= faq.id%>" >
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= faq.id%>" aria-expanded="false" aria-controls="collapse_<%= faq.id%>">
 								   <%= faq.try(:question)%>
 								</a>
 							  </h4>

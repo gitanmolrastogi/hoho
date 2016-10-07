@@ -26,9 +26,10 @@ class User::StaticContentController < ApplicationController
   end
 
   def contact_admin
-    # NotifyMailer.inform_admin(contact_params).deliver
+
     flash[:alert] = "Information sent to admin successfully."
     render 'user/home/dashboard'
+
   end
 
  #Admin side check request methods(START)

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
  get  '/user/contact_us', to: 'user/static_content#contact_us'
 
+
 #Routes To Check Admin Side  Request (START)
 get '/admin/check_city',to: 'user/static_content#check_city'
 get '/admin/check_category',to: 'user/static_content#check_category'
@@ -21,6 +22,7 @@ get '/admin/check_category',to: 'user/static_content#check_category'
 
 
  namespace :user do
+  get '/cities' => "users#get_city"
  resources :static_content, only: [] do
        collection do
           get 'about_us'
@@ -37,4 +39,6 @@ get '/admin/check_category',to: 'user/static_content#check_category'
 
 
 end
+
+
 end

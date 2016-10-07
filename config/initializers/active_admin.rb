@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Delhi Airport"
+  # config.site_title = "Delhi Airport"
   config.register_javascript 'ckeditor/init.js'
 
   # Set the link url for the title. For example, to take
@@ -211,7 +211,7 @@ ActiveAdmin.setup do |config|
   #
     config.namespace :admin do |admin|
       admin.build_menu :utility_navigation do |menu|
-        menu.add label: "My Website", url: "http://localhost:3000", html_options: { target: :blank }
+        menu.add label: "My Website", url: "https://delhi-airport.herokuapp.com/", html_options: { target: :blank }
         menu.add label: "Admin Info", url: "/admin/admin_users/1"
 
         admin.add_logout_button_to_menu menu
@@ -219,17 +219,17 @@ ActiveAdmin.setup do |config|
     end
   #
 
-config.namespace :admin do |admin|
-    admin.build_menu do |menu|
-      menu.add :label => "About Us", :priority => 1,:url => "/admin/static_pages/1" 
-      menu.add :label => "Privacy Policy", :priority => 2,:url=>"/admin/static_pages/2"
-      menu.add :label => "Terms and Conditions", :priority => 3,:url=>"/admin/static_pages/3"
-      menu.add :label => "Contact Us", :priority => 4,:url=>"/admin/static_pages/4"
-      menu.add :label => "Reservation and Sales", :priority => 5,:url=>"/admin/static_pages/5"
-      menu.add :label => "Information", :priority => 6,:url=>"/admin/static_pages/6"
-      menu.add :label => "Tips", :priority => 7,:url=>"/admin/static_pages/7"
-    end
-  end
+# config.namespace :admin do |admin|
+#     admin.build_menu do |menu|
+#       menu.add :label => "About Us", :priority => 1,:url => "/admin/static_pages/1" 
+#       menu.add :label => "Privacy Policy", :priority => 2,:url=>"/admin/static_pages/2"
+#       menu.add :label => "Terms and Conditions", :priority => 3,:url=>"/admin/static_pages/3"
+#       menu.add :label => "Contact Us", :priority => 4,:url=>"/admin/static_pages/4"
+#       menu.add :label => "Reservation and Sales", :priority => 5,:url=>"/admin/static_pages/5"
+#       menu.add :label => "Information", :priority => 6,:url=>"/admin/static_pages/6"
+#       menu.add :label => "Tips", :priority => 7,:url=>"/admin/static_pages/7"
+#     end
+#   end
 
 
 

@@ -12,6 +12,11 @@ class User::UsersController < ApplicationController
  	
  end
 
+ def get_city
+  city = City.pluck(:name,:id)
+  render :json => {:city => city}
+ end
+
 #during signup checking email that already exist or not
 def check_email
     @user= User.find_by(email: params[:user][:email].downcase)
