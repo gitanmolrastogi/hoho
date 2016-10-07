@@ -91,7 +91,7 @@ end
 
 controller do 
 
-  before_save :end_point_setter#, :only => [:new , :edit]
+  
 
    def date_format
       # p "-----#{params[:city][:name].inspect}---------"
@@ -108,9 +108,7 @@ controller do
 
   end 
 
- def end_point_setter
-  self.end_point = params[:start_point]
- end
+
 end
 
 
