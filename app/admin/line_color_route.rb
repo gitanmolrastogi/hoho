@@ -39,7 +39,7 @@ form do  |f|
               end
           end
       end
-    f.input :end_point, :as => :select, :collection => [],:include_blank => false
+    f.input :end_point, :as => :select#, :collection => [],:include_blank => false
     f.input :price
     f.input :duration ,:label => 'Duration in Days'
     f.input :image, as: :file
@@ -73,10 +73,17 @@ end
 
 
 controller do
+
   def to_s
     self.name.to_s
   end
+
   end
 
 
 end
+
+
+
+
+
