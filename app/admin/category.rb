@@ -6,8 +6,8 @@ permit_params :name, :image
 
 form do  |f|
   f.inputs do
-    f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
-    f.input :name  if params[:action]=="new"
+    # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
+    f.input :name # if params[:action]=="new"
     f.input :image, as:  :file
   end
   actions
