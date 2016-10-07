@@ -55,14 +55,12 @@ show :title=> "Route Management" do |route|
     row  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
-    row  :zoomed_image do |img|
-      image_tag img.image_url(:homepage_images)
+    row  :zoomed_image do |zoomed_image|
+      image_tag zoomed_image.zoomed_image_url(:homepage_images)
     end
-
     row :hops do |route|
     route.cities.pluck(:name).join(", ")
     end
-
 	row :name
 	row :start_point
 	row :end_point

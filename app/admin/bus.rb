@@ -17,8 +17,35 @@ permit_params :start_date ,:end_date ,:start_time,:end_time ,:no_of_seats ,:star
 
 
 
+index do |f|
+     selectable_column
+     column :start_date
+     column :end_date
+     column :start_time do |time|
+         time.start_time.strftime("%H:%M")
+     end
+    column :end_time do |time|
+         time.start_time.strftime("%H:%M")
+     end
+     column :no_of_seats
+     column :start_point
+     column :end_point
 
-form do  |f|
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+form do |f|
   f.inputs do
     f.input :start_date,as: :datepicker
     f.input :end_date,as: :datepicker
