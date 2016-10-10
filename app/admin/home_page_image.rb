@@ -1,18 +1,23 @@
 ActiveAdmin.register HomePageImage do
- # before_filter :skip_sidebar!
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
+batch_action :destroy do |ids|
+  images=HomePageImage.where(id: ids)
+  if HomePageImage.count == images.count
+     redirect_to :back , :alert => "You can't delete all images"
+     elsif HomePageImage.count <= 2 
+       redirect_to :back , :alert => "You can't delete last two images"
+      elsif (HomePageImage.count-images.count) < 2
+      redirect_to :back , :alert => "You can't delete last two images"
+      elsif HomePageImage.where(status: "Active").count <= 2 && images.pluck(:status).include?('Active')
+      redirect_to :back , :alert => "You can't delete last two active images"
+      else
+       images.destroy_all
+       redirect_to admin_home_page_images_path,:alert=>"Images deleted successfully"   
+    end
+  end
+
+filter :status
 permit_params :image, :status
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-  index do
+index do
     selectable_column
     column :image do |img|
       image_tag img.image_url(:homepage_images)
@@ -34,8 +39,7 @@ show :title=> "Image" do |ad|
    end
 end
 
-
-  form do |f|
+ form do |f|
     f.inputs "New Home Page Image" do     
       f.input :image,:as => :file
       f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
@@ -43,12 +47,28 @@ end
      f.actions
   end
 
-
-  filter :status
- 
-
-
-end
+controller do 
+ def destroy
+    if HomePageImage.where(status: "Active").count <= 2 && HomePageImage.find_by(id: params[:id]).try(:status) == "Active"
+         redirect_to :back , :alert => "You can't delete last two active images"
+     elsif HomePageImage.count <= 2 
+       redirect_to :back , :alert => "You can't delete last two images"
+     else
+      super
+    end 
+   end
+ def update
+   p "==========#{params.inspect}============"
+    if HomePageImage.count <= 2 && params[:home_page_image][:status] == "Inactive"
+      redirect_to :back , :alert => "You can't inactive last two images"
+     elsif  HomePageImage.where(status: "Active").count <= 2 && params[:home_page_image][:status] == "Inactive"
+       redirect_to :back , :alert => "You can't inactive all images"
+     else
+      super
+    end
+   end
+   end
+ end
 
 
 

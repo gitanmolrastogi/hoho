@@ -97,30 +97,30 @@ $( document ).ready(function() {
 
   $(document).ready(function(){
 
-  $('#new_home_page_image').validate({
-      errorElement: "div",
+  // $('#new_home_page_image').validate({
+  //     errorElement: "div",
 
-      rules: {
-            "home_page_image[image]": {
-                 required: true
+  //     rules: {
+  //           "home_page_image[image]": {
+  //                required: true
                
-            },
-            "home_page_image[status]": {
-                 required: true
-            },
-  },
-    messages: {
-             "home_page_image[image]": {
-                required: "Please select a image to upload name"
-            },
-            "home_page_image[status]": {
-                required: "Please select a status"
-            },
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
+  //           },
+  //           "home_page_image[status]": {
+  //                required: true
+  //           },
+  // },
+  //   messages: {
+  //            "home_page_image[image]": {
+  //               required: "Please select a image to upload name"
+  //           },
+  //           "home_page_image[status]": {
+  //               required: "Please select a status"
+  //           },
+  //       },
+  //       submitHandler: function(form) {
+  //           form.submit();
+  //       }
+  //   });
 // ===================== New Activity Validation Start=========================
    $('#new_activity').validate({
    errorElement: "div",
@@ -952,7 +952,43 @@ $("#bus_start_point").change(function(){
 //==================EDIT ends here==========================
 
 
+ window.URL = window.URL || window.webkitURL;
 
+$("#new_home_page_image").submit( function( e ) {
+    // alert("submit");
+    var form = this;
+    // e.preventDefault(); //Stop the submit for now
+                                //Replace with your selector to find the file input in your form
+    var fileInput = $(this).find("input[type=file]")[0],
+        file = fileInput.files && fileInput.files[0];
+
+    if( file ) {
+        var img = new Image();
+
+        img.src = window.URL.createObjectURL( file );
+
+        img.onload = function() {
+            var width = img.naturalWidth,
+                height = img.naturalHeight;
+              // alert(width)
+            window.URL.revokeObjectURL( img.src );
+
+            if( width == 1600 && height == 900 ) {
+                 // alert("if");
+                $('#new_home_page_image').submit();
+            }
+            else {
+                alert("df");
+                // e.preventDefault();
+
+            }
+        };
+    }
+    else { //No file was input or browser doesn't support client side reading
+        $("#new_home_page_image").submit();
+    }
+
+});
 
 
 
