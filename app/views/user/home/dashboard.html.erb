@@ -78,7 +78,7 @@
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="sec_contain1">
 							<figure class="post-thumb"> 
-								<%= image_tag @arr.first["pic"].present? ? @arr.first["pic"] : src="/assets/img2.png" ,:class=>"img-responsive" %>
+								<%= image_tag @arr.first["pic"].present? ? @arr.first["pic"] : src="/assets/img2.png" ,:class=>"img-responsive",:size => "287x215" %>
 								<!--<img src="#{@arr.first["pic"]}%>" alt="" class="img-responsive" /> -->
 							</figure>
 							<div class="thumb-info1">
@@ -86,7 +86,7 @@
 									<h4><%= @arr.first["name"].present? ? @arr.first["name"] : "James Jackson"%></h4>
 									<p><%= @arr.first["tags"].present? ? @arr.first["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit"%></p>
 									<div class="date-link">
-										<label class="pull-left">12-08-2016</label>
+										<label class="pull-left"><%= @arr.first.present? ? Time.at(@arr.first["time"].to_i).strftime("%d-%m-%Y") : "12-08-2016"%></label>
 										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
 									</div>
 								</div>
@@ -96,15 +96,15 @@
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="sec_contain1">
 							<figure class="post-thumb">
-								<%= image_tag @arr.second["pic"].present? ? @arr.second["pic"] : src="/assets/img2.png",:class=>"img-responsive" %> 
+								<%= image_tag @arr.second["pic"].present? ? @arr.second["pic"] : src="/assets/img2.png",:class=>"img-responsive",:size => "287x215" %> 
 								<!-- <img src="/assets/img2.png" alt="" class="img-responsive" /> -->
 							</figure>
 							<div class="thumb-info1">
 								<div class="feeds-in text-center">
 									<h4><%= @arr.second["name"].present? ? @arr.second["name"] : "James Jackson"%></h4>
-									<p><%= @arr.second["tags"].present? ? @arr.second["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit"%></p>
+									<p><%= @arr.second["tags"].present? ? @arr.second["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit"%></p>
 									<div class="date-link">
-										<label class="pull-left">12-08-2016</label>
+										<label class="pull-left"><%= @arr.second.present? ? Time.at(@arr.second["time"].to_i).strftime("%d-%m-%Y") : "12-08-2016" %></label>
 										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
 									</div>
 								</div>
@@ -115,7 +115,7 @@
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="sec_contain1">
 							<figure class="post-thumb"> 
-								<%= image_tag @arr.third.present? ? @arr.third["pic"] : src="/assets/img2.png",:class=>"img-responsive" %> 
+								<%= image_tag @arr.third.present? ? @arr.third["pic"] : src="/assets/img2.png",:class=>"img-responsive",:size => "287x215" %> 
 								<!-- <img src="/assets/img2.png" alt="" class="img-responsive" /> -->
 							</figure>
 							<div class="thumb-info1">
@@ -123,7 +123,7 @@
 									<h4><%= @arr.third.present? ? @arr.third["name"] : "James Jackson"%></h4>
 									<p><%= @arr.third.present? ? @arr.third["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit"%></p>
 									<div class="date-link">
-										<label class="pull-left">12-08-2016</label>
+										<label class="pull-left"><%= @arr.third.present? ? Time.at(@arr.second["time"].to_i).strftime("%d-%m-%Y") : "12-08-2016"%></label>
 										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
 									</div>
 								</div>
@@ -133,14 +133,16 @@
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="sec_contain1">
 							<figure class="post-thumb"> 
-								<img src="/assets/img3.png" alt="" class="img-responsive" />
+								<!-- <img src="/assets/img3.png" alt="" class="img-responsive" /> -->
+								<%= image_tag (@tweet.media.present? ? @tweet.media.first.media_uri : "/assets/img3.png"),:size => "287x215",:class => "img-responsive" %>
 							</figure>
 							<div class="thumb-info1">
 								<div class="feeds-in text-center">
-									<h4>James Jackson</h4>
-									<p>#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit</p>
+									<!-- <h4>James Jackson</h4> -->
+									<h4><%= @tweet.try(:user).try(:name)%></h4>
+									<p><%= @tweet.try(:text).gsub(/(?:f|ht)tps?:\/[^\s]+/, '')%></p>
 									<div class="date-link">
-										<label class="pull-left">12-08-2016</label>
+										<label class="pull-left"><%=@tweet.created_at.strftime("%d-%m-%Y")%></label>
 										<a href="#" class="pull-right"><img src="/assets/twit.png" alt="" /></a>
 									</div>
 								</div>
