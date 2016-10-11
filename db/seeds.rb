@@ -37,7 +37,9 @@ p 'Creating Information'
 information={ :title => "Information", :content=>"Lorem ipsum dolor sit amet, consectetur adipiscing..."}
 StaticPage.where(information.slice(:title)).first_or_create(information)
 
-
+p 'Who We Are'
+who_we_are={ :title => "Who We Are", :content=>"Lorem ipsum dolor sit amet, consectetur adipiscing..."}
+StaticPage.where(who_we_are.slice(:title)).first_or_create(who_we_are)
 
 file  = File.open(File.join(Rails.root,'app/assets/images/bg2.jpg'))
 HomePageImage.create!([{image: file,status: "Active"},{image: file,status: "Active"}])
