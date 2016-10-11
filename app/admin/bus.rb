@@ -11,8 +11,6 @@ filter :end_time
 filter :no_of_seats
 filter :start_point
 filter :end_point
-
-
 permit_params :start_date ,:end_date ,:start_time,:end_time ,:no_of_seats ,:start_point , :end_point
 
 
