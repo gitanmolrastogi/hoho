@@ -1,21 +1,10 @@
 ActiveAdmin.register City do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
+before_filter :downcase_city
 filter :name
 filter :overview
 filter :important
-
 permit_params :name , :overview ,:important , photos_attributes: [:id, :image ,:status ,:_destroy]
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-before_filter :downcase_city
+
 
 form do |f|
   f.inputs do

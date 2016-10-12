@@ -6,7 +6,7 @@ class City < ApplicationRecord
 	has_many :city_categories
 	has_many :categories , through: :city_categories
 
-	has_one  :accommodation
+	# has_one  :accommodation
 
  accepts_nested_attributes_for :photos, :allow_destroy => true
 

@@ -13,6 +13,7 @@ form do  |f|
   actions
 end
 
+
 show do |route|
     attributes_table do  
     row :name

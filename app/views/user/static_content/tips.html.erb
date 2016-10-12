@@ -1,0 +1,34 @@
+<div class="tips-section">
+			<div class="container">
+				<div class="row1">
+					<div class="col-md-9" id="tip-append">
+						<%= render :partial=> 'user/static_content/tips', locals: {tip: @tip.try(:first)}%>
+					</div>
+					<div class="col-md-3">
+						<div class="artical-block">
+						<h2 class="article-heading">More Traveller Articles</h2>
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Background</a>
+									</h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse in">
+									<div class="panel-body">
+										<ul class="background-list">
+										<% @tips.each do |tip|%>	
+									 		 <li><%= link_to "#{tip.try(:title)}",tips_user_static_content_index_path(:tip_id=>tip.id) ,remote: true%></li>
+										<% end %>
+										</ul>
+									</div>
+								</div>
+							</div>
+							
+							
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

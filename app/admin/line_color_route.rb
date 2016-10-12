@@ -12,7 +12,7 @@ filter :price
 filter :duration
 
 
-permit_params :name , :start_point , :end_point , :price , :duration , :image, :zoomed_image, city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
+permit_params :information ,:name , :start_point , :end_point , :price , :duration , :image, :zoomed_image, city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
 # accepts_nested_attributes_for :cities, :allow_destroy => true
 
 #
@@ -27,6 +27,7 @@ permit_params :name , :start_point , :end_point , :price , :duration , :image, :
 form do  |f|
   f.inputs do
     f.input :name
+    f.input :information
     f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}, input_html: {class: "select_city",id: "select_city_id"}
       f.inputs "Please select the stops points as their sequences!!" do
           f.has_many :city_routes  do |l|
@@ -39,7 +40,7 @@ form do  |f|
               end
           end
       end
-    f.input :end_point, :as => :select#, :collection => [],:include_blank => false
+    f.input :end_point, :as => :select , input_html: {:disabled => true }#, :collection => [],:include_blank => false
     f.input :price
     f.input :duration ,:label => 'Duration in Days'
     f.input :image, as: :file

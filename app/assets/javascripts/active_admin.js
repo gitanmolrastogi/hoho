@@ -23,7 +23,7 @@ $( document ).ready(function() {
 //     // });
 //     $('.has_many_add').click(function(){
 
-//     }); 
+//     });
 
 //     $("input[id^='line_color_route_city_routes_']").on("change",function(){//.on("change","input[id^='line_color_route_city_routes_']",function(){
 
@@ -36,7 +36,7 @@ $( document ).ready(function() {
     //     url: "/user/cities",
     //     context: document.body
     //   }).done(function(data) {
-        
+       
     //     return data.city;
     //     // console.log($city);
     //   });
@@ -50,26 +50,26 @@ $( document ).ready(function() {
     // });
 
 });
-  
+ 
   function myFunction($target,$id){
       arr = [];
       $('.select_city').each(function(){
           if($(this).attr('id') != $id){
-           arr.push($(this).val()); 
+           arr.push($(this).val());
            // console.log(arr);
          }
         });
       // console.log(arr);
       console.log(arr);
       $.each(arr, function( index, value ) {
-          
+         
           if(value != ""){
-          str = '[value="'+value+'"]' ; 
+          str = '[value="'+value+'"]' ;
           console.log(str);
           $target.find(str).remove();
           }
       });
-      
+     
   };
 
  $(document).on("click",'.select_city',function(){
@@ -83,7 +83,7 @@ $( document ).ready(function() {
 
         console.log($(this));
 
-        
+       
     });
 
 
@@ -97,30 +97,30 @@ $( document ).ready(function() {
 
   $(document).ready(function(){
 
-  $('#new_home_page_image').validate({
-      errorElement: "div",
+  // $('#new_home_page_image').validate({
+  //     errorElement: "div",
 
-  	rules: {
-            "home_page_image[image]": {
-                 required: true
-                
-            },
-            "home_page_image[status]": {
-                 required: true
-            },
-  },
-    messages: {
-             "home_page_image[image]": {
-                required: "Please select a image to upload name"
-            },
-            "home_page_image[status]": {
-                required: "Please select a status"
-            },
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
+  //     rules: {
+  //           "home_page_image[image]": {
+  //                required: true
+               
+  //           },
+  //           "home_page_image[status]": {
+  //                required: true
+  //           },
+  // },
+  //   messages: {
+  //            "home_page_image[image]": {
+  //               required: "Please select a image to upload name"
+  //           },
+  //           "home_page_image[status]": {
+  //               required: "Please select a status"
+  //           },
+  //       },
+  //       submitHandler: function(form) {
+  //           form.submit();
+  //       }
+  //   });
 // ===================== New Activity Validation Start=========================
    $('#new_activity').validate({
    errorElement: "div",
@@ -145,7 +145,7 @@ $( document ).ready(function() {
     messages: {
              "activity[city_id]": {
                 required: "Please select a city"
-                
+               
             },
             "activity[category_id]": {
                 required: "Please select a category"
@@ -161,8 +161,8 @@ $( document ).ready(function() {
             "activity[information]": {
                 required: "Please enter information"
             },
-         
-         
+        
+        
         },
         submitHandler: function(form) {
             form.submit();
@@ -194,7 +194,7 @@ $( document ).ready(function() {
     messages: {
              "activity[city_id]": {
                 required: "Please select a city"
-                
+               
             },
             "activity[category_id]": {
                 required: "Please select a category"
@@ -210,8 +210,8 @@ $( document ).ready(function() {
             "activity[information]": {
                 required: "Please Enter information"
             },
-         
-         
+        
+        
         },
         submitHandler: function(form) {
             form.submit();
@@ -228,7 +228,11 @@ $('#new_line_color_route').validate({
     rules: {
             "line_color_route[name]": {
                  required: true
-                
+               
+            },
+            "line_color_route[information]": {
+                 required: true
+               
             },
             "line_color_route[start_point]": {
                  required: true
@@ -255,7 +259,10 @@ $('#new_line_color_route').validate({
     messages: {
             "line_color_route[name]": {
                  required: "Please enter a route name"
-                
+               
+            },"line_color_route[information]": {
+                 required: "Please enter information about the route"
+               
             },
             "line_color_route[start_point]": {
                  required: "Please select start point"
@@ -291,7 +298,11 @@ $('#edit_line_color_route').validate({
     rules: {
             "line_color_route[name]": {
                  required: true
-                
+               
+            },
+            "line_color_route[information]": {
+                 required: true
+               
             },
             "line_color_route[start_point]": {
                  required: true
@@ -318,15 +329,18 @@ $('#edit_line_color_route').validate({
     messages: {
             "line_color_route[name]": {
                  required: "Please enter a route name"
-                
+               
+            },"line_color_route[information]": {
+                 required: "Please enter information about the route"
+               
             },
             "line_color_route[start_point]": {
                  required: "Please select start point"
             },
             "line_color_route[price]": {
                  required: "Please enter price",
-                 number: "Ammount should be in integer only.",
-                 range: "Please enter a valid ammount.(Enter Positive Integer Only)"
+                 number: "Amount should be in integer only.",
+                 range: "Please enter a valid amount.(Enter Positive Integer Only)"
             },
             "line_color_route[duration]": {
                  required: "Please enter duration",
@@ -346,6 +360,7 @@ $('#edit_line_color_route').validate({
         }
     });
 
+
   //===========EDIT route validation END=====
 
 
@@ -358,11 +373,11 @@ $('#edit_line_color_route').validate({
     rules: {
             "city[name]": {
                  required: true
-                
+               
             },
             "city[overview]": {
                  required: true
-                
+               
             },
             "city[important]": {
                  required: true
@@ -373,11 +388,11 @@ $('#edit_line_color_route').validate({
     messages: {
             "city[name]": {
                  required: "Please enter city name."
-                
+               
             },
             "city[overview]": {
                  required: "Please enter overview of city. "
-                
+               
             },
             "city[important]": {
                  required: "Please enter important of city."
@@ -401,11 +416,11 @@ $('#edit_line_color_route').validate({
     rules: {
             "city[name]": {
                  required: true
-                
+               
             },
             "city[overview]": {
                  required: true
-                
+               
             },
             "city[important]": {
                  required: true
@@ -416,11 +431,11 @@ $('#edit_line_color_route').validate({
     messages: {
             "city[name]": {
                  required: "Please enter city name."
-                
+               
             },
             "city[overview]": {
                  required: "please enter overview of city. "
-                
+               
             },
             "city[important]": {
                  required: "please enter important of city."
@@ -466,14 +481,7 @@ $("#bus_start_date").datepicker({
   $('#new_accommodation').validate({
    errorElement: "div",
     rules: {
-            "accommodation[city_id]": {
-                 required: true
-                
-            },
-            "accommodation[title]": {
-                 required: true
-                
-            },
+            
             "accommodation[information]": {
                  required: true
             },
@@ -481,29 +489,19 @@ $("#bus_start_date").datepicker({
                  required: true,
                  url: true
             },
-            "accommodation[where_we_stay]": {
-                 required: true
-            },
-            
+           
+           
   },
 
     messages: {
-            "accommodation[city_id]": {
-                 required: "Please select a city."
-            },
-            "accommodation[title]": {
-                 required: "Title can't be blank."
-            },
             "accommodation[information]": {
-                 required: "Please enter Information about the city."
+                 required: "Please enter Information."
             },
             "accommodation[redirection_link]": {
                  required: "Please enter a redirection link.",
                  url: "Please enter a valid url(try adding 'http://' before your URL )"
             },
-            "accommodation[where_we_stay]": {
-                 required: "Where we stay can't be blank."
-            },
+           
   },
 
         submitHandler: function(form) {
@@ -523,11 +521,11 @@ $("#bus_start_date").datepicker({
     rules: {
             "accommodation[city_id]": {
                  required: true
-                
+               
             },
             "accommodation[title]": {
                  required: true
-                
+               
             },
             "accommodation[information]": {
                  required: true
@@ -539,7 +537,7 @@ $("#bus_start_date").datepicker({
             "accommodation[where_we_stay]": {
                  required: true
             },
-            
+           
   },
 
     messages: {
@@ -603,7 +601,7 @@ $("#bus_start_date").datepicker({
             "bus[end_point]": {
                  required: true
             },
-            
+           
   },
 
     messages: {
@@ -685,7 +683,7 @@ $("#bus_start_date").datepicker({
             "bus[end_point]": {
                  required: true
             },
-            
+           
   },
 
     messages: {
@@ -730,18 +728,18 @@ $("#bus_start_date").datepicker({
 $("#bus_end_point").change(function(){
             var bus_start_point = $("#bus_start_point").val();
             console.log(bus_start_point);
-            if($("#bus_end_point").val() == bus_start_point) 
+            if($("#bus_end_point").val() == bus_start_point)
             {
                 alert("Start point and end point should not be same!");
                 $("#bus_end_point").val('<option value=""></option>')
                 return false;
             }
-            
+           
         });
 $("#bus_start_point").change(function(){
             var bus_end_point = $("#bus_end_point").val();
             console.log(bus_end_point);
-             if($("#bus_start_point").val() == bus_end_point) 
+             if($("#bus_start_point").val() == bus_end_point)
             {
                 alert("Start point and End point should not be same!");
                 $("#bus_start_point").val('<option value=""></option>')
@@ -776,7 +774,7 @@ $("#bus_start_point").change(function(){
         },
 
       },
-      
+     
     submitHandler: function(form) {
                 form.submit();
             }
@@ -809,7 +807,7 @@ $("#bus_start_point").change(function(){
         },
 
       },
-      
+     
     submitHandler: function(form) {
                 form.submit();
             }
@@ -843,7 +841,7 @@ $("#bus_start_point").change(function(){
         },
 
       },
-      
+     
     submitHandler: function(form) {
                 form.submit();
             }
@@ -876,7 +874,7 @@ $("#bus_start_point").change(function(){
         },
 
       },
-      
+     
     submitHandler: function(form) {
                 form.submit();
             }
@@ -909,7 +907,7 @@ $("#bus_start_point").change(function(){
         },
 
       },
-      
+     
     submitHandler: function(form) {
                 form.submit();
             }
@@ -941,7 +939,7 @@ $("#bus_start_point").change(function(){
         },
 
       },
-      
+     
     submitHandler: function(form) {
                 form.submit();
             }
@@ -952,7 +950,43 @@ $("#bus_start_point").change(function(){
 //==================EDIT ends here==========================
 
 
+ window.URL = window.URL || window.webkitURL;
 
+$("#new_home_page_image").submit( function( e ) {
+    // alert("submit");
+    var form = this;
+    // e.preventDefault(); //Stop the submit for now
+                                //Replace with your selector to find the file input in your form
+    var fileInput = $(this).find("input[type=file]")[0],
+        file = fileInput.files && fileInput.files[0];
+
+    if( file ) {
+        var img = new Image();
+
+        img.src = window.URL.createObjectURL( file );
+
+        img.onload = function() {
+            var width = img.naturalWidth,
+                height = img.naturalHeight;
+              // alert(width)
+            window.URL.revokeObjectURL( img.src );
+
+            if( width == 1600 && height == 900 ) {
+                 // alert("if");
+                $('#new_home_page_image').submit();
+            }
+            else {
+                alert("df");
+                // e.preventDefault();
+
+            }
+        };
+    }
+    else { //No file was input or browser doesn't support client side reading
+        $("#new_home_page_image").submit();
+    }
+
+});
 
 
 

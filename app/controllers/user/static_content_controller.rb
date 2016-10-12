@@ -1,5 +1,14 @@
 class User::StaticContentController < ApplicationController
 
+  def tips
+    @tips= params[:tip_id].present? ? Tip.find_by(id: params[:tip_id]) : Tip.all 
+  end
+
+  def faq
+    @faq=QuestionsAndAnswer.first
+    @faqs=((QuestionsAndAnswer.all) - Array(@faq))
+  end
+
 	def about_us
 		@about_us=StaticPage.find_by(title: "About Us").try(:content)
 	end
@@ -17,9 +26,10 @@ class User::StaticContentController < ApplicationController
   end
 
   def contact_admin
-    p "=========#{params.inspect}==="
-    # NotifyMailer.inform_admin(contact_params).deliver
-    redirect_to dashboard_path, flash[:alert]=>"Information sent successfully."
+
+    flash[:alert] = "Information sent to admin successfully."
+    render 'user/home/dashboard'
+
   end
 
  #Admin side check request methods(START)
