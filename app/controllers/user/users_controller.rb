@@ -36,4 +36,16 @@ def check_email
       end  
     end 
 
+# During change password check current password
+
+  def check_current_password
+    p "===cccccccccccccc=#{current_user.valid_password?(params[:user][:current_password])}============"
+    if current_user.valid_password?(params[:user][:current_password])
+      render json: :true
+     else
+      render json: :false
+     end 
+      
+  end  
+
 end

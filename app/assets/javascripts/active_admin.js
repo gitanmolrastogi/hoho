@@ -96,36 +96,32 @@ $( document ).ready(function() {
 
 
   $(document).ready(function(){
-  $.validator.addMethod('size', function (value, element, param) {
-    return this.optional(element) || (element.files[0].width <= 10000)
-}, 'File size must be less than {0}');
 
-  $('#new_home_page_image').validate({
-      errorElement: "div",
+  // $('#new_home_page_image').validate({
+  //     errorElement: "div",
 
-      rules: {
-            "home_page_image[image]": {
-                 required: true,
-                extension: "jpg,jpeg,png",
-                size: true
-            },
-            "home_page_image[status]": {
-                 required: true
-            },
-  },
-    messages: {
-             "home_page_image[image]": {
-                required: "Please select a image to upload name",
-                extension: "invalid",
-            },
-            "home_page_image[status]": {
-                required: "Please select a status"
-            },
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-    });
+  //     rules: {
+  //           "home_page_image[image]": {
+  //               required: true,
+  //               extension: "jpg,jpeg,png",
+  //           },
+  //           "home_page_image[status]": {
+  //                required: true
+  //           },
+  // },
+  //   messages: {
+  //            "home_page_image[image]": {
+  //               required: "Please select a image to upload name",
+  //               extension: "invalid",
+  //           },
+  //           "home_page_image[status]": {
+  //               required: "Please select a status"
+  //           },
+  //       },
+  //       submitHandler: function(form) {
+  //           form.submit();
+  //       }
+  //   });
 // ===================== New Activity Validation Start=========================
    $('#new_activity').validate({
    errorElement: "div",
@@ -956,9 +952,42 @@ $("#bus_start_point").change(function(){
 
 //==================EDIT ends here==========================
 
+window.URL = window.URL || window.webkitURL;
 
+$("#home_page_image_submit_action").click( function( e ) {
+    e.preventDefault();
+    var fileInput = document.getElementById("home_page_image_image");
+        file = fileInput.files && fileInput.files[0];
 
+    if( file ) {
+            var ext = file.split(".");
+           ext = ext[ext.length-1].toLowerCase();      
+           var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
+           if (arrayExtensions.lastIndexOf(ext) == -1) {
+        alert("Wrong extension type.");
+        
+    }
+         else{  
+        var img = new Image();
+        img.src = window.URL.createObjectURL( file );
+        img.onload = function() {
+        var width = img.naturalWidth,
+        height = img.naturalHeight;
+        window.URL.revokeObjectURL( img.src );
+        if( width == 1600 && height == 900 ) {
+                $('#new_home_page_image').submit();
+            }
+            else {
+                alert("Image dimention should be (1600 * 900)px ");
+                return false
+            }
+        };
+    }}
+    else { 
+        alert("Please select a file to upload");
+        return false
+    }
 
-
+});
 
 });

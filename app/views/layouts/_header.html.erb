@@ -26,9 +26,15 @@
 						<li>
 							<a href="/users/sign_out">Logout</a>
 						</li>
+						
 						<li>
-							<a href=""><%= current_user.try(:first_name)%></a>
+						   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.try(:first_name)%></a>
+                                     <ul class="dropdown-menu">
+<!--                                      <li><a href="/users/edit">Edit Profile</a></li>
+ -->                                     <li><a href="/users/edit">Change Password</a></li>
+                                     </ul>
 						</li>
+
 						<% else%>
                          <li>
 							<a href="/users/sign_in">Login</a>
