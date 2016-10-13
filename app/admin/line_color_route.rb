@@ -1,10 +1,5 @@
 ActiveAdmin.register LineColorRoute do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-
-
 filter :name 
 filter :start_point 
 filter :end_point 
@@ -13,16 +8,7 @@ filter :duration
 
 
 permit_params :name , :start_point , :end_point , :price , :duration , :image, :zoomed_image, city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
-# accepts_nested_attributes_for :cities, :allow_destroy => true
 
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
 
 form do  |f|
   f.inputs do

@@ -22,7 +22,7 @@
 					<div class="login-box">					
 							<div class="carousel-caption-a text-center">
 							<div class="main-t-h">Track your Routes</div>
-							<div class="sub-t-h">Lorem Ipsum is simply dummy text of the </div>
+							<div class="sub-t-h"><%= StaticPage.find_by(title: "Track Your Routes").try(:content)%></div>
 						</div>
 					</div>
 				</div>			
@@ -36,15 +36,15 @@
 					<span></span>
 				</div>
 				<div class="row">
-					<% StaticPage.first(3).each do |object|%>
+					<% HowItWork.first(3).each do |object|%>
 					<div class="col-xs-12 col-sm-4 col-md-4">
 						<div class="sec_contain">
 							<figure class="post-thumb"> 
-								<img src="/assets/img-1.png" alt="" class="img-responsive" />
+							 <img src="<%= object.try(:image).try(:url) %>" alt="" class="img-responsive" />
 								<figcaption><span><img src="/assets/t1.png" alt="" /></span></figcaption>	
 							</figure>
 							<div class="thumb-info text-center">
-							<h4>Cupiditate laudantium Velit</h4>
+							<h4><%= object.try(:title) %></h4>
 					      <%= render :partial => 'user/home/read_more', :locals => {object: object } %>
 					  </div>
 					</div>

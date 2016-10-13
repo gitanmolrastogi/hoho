@@ -950,24 +950,30 @@ $("#bus_start_point").change(function(){
 
   });
 
-//==================EDIT ends here==========================
+//==================EDIT Tips ends here==========================
 
+
+// Home Page Image Validation
 window.URL = window.URL || window.webkitURL;
 
 $("#home_page_image_submit_action").click( function( e ) {
     e.preventDefault();
+      image_error=""
+     $("#home_page_image_image_input").find('.image-error').remove('.image-error')
+     $("#home_page_image_image_input").append("<span class= 'image-error' style='color:red;padding-left:90px;'></span>");
     var fileInput = document.getElementById("home_page_image_image");
         file = fileInput.files && fileInput.files[0];
-
+        var FileUploadPath = fileInput.value;
     if( file ) {
-            var ext = file.split(".");
-           ext = ext[ext.length-1].toLowerCase();      
-           var arrayExtensions = ["jpg" , "jpeg", "png", "bmp", "gif"];
-           if (arrayExtensions.lastIndexOf(ext) == -1) {
-        alert("Wrong extension type.");
-        
-    }
-         else{  
+        var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+        if (!(Extension == "gif" || Extension == "png" || Extension == "bmp"
+                    || Extension == "jpeg" || Extension == "jpg"))
+            {
+                 image_error= "Allowed file format are gif,png,jpeg,jpg,bmp"
+                 $(".image-error").text(image_error);
+                 return false
+            }
+                else{
         var img = new Image();
         img.src = window.URL.createObjectURL( file );
         img.onload = function() {
@@ -978,16 +984,19 @@ $("#home_page_image_submit_action").click( function( e ) {
                 $('#new_home_page_image').submit();
             }
             else {
-                alert("Image dimention should be (1600 * 900)px ");
-                return false
+                image_error= "Image dimention should be (1600 * 900)px"
+                 $(".image-error").text(image_error);
+                 return false
             }
         };
     }}
     else { 
-        alert("Please select a file to upload");
-        return false
+        
+        image_error= "Please select a file to upload"
+                 $(".image-error").text(image_error);
+                 return false
     }
 
 });
-
+// Home Page Image Validation End
 });

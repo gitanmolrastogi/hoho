@@ -20,6 +20,8 @@ get '/admin/check_city',to: 'user/static_content#check_city'
 get '/admin/check_category',to: 'user/static_content#check_category'
 #Routes To Check Admin Side  Request (END)
 
+get '/users/edit_profile',to: 'user/users#edit_profile'
+put '/users/update_profile',to: 'user/users#update_profile' 
 
  namespace :user do
   get '/cities' => "users#get_city"
@@ -32,7 +34,6 @@ get '/admin/check_category',to: 'user/static_content#check_category'
           get 'faq'
           get 'contact_us'
           post 'contact_admin'
-
        end
     end
 
