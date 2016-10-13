@@ -39,6 +39,7 @@ get '/admin/check_category',to: 'user/static_content#check_category'
     resources :routes  , only: [] do 
       collection do
         get 'index'
+        get 'city_details'
       end
 
       member do 

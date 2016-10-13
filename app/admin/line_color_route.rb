@@ -3,8 +3,6 @@ ActiveAdmin.register LineColorRoute do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-
-
 filter :name 
 filter :start_point 
 filter :end_point 
