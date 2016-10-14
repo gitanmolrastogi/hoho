@@ -27,7 +27,7 @@ class User::StaticContentController < ApplicationController
 
   def contact_admin
 
-    flash[:alert] = "Information sent to admin successfully."
+    flash[:notice] = "Information sent to admin successfully."
     render 'user/home/dashboard'
 
   end

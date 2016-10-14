@@ -1,4 +1,5 @@
-         <h3><%= flash[:alert] if flash[:alert].present?%></h3>
+         <p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
+         <% flash[:notice] = ""%>
 		<div id="myCarousel" class="home-cro carousel slide">
 			<div class="carousel-inner custom-carousel">
 				<% first_image= HomePageImage.where(status: "Active").first %>
