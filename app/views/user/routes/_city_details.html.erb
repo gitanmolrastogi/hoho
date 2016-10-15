@@ -1,0 +1,87 @@
+
+ <div class="city-section-block">
+  <div class="heading-block">
+    <h2 class="heading"><%= @city.name %></h2>
+    <div class="head-line m-b-10"></div>
+  </div>
+  <div class="search-city-detail">
+	<div class="row">
+	  <div class="col-md-7">
+		<div class="city-img">
+		  <img class="img-responsive" src="/assets/lotus.png">
+		</div>
+	  </div>
+	  <div class="col-md-5">
+	   <ul class="city-img6">
+		<li class="city-6-images">
+		  <img class="img-responsive" src="/assets/img1a.png">
+	    </li>
+		<li class="city-6-images">
+		  <img class="img-responsive" src="/assets/img1b.png">
+	    </li>
+		<li class="city-6-images">
+		  <img class="img-responsive" src="/assets/img1c.png">
+	    </li>
+		<li class="city-6-images">
+		  <img class="img-responsive" src="/assets/img1d.png">
+	    </li>
+		<li class="city-6-images">
+		  <img class="img-responsive" src="/assets/img1e.png">
+	    </li>
+		<li class="city-6-images">
+		  <img class="img-responsive" src="/assets/img1f.png">
+	    </li>
+	   </ul>
+	  </div>
+	</div>
+  </div>
+ </div>
+ <div class="overview-section">
+	   <div class="heading-block">
+        <h2 class="heading">Overview</h2>
+        <div class="head-line m-b-10"></div>
+       </div>
+	   <div class="overview-block">
+		  <div class="txt">
+		  <%= @city.try(:overview) %>
+	      </div>
+	 </div>
+	 <div class="imp-info-section">
+	   <div class="heading-block">
+        <h2 class="heading">Important info </h2>
+        <div class="head-line m-b-10"></div>
+       </div>
+	   <div class="overview-block">
+		  <div class="txt">
+		    <%= @city.try(:important)%>
+		    <a class="link-a pull-right"> See More </a>
+		  </div>						
+	   </div>
+	 </div>      
+	        <h1><%= "Event Categories" if @city_categories.present?%></h1>
+				 <div class="category-info-section">
+				 	<% @city_categories.each do |category| %>
+						   <div class="heading-block">
+						     <h2 class="heading"><%= category.try(:name).titleize %> </h2>
+					        <div class="head-line m-b-10"></div>
+					       </div>
+						   <div class="category-view-block">
+							  <ul class="city-img6 clearfix">
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1a.png">
+							    </li>
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1b.png">
+							    </li>
+							   </ul>	
+							   <p class="txt">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumproident, sunt in culpa qui officia 
+							   </p>
+							   <a><%= link_to "See More",category_details_user_routes_path(category_id: category.id),:class=>"link-a pull-right",remote: true %></a>
+							   </br>
+						    </div>
+				    <% end %>
+				  </div>
+	</div>
+   </div>
+  </div>
