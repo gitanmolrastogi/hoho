@@ -162,7 +162,7 @@
                       <div class="col-md-6">
                         <form class="form-block">
                           <div class="form-group">
-                            <%= select_tag :city , options_for_select(@city_dropdown.pluck(:name ,:id)) , :id => "city_dropdown", :class => "form-control"%>
+                            <%= select_tag :city , options_for_select(@city_dropdown.pluck(:name ,:id)) , :id => "city_dropdown", :class => "form-control" , :include_blank => "Select City"%>
                           </div>
                         </form>
                       </div>

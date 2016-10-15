@@ -2,12 +2,13 @@ ActiveAdmin.register Category do
 
 before_filter :downcase_category
 filter :name
-permit_params :name, :image
+permit_params :name, :image, :info
 
 form do  |f|
   f.inputs do
     # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
     f.input :name # if params[:action]=="new"
+    f.input :info
     f.input :image, as:  :file
   end
   actions
@@ -17,6 +18,7 @@ end
 show do |route|
     attributes_table do  
     row :name
+    row :info
       row  :image do |img|
         image_tag img.image_url(:homepage_images)
       end

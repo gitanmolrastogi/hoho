@@ -5,19 +5,14 @@ class User::RoutesController < ApplicationController
 		@route_dropdown = LineColorRoute.all
 		@weeks = @current_route.duration.to_i/7
 		@days = @current_route.duration.to_i - @weeks*7
-		#cities
 		@city_dropdown = @current_route.cities + City.where(name: @current_route.start_point)
 		@city = @city_dropdown.last
 		@city_categories = Category.where(id: @city.try(:activities).pluck(:category_id))
-		p "==================#{@city.inspect}=======================#{@city_categories.inspect}================="
 	end
 
 	def city_details
-		puts "#{params.inspect}"
-		# render json: {:hello => "HELLOOOO"}
 		@city = City.find_by_id(params[:city_id])
 		@city_categories = Category.where(id: @city.try(:activities).pluck(:category_id))
-		p "===============cate in city_details==========================#{@city_categories.inspect}================="
 				
 	end
 

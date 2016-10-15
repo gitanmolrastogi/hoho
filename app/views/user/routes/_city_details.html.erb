@@ -68,14 +68,11 @@
 						   <div class="category-view-block">
 							  <ul class="city-img6 clearfix">
 								<li class="city-6-images">
-								  <img class="img-responsive" src="/assets/img1a.png">
-							    </li>
-								<li class="city-6-images">
-								  <img class="img-responsive" src="/assets/img1b.png">
+								  <img class="img-responsive" src="<%= category.image %>">
 							    </li>
 							   </ul>	
 							   <p class="txt">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumproident, sunt in culpa qui officia 
+								<%= category.info %>
 							   </p>
 							   <a><%= link_to "See More",category_details_user_routes_path(category_id: category.id),:class=>"link-a pull-right",remote: true %></a>
 							   </br>
