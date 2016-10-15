@@ -7,14 +7,29 @@ filter :end_time
 filter :no_of_seats
 filter :start_point
 filter :end_point
-
-
 permit_params :start_date ,:end_date ,:start_time,:end_time ,:no_of_seats ,:start_point , :end_point
 
 
 
+index do |f|
+     selectable_column
+     column :start_date
+     column :end_date
+     column :start_time do |time|
+         time.start_time.strftime("%H:%M")
+     end
+    column :end_time do |time|
+         time.start_time.strftime("%H:%M")
+     end
+     column :no_of_seats
+     column :start_point
+     column :end_point
+     actions
 
-form do  |f|
+end
+
+
+form do |f|
   f.inputs do
     f.input :start_date,as: :datepicker
     f.input :end_date,as: :datepicker
@@ -69,6 +84,9 @@ end
 
 
 controller do 
+
+  
+
    def date_format
       # p "-----#{params[:city][:name].inspect}---------"
       if params[:bus].present?
@@ -84,7 +102,8 @@ controller do
 
   end 
 
- end
+
+end
 
 
 end

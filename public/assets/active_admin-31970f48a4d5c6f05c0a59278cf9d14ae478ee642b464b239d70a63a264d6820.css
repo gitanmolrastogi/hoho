@@ -1,4 +1,5 @@
 /* Active Admin CSS */
+@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700&subset=latin,latin-ext);
 /* line 37, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/bundler/gems/activeadmin-f8926831429f/app/assets/stylesheets/active_admin/mixins/_reset.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -2678,6 +2679,560 @@ body {
   color: #323537;
 }
 
+/* line 13, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+html {
+  background: #ecf0f1;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* line 17, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.active_admin {
+  background: #ecf0f1;
+  font-family: "Source Sans Pro", sans-serif;
+  padding-bottom: 80px;
+}
+
+/* line 22, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header {
+  background: #ecf0f1;
+  border: none;
+  text-shadow: none;
+  height: 40px;
+  padding: 0;
+}
+/* line 28, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header h1.site_title {
+  background-color: #fff;
+  background: #fff url(/assets/active_skin/default_logo-d59b61453e0b8e5c6713a61a8b199a12288aa33e75f91db273067afffed549e8.png) no-repeat 30px 0;
+  padding-left: 130px;
+  color: #1e2a33;
+  text-indent: -999999px;
+}
+/* line 34, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header a, #header a:link {
+  color: #1e2a33;
+}
+/* line 36, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs {
+  padding: 0;
+  font-size: 0;
+}
+/* line 39, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li:hover > a, #header ul.tabs > li.current > a {
+  color: #fff;
+  background: #e73c3c;
+  border-radius: 0;
+  margin: -10px 0;
+}
+/* line 44, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li {
+  font-size: 12px;
+  margin: 0;
+}
+/* line 47, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li a {
+  padding: 13px 20px;
+  margin: 0;
+}
+/* line 50, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li.has_nested a {
+  background-position: 93% 50%;
+}
+/* line 53, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li.has_nested:hover a {
+  border-radius: 0;
+  background-color: #e73c3c;
+  border: none;
+  background-position: 93% 50%;
+}
+/* line 58, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li.has_nested:hover ul {
+  background: #e73c3c;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+}
+/* line 63, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li.has_nested:hover ul li a {
+  color: #fff;
+}
+/* line 65, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li.has_nested:hover ul li a:hover {
+  color: #1e2a33;
+}
+/* line 67, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header ul.tabs > li.has_nested.current a {
+  background-color: #e73c3c;
+  background-position: 93% 50%;
+}
+/* line 70, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header #utility_nav {
+  background: #fff;
+  padding: 0;
+}
+/* line 73, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header #utility_nav li#logout a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+/* line 76, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header #utility_nav li#logout a:hover {
+  text-decoration: none;
+}
+/* line 79, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#header #utility_nav li a:hover {
+  background: none;
+  color: #1e2a33;
+}
+
+/* line 83, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#title_bar {
+  background: #1e2a33;
+  text-shadow: none;
+  border: none;
+  padding: 15px 30px;
+  box-shadow: none;
+  border-bottom: 4px solid #e73c3c;
+  margin: 0;
+}
+/* line 91, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#title_bar h2 {
+  color: #FFFFFF;
+}
+/* line 95, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#title_bar .action_items a > a, #title_bar .action_items a > .dropdown_menu > a,
+#title_bar .action_items span.action_item > a,
+#title_bar .action_items span.action_item > .dropdown_menu > a {
+  border-radius: 0;
+  background: #e73c3c;
+  color: #fff;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  padding: 17px;
+  font-size: 14px;
+}
+/* line 104, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#title_bar .action_items a > a:hover, #title_bar .action_items a > .dropdown_menu > a:hover,
+#title_bar .action_items span.action_item > a:hover,
+#title_bar .action_items span.action_item > .dropdown_menu > a:hover {
+  background: #ed6969 !important;
+}
+
+/* line 20, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/bourbon-4.2.7/app/assets/stylesheets/addons/_clearfix.scss */
+#active_admin_content::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 109, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#active_admin_content .table_tools {
+  height: 30px;
+}
+/* line 111, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#active_admin_content a.table_tools_button, #active_admin_content .table_tools .dropdown_menu_button {
+  border-radius: 0;
+  box-shadow: none;
+  color: #1e2a33;
+  background: #fff;
+  padding: 7px 15px;
+  font-weight: normal;
+  text-shadow: none;
+}
+/* line 120, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#active_admin_content .table_tools_segmented_control li a {
+  border-radius: 0;
+  box-shadow: none;
+  color: #1e2a33;
+  background: #fff;
+  padding: 7px 15px;
+  font-weight: normal;
+  text-shadow: none;
+  border-color: #d3d8dc;
+}
+/* line 129, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#active_admin_content .table_tools_segmented_control li a span.count {
+  color: #e73c3c;
+}
+/* line 132, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#active_admin_content .table_tools_segmented_control li.selected a {
+  color: #fff;
+  background-color: #e73c3c;
+}
+/* line 135, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#active_admin_content .table_tools_segmented_control li.selected a span.count {
+  color: #fff;
+}
+
+/* line 138, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table {
+  border: 1px solid #d3d8dc;
+  background: #fff;
+}
+/* line 141, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table th {
+  background: #f1f5f6;
+  border: 1px #d3d8dc;
+  border-style: none solid solid none;
+  padding: 7px 10px;
+  box-shadow: none;
+  color: #1e2a33;
+}
+/* line 148, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table th a, table.index_table th a:link, table.index_table th a:visited {
+  color: #1e2a33;
+}
+/* line 150, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table th:last-child {
+  border-right: none;
+}
+/* line 152, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table td {
+  color: #7f8c8d;
+}
+/* line 154, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table td a, table.index_table td a:link, table.index_table td a:visited {
+  color: #7f8c8d;
+  display: inline-block;
+  padding: 2px 3px;
+  margin: -2px 0;
+}
+/* line 159, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table td a:hover, table.index_table td a:link:hover, table.index_table td a:visited:hover {
+  color: #fff;
+  background: #e73c3c;
+}
+/* line 162, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+table.index_table tr.even td {
+  background: #ecf0f1;
+}
+
+/* line 165, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.download_links {
+  color: #7f8c8d;
+  font-size: 12px;
+}
+/* line 168, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.download_links a {
+  color: #e73c3c;
+  font-weight: bold;
+}
+
+/* line 171, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.pagination_information {
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+/* line 174, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.pagination {
+  margin-top: -2px;
+}
+/* line 176, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.pagination a, .pagination span.page.current {
+  font-family: "Source Sans Pro", sans-serif;
+  border: 1px solid #d3d8dc;
+  background: #ecf0f1;
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 4px 6px;
+  margin-right: 1px;
+}
+/* line 186, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.pagination span.page.current,
+.pagination a:not(.disabled):hover {
+  background: #e73c3c;
+  color: #fff;
+}
+/* line 190, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.pagination span.page.current {
+  font-weight: 600;
+}
+/* line 192, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.pagination span.page.current:not(.disabled):hover {
+  background: #e73c3c;
+}
+/* line 194, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.pagination .page.gap {
+  display: none;
+}
+
+/* line 197, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.sidebar_section.panel {
+  background: #fff;
+  border: 1px solid #d3d8dc;
+  box-shadow: none;
+  border-radius: 0;
+}
+/* line 202, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.sidebar_section.panel form .buttons {
+  background: #f1f5f6;
+  margin: 25px -15px -15px;
+  padding: 10px 15px;
+}
+/* line 206, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.sidebar_section.panel form fieldset {
+  margin-bottom: 0;
+}
+/* line 208, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.sidebar_section.panel > h3 {
+  background: #2c3e50;
+  color: #FFFFFF;
+  border: none;
+  margin: 0;
+  padding: 8px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  text-shadow: none;
+  font-weight: bold;
+}
+/* line 219, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.sidebar_section.panel .filter_form_field label {
+  color: #95a5a6;
+  font-weight: normal;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 7px 0;
+}
+
+/* line 227, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 15px 30px;
+  font-size: 13px;
+  color: #7f8c8d;
+  border-top: 1px solid #d3d8dc;
+}
+/* line 237, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+#footer p {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 242, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form input[type=submit],
+a.button,
+a:link.button,
+a:visited.button {
+  box-shadow: none;
+  border-radius: 0;
+  background: #e73c3c;
+  color: #fff;
+  border: none;
+  text-shadow: none;
+  padding: 11px 20px;
+}
+/* line 253, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form input[type=submit]:hover,
+a.button:hover,
+a:link.button:hover,
+a:visited.button:hover {
+  background: #ed6969 !important;
+}
+
+/* line 255, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset.buttons li.cancel a,
+form fieldset.actions li.cancel a,
+form.filter_form a.clear_filters_btn {
+  background: #ecf0f1;
+  box-shadow: none;
+  border-radius: 0;
+  text-shadow: none;
+  padding: 10px 20px;
+  color: #95a5a6;
+}
+/* line 264, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset.buttons li.cancel a:hover,
+form fieldset.actions li.cancel a:hover,
+form.filter_form a.clear_filters_btn:hover {
+  background: #fbfcfc !important;
+}
+
+/* line 267, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset.inputs {
+  background: #fff;
+  border: 1px solid #d3d8dc;
+  position: relative;
+  padding-top: 50px;
+  box-shadow: none;
+  border-radius: 0;
+}
+/* line 274, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset.inputs legend {
+  border-bottom: 1px solid #d3d8dc;
+  position: absolute;
+  top: 0;
+}
+/* line 278, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset.inputs legend span {
+  background: #f0f4f5;
+  color: #5E6469;
+  border: none;
+  margin: 0;
+  padding: 8px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  text-shadow: none;
+  font-weight: bold;
+}
+/* line 289, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset.inputs ol > li label {
+  padding-top: 7px;
+  text-transform: uppercase;
+}
+/* line 292, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset.inputs ol > li.boolean label {
+  padding-top: 0px;
+  margin-bottom: 15px;
+}
+
+/* line 296, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.panel {
+  background: #fff;
+  border: 1px solid #d3d8dc;
+  position: relative;
+  box-shadow: none;
+  border-radius: 0;
+}
+/* line 302, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.panel > h3 {
+  background: #f0f4f5;
+  color: #2c3e50;
+  padding: 8px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  text-shadow: none;
+  font-weight: bold;
+  border-style: none none solid;
+}
+
+/* line 312, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.attributes_table table th, .attributes_table table td {
+  padding: 10px 0;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #95a5a6;
+}
+
+/* line 316, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.attributes_table table th {
+  font-weight: normal;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+/* line 321, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.comments form.active_admin_comment fieldset.inputs {
+  border: none;
+}
+
+/* line 324, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* line 327, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out {
+  height: 100%;
+}
+/* line 329, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out #footer {
+  display: none;
+}
+/* line 331, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out #content_wrapper {
+  margin-top: 150px;
+}
+/* line 333, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out #content_wrapper #active_admin_content {
+  padding-bottom: 0;
+}
+/* line 336, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out #login form fieldset {
+  border: none;
+}
+/* line 338, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out #login > h2 {
+  background: #2c3e50;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 8px 15px;
+}
+/* line 345, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out #login fieldset.actions {
+  background: #f1f5f6;
+  margin: 0 -30px -17px;
+  padding: 6px 30px;
+}
+/* line 349, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out #login a {
+  margin-top: -25px;
+}
+/* line 352, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_out .flash {
+  background: #F2ECBF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  border-bottom: 1px solid #DEDE8B;
+  text-shadow: none;
+}
+
+/* line 363, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form input[type=text],
+form input[type=password],
+form input[type=email],
+form input[type=number],
+form input[type=url],
+form input[type=tel],
+form textarea {
+  border-radius: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 5px 10px;
+}
+
+/* line 374, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form.filter_form .filter_form_field.filter_date_range input[type=text] {
+  background-position: 100% 4px;
+}
+
+/* line 380, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+body.logged_in .flashes .flash {
+  position: inherit;
+  top: 0;
+  text-shadow: none;
+}
+
+/* line 385, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+strong, b {
+  font-weight: 600;
+}
+
+/* line 388, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+.blank_slate_container .blank_slate {
+  color: #7f8c8d;
+}
+
+/* line 391, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset > ol > li fieldset ol li {
+  clear: both;
+}
+/* line 393, /home/manish.gupta/.rvm/gems/ruby-2.3.1@delhi-airport/gems/active_skin-0.0.12/app/assets/stylesheets/active_skin.sass */
+form fieldset > ol > li fieldset ol li select {
+  margin-top: 6px;
+}
+
 /* line 22, /home/manish.gupta/Assigned Projects/delhiairport-rorresponsivewebsiteonly-16082761-ror/app/assets/stylesheets/active_admin.scss */
 #header {
   height: 80px !important;
@@ -2703,7 +3258,8 @@ body {
   padding: 7px 20px !important;
 }
 
-/* line 47, /home/manish.gupta/Assigned Projects/delhiairport-rorresponsivewebsiteonly-16082761-ror/app/assets/stylesheets/active_admin.scss */
+/* line 45, /home/manish.gupta/Assigned Projects/delhiairport-rorresponsivewebsiteonly-16082761-ror/app/assets/stylesheets/active_admin.scss */
 .error {
+  text-align: center !important;
   color: red;
 }

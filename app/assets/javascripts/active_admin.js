@@ -231,6 +231,10 @@ $('#new_line_color_route').validate({
                  required: true
                
             },
+            "line_color_route[information]": {
+                 required: true
+               
+            },
             "line_color_route[start_point]": {
                  required: true
             },
@@ -257,19 +261,22 @@ $('#new_line_color_route').validate({
             "line_color_route[name]": {
                  required: "Please enter a route name"
                
+            },"line_color_route[information]": {
+                 required: "Please enter information about the route"
+               
             },
             "line_color_route[start_point]": {
-                 required: "Select start point"
+                 required: "Please select start point"
             },
             "line_color_route[price]": {
-                 required: "Enter price",
+                 required: "Please enter price",
                  number: "Amount should be in integer only.",
                  range: "Please enter a valid amount.(Enter Positive Integer Only)"
             },
             "line_color_route[duration]": {
-                 required: "Enter duration",
-                 number: "Enter integers only.",
-                 range: "Enter days between 1 to 365"
+                 required: "Please enter duration",
+                 number: "Please enter integers only.",
+                 range: "Please enter days between 1 to 365"
             },
             "line_color_route[image]": {
                  required: "Please upload image"
@@ -294,6 +301,10 @@ $('#edit_line_color_route').validate({
                  required: true
                
             },
+            "line_color_route[information]": {
+                 required: true
+               
+            },
             "line_color_route[start_point]": {
                  required: true
             },
@@ -320,19 +331,22 @@ $('#edit_line_color_route').validate({
             "line_color_route[name]": {
                  required: "Please enter a route name"
                
+            },"line_color_route[information]": {
+                 required: "Please enter information about the route"
+               
             },
             "line_color_route[start_point]": {
-                 required: "Select start point"
+                 required: "Please select start point"
             },
             "line_color_route[price]": {
-                 required: "Enter price",
-                 number: "Ammount should be in integer only.",
-                 range: "Please enter a valid ammount.(Enter Positive Integer Only)"
+                 required: "Please enter price",
+                 number: "Amount should be in integer only.",
+                 range: "Please enter a valid amount.(Enter Positive Integer Only)"
             },
             "line_color_route[duration]": {
-                 required: "Enter duration",
-                 number: "Enter integers only.",
-                 range: "Enter days between 1 to 365"
+                 required: "Please enter duration",
+                 number: "Please enter integers only.",
+                 range: "Please enter days between 1 to 365"
             },
             "line_color_route[image]": {
                  required: "Please upload image"
@@ -346,6 +360,7 @@ $('#edit_line_color_route').validate({
             form.submit();
         }
     });
+
 
   //===========EDIT route validation END=====
 
@@ -467,14 +482,7 @@ $("#bus_start_date").datepicker({
   $('#new_accommodation').validate({
    errorElement: "div",
     rules: {
-            "accommodation[city_id]": {
-                 required: true
-               
-            },
-            "accommodation[title]": {
-                 required: true
-               
-            },
+            
             "accommodation[information]": {
                  required: true
             },
@@ -482,29 +490,19 @@ $("#bus_start_date").datepicker({
                  required: true,
                  url: true
             },
-            "accommodation[where_we_stay]": {
-                 required: true
-            },
+           
            
   },
 
     messages: {
-            "accommodation[city_id]": {
-                 required: "Please select a city."
-            },
-            "accommodation[title]": {
-                 required: "Title can't be blank."
-            },
             "accommodation[information]": {
-                 required: "Enter Information about the city."
+                 required: "Please enter Information."
             },
             "accommodation[redirection_link]": {
                  required: "Please enter a redirection link.",
-                 url: "Please Enter a valid url(try adding 'http://' before your URL )"
+                 url: "Please enter a valid url(try adding 'http://' before your URL )"
             },
-            "accommodation[where_we_stay]": {
-                 required: "Where we stay can't be blank."
-            },
+           
   },
 
         submitHandler: function(form) {
@@ -551,7 +549,7 @@ $("#bus_start_date").datepicker({
                  required: "Title can't be blank."
             },
             "accommodation[information]": {
-                 required: "Enter Information about the city."
+                 required: "Please enter Information about the city."
             },
             "accommodation[redirection_link]": {
                  required: "Please enter a redirection link.",
@@ -628,14 +626,14 @@ $("#bus_start_date").datepicker({
             },
             "bus[no_of_seats]": {
                  required: "Select number of seats available in bus",
-                 number: "Enter integers only.",
+                 number: "Please enter integers only.",
                  range: "Seats could be between 1 to 50"
             },
             "bus[start_point]": {
-                 required: "Select a start point",
+                 required: "Please Select a start point",
             },
             "bus[end_point]": {
-                 required: "Select a end point"
+                 required: "Please Select a end point"
             },
   },
 
@@ -691,33 +689,33 @@ $("#bus_start_date").datepicker({
 
     messages: {
             "bus[start_date]": {
-                 required: "Select a start date."
+                 required: "Please select a start date."
             },
             "bus[end_date]": {
-                 required: "Select a end date."
+                 required: "Please select a end date."
             },
             "bus[start_time(4i)]": {
                  required: "Please select hour"
             },
             "bus[start_time(5i)]": {
-                 required: "Please select minut"
+                 required: "Please select minute"
             },
             "bus[end_time(4i)]": {
                  required: "Please select hour"
             },
             "bus[end_time(5i)]": {
-                 required: "Please select minut"
+                 required: "Please select minute"
             },
             "bus[no_of_seats]": {
-                 required: "Select  of seats available in bus",
-                 number: "Enter integers only.",
+                 required: "Select  number of seats available in bus",
+                 number: "Please enter integers only.",
                  range: "Seats could be between 1 to 50"
             },
             "bus[start_point]": {
-                 required: "Select a start point",
+                 required: "Please select a start point",
             },
             "bus[end_point]": {
-                 required: "Select a end point"
+                 required: "Please select a end point"
             },
   },
 

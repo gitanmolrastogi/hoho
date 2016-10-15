@@ -39,6 +39,19 @@ put '/users/update_profile',to: 'user/users#update_profile'
 
 
 
+    
+    resources :routes  , only: [] do 
+      collection do
+        get 'index'
+        get 'city_details'
+        get 'category_details'
+      end
+
+      member do 
+
+      end
+  end
+
 end
 
 

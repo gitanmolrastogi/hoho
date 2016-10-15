@@ -1,6 +1,6 @@
 ActiveAdmin.register HomePageImage do
 batch_action :destroy do |ids|
-  images=HomePageImage.where(id: ids)
+  images = HomePageImage.where(id: ids)
   if HomePageImage.count == images.count
      redirect_to :back , :alert => "You can't delete all images"
      elsif HomePageImage.count <= 2 

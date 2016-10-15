@@ -12,18 +12,27 @@
 
 ActiveRecord::Schema.define(version: 20161013103412) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accommodations", force: :cascade do |t|
-    t.string   "title"
     t.text     "information"
     t.string   "redirection_link"
-    t.string   "where_we_stay"
-    t.integer  "city_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["city_id"], name: "index_accommodations_on_city_id", using: :btree
+  end
+
+  create_table "acitvities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "overview"
+    t.text     "information"
+    t.integer  "city_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_acitvities_on_category_id", using: :btree
+    t.index ["city_id"], name: "index_acitvities_on_city_id", using: :btree
   end
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -158,6 +167,7 @@ ActiveRecord::Schema.define(version: 20161013103412) do
     t.string   "zoomed_image"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.text     "information"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -215,7 +225,8 @@ ActiveRecord::Schema.define(version: 20161013103412) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "accommodations", "cities"
+  add_foreign_key "acitvities", "categories"
+  add_foreign_key "acitvities", "cities"
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "cities"
   add_foreign_key "city_categories", "categories"

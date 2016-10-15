@@ -10,7 +10,7 @@ before_filter :set_cache_headers
   end
 
 
-  protected
+ protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,:last_name])
