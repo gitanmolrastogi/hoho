@@ -40,6 +40,7 @@ get '/admin/check_category',to: 'user/static_content#check_category'
       collection do
         get 'index'
         get 'city_details'
+        get 'category_details'
       end
 
       member do 
