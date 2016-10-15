@@ -1,0 +1,37 @@
+<!-- first row -->
+<div class="row trip-map-detail">
+          <div class="col-md-9">
+            <div class="trip-info-block">
+              <div class="heading-block">
+                <h2 class="heading"><%= @current_route.name %></h2>
+                <div class="head-line m-b-10"></div>
+              </div>
+              <p class="txt">
+               <%= @current_route.information %>
+              </p>
+              <div class="row trip-info-3">
+                <div class="col-sm-5 bdr-right">
+                  <div class="trip">
+                    <label class="trip-label">Trip duration :</label>
+                    <span class="trip-span"><%= "#{@weeks} weeks & #{@days} days" %></span>
+                  </div>
+                </div>
+                <div class="col-sm-4 bdr-right">
+                  <div class="trip">
+                    <label class="trip-label">Trip Start :</label>
+                    <span class="trip-span"><%=@current_route.start_point%></span>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="trip">
+                    <label class="trip-label">Trip End :</label>
+                    <span class="trip-span"><%=@current_route.end_point%></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="map-img"><img class="img-responsive" src="/assets/map-sm1.png" style="width:100%; min-height:180px;"></div>
+          </div>
+        </div>
