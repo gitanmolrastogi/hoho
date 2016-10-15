@@ -1,13 +1,7 @@
 class LineColorRoute < ApplicationRecord
 	mount_uploader :image, HomePageImageUploader
 	mount_uploader :zoomed_image, HomePageImageUploader
-   before_save :end_point_setter
 
-
-
- def end_point_setter
-  self.end_point = self.start_point
- end
 
 
 
