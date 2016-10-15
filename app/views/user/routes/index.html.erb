@@ -16,8 +16,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body class="home">
-
-    <header>
+   <header>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -26,9 +25,7 @@
             <div class="search-route">
               <form class="form-block">
                 <div class="form-group">
-                  <%#= select_tag_field :routes,nil, options_from_collection_for_select([["1", 4],["2",6]]) %>
-
-                  <%= select_tag "route", options_for_select(@route_dropdown.pluck(:name,:id)),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" %>
+                 <%= select_tag "route", options_for_select(@route_dropdown.pluck(:name,:id)),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" %>
                 </div>
               </form>
             </div>

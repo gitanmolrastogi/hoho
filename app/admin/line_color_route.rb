@@ -1,11 +1,4 @@
 ActiveAdmin.register LineColorRoute do
-
-<<<<<<< HEAD
-=======
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
->>>>>>> 1965e3a7ee995dfc3e70780e07590898a407dc0f
 filter :name 
 filter :start_point 
 filter :end_point 
@@ -13,12 +6,8 @@ filter :price
 filter :duration
 
 
-<<<<<<< HEAD
 permit_params :name , :start_point , :end_point , :price , :duration , :image, :zoomed_image, city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
-=======
-permit_params :information ,:name , :start_point , :end_point , :price , :duration , :image, :zoomed_image, city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
 # accepts_nested_attributes_for :cities, :allow_destroy => true
->>>>>>> 1965e3a7ee995dfc3e70780e07590898a407dc0f
 
 
 form do  |f|
