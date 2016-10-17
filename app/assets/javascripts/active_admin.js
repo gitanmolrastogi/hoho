@@ -4,9 +4,9 @@
 
 $( document ).ready(function() {
       $('#select_city_id').change(function(){
-      $('#line_color_route_end_point option').remove();
-      $('#line_color_route_end_point').append('<option value='+$(this).val()+'>'+$(this).val()+'</option>');
-      $('#line_color_route_end_point').prop("disabled", true);
+      $('#main_route_end_point option').remove();
+      $('#main_route_end_point').append('<option value='+$(this).val()+'>'+$(this).val()+'</option>');
+      $('#main_route_end_point').prop("disabled", true);
       // $('#line_color_route_city_routes_attributes_0_city_id')
     });
 

@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20161013103412) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 20161013103412) do
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "info"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -146,15 +148,23 @@ ActiveRecord::Schema.define(version: 20161013103412) do
 
   create_table "line_color_routes", force: :cascade do |t|
     t.string   "name"
-    t.string   "start_point"
-    t.string   "end_point"
     t.string   "price"
     t.string   "duration"
     t.string   "image"
     t.string   "zoomed_image"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "main_route_id"
+  end
+
+  create_table "main_routes", force: :cascade do |t|
+    t.string   "name"
     t.text     "information"
+    t.string   "start_point"
+    t.string   "end_point"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "image"
   end
 
   create_table "photos", force: :cascade do |t|

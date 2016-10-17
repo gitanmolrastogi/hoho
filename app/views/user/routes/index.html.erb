@@ -25,7 +25,7 @@
             <div class="search-route">
               <form class="form-block">
                 <div class="form-group">
-                 <%= select_tag "route", options_for_select(@route_dropdown.pluck(:name,:id)),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" %>
+                  <%= select_tag "route", options_for_select(@route_dropdown.pluck(:name,:id)),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" ,  :include_blank => "Select Route" %>
                 </div>
               </form>
             </div>
