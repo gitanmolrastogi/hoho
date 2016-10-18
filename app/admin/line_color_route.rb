@@ -5,11 +5,11 @@ filter :price
 filter :duration
 
 
-permit_params :name , :price , :duration , :image, :zoomed_image, city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
+permit_params :name , :price , :duration , :image, :zoomed_image,:main_route_id,city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
 
 form do  |f|
   f.inputs do
-    f.input :main_route_id ,:as => :select, :collection => MainRoute.all.map{|u| ["#{u.name}", "#{u.name}"]} , :include_blank => false #, input_html: {class: "select_city",id: "select_city_id"}
+    f.input :main_route_id ,:as => :select, :collection => MainRoute.all.map{|u| ["#{u.name}", u.id]} , :include_blank => false #, input_html: {class: "select_city",id: "select_city_id"}
     f.input :name
       f.inputs "Please select the stops points as their sequences!!" do
           f.has_many :city_routes  do |l|

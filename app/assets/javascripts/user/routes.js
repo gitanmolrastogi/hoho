@@ -32,7 +32,27 @@ $(document).ready(function(){
        $('#city_important_see_less').hide();
        
 	});
-    
-});
+
+  //hop on hop
+  $(document).on('change', '#city_route', function(){
+	var c_id=this.value;
+    $.ajax({
+			     type: "GET",
+			     url: "/user/routes/hop_on_hop_off",
+			     data : {route_id: c_id},
+			     dataType: "json",
+			     success: function(response){
+                 console.log(response);      
+			     // $.each( data, function( i, l ){
+        //          $('#from_city').append('<option value="'+l.id+'">'+l.name+'</option>');
+        //        });
+
+   
+      }
+			     
+
+			     });
+        });
+	 });
 
 	

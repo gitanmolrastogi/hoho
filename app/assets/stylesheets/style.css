@@ -271,3 +271,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 }
 
 .edit_profile{color: black !important;}
+
+.item.active > img {
+    width: 100%;
+}

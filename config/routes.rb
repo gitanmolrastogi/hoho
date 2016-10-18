@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'activities/index'
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -25,7 +29,7 @@ put '/users/update_profile',to: 'user/users#update_profile'
 
  namespace :user do
   get '/cities' => "users#get_city"
- resources :static_content, only: [] do
+  resources :static_content, only: [] do
        collection do
           get 'about_us'
           get 'terms_and_condition'
@@ -36,20 +40,17 @@ put '/users/update_profile',to: 'user/users#update_profile'
           post 'contact_admin'
        end
     end
-
-
-
-    
-    resources :routes  , only: [] do 
+  resources :routes  , only: [] do 
       collection do
         get 'index'
         get 'city_details'
         get 'category_details'
+        get 'hop_on_hop_off'
       end
+  
+  end
 
-      member do 
-
-      end
+  resources :activities  , only: [:index] do 
   end
 
 end

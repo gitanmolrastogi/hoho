@@ -1,7 +1,7 @@
 class MainRoute < ApplicationRecord
 mount_uploader :image, HomePageImageUploader
 before_save :end_point_setter
-
+has_many :line_color_routes,dependent: :destroy
 
 
  def end_point_setter

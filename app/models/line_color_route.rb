@@ -5,6 +5,8 @@ class LineColorRoute < ApplicationRecord
    has_many :city_routes, dependent: :destroy
    has_many :cities , through: :city_routes
 
+   belongs_to :main_route
+
    accepts_nested_attributes_for :cities, :allow_destroy => true
    accepts_nested_attributes_for :city_routes , :allow_destroy => true
  
