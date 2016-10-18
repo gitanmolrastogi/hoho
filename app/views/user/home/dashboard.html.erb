@@ -1,5 +1,8 @@
-         <h3><%= flash[:alert] if flash[:alert].present?%></h3>
+</br>
+</br>
+</br>
 		<div id="myCarousel" class="home-cro carousel slide">
+		<h3><%= flash[:alert] if flash[:alert].present?%></h3>
 			<div class="carousel-inner custom-carousel">
 				<% first_image= HomePageImage.where(status: "Active").first %>
            <div class="item active" style="width:100%;">
@@ -13,6 +16,7 @@
 			</div>
 			<a class="left carousel-control arrow" href="#myCarousel" data-slide="prev">
 				<span class="icon-ar"></span>
+
 			</a>
 			<a class="right carousel-control arrow" href="#myCarousel" data-slide="next">
 				<span class="icon-ar"></span>

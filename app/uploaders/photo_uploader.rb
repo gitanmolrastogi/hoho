@@ -1,8 +1,6 @@
 # encoding: utf-8
 
-class HomePageImageUploader < CarrierWave::Uploader::Base
-
- 
+class PhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -37,7 +35,7 @@ class HomePageImageUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fill => [700, 400, :north]
   # end
 
-  version :homepage_images do
+  version :photos do
     process :eager => true
     process :resize_to_fill => [90, 50, :north]
   end
