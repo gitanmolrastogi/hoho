@@ -8,7 +8,8 @@ gem 'cloudinary'
 gem "ckeditor"
 gem 'mini_magick'
 
-
+gem 'instagram'
+gem 'twitter'
 #Admin and theme
 gem 'active_skin'
 gem 'activeadmin', github: 'activeadmin'
