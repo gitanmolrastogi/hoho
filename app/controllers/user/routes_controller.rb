@@ -22,14 +22,23 @@ class User::RoutesController < ApplicationController
     end
 
    #for point to point selection
-    def hop_on_hop_off
-        p "=========params==#{params[:route_id].inspect}===="
-      @current_route = (params[:route_id].present? and MainRoute.find_by_id(params[:route_id]).present?) ? MainRoute.find(params[:route_id]) : MainRoute.last
-      # render :json => @current_route 
+   def hop_on_hop_off
+      p "=========#{params.inspect}==========="
+    if params[:route_id].present? && params[:type] == "From"
+      @current_route = MainRoute.find_by_id(params[:route_id]) 
       @cities=@current_route.line_color_routes.first.cities
-      render :json => {:data=>@cities } 
-      puts "------route--------#{@current_route.inspect}------@cities--#{@cities.inspect}--"
-
+    end  
+    if params[:city_id].present? && params[:type] == "To"
+       @city= City.find_by_id(params[:city_id])
+       p "========cittttttttttt====#{@city.inspect}"
+       @cities = City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)) 
+       p "======to city ===#{@cities.inspect}====="
+   end  
+      respond_to do |format|
+        format.html 
+        format.json  { render :json => {:cities=>@cities } }
+      end
+     
     end
 
   def check_for_main_routes

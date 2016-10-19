@@ -1,0 +1,56 @@
+<header>
+			<div class="container">
+			  <div class="row">
+				<div class="col-sm-12">
+				  <div class="map-block">
+					<div class="map"><img class="img-responsive" src="/assets/map.png" style="width:100%; min-height:180px;"></div>
+					<div class="search-route">
+					  <form class="form-block">
+						<div class="form-group">
+						 <%= select_tag "city_route", options_for_select(MainRoute.pluck(:name,:id)),:class=>"form-control",:include_blank => "Select Route" %>
+						</div>
+					  </form>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</header>
+		
+		<section class="page-content hop-content">
+			<div class="container">
+				<div class="heading-block">
+					<h2 class="heading">HOP TO HOP ROUTES</h2>
+					<div class="head-line m-b-10"></div>
+				</div>
+				<div class="row city-search-block">
+                    <div class="col-md-4">
+                        <form class="form-block">
+                          <div class="form-group">
+                            <%= select_tag "from_city",nil,:class=> "form-control", :prompt=> 'From' ,:id=>"from_city"%> 
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-4">
+                        <form class="form-block">
+                          <div class="form-group">
+                           <%= select_tag "to_city",nil,:prompt=>"To",:class=> "form-control",:id=>"to_city"%> 
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-4 col-sm-6 col-xs-12">
+                        <button class="btn red-btn cart"><i class="fa fa-cart-arrow-down" style="font-size:1.6em;"></i> Add to cart</button>
+                      </div>
+                </div>
+				<div class="hop-to-hop-block">
+                    <div class="heading-block">
+                      <h2 class="heading">Detail</h2>
+                      <div class="head-line m-b-10"></div>
+                    </div>
+                    <p class="txt">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenvoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </div>
+			</div>
+		</section>
+		

@@ -36,23 +36,47 @@ $(document).ready(function(){
   //hop on hop
   $(document).on('change', '#city_route', function(){
 	var c_id=this.value;
+	str = "";
     $.ajax({
 			     type: "GET",
 			     url: "/user/routes/hop_on_hop_off",
-			     data : {route_id: c_id},
-			     dataType: "json",
+			     data : {route_id: c_id,type: "From"},
+			     dataType: "JSON",
 			     success: function(response){
-                 console.log(response);      
-			     // $.each( data, function( i, l ){
-        //          $('#from_city').append('<option value="'+l.id+'">'+l.name+'</option>');
-        //        });
+                 console.log(response.cities);      
+			     $.each( response.cities, function( i, l ){
+	                 str += '<option value="'+l.id+'">'+l.name+'</option>';
+	               });
 
-   
-      }
+   				$('#from_city').empty().append(str);
+               }
 			     
 
 			     });
         });
+   
+   $(document).on('change', '#from_city', function(){
+	var c_id=this.value;
+	str = "";
+    $.ajax({
+			     type: "GET",
+			     url: "/user/routes/hop_on_hop_off",
+			     data : {city_id: c_id,type: "To"},
+			     dataType: "JSON",
+			     success: function(response){
+                 console.log(response.cities);      
+			     $.each( response.cities, function( i, l ){
+	                 str += '<option value="'+l.id+'">'+l.name+'</option>';
+	               });
+
+   				$('#to_city').empty().append(str);
+               }
+			     
+
+			     });
+        });
+
+
 	 });
 
 	
