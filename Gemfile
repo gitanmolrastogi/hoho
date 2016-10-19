@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+#pagination
+gem 'will_paginate', '~> 3.1.0'
 
 #Image Uploading
 gem 'carrierwave'
@@ -61,3 +63,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-validation-rails'
 gem "jquery-ui-rails"
+
+
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

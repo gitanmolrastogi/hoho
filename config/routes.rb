@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -13,8 +14,6 @@ Rails.application.routes.draw do
  get '/user/home/read_less',to: 'user/home#read_less'
 
  get  '/user/contact_us', to: 'user/static_content#contact_us'
-
-
 #Routes To Check Admin Side  Request (START)
 get '/admin/check_city',to: 'user/static_content#check_city'
 get '/admin/check_category',to: 'user/static_content#check_category'
@@ -35,7 +34,27 @@ get '/admin/check_category',to: 'user/static_content#check_category'
 
          end
       end
+
+    resources :activities, only: [:show , :index] do
+      collection do
+
+      end
+
+      member do 
+      end
+    end  
     
+    resources :orders, only: [] do
+      collection do
+        get 'add_to_cart'
+        get 'my_cart'
+        get 'my_order_history'
+        get 'remove_item'
+      end
+
+      member do 
+      end
+    end 
     resources :routes  , only: [] do 
       collection do
         get 'index'

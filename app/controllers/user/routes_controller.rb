@@ -14,7 +14,7 @@ class User::RoutesController < ApplicationController
 		@city_dropdown = @current_route.line_color_routes.first.cities + City.where(name: @current_route.start_point)
 		@city = @city_dropdown.last
 		@city_categories = Category.where(id: @city.try(:activities).pluck(:category_id))
-
+		@category = @city_categories.first
 		@posssible_routes = @current_route.line_color_routes
 
 	end
@@ -26,7 +26,9 @@ class User::RoutesController < ApplicationController
 
 	def category_details
 		puts "#{params.inspect}"
-
+		@category =  Category.find_by_id(params[:category_id])
+		p "+++++++++++++++#{@category.inspect}+++++++++++++++"
+		@activities =  @category.activities.where(city_id: params[:city_id])
 	end
 
 
@@ -35,7 +37,6 @@ private
 
 	def check_for_main_routes
 		redirect_to dashboard_path if MainRoute.count == 0 or LineColorRoute.count == 0
-
 		flash[:alert] = "Currently there are no routes Available"
 	end
 end

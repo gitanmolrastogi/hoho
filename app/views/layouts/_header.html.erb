@@ -20,9 +20,12 @@
 							<a href="/user/routes/index">Routes</a>
 						</li>
 						<li>
-							<a href="#">Activities</a>
+							<a href="/user/activities">Activities</a>
 						</li>
-						<% if current_user%>
+						<li>
+							<a href="#">Hop On Hop Off</a>
+						</li>
+						<% if current_user %>
 						<li>
 							<a href="/users/sign_out">Logout</a>
 						</li>
@@ -40,6 +43,8 @@
 						<% end %>
 					</ul>
 				</div>
+				<p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
+                 <% flash[:notice] = ""%>
 			</div>
 		</nav>
 	</header>

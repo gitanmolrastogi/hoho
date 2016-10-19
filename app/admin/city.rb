@@ -14,8 +14,6 @@ form do |f|
           f.has_many :photos  do |l|
               l.input :image , as: :file
               l.input :status ,:as => :select, :collection => [['Active',true],['Inactive',false]] ,:include_blank => false
-
-
                if  request.original_url.include?("edit") 
                     l.input :_destroy, :as => :boolean, :label => "Delete"
                end
