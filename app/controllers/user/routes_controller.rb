@@ -42,9 +42,11 @@ class User::RoutesController < ApplicationController
     end
 
   def check_for_main_routes
-        redirect_to dashboard_path if MainRoute.count == 0 or LineColorRoute.count == 0
-        flash[:notice] = "Currently there are no routes Available"
-    end
+    if MainRoute.count == 0 or LineColorRoute.count == 0
+       redirect_to '/'
+       flash[:notice] = "Currently there are no routes Available"
+    end  
+  end
 
 
 end

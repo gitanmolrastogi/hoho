@@ -36,6 +36,11 @@ $(document).ready(function(){
   //hop on hop
   $(document).on('change', '#city_route', function(){
 	var c_id=this.value;
+	if (c_id == ""){
+    $('#from_city').empty().append('<option value="">From</option>');
+    $('#to_city').empty().append('<option value="">To</option>');
+	}
+	else{
 	str = "";
     $.ajax({
 			     type: "GET",
@@ -47,12 +52,13 @@ $(document).ready(function(){
 			     $.each( response.cities, function( i, l ){
 	                 str += '<option value="'+l.id+'">'+l.name+'</option>';
 	               });
-
-   				$('#from_city').empty().append(str);
+                 $('#from_city').empty().append('<option value="">From</option>');
+   				$('#from_city').append(str);
                }
 			     
 
 			     });
+}
         });
    
    $(document).on('change', '#from_city', function(){
@@ -69,14 +75,13 @@ $(document).ready(function(){
 	                 str += '<option value="'+l.id+'">'+l.name+'</option>';
 	               });
 
-   				$('#to_city').empty().append(str);
+   				$('#to_city').empty().append('<option value="">To</option>');
+   				$('#to_city').append(str);
                }
 			     
 
 			     });
         });
-
-
-	 });
+  });
 
 	
