@@ -1,4 +1,4 @@
-          <!-- second row -->
+                 <!-- second row -->
           <div class="col-md-10">
             <div class="tab-block">
               <ul class="nav nav-tabs nav-justified">
@@ -11,8 +11,8 @@
               <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                   <div class="itinerary-block faq-content-block">
-					<div class="row date-picker">
-					  <div class="col-md-6">
+          <div class="row date-picker">
+            <div class="col-md-6">
                         <form class="form-block">
                           <div class="form-group">
                             <input type="date" class="form-control" placeholder="search">
@@ -22,7 +22,7 @@
                       <div class="col-md-2 text-center">
                         <button class="btn red-btn go">Go</button>
                       </div>
-					</div>
+          </div>
                     <div class="row">
                       <div class="col-md-12">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -38,9 +38,16 @@
                               <div class="panel-body">
                                 <div class="row">
                                   <div class="col-sm-4">
-                                    <div class="calendar">
-                                      <!-- <img class="img-responsive" src="/assets/calendar.png"> -->
-                                    </div>
+                                    <div class="calendar"><img class="img-responsive" src="/assets/calendar.png"></div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="calendar"><img class="img-responsive" src="/assets/calendar.png"></div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="calendar"><img class="img-responsive" src="/assets/calendar.png"></div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="calendar"><img class="img-responsive" src="/assets/calendar.png"></div>
                                   </div>
                                 </div>
                               </div>
@@ -155,8 +162,8 @@
                       </div>
                       
                     </div>
-					
-					<!-- Category main section removed from here -->
+          
+          <!-- Category main section removed from here -->
 
 <%= render partial: "/user/routes/category_details"%>
 
@@ -166,7 +173,7 @@
                   <div class="category-main-section" id = "city_details_append">
                   <%= render partial: "/user/routes/city_details"%>
                   </div>
-					 
+           
                 <!------ Possible Routes  ------>
                 <div id="menu3" class="tab-pane fade">
                   <div class="possible-routes-block">
@@ -351,3 +358,44 @@
               </div>
             </div>
           </div>
+
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+ <!--    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
+    <script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script> -->
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+  <script>
+        $('#calendar').fullCalendar({
+            dayClick: function(date, jsEvent, view){ 
+
+             alert('Clicked on: ' + date.format());
+
+        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+        alert('Current view: ' + view.name);
+
+        // change the day's background color just for fun
+        $(this).css('background-color', 'red');
+            },
+            height: 650,
+            defaultDate: Date.current,
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events:[
+        {
+            title  : 'event1',
+            start  : Date.current
+        },
+        {
+            title  : 'event2',
+            start  : '2016-10-25',
+            end    : '2016-10-27',
+            url: 'http://google.com/',
+        },
+        {
+            title  : 'event3',
+            start  : '2016-10-09 12:30:00',
+            allDay : false
+        }
+    ] 
+        });
+</script>

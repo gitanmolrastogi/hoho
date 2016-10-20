@@ -1,6 +1,6 @@
 ActiveAdmin.register MainRoute do
 
-permit_params :information , :start_point ,:end_point , :name
+permit_params :information , :start_point ,:end_point , :name , :image
 form do |f|
 	f.inputs do
 		f.input :name
@@ -10,9 +10,5 @@ form do |f|
 	    f.input :end_point, :as => :select , input_html: {:disabled => true }, :collection =>  {}, :include_blank => false
 	end
 	actions
-end
-
-
-
-
+ end
 end

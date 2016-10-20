@@ -39,16 +39,17 @@
                         </form>
                       </div>
                       <div class="col-md-4 col-sm-6 col-xs-12">
-                        <button class="btn red-btn cart"><i class="fa fa-cart-arrow-down" style="font-size:1.6em;"></i> Add to cart</button>
+                        <button class="btn red-btn go" id = "go_hop" >Go</button>
+						
                       </div>
                 </div>
-				<div class="hop-to-hop-block">
+					<div class="hop-to-hop-block">
                     <div class="heading-block">
                       <h2 class="heading">Detail</h2>
                       <div class="head-line m-b-10"></div>
                     </div>
-                    <p class="txt">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenvoluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <p class="txt" id = "bus_details_append">
+                      <%= render :partial=>'user/routes/bus_details'%>
                     </p>
                   </div>
 			</div>

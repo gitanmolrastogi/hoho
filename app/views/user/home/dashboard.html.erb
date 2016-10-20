@@ -1,5 +1,9 @@
-        
+
+</br>
+</br>
+</br>
 		<div id="myCarousel" class="home-cro carousel slide">
+		<h3><%= flash[:alert] if flash[:alert].present?%></h3>
 			<div class="carousel-inner custom-carousel">
 				<% first_image= HomePageImage.where(status: "Active").first %>
            <div class="item active" style="width:100%;">
@@ -13,6 +17,7 @@
 			</div>
 			<a class="left carousel-control arrow" href="#myCarousel" data-slide="prev">
 				<span class="icon-ar"></span>
+
 			</a>
 			<a class="right carousel-control arrow" href="#myCarousel" data-slide="next">
 				<span class="icon-ar"></span>
@@ -86,7 +91,7 @@
 									<h4><%= @arr.first["name"].present? ? @arr.first["name"] : "James Jackson"%></h4>
 									<p><%= @arr.first["tags"].present? ? @arr.first["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit"%></p>
 									<div class="date-link">
-										<label class="pull-left"><%= @arr.first.present? ? Time.at(@arr.first["time"].to_i).strftime("%d-%m-%Y") : "12-08-2016"%></label>
+										<label class="pull-left"><%= @arr.first.present? ? Time.at(@arr.first["time"].to_i).strftime("%d-%m-%Y") : ""%></label>
 										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
 									</div>
 								</div>
@@ -104,7 +109,7 @@
 									<h4><%= @arr.second["name"].present? ? @arr.second["name"] : "James Jackson"%></h4>
 									<p><%= @arr.second["tags"].present? ? @arr.second["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit"%></p>
 									<div class="date-link">
-										<label class="pull-left"><%= @arr.second.present? ? Time.at(@arr.second["time"].to_i).strftime("%d-%m-%Y") : "12-08-2016" %></label>
+										<label class="pull-left"><%= @arr.second.present? ? Time.at(@arr.second["time"].to_i).strftime("%d-%m-%Y") : "" %></label>
 										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
 									</div>
 								</div>
@@ -123,7 +128,7 @@
 									<h4><%= @arr.third.present? ? @arr.third["name"] : "James Jackson"%></h4>
 									<p><%= @arr.third.present? ? @arr.third["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit"%></p>
 									<div class="date-link">
-										<label class="pull-left"><%= @arr.third.present? ? Time.at(@arr.second["time"].to_i).strftime("%d-%m-%Y") : "12-08-2016"%></label>
+										<label class="pull-left"><%= @arr.third.present? ? Time.at(@arr.second["time"].to_i).strftime("%d-%m-%Y") : ""%></label>
 										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
 									</div>
 								</div>

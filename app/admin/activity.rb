@@ -26,6 +26,7 @@ index do |f|
 
 
 
+
  form do |f|
   f.inputs do
   	f.input :city ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]}

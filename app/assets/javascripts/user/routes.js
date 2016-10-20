@@ -50,10 +50,11 @@ $(document).ready(function(){
 			     success: function(response){
                  console.log(response.cities);      
 			     $.each( response.cities, function( i, l ){
-	                 str += '<option value="'+l.id+'">'+l.name+'</option>';
+	                 str += '<option value="'+l[0]+'">'+l[1]+'</option>';
 	               });
                  $('#from_city').empty().append('<option value="">From</option>');
    				$('#from_city').append(str);
+   				
                }
 			     
 
@@ -72,7 +73,7 @@ $(document).ready(function(){
 			     success: function(response){
                  console.log(response.cities);      
 			     $.each( response.cities, function( i, l ){
-	                 str += '<option value="'+l.id+'">'+l.name+'</option>';
+	                 str += '<option value="'+l[0]+'">'+l[1]+'</option>';
 	               });
 
    				$('#to_city').empty().append('<option value="">To</option>');
@@ -81,6 +82,35 @@ $(document).ready(function(){
 			     
 
 			     });
+        });
+
+   $(document).on('click', '#to_city', function(){
+   	var from_city_id = $('#from_city').val();
+   	 if (from_city_id == ""){
+   	 	alert("Please first select source city");
+   	 	return false
+   	 }
+    
+        });
+
+  $(document).on('click', '#go_hop', function(){
+  	var to_city_id = $('#to_city').val();
+   	var from_city_id = $('#from_city').val();
+   	 if (to_city_id == "" || from_city_id == "" ){
+   	 	alert("Please select source or destination city");
+   	 	return false
+   	 }
+   	 else{
+
+   	 	$.ajax({
+			     type: "GET",
+			     url: "/user/routes/bus_details",
+			     data : {to_city_id: to_city_id,from_city_id: from_city_id},
+			     dataType: "script"
+			    });
+
+   	      }
+    
         });
   });
 

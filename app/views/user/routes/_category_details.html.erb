@@ -1,101 +1,36 @@
 
-
+<% if @category %>
 <div class="category-section">
                     <div class="category-block">
                       <div class="heading-block">
-                        <h2 class="heading">Category Name</h2>
+                        <h2 class="heading"><%= @category.name %></h2>
                         <div class="head-line m-b-10"></div>
                       </div>
-                      <div class="category"><img class="img-responsive" src="/assets/category.png"></div>
-                    </div>
-                    <div class="activity-block">
-                      <div class="heading-block">
-                        <h2 class="heading">Activity name  1</h2>
-                        <div class="head-line m-b-10"></div>
-                      </div>
-                      <div class="activity-inner-block">
-                        <div class="activity-img">
-                          <img class="img-responsive" src="/assets/activity.png">
-                        </div>
-                        <div class="activity-detail">
-                          <p class="para-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumproident, sunt in culpa qui officia 
-                          </p>
-                          <button class="btn btn-sm red-btn">See Details</button>
-                        </div>
+                      <div class="category">
+                        <%= image_tag(@category.image.url, :class => "img-responsive") %>
                       </div>
                     </div>
-                    <div class="activity-block">
-                      <div class="heading-block">
-                        <h2 class="heading">Activity name  2</h2>
-                        <div class="head-line m-b-10"></div>
-                      </div>
-                      <div class="activity-inner-block">
-                        <div class="activity-img">
-                          <img class="img-responsive" src="/assets/activity.png">
+                      <% @activities.each do |activity| %>
+                        <div class="activity-block">
+                          <div class="heading-block">
+                            <h2 class="heading"><%= activity.name %></h2>
+                            <div class="head-line m-b-10"></div>
+                          </div>
+                          <div class="activity-inner-block">
+                            <div class="activity-img">
+                              <img class="img-responsive" src="/assets/activity.png">
+                            </div>
+                            <div class="activity-detail">
+                              <p class="para-text">
+                               <%= activity.information %>
+                              </p>
+                              <!-- <button > </button> -->
+                               <%= link_to "See Details" , user_activity_path(activity.id)  ,class:"btn btn-sm red-btn" %>
+                            </div>
+                          </div>
                         </div>
-                        <div class="activity-detail">
-                          <p class="para-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumproident, sunt in culpa qui officia 
-                          </p>
-                          <button class="btn btn-sm red-btn">See Details</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="activity-block">
-                      <div class="heading-block">
-                        <h2 class="heading">Activity name  3</h2>
-                        <div class="head-line m-b-10"></div>
-                      </div>
-                      <div class="activity-inner-block">
-                        <div class="activity-img">
-                          <img class="img-responsive" src="/assets/activity.png">
-                        </div>
-                        <div class="activity-detail">
-                          <p class="para-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumproident, sunt in culpa qui officia 
-                          </p>
-                          <button class="btn btn-sm red-btn">See Details</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="activity-block">
-                      <div class="heading-block">
-                        <h2 class="heading">Activity name  4</h2>
-                        <div class="head-line m-b-10"></div>
-                      </div>
-                      <div class="activity-inner-block">
-                        <div class="activity-img">
-                          <img class="img-responsive" src="/assets/activity.png">
-                        </div>
-                        <div class="activity-detail">
-                          <p class="para-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumproident, sunt in culpa qui officia 
-                          </p>
-                          <button class="btn btn-sm red-btn">See Details</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="activity-block">
-                      <div class="heading-block">
-                        <h2 class="heading">Activity name  5</h2>
-                        <div class="head-line m-b-10"></div>
-                      </div>
-                      <div class="activity-inner-block">
-                        <div class="activity-img">
-                          <img class="img-responsive" src="/assets/activity.png">
-                        </div>
-                        <div class="activity-detail">
-                          <p class="para-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumproident, sunt in culpa qui officia 
-                          </p>
-                          <button class="btn btn-sm red-btn">See Details</button>
-                        </div>
-                      </div>
-                    </div>
+                      <%end%>
            </div>
-
-
-
+<%end%>
 
 
