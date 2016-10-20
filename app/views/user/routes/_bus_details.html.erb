@@ -1,0 +1,29 @@
+<% if @buses %>
+<table class="table">
+<thead>
+ <tr>
+   <th>From</th>
+   <th>To</th>
+   <th>Departs</th>
+   <th>Arrives</th>
+   <th>Start Date</th>
+   <th>Untill</th>
+   <th></th>
+ </tr>
+</thead>
+<tbody>
+<% @buses.each do |bus| %>
+ <tr>
+   <td><%= bus.start_point %></td>
+   <td><%= bus.end_point %></td>
+   <td><%= bus.start_time.strftime("%I:%M") %></td>
+   <td><%= bus.end_time.strftime("%I:%M") %></td>
+   <td><%= bus.start_date.strftime("%e %b") %></td>
+   <td><%= bus.end_date.strftime("%e %b") %></td>
+   <td><button class="btn red-btn cart"><i class="fa fa-cart-arrow-down" style="font-size:1.6em;"></i> Add to cart</button></td>
+ </tr>
+<% end%>
+ 
+</tbody>
+</table>
+<% end %>

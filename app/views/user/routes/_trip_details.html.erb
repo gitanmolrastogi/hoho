@@ -3,11 +3,11 @@
           <div class="col-md-9">
             <div class="trip-info-block">
               <div class="heading-block">
-                <h2 class="heading"><%= @current_route.name %></h2>
+                <h2 class="heading"><%= @current_route.try(:name) %></h2>
                 <div class="head-line m-b-10"></div>
               </div>
               <p class="txt">
-               <%= @current_route.information %>
+               <%= @current_route.try(:information) %>
               </p>
               <div class="row trip-info-3">
                 <div class="col-sm-5 bdr-right">
@@ -19,19 +19,31 @@
                 <div class="col-sm-4 bdr-right">
                   <div class="trip">
                     <label class="trip-label">Trip Start :</label>
-                    <span class="trip-span"><%=@current_route.start_point%></span>
+                    <span class="trip-span"><%=@current_route.try(:start_point)%></span>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <div class="trip">
                     <label class="trip-label">Trip End :</label>
-                    <span class="trip-span"><%=@current_route.end_point%></span>
+                    <span class="trip-span"><%=@current_route.try(:end_point)%></span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="map-img"><img class="img-responsive" src="/assets/map-sm1.png" style="width:100%; min-height:180px;"></div>
+            <div class="map-img" id = "#I1" ><img class="img-responsive" src="/assets/map-sm1.png" style="width:100%; min-height:180px;"></div>
           </div>
         </div>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+  $("#I1").mouseover(function(){
+
+    $("#I1").animate({height:300,width:300},"fast");
+   });
+ $("#I1").mouseout(function(){
+    $("#I1").animate({height:96,width:128},"fast");
+   });
+});
+</script>

@@ -4,7 +4,9 @@ filter :name
 filter :price 
 filter :duration
 
+
 permit_params :name , :price , :duration , :image, :zoomed_image,:main_route_id ,city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
+
 
 form do  |f|
   f.inputs do

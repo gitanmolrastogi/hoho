@@ -154,6 +154,16 @@ ActiveRecord::Schema.define(version: 20161020064344) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "how_it_works", force: :cascade do |t|
+    t.string   "title"
+    t.string   "sub_title"
+    t.string   "content"
+    t.string   "image"
+    t.string   "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "line_color_routes", force: :cascade do |t|
     t.string   "name"
     t.string   "price"

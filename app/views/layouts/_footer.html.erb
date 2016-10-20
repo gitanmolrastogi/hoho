@@ -17,14 +17,14 @@
             <div class="col-md-3 col-xs-12">
               <ul class="quick-links">
                 <li><a href="/user/static_content/terms_and_condition">Terms & Condition</a></li>
-                <li><a href="#">Forums</a></li>
+                <li><a href="https://mobiloitte2970.discussion.community">Forum</a></li>
                 <li><a href="/user/static_content/privacy_policy">Privacy Policy</a></li>
               </ul>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
               <address class="addr">
                 <p>Reservation and Sales<br>Information</p>
-                <p>Phone: +91 9876543210</p>
+                <p>Phone: +91 <%= StaticPage.find_by(title: "Phone Number").try(:content).html_safe%></p>
               </address>
             
             </div>

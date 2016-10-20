@@ -12525,9 +12525,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 
 $( document ).ready(function() {
       $('#select_city_id').change(function(){
-      $('#line_color_route_end_point option').remove();
-      $('#line_color_route_end_point').append('<option value='+$(this).val()+'>'+$(this).val()+'</option>');
-      $('#line_color_route_end_point').prop("disabled", true);
+      $('#main_route_end_point option').remove();
+      $('#main_route_end_point').append('<option value='+$(this).val()+'>'+$(this).val()+'</option>');
+      $('#main_route_end_point').prop("disabled", true);
       // $('#line_color_route_city_routes_attributes_0_city_id')
     });
 
@@ -12623,8 +12623,8 @@ $( document ).ready(function() {
 
   //     rules: {
   //           "home_page_image[image]": {
-  //                required: true
-               
+  //               required: true,
+  //               extension: "jpg,jpeg,png",
   //           },
   //           "home_page_image[status]": {
   //                required: true
@@ -12632,7 +12632,8 @@ $( document ).ready(function() {
   // },
   //   messages: {
   //            "home_page_image[image]": {
-  //               required: "Please select a image to upload name"
+  //               required: "Please select a image to upload name",
+  //               extension: "invalid",
   //           },
   //           "home_page_image[status]": {
   //               required: "Please select a status"
@@ -13468,48 +13469,53 @@ $("#bus_start_point").change(function(){
 
   });
 
-//==================EDIT ends here==========================
+//==================EDIT Tips ends here==========================
 
 
- window.URL = window.URL || window.webkitURL;
+// Home Page Image Validation
+window.URL = window.URL || window.webkitURL;
 
-$("#new_home_page_image").submit( function( e ) {
-    // alert("submit");
-    var form = this;
-    // e.preventDefault(); //Stop the submit for now
-                                //Replace with your selector to find the file input in your form
-    var fileInput = $(this).find("input[type=file]")[0],
+$("#home_page_image_submit_action").click( function( e ) {
+    e.preventDefault();
+      image_error=""
+     $("#home_page_image_image_input").find('.image-error').remove('.image-error')
+     $("#home_page_image_image_input").append("<span class= 'image-error' style='color:red;padding-left:90px;'></span>");
+    var fileInput = document.getElementById("home_page_image_image");
         file = fileInput.files && fileInput.files[0];
-
+        var FileUploadPath = fileInput.value;
     if( file ) {
+        var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+        if (!(Extension == "gif" || Extension == "png" || Extension == "bmp"
+                    || Extension == "jpeg" || Extension == "jpg"))
+            {
+                 image_error= "Allowed file format are gif,png,jpeg,jpg,bmp"
+                 $(".image-error").text(image_error);
+                 return false
+            }
+                else{
         var img = new Image();
-
         img.src = window.URL.createObjectURL( file );
-
         img.onload = function() {
-            var width = img.naturalWidth,
-                height = img.naturalHeight;
-              // alert(width)
-            window.URL.revokeObjectURL( img.src );
-
-            if( width == 1600 && height == 900 ) {
-                 // alert("if");
+        var width = img.naturalWidth,
+        height = img.naturalHeight;
+        window.URL.revokeObjectURL( img.src );
+        if( width == 1600 && height == 900 ) {
                 $('#new_home_page_image').submit();
             }
             else {
-                alert("df");
-                // e.preventDefault();
-
+                image_error= "Image dimention should be (1600 * 900)px"
+                 $(".image-error").text(image_error);
+                 return false
             }
         };
-    }
-    else { //No file was input or browser doesn't support client side reading
-        $("#new_home_page_image").submit();
+    }}
+    else { 
+        
+        image_error= "Please select a file to upload"
+                 $(".image-error").text(image_error);
+                 return false
     }
 
 });
-
-
-
-
+// Home Page Image Validation End
 });

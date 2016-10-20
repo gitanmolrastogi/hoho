@@ -1,15 +1,14 @@
 class User::UsersController < ApplicationController
 
- def new
- 	@user=User.new
+ def edit_profile
+    @user=current_user
+    p "======#{@user.inspect}==========="
  end
 
- def index
- 	
- end
-
- def create
- 	
+ def update_profile
+   p "=====update============#{params.inspect}"
+   current_user.update_attributes(update_params)
+   redirect_to '/'
  end
 
  def get_city
@@ -25,7 +24,7 @@ def check_email
       else
           render json: :true
       end  
- end
+end
 #when entering email during forgot password 
  def find_email
     @email_user= User.find_by(email: params[:user][:email].downcase)
@@ -35,5 +34,22 @@ def check_email
           render json: :true
       end  
     end 
+
+# During change password check current password
+
+  def check_current_password
+    p "===cccccccccccccc=#{current_user.valid_password?(params[:user][:current_password])}============"
+    if current_user.valid_password?(params[:user][:current_password])
+      render json: :true
+     else
+      render json: :false
+     end 
+  end
+
+  private
+
+  def update_params
+   params.permit(:first_name,:last_name)    
+  end  
 
 end

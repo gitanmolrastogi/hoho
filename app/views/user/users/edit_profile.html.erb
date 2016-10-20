@@ -1,0 +1,63 @@
+<%= render :partial => 'layouts/slider_top'%>
+<p class="login-box-msg">Edit Profile</p>
+<%= form_tag(users_update_profile_path,:id=>"edit_profile",method: :put) do %>
+ 
+ <div class="form-group has-feedback">
+ 	<%= label_tag "first_name",nil,:class=>"edit_profile"%>
+   <%=text_field_tag  "first_name",nil, autocomplete: "off" ,placeholder: "First name",:class=>"form-control",value: current_user.first_name%>
+  </div></br>
+ 
+ <div class="form-group has-feedback">
+ 	<%= label_tag "last_name",nil,:class=>"edit_profile"%>
+   <%=text_field_tag "last_name",nil,autocomplete: "off" ,placeholder: "Last name",:class=>"form-control",value: current_user.last_name%>
+  </div>
+
+<div class="actions">
+    <%=submit_tag "Update",:class=>"btn btn-block submit-btn mrg-tb" %>
+  </div></br>
+  <% end %>
+<%= render :partial=>'layouts/slider_bottom'%>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+   $("#edit_profile").validate({
+        // Specify the validation rules
+        rules: {
+            "first_name": {
+                 required: true,
+                 pattern: /^[a-z A-Z]+$/,
+                 maxlength: 10
+                
+            },
+            "last_name": {
+                 required: true,
+                 pattern: /^[a-z A-Z]+$/,
+                 maxlength: 10
+                
+            },
+           
+        },
+        // // Specify the validation error messages
+        messages: {
+             "first_name": {
+                required: "Please enter a first name",
+                pattern: "please enter only letters",
+                maxlength: "Should not exceed limit 10"
+                
+            },
+            "last_name": {
+                required: "Please enter a last name",
+                pattern: "please enter only letters",
+                maxlength: "Should not exceed limit 10"
+                
+            },
+           
+           },
+       submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    });
+
+</script>

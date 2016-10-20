@@ -10,9 +10,5 @@ form do |f|
 	    f.input :end_point, :as => :select , input_html: {:disabled => true }, :collection =>  {}, :include_blank => false
 	end
 	actions
-end
-
-
-
-
+ end
 end

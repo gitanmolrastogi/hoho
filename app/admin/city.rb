@@ -30,6 +30,14 @@ controller do
    	  if params[:city].present?
    	       params[:city][:name] = params[:city][:name].downcase
       end
+   end
+
+   def create
+     if params[:city][:photos_attributes].count < 2
+      redirect_to :back, :alert => "Please Select at least two images for city"
+      else
+      super
+    end
    end	
   end
 end

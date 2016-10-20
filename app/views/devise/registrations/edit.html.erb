@@ -1,43 +1,75 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2> -->
+<%= render :partial => 'layouts/slider_top'%>
+<p class="login-box-msg">Change Password</p>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,id: "new_password" }) do |f| %>
   <%= devise_error_messages! %>
+  <p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+  <div class="form-group has-feedback">
+   <%= f.password_field :password, autocomplete: "off" ,placeholder: "New password",:class=>"form-control"%>
+  </div></br>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+   <div class="form-group has-feedback">
+  <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password",:class=>"form-control" %>
+  </div></br>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+  <div class="form-group has-feedback">
+ <%= f.password_field :current_password, autocomplete: "off",placeholder: "Current password",:class=>"form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+    <%= f.submit "Update",:class=>"btn btn-block submit-btn mrg-tb" %>
+  </div></br>
 <% end %>
+<%= render :partial => 'layouts/slider_bottom'%>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<script type="text/javascript">
+  $(document).ready(function(){
+   $("#new_password").validate({
+        // Specify the validation rules
+        rules: {
+            
+            "user[current_password]": {
+                 required: true,
+                 minlength: 6
+            },
+
+            "user[password]": {
+                required: true,
+                minlength:6
+                
+            },
+            "user[password_confirmation]": {
+                 equalTo: "#user_password"
+                
+            },
+        },
+        // // Specify the validation error messages
+        messages: {
+             
+            "user[current_password]": {
+                required: "Please enter a current password",
+                minlength: "should be atleast 6 characters"
+                
+            },
+
+            "user[password]": {
+                required:"Please enter password",
+                minlength: "should be atleast 6 characters"
+                
+            },
+            "user[password_confirmation]": {
+                equalTo: "Password confirmation doesn't match"
+                
+            },
+            
+        },
+       submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    });
+
+</script>

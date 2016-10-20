@@ -2,13 +2,14 @@
 	<header>
 		<nav class="navbar navbar-default navbar-fixed-top custom-header">
 			<div class="container">
+				 
 				<div class="navbar-header page-scroll">
 					 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#page-top"><img src="/assets/logo.png" alt="" /></a>
+					<a class="navbar-brand"><img src="/assets/logo.png" alt="" /></a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="collapse">
@@ -20,18 +21,26 @@
 							<a href="/user/routes/index">Routes</a>
 						</li>
 						<li>
-							<a href="/user/activities">Activities</a>
+							<a href="/user/routes/hop_on_hop_off">Hop On Hop Off</a>
 						</li>
+
 						<li>
-							<a href="#">Hop On Hop Off</a>
+                          <a href="/user/activities">Activities</a>
 						</li>
+						
 						<% if current_user %>
 						<li>
 							<a href="/users/sign_out">Logout</a>
 						</li>
+						
 						<li>
-							<a href=""><%= current_user.try(:first_name)%></a>
+						   <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.try(:first_name)%></a>
+                                     <ul class="dropdown-menu">
+                                     <li><a href="/users/edit_profile">Edit Profile</a></li>
+                                     <li><a href="/users/edit">Change Password</a></li>
+                                     </ul>
 						</li>
+
 						<% else%>
                          <li>
 							<a href="/users/sign_in">Login</a>
@@ -43,8 +52,10 @@
 						<% end %>
 					</ul>
 				</div>
-				<p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
+				<p id="notice_error"><%= flash[:notice] if flash[:notice].present?%></p>
                  <% flash[:notice] = ""%>
 			</div>
+
 		</nav>
+
 	</header>

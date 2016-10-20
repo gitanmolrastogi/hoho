@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -19,9 +20,12 @@ get '/admin/check_city',to: 'user/static_content#check_city'
 get '/admin/check_category',to: 'user/static_content#check_category'
 #Routes To Check Admin Side  Request (END)
 
+get '/users/edit_profile',to: 'user/users#edit_profile'
+put '/users/update_profile',to: 'user/users#update_profile' 
 
  namespace :user do
   get '/cities' => "users#get_city"
+
    resources :static_content, only: [] do
          collection do
             get 'about_us'
@@ -36,12 +40,6 @@ get '/admin/check_category',to: 'user/static_content#check_category'
       end
 
     resources :activities, only: [:show , :index] do
-      collection do
-
-      end
-
-      member do 
-      end
     end  
     
     resources :orders, only: [] do
@@ -51,23 +49,15 @@ get '/admin/check_category',to: 'user/static_content#check_category'
         get 'my_order_history'
         get 'remove_item'
       end
-
-      member do 
-      end
     end 
     resources :routes  , only: [] do 
       collection do
         get 'index'
         get 'city_details'
         get 'category_details'
+        get 'hop_on_hop_off'
+        get 'bus_details'
       end
-
-      member do 
-
-      end
-  end
-
-end
-
-
+   end
+ end
 end

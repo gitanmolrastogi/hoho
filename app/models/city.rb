@@ -1,6 +1,6 @@
 class City < ApplicationRecord
-	has_many :photos, as: :imageable		
-	has_many :city_routes
+	has_many :photos, as: :imageable,dependent: :destroy		
+	has_many :city_routes,dependent: :destroy
 	has_many :line_color_routes , through: :city_routes 
 
 	has_many :city_categories , dependent: :destroy
