@@ -10,7 +10,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-	$("#city_dropdown").change(function(){
+		$(document).on('change', '#city_dropdown', function(){
 		var c_id=this.value;
 		// alert(c_id);
 

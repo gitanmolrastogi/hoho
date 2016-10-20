@@ -7,6 +7,6 @@ devise :database_authenticatable, :registerable,
 validates :first_name,presence: true,:on => :create
 validates :last_name,presence: true,:on => :create    
 
-has_many :orders , as: :orderable 
+has_many :orders 
       
 end

@@ -1,0 +1,98 @@
+</br>
+</br>
+</br>
+<section class="page-content">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-md-10">
+	                  <div class="city-info">
+						<div class="category-main-section">
+						 <div class="city-section-block">
+						  <div class="heading-block">
+	                        <h2 class="heading"><%= @activity.name %></h2>
+	                        <div class="head-line m-b-10"></div>
+	                      </div>
+						  <div class="search-city-detail">
+							<div class="row">
+							  <div class="col-md-7">
+								<div class="city-img">
+								  <!-- <img class="img-responsive" src="/assets/lotus.png"> -->
+								  <%= image_tag(@activity.image.url , class:"img-responsive" ) %>
+								</div>
+							  </div>
+							  <div class="col-md-5">
+							   <ul class="city-img6">
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1a.png">
+							    </li>
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1b.png">
+							    </li>
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1c.png">
+							    </li>
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1d.png">
+							    </li>
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1e.png">
+							    </li>
+								<li class="city-6-images">
+								  <img class="img-responsive" src="/assets/img1f.png">
+							    </li>
+							   </ul>
+							  </div>
+							</div>
+						  </div>
+						  <div class="row city-search-block">
+						  <div class="col-md-7">
+						  	<div class="row">
+		                      <div class="col-md-10 col-sm-10 col-xs-9">
+		                        <form class="form-block">
+		                          <div class="form-group">
+		                          </div>
+		                        </form>
+		                      </div>
+		                      <div class="col-md-2 col-sm-2 col-xs-3 text-right p-l-0">
+		                      </div>
+		                     </div>
+		                    </div>
+	                      <div class="col-md-5 col-sm-10 col-xs-9">
+	                       <%= link_to  "ADD TO CART" , add_to_cart_user_orders_path(:id => @activity.id , :type => "activity") %>
+	                      </div>
+	                    </div>
+						 </div>
+						 <div class="overview-section">
+						   <div class="heading-block">
+	                        <h2 class="heading">Overview</h2>
+	                        <div class="head-line m-b-10"></div>
+	                       </div>
+						   <div class="overview-block">
+							<div class="txt">
+							<p class="para-text">
+				              <p><b>Price: </b><%= @activity.price %></p> 
+				              <p><b>City: </b> <%= @activity.city.name%></p> 
+				              <p><b>Category: </b><%= @activity.category.name%></p> 
+				            </p>
+							  <%= @activity.overview %></div>
+
+						   </div>
+						 </div>
+						 <div class="imp-info-section">
+						   <div class="heading-block">
+	                        <h2 class="heading">Important info <a class="link-a pull-right" href="#"> See More &gt;&gt; </a></h2>
+	                        <div class="head-line m-b-10"></div>
+	                       </div>
+						   <div class="overview-block">
+							<div class="txt"> <%= @activity.information %></div>
+						   </div>
+						 </div>
+						</div>
+	                  </div>
+	            </div>
+		          <div class="col-md-2">
+		            
+		          </div>
+	        </div>
+	      </div>
+    </section>

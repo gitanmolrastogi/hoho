@@ -1,0 +1,125 @@
+		</br>
+		</br>
+		</br>
+		</br>
+
+		<section class="page-content add-to-cart">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10">
+						<div class="heading-block">
+							<h2 class="heading">Items In Your Cart</h2>
+							<div class="head-line m-b-10"></div>
+						</div>
+						<div class="text-right"><%= link_to "Continue Booking..." , user_routes_path , class:"btn btn-success"%></div>
+						<div class="route-activity-info clearfix">
+							<div class="row">
+                             <% if @cart_orders.present? %>
+								<% @cart_orders.each do |order| %>
+										<% if order.orderable_type == "Bus" %>
+												<div class="col-sm-12">
+													<div class="cart-heading"><h4>Booked Hop</h4></div>
+													<div class="cart-route-block">
+														<div class="route-detail-a">
+															<label class="label-r">From</label>
+															<span class="span-r"><%= order.orderable.start_point%></span>
+														</div>
+														<div class="route-detail-a">
+															<label class="label-r">Upto</label>
+															<span class="span-r"><%= order.orderable.end_point%></span>
+														</div>
+														<div class="route-detail-a">
+															<label class="label-r">Price</label>
+															<span class="span-r"> <i class="fa fa-inr"></i> <%= order.orderable.price%></span>
+															</div>
+														</div>
+														<div align="right"><%= link_to "Remove" , remove_item_user_orders_path(id: order.id)%></div>
+														</hr>											
+												    </div>
+		 								<%end%>
+										<% if order.orderable_type == "Activity" %>
+											 <div class="col-sm-12">
+												<div class="cart-heading"><h4>Booked Activity</h4></div>
+												<div class="cart-route-block">
+													<div class="route-detail-a">
+														<label class="label-r">Activity Name :</label>
+														<span class="span-r"><%= link_to "#{order.orderable.name}" , user_activity_path(order.orderable_id) %></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">City:</label>
+														<span class="span-r"><%= order.orderable.city.name %></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">Price:</label>
+														<span class="span-r"> <i class="fa fa-usd"></i> <%= order.orderable.price %></span>
+													</div>
+											 	</div>
+												<div align="right"><%= link_to "Remove" , remove_item_user_orders_path(id: order.id) %></div>
+											 	<hr>
+											 </div>
+										<%end%>
+										<% if order.orderable_type == "MainRoute" %>
+										  <div class="col-sm-12">
+											<div class="cart-heading"><h4>Booked Route</h4></div>
+												<div class="cart-route-block">
+													<div class="route-detail-a">
+														<label class="label-r"> Route Name :</label>
+														<span class="span-r"><%= link_to "#{order.orderable.name}" , "/user/routes/index?route_id=#{order.orderable_id}" %></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">Departure From :</label>
+														<span class="span-r"><%= order.orderable.start_point%></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">End Point :</label>
+														<span class="span-r"><%= order.orderable.end_point%></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">Price :</label>
+														<span class="span-r"> <i class="fa fa-inr"></i><%= order.orderable.price%></span>
+													</div>
+												</div>
+												<div align="right"><%= link_to "Remove" , remove_item_user_orders_path(id: order.id)%></div>
+										 	<hr>
+										  </div>
+	 									<%end%>
+	                            <%end%>
+								<% if @sum != 0 %>
+								<div class="col-md-12">
+									<div class="cart-price-block text-right clearfix">
+										<div class="route-detail-a cart-total-amount">
+											<label class="label-r">Total Amount</label>
+											<span class="span-r"> <i class="fa fa-usd"></i><%= @sum %></span>
+										</div>
+									</div>
+									<div class="text-right"><button class="btn red-btn">Place Order Now</button></div>
+								    </div>
+								<%end%>
+
+								<%else%>
+							    	<div class="col-md-12">
+								
+								    </div>
+								<%end%>
+
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</section>
+
+		<style type="text/css">
+			hr {
+			    -moz-border-bottom-colors: none;
+			    -moz-border-left-colors: none;
+			    -moz-border-right-colors: none;
+			    -moz-border-top-colors: none;
+			    border-color: #f48342 -moz-use-text-color -moz-use-text-color;
+			    border-width: 1px 0 0;
+			    margin-bottom: 0;
+			    margin-top: 23px;
+				}
+
+		</style>

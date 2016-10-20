@@ -1,0 +1,31 @@
+</br>
+</br>
+</br>
+ <div class="container">
+	
+      <% @activities.each do |activity| %>
+        <div class="activity-block">
+          <div class="heading-block">
+            <h2 class="heading"><%= activity.name %></h2>
+            <div class="head-line m-b-10"></div>
+          </div>
+          <div class="activity-inner-block">
+            <div class="activity-img">
+              <img class="img-responsive" src="/assets/activity.png">
+            </div>
+            <div class="activity-detail">
+              <p class="para-text">
+              <p><b>Price: </b><%= activity.price %></p> 
+              <p><b>City: </b> <%= activity.city.name%></p> 
+              <p><b>Category: </b><%=  activity.category.name%></p> 
+               <%= activity.overview %>
+              </p>
+              <!-- <button > </button> -->
+               <%= link_to "See Details" , user_activity_path(activity.id)  ,class:"btn btn-sm red-btn" %>
+            </div>
+          </div>
+        </div>
+      <%end%>
+
+      <%= will_paginate @activities ,  class:"link-a pull-right" %>
+ </div>

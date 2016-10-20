@@ -9,8 +9,12 @@
           <div class="col-md-2">
             <div class="sight-seeing-block text-center">
               <h2>BOOK WHOLE ROUTE</h2>
-              <button class="btn red-btn"><i><img src="/assets/book.png"></i>Book Now</button>
+              <!-- <button class="btn red-btn"> -->
+              <i><img src="/assets/book.png"></i>
+              <%= link_to "Add To Cart" , add_to_cart_user_orders_path(:id => @current_route.id , :type => "route")  %> 
+              <!-- </button> -->
             </div>
           </div>
         </div>
       </div>
+

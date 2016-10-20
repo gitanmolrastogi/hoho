@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 #pagination
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate'
 
 #Image Uploading
 gem 'carrierwave'
