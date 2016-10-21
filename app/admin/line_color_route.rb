@@ -5,7 +5,7 @@ filter :price
 filter :duration
 
 
-permit_params :name , :price , :duration , :image, :zoomed_image,:main_route_id ,city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
+permit_params :name , :duration , :image, :zoomed_image,:main_route_id ,city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
 
 
 form do  |f|
@@ -16,21 +16,18 @@ form do  |f|
           f.has_many :city_routes  do |l|
               l.input :city_id ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]},:include_blank => true, input_html: {class: "select_city"}
               a = 1..100
-              # l.input :priority , :label => 'Sequence Number', :as => :select, :collection => a , input_html: {class: "priority",id: "priority_id"}
               puts "-----------------------------------------------------------------------------"
               if  request.original_url.include?("edit") 
                l.input :_destroy, :as => :boolean, :label => "Delete"
               end
           end
       end
-    f.input :price
     f.input :duration ,:label => 'Duration in Days'
     f.input :image, as: :file
     f.input :zoomed_image , as: :file
   end
   actions
 end
-
 
 show :title=> "Route Management" do |route|
     attributes_table do	 
@@ -43,15 +40,11 @@ show :title=> "Route Management" do |route|
     row :hops do |route|
       route.cities.pluck(:name).join(", ")
     end
-	row :name
-	row :price
-	row :duration
-
-    # row  :status
+    	row :name
+    	row :price
+    	row :duration
    end
 end
-
-
 
 controller do
   def to_s

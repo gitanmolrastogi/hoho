@@ -44,10 +44,6 @@ form do |f|
   actions
 end
 
-
-
-
-
 show :title=> "Route Management" do |route|
     attributes_table do  
   row :start_date

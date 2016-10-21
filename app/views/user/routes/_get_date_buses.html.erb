@@ -1,0 +1,25 @@
+<table class="table">
+<thead>
+ <tr>
+   <th>From</th>
+   <th>To</th>
+   <th>Departs</th>
+   <th>Arrives</th>
+   <th>From</th>
+   <th>Untill</th>
+ </tr>
+</thead>
+<tbody>
+   <% @buses.each do |bus| %>
+    <tr>
+      <td><%= bus.bus_start_point %></td>
+      <td><%= bus.bus_end_point %></td>
+      <td><%= bus.bus_start_time.strftime("%I:%M") rescue ""%></td>
+      <td><%= bus.bus_end_time.strftime("%I:%M") rescue ""%></td>
+      <td><%= bus.bus_start_date.strftime("%e %b") rescue ""%></td>
+      <td><%= bus.bus_end_date.strftime("%e %b") rescue ""%></td>
+    </tr>
+   <% end%>
+ 
+</tbody>
+</table>

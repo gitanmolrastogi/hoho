@@ -4,8 +4,6 @@ filter :name
 filter :overview
 filter :important
 permit_params :name , :overview ,:important , photos_attributes: [:id, :image ,:status ,:_destroy]
-
-
 form do |f|
   f.inputs do
     f.input :name
@@ -24,7 +22,6 @@ form do |f|
 end
 actions
 end
-
 controller do 
    def downcase_city
    	  if params[:city].present?

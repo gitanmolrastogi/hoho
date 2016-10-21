@@ -475,9 +475,28 @@ $("#bus_start_date").datepicker({
         }
     });
  //=========datepicker=========
+ //======EVENT===datepicker=========
 
+$("#activity_start_date").datepicker({
+        // showButtonPanel: true,
+         minDate: 0,
+         dateFormat: 'yy/mm/dd',
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate());
+            $("#bus_end_date").datepicker("option", "minDate", dt);
+        }
+    });
 
-
+ $("#activity_end_date").datepicker({
+        dateFormat: 'yy/mm/dd',
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate());
+            $("#bus_start_date").datepicker("option", "maxDate", dt);
+        }
+});
+ //=========datepicker=========
 //==================Starts new_accommodation=======================
   $('#new_accommodation').validate({
    errorElement: "div",

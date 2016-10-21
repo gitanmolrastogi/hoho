@@ -1,4 +1,3 @@
-
  <div class="city-section-block">
   <div class="heading-block">
     <h2 class="heading"><%= @city.try(:name) %></h2>
@@ -53,17 +52,14 @@
        </div>
 	   <div class="overview-block">
 		  <div class="txt">
-
 		  	<div id= "city_important_see_more">
-		    <%= truncate(@city.try(:important), :length =>30, :escape => false) %>
+		    <%= truncate(@city.try(:important), :length =>264, :escape => false) %>
 		    <a class="link-a pull-right" id= "city_important_more"> See More </a>
 		   </div>
-
 		   <div id= "city_important_see_less">
 		    <%= @city.try(:important)%>
 		    <a class="link-a pull-right" id= "city_important_less" > See Less </a>
 		  </div>
-
 		  </div>						
 	   </div>
 	 </div>      

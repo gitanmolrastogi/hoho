@@ -29,15 +29,17 @@
 						</li>
 						
 						<% if current_user %>
-						<li>
-							<a href="/users/sign_out">Logout</a>
-						</li>
+						
 						
 						<li>
 						   <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.try(:first_name)%></a>
                                      <ul class="dropdown-menu">
                                      <li><a href="/users/edit_profile">Edit Profile</a></li>
                                      <li><a href="/users/edit">Change Password</a></li>
+                                     <li><a href="/user/orders/my_cart">My Cart</a></li>
+                                     <li><a href="/user/orders/my_order_history">My Bookings</a></li>
+                                     <li><a href="/users/sign_out">Logout</a></li>
+
                                      </ul>
 						</li>
 

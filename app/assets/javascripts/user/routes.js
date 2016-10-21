@@ -7,8 +7,8 @@
 // });
 
 $(document).ready(function(){
+
   $(".category-section").hide();
-  $('#city_important_see_less').hide();
 
  $(document).on('change', '#city_dropdown', function(){
      var c_id=this.value;
@@ -25,6 +25,10 @@ $(document).ready(function(){
   $(document).on('click', '#city_important_more', function(){
      $('#city_important_see_less').show();
        $('#city_important_see_more').hide();
+  });
+
+   $(document).on('click', '#hide_see_less', function(){
+      $('#city_important_see_less').hide();
   });
 
   $(document).on('click', '#city_important_less', function(){
@@ -93,6 +97,14 @@ $(document).ready(function(){
     
         });
 
+   $(document).on('click' , '#from_city' ,function(){
+    var main_route = $('#city_route').val();
+    if (main_route == "") {
+      alert("Please selct a route first.");
+   };
+
+   });
+
   $(document).on('click', '#go_hop', function(){
     var to_city_id = $('#to_city').val();
     var from_city_id = $('#from_city').val();
@@ -114,4 +126,3 @@ $(document).ready(function(){
         });
   });
 
-  

@@ -21,6 +21,8 @@ class User::OrdersController < ApplicationController
   end
 
   def my_order_history
+    @cart_orders = current_user.orders.where("is_paid = ?" ,true)
+
   end
 
   def remove_item

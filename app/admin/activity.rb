@@ -7,8 +7,6 @@ permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:over
 
 index do |f|
      selectable_column
-     
-
      column :name
      column :overview
      column :information
@@ -39,7 +37,6 @@ index do |f|
     f.input :start_time
     f.input :end_time 
     f.input :price 
-   
   end
   actions
 end

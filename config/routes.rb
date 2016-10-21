@@ -57,6 +57,7 @@ put '/users/update_profile',to: 'user/users#update_profile'
         get 'category_details'
         get 'hop_on_hop_off'
         get 'bus_details'
+        get 'get_date_buses'
       end
    end
  end
