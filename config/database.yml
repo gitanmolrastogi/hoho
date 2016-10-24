@@ -17,4 +17,3 @@ test:
 
 production:
   database: delhi_airport_production
-  <<: *defaults

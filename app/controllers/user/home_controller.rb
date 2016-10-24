@@ -23,4 +23,8 @@ def read_less
    @object= HowItWork.find_by(id: params[:object_id])
 end
 
+
+def forums
+end
+
 end

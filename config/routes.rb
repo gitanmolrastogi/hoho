@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
 
-  mount Ckeditor::Engine => '/ckeditor'
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  devise_for :users ,:controllers => { sessions: 'user/sessions',registrations: 'user/registrations' }
+  get "user/forums" => "user/home#forums"  
+
+
+
+mount Ckeditor::Engine => '/ckeditor'
+devise_for :admin_users, ActiveAdmin::Devise.config
+ActiveAdmin.routes(self)
+devise_for :users ,:controllers => { sessions: 'user/sessions',registrations: 'user/registrations' }
 
  root :to=>'user/home#dashboard'
  get  '/users/check_email', to: 'user/users#check_email'
@@ -41,7 +45,6 @@ put '/users/update_profile',to: 'user/users#update_profile'
 
     resources :activities, only: [:show , :index] do
     end  
-    
     resources :orders, only: [] do
       collection do
         get 'add_to_cart'
