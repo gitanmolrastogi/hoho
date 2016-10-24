@@ -8786,7 +8786,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 .activity-img img, .map-img img{width:100%; height:auto; border-radius:4px; }
 .activity-detail{display:inline-block; width:86%; padding:0 0 0 10px; vertical-align:top;}
 .activity-detail p{font-size:16px; line-height:25px; }
-.btn.red-btn{background-color: #ee5351; color: #fff; font-size:16px; outline:0; padding:10px 12px;}
+.btn.red-btn{background-color: #ee5351; color: #fff; font-size:16px; outline:0; padding:5px 5px;}
 .btn.red-btn i{padding-right:10px;}
 .btn.btn-sm.red-btn{padding:1px 15px; border-radius:5px;}
 .btn.red-btn:hover{background-color: #df4c4a; color: #fff;}
