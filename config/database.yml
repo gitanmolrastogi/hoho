@@ -16,4 +16,4 @@ test:
   <<: *defaults
 
 production:
-  database: delhi_airport_production
+  url: <%= ENV['DATABASE_URL'] %>
