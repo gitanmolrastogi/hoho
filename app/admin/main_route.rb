@@ -1,6 +1,6 @@
 ActiveAdmin.register MainRoute do
 
-permit_params :information , :start_point ,:end_point , :name , :image , :price
+permit_params :information , :start_point ,:end_point , :name , :image , :price , :duration
 form do |f|
 	f.inputs do
 		f.input :name
