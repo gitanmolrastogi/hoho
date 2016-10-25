@@ -22,7 +22,7 @@ form do  |f|
               end
           end
       end
-    f.input :duration ,:label => 'Duration in Days'
+    # f.input :duration ,:label => 'Duration in Days'
     f.input :image, as: :file
     f.input :zoomed_image , as: :file
   end
@@ -41,7 +41,7 @@ show :title=> "Route Management" do |route|
       route.cities.pluck(:name).join(", ")
     end
     	row :name
-    	row :price
+    	# row :price
     	row :duration
    end
 end
