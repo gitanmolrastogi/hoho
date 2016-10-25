@@ -100,7 +100,7 @@ $(document).ready(function(){
    $(document).on('click' , '#from_city' ,function(){
     var main_route = $('#city_route').val();
     if (main_route == "") {
-      alert("Please selct a route first.");
+      alert("Please select a route first.");
    };
 
    });

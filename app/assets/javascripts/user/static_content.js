@@ -44,20 +44,20 @@ $(document).ready(function(){
         // // Specify the validation error messages
         messages: {
              "first_name": {
-                required: "Please enter a first name",
+                required: "Please enter first name",
                 pattern: "please enter only letters",
                 maxlength: "Should not exceed limit 10"
                 
             },
             "last_name": {
-                required: "Please enter a last name",
+                required: "Please enter last name",
                 pattern: "please enter only letters",
                 maxlength: "Should not exceed limit 10"
                 
             },
             "email": {
-                required: "Please enter a email",
-                email: "Please enter valid email",
+                required: "Please enter a email id",
+                email: "Please enter valid email id",
                 
 
             },

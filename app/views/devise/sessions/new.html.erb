@@ -7,7 +7,7 @@
 <p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
 <% flash[:notice] = ""%>
   <div class="form-group has-feedback user-icon">
-    <%= f.email_field :email, autofocus: true,:class=>"form-control",placeholder: "LoginId" %>
+    <%= f.email_field :email, autofocus: true,:class=>"form-control",placeholder: "Email id" %>
   </div>
 
   <div class="form-group has-feedback lock-icon">
@@ -61,7 +61,7 @@
         messages: {
              
             "user[email]": {
-                required: "Please enter email",
+                required: "Please enter email id",
 
             },
             "user[password]": {

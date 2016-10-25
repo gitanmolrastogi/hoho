@@ -1,7 +1,7 @@
 class User::StaticContentController < ApplicationController
 
   def tips
-    @tips= params[:tip_id].present? ? Tip.find_by(id: params[:tip_id]) : Tip.all 
+   @tips= params[:tip_id].present? ? Tip.find_by(id: params[:tip_id]) : Tip.all 
   end
 
   def faq

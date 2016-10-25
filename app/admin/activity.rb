@@ -22,7 +22,38 @@ index do |f|
     actions
   end
 
- form do |f|
+show :title=> "Activity Details" do |activity|
+    attributes_table do  
+      row :name
+      row :overview
+      row :information
+      row :start_date
+      row :end_date
+      row  :image do |img|
+        image_tag img.image_url(:photos)
+      end
+      
+      row "start_time" do |activity|
+        activity.start_time.strftime("%H:%M")
+      end 
+       row "end_time" do |activity|
+        activity.end_time.strftime("%H:%M")
+      end 
+      row :price
+      end
+
+    # row  :status
+   end
+
+
+
+
+
+
+
+
+
+form do |f|
   f.inputs do
   	f.input :city ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]}
     f.input :category ,:as => :select, :collection => Category.all.map{|u| ["#{u.name}", u.id]}

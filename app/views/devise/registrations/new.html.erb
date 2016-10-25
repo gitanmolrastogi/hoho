@@ -15,7 +15,7 @@
   </div>
 
   <div class="form-group has-feedback">
-    <%= f.text_field :email, autofocus: true,placeholder: "Email",:class=>"form-control"%>
+    <%= f.text_field :email, autofocus: true,placeholder: "Email id",:class=>"form-control"%>
   </div>
 
   <div class="form-group has-feedback">
@@ -69,6 +69,7 @@
                 
             },
             "user[password_confirmation]": {
+                 required: true,
                  equalTo: "#user_password"
                 
             },
@@ -88,18 +89,19 @@
                 
             },
             "user[email]": {
-                required: "Please enter a email",
-                email: "Please enter valid email",
+                required: "Please enter a email id",
+                email: "Please enter valid email id", 
                 remote: "Email already registered",
 
             },
             "user[password]": {
                 required: "Please enter a password",
-                minlength: "should be atleast 6 characters"
+                minlength: "Password should be atleast 6 characters"
                 
             },
             "user[password_confirmation]": {
-                equalTo: "Password confirmation doesn't match"
+                required: "Please enter confirm password",
+                equalTo: "Password and confirm password doesn't match."
                 
             },
             

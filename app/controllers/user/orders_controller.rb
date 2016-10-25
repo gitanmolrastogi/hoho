@@ -11,9 +11,9 @@ class User::OrdersController < ApplicationController
      if @order
      	@order.update(user_id: current_user.id )
      	redirect_to my_cart_user_orders_path
-     	flash[:notice] = "Activity sucessfully added to your cart"  if params[:type] == "activity"
-      flash[:notice] = "Hop sucessfully added to your cart"  if params[:type] == "hop"
-      flash[:notice] = "Route sucessfully added to your cart"  if params[:type] == "route"
+     	flash[:notice] = "Activity successfully added to your cart"  if params[:type] == "activity"
+      flash[:notice] = "Hop successfully added to your cart"  if params[:type] == "hop"
+      flash[:notice] = "Route successfully added to your cart"  if params[:type] == "route"
      end
   end
 

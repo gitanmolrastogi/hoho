@@ -1,7 +1,7 @@
 
 <%= render :partial => 'layouts/slider_top'%>
  <p class="login-box-msg">FORGOT YOUR PASSWORD</p>
- <p class="des-msg">Enter your registered email to retrieve your password.</p>
+ <p class="des-msg">Enter your registered email id to retrieve your password.</p>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post,id: "forgot_form" }) do |f| %>
   <%= devise_error_messages! %>
   <div class="form-group has-feedback user-icon">
@@ -33,8 +33,8 @@
         // // Specify the validation error messages
         messages: {
              "user[email]": {
-                required: "Please enter a email",
-                email: "Please enter valid email",
+                required: "Please enter a email id",
+                email: "Please enter valid email id",
                 remote: "Email not found ",
                 
             },

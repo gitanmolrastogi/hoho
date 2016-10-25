@@ -22,16 +22,14 @@
                  required: true,
                  email: true,
                  remote:"/users/find_email"
-
-                
             },
             
         },
         // // Specify the validation error messages
         messages: {
              "user[email]": {
-                required: "Please enter a email",
-                email: "Please enter valid email",
+                required: "Please enter a email id" ,
+                email: "Please enter valid email id" ,
                 remote: "Email not found ",
                 
             },

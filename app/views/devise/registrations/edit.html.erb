@@ -4,6 +4,9 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,id: "new_password" }) do |f| %>
   <%= devise_error_messages! %>
   <p id="flash_error"><%= flash[:notice] if flash[:notice].present?%></p>
+  <div class="form-group has-feedback">
+ <%= f.password_field :current_password, autocomplete: "off",placeholder: "Current password",:class=>"form-control" %>
+  </div>
 
   <div class="form-group has-feedback">
    <%= f.password_field :password, autocomplete: "off" ,placeholder: "New password",:class=>"form-control"%>
@@ -13,17 +16,12 @@
   <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password",:class=>"form-control" %>
   </div></br>
 
-  <div class="form-group has-feedback">
- <%= f.password_field :current_password, autocomplete: "off",placeholder: "Current password",:class=>"form-control" %>
-  </div>
 
   <div class="actions">
     <%= f.submit "Update",:class=>"btn btn-block submit-btn mrg-tb" %>
   </div></br>
 <% end %>
 <%= render :partial => 'layouts/slider_bottom'%>
-
-
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -42,6 +40,7 @@
                 
             },
             "user[password_confirmation]": {
+                 required: true,
                  equalTo: "#user_password"
                 
             },
@@ -50,18 +49,19 @@
         messages: {
              
             "user[current_password]": {
-                required: "Please enter a current password",
-                minlength: "should be atleast 6 characters"
+                required: "Please enter current password",
+                minlength: "Password should be atleast 6 characters"
                 
             },
 
             "user[password]": {
-                required:"Please enter password",
-                minlength: "should be atleast 6 characters"
+                required:"Please enter new password",
+                minlength: "Password should be atleast 6 characters"
                 
             },
             "user[password_confirmation]": {
-                equalTo: "Password confirmation doesn't match"
+                required:"Please enter new confirm password",
+                equalTo: "Password doesn't match"
                 
             },
             
