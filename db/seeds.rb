@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
+p 'Creating Accommodation Link'
+acc={ :title => "Accommodation", :content=>"https://google.com"}
+StaticPage.where(acc.slice(:title)).first_or_create(acc)
+
 p 'Creating Admin user'
 admin_hash = {:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password'}
 AdminUser.where(admin_hash.slice(:email)).first_or_create(admin_hash)

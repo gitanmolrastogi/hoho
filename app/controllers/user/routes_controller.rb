@@ -57,7 +57,7 @@ before_filter :check_for_main_routes , only: [:index]
   def bus_details
     from_city=City.find_by(id: params[:from_city_id])
     to_city=City.find_by(id: params[:to_city_id])
-    @buses=Bus.where(start_point: from_city.name, end_point: to_city.name)
+    @buses=Bus.where("start_point = ? and end_point =? and start_date >= ? " ,from_city.name, to_city.name , Date.current)
   end
 
   def check_for_main_routes

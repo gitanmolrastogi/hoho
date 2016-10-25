@@ -1,37 +1,33 @@
 <% if @posssible_routes %>
-                  <div class="possible-routes-block">
-                    <div class="row">
-                     <% @posssible_routes.each do |route| %>
-                      <div class="col-xs-12 col-sm-4 col-md-4">
-                        <div class="sec_contain">
-                          <figure class="post-thumb">
-                            <img src="<%= route.image_url %>" alt="" class="img-responsive">
-                            <figcaption><span><img src="/assets/plus-red.png" alt=""></span></figcaption>
-                          </figure>
-                          <div class="thumb-info text-center">
-                            <h4><%= route.name %></h4>
-                            <div class="detail-trip-block">
-                              <div class="detail-t">
-                                <label>Price :  </label> 
-                                <span><%= route.price %></span>
-                              </div>
-                              <div class="detail-t">
-                                <label>Duration :  </label> 
-                                <span><%= route.duration %> days</span>
-                              </div>
-                              <div class="detail-t">
-                                <label>Lorem ipsum :  </label> 
-                                <span>Proin gravidsit</span>
-                              </div>
-                              <div class="detail-t">
-                                <label>Lorem ipsu :  </label> 
-                                <span>Proin gravidsit</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                     <%end%>
-                    </div>
+      <div class="possible-routes-block">
+        <div class="row">
+         <% @posssible_routes.each do |route| %>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="sec_contain">
+              <figure class="post-thumb">
+                <img src="<%= route.image_url %>" alt="" class="img-responsive">
+                <figcaption><span><img src="/assets/plus-red.png" alt=""></span></figcaption>
+              </figure>
+              <div class="thumb-info text-center">
+                <h4><%= route.name %></h4>
+                <div class="detail-trip-block">
+                  <div class="detail-t">
+                    <label>Price :  </label> 
+                    <span><%= route.main_route.price %></span>
                   </div>
+                  <div class="detail-t">
+                    <label>Duration :  </label> 
+                    <span><%= route.main_route.duration %> days</span>
+                  </div>
+                  <div class="detail-t">
+                    <label>Start Point:  </label> 
+                    <span><%= route.main_route.start_point %></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         <%end%>
+        </div>
+      </div>
 <%end%>

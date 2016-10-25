@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020064344) do
+ActiveRecord::Schema.define(version: 20161024145015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 20161020064344) do
     t.time     "end_time"
     t.string   "start_point"
     t.string   "end_point"
-    t.integer  "no_of_seats"
     t.boolean  "is_full"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -111,6 +110,7 @@ ActiveRecord::Schema.define(version: 20161020064344) do
     t.text     "important"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   create_table "city_categories", force: :cascade do |t|
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 20161020064344) do
     t.datetime "updated_at",  null: false
     t.string   "image"
     t.integer  "price"
+    t.integer  "duration"
   end
 
   create_table "orders", force: :cascade do |t|

@@ -13,7 +13,8 @@ class User::ActivitiesController < ApplicationController
   end
 
   def index
-  	@activities = Activity.paginate(:page => params[:page] , :per_page => 2)
+    @activities = Activity.where("end_date > ?" ,Date.current)
+  	@activities = @activities.paginate(:page => params[:page] , :per_page => 5)
   end
 
   def show

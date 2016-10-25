@@ -9,14 +9,20 @@
               <p class="txt">
                <%= @current_route.try(:information) %>
               </p>
-              <div class="row trip-info-3">
-                <div class="col-sm-5 bdr-right">
+               <div class="row trip-info-3">
+                <div class="col-sm-3 bdr-right">
                   <div class="trip">
-                    <label class="trip-label">Trip duration :</label>
-                    <span class="trip-span"><%= "#{@weeks} weeks & #{@days} days" %></span>
+                    <label class="trip-label">Price :</label>
+                    <span class="trip-span"><%= @current_route.price %></span>
                   </div>
                 </div>
-                <div class="col-sm-4 bdr-right">
+                <div class="col-sm-3 bdr-right">
+                  <div class="trip">
+                    <label class="trip-label">Trip duration :</label>
+                    <span class="trip-span"><%= "#{@current_route.duration}"+" Days" %></span>
+                  </div>
+                </div>
+                <div class="col-sm-3 bdr-right">
                   <div class="trip">
                     <label class="trip-label">Trip Start :</label>
                     <span class="trip-span"><%=@current_route.try(:start_point)%></span>
@@ -32,7 +38,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="map-img" id = "#I1" ><img class="img-responsive" src="/assets/map-sm1.png" style="width:100%; min-height:180px;"></div>
+            <div class="map-img" id = "#I1" ><img class="img-responsive" src= <%= @current_route.image%> style="width:100%; min-height:180px;"></div>
           </div>
         </div>
 

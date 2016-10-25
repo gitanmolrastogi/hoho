@@ -97,32 +97,6 @@ $( document ).ready(function() {
 
   $(document).ready(function(){
 
-  // $('#new_home_page_image').validate({
-  //     errorElement: "div",
-
-  //     rules: {
-  //           "home_page_image[image]": {
-  //               required: true,
-  //               extension: "jpg,jpeg,png",
-  //           },
-  //           "home_page_image[status]": {
-  //                required: true
-  //           },
-  // },
-  //   messages: {
-  //            "home_page_image[image]": {
-  //               required: "Please select a image to upload name",
-  //               extension: "invalid",
-  //           },
-  //           "home_page_image[status]": {
-  //               required: "Please select a status"
-  //           },
-  //       },
-  //       submitHandler: function(form) {
-  //           form.submit();
-  //       }
-  //   });
-// ===================== New Activity Validation Start=========================
    $('#new_activity').validate({
    errorElement: "div",
     rules: {
@@ -139,6 +113,9 @@ $( document ).ready(function() {
                  required: true
             },
             "activity[information]": {
+                 required: true
+            },
+            "activity[image]": {
                  required: true
             },
   },
@@ -161,6 +138,9 @@ $( document ).ready(function() {
 
             "activity[information]": {
                 required: "Please enter information"
+            },
+             "activity[image]": {
+                required: "please select a image"
             },
         
         
@@ -190,6 +170,9 @@ $( document ).ready(function() {
             "activity[information]": {
                  required: true
             },
+              "activity[image]": {
+                 required: true
+            },
   },
 
     messages: {
@@ -210,6 +193,9 @@ $( document ).ready(function() {
 
             "activity[information]": {
                 required: "Please Enter information"
+            },
+            "activity[image]": {
+                required: "please select a image"
             },
         
         
@@ -383,6 +369,9 @@ $('#edit_line_color_route').validate({
             "city[important]": {
                  required: true
             },
+             "city[image]": {
+                 required: true
+            },
 
   },
 
@@ -397,6 +386,9 @@ $('#edit_line_color_route').validate({
             },
             "city[important]": {
                  required: "Please enter important of city."
+            },
+             "city[image]": {
+                 required: "Please select a image."
             },
   },
 
@@ -426,6 +418,9 @@ $('#edit_line_color_route').validate({
             "city[important]": {
                  required: true
             },
+              "city[image]": {
+                 required: true
+            },
 
   },
 
@@ -441,13 +436,14 @@ $('#edit_line_color_route').validate({
             "city[important]": {
                  required: "please enter important of city."
             },
+             "city[image]": {
+                 required: "Please select a image."
+            },
   },
 
         submitHandler: function(form) {
             form.submit();
         }
-
-
     });
 //=====================City city validation END==================
 
@@ -484,7 +480,7 @@ $("#activity_start_date").datepicker({
         onSelect: function (selected) {
             var dt = new Date(selected);
             dt.setDate(dt.getDate());
-            $("#bus_end_date").datepicker("option", "minDate", dt);
+            $("#activity_end_date").datepicker("option", "minDate", dt);
         }
     });
 
@@ -493,7 +489,7 @@ $("#activity_start_date").datepicker({
         onSelect: function (selected) {
             var dt = new Date(selected);
             dt.setDate(dt.getDate());
-            $("#bus_start_date").datepicker("option", "maxDate", dt);
+            $("#activity_start_date").datepicker("option", "maxDate", dt);
         }
 });
  //=========datepicker=========
