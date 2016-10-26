@@ -22,7 +22,7 @@
    <td><%= bus.end_time.strftime("%I:%M") %></td>
    <td><%= bus.start_date.strftime("%e %b") %></td>
    <td><%= bus.end_date.strftime("%e %b") %></td>
-   <td><i class="fa fa-cart-arrow-down" style="font-size:1.6em;"></i> <%= link_to "Add to cart"  , add_to_cart_user_orders_path(:id => bus.id , :type => "hop" ) ,  :class => "btn red-btn cart"  %></td>
+   <td><span class="cart-i"><i class="fa fa-cart-arrow-down" style="font-size:1.6em;"></i> <%= link_to "Add to cart"  , add_to_cart_user_orders_path(:id => bus.id , :type => "hop" ) ,  :class => "btn red-btn cart"  %></span></td>
  </tr>
 <% end%>
  

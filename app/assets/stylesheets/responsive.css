@@ -34,6 +34,9 @@
 .city-img6 li{width:31%;}
 .city-img6 li:nth-child(3n){margin-right:0;}
 .city-img img{min-height: auto;}
+.carousel-control.arrow .icon-ar:before{height: 30px !important; top: 34px !important;}
+.carousel-control.arrow .icon-ar:after{height: 30px !important; bottom: 34px !important;}
+.carousel-control.arrow{width:38px !important;}
 }
 
 
@@ -48,9 +51,9 @@
 	.trip-span{font-size: 16px; padding-left: 15px;}
 	.btn.cart{margin:0 0 0 10px;}
 	.city-img img{min-height: auto;}
-	.carousel-control.arrow .icon-ar:before{height: 30px; top: 34px;}
-    .carousel-control.arrow .icon-ar:after{height: 30px; bottom: 34px;}
-   .carousel-control.arrow{width:28px;}
+	.carousel-control.arrow .icon-ar:before{height: 30px !important; top: 34px !important;}
+	.carousel-control.arrow .icon-ar:after{height: 30px !important; bottom: 34px !important;}
+	.carousel-control.arrow{width:38px !important;}
    .home-cro.carousel{height:745px;}
 
 }
