@@ -2,6 +2,7 @@ class User::RoutesController < ApplicationController
 before_filter :check_for_main_routes , only: [:index]
 	def index
 		@current_route = (params[:route_id].present? and MainRoute.find_by_id(params[:route_id]).present?) ? MainRoute.find(params[:route_id]) : MainRoute.first
+    @image = params[:route_id].present? ? @current_route.image.url : HomePageImage.first.image.url
 		@route_dropdown = MainRoute.all
 			if @current_route.line_color_routes.blank?
 				  redirect_to '/' 
