@@ -290,3 +290,4 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 .cart-i.cart-book{padding: 12px 16px 15px;}
 .cart-i.cart-book a, .cart-i.cart-book a:hover{color: #fff;}
 .cart-i.cart-book i{margin-right: 10px;}
+.end-footer-page{min-height: 585px;}

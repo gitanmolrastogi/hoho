@@ -170,9 +170,7 @@ $( document ).ready(function() {
             "activity[information]": {
                  required: true
             },
-              "activity[image]": {
-                 required: true
-            },
+              
   },
 
     messages: {
@@ -194,9 +192,7 @@ $( document ).ready(function() {
             "activity[information]": {
                 required: "Please Enter information"
             },
-            "activity[image]": {
-                required: "please select a image"
-            },
+           
         
         
         },
@@ -305,12 +301,7 @@ $('#edit_line_color_route').validate({
                 range : [1, 365]
             },
 
-            "line_color_route[image]": {
-                 required: true
-            },
-            "line_color_route[zoomed_image]": {
-                 required: true
-            },
+           
   },
 
     messages: {
@@ -334,12 +325,7 @@ $('#edit_line_color_route').validate({
                  number: "Please enter integers only.",
                  range: "Please enter days between 1 to 365"
             },
-            "line_color_route[image]": {
-                 required: "Please upload image"
-            },
-            "line_color_route[zoomed_image]": {
-                 required: "Please upload zoomed image"
-            },
+          
   },
 
         submitHandler: function(form) {
@@ -418,9 +404,7 @@ $('#edit_line_color_route').validate({
             "city[important]": {
                  required: true
             },
-              "city[image]": {
-                 required: true
-            },
+            
 
   },
 
@@ -436,9 +420,7 @@ $('#edit_line_color_route').validate({
             "city[important]": {
                  required: "please enter important of city."
             },
-             "city[image]": {
-                 required: "Please select a image."
-            },
+            
   },
 
         submitHandler: function(form) {
@@ -809,19 +791,14 @@ $("#bus_start_point").change(function(){
         "category[name]": {
             required: true
         },
-        "category[image]":{
-          required: true
-        },
+       
       },
 
       messages:{
         "category[name]": {
           required: "Category name can't be blank."
         },
-        "category[image]": {
-          required: "Please select a image"
-        },
-
+       
       },
      
     submitHandler: function(form) {

@@ -3,7 +3,7 @@ ActiveAdmin.register Activity do
 filter :name
 filter :overview
 filter :information
-permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:overview ,:information ,:city_id, :category_id , :image
+permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:overview ,:information ,:city_id, :category_id , :image , photos_attributes: [:id, :image ,:status ,:_destroy]
 
 index do |f|
      selectable_column

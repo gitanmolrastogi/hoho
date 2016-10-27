@@ -129,7 +129,7 @@
 									<p><%= @arr.third.present? ? @arr.third["tags"].map{|h| h.prepend("#")}.join(",") : "#ipsum #dolor sit amet, conse ctetur adipiscing elit # Aenean euismod bibendum laoreet. Proin gravida dolor sit"%></p>
 									<div class="date-link">
 										<label class="pull-left"><%= @arr.third.present? ? Time.at(@arr.second["time"].to_i).strftime("%d-%m-%Y") : ""%></label>
-										<a href="#" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
+										<a href="https://www.instagram.com/mobiloitte2970/" class="pull-right"><img src="/assets/insta.png" alt="" /></a>
 									</div>
 								</div>
 							</div>
@@ -148,7 +148,7 @@
 									<p><%= @tweet.try(:text).gsub(/(?:f|ht)tps?:\/[^\s]+/, '')%></p>
 									<div class="date-link">
 										<label class="pull-left"><%=@tweet.created_at.strftime("%d-%m-%Y")%></label>
-										<a href="#" class="pull-right"><img src="/assets/twit.png" alt="" /></a>
+										<a href="https://twitter.com/KumarMobiloitte" class="pull-right"><img src="/assets/twit.png" alt="" /></a>
 									</div>
 								</div>
 							</div>

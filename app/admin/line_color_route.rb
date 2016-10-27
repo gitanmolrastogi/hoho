@@ -42,9 +42,11 @@ show :title=> "Route Management" do |route|
     end
     	row :name
     	# row :price
-    	row :duration
+    	# row :duration
    end
 end
+
+
 
 controller do
   def to_s

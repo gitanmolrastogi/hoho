@@ -10,11 +10,11 @@
 
   <div class="form-group has-feedback">
    <%= f.password_field :password, autocomplete: "off" ,placeholder: "New password",:class=>"form-control"%>
-  </div></br>
+  </div>
 
    <div class="form-group has-feedback">
   <%= f.password_field :password_confirmation, autocomplete: "off" ,placeholder: "Confirm new password",:class=>"form-control" %>
-  </div></br>
+  </div>
 
 
   <div class="actions">
@@ -60,8 +60,8 @@
                 
             },
             "user[password_confirmation]": {
-                required:"Please enter new confirm password",
-                equalTo: "Password doesn't match"
+                required:"Please enter confirm password",
+                equalTo: "Password and password confirmation doesn't match"
                 
             },
             
