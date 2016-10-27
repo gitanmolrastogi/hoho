@@ -1,7 +1,7 @@
 ActiveAdmin.register LineColorRoute do
 
 filter :name 
-filter :price 
+# filter :price 
 filter :duration
 
 
