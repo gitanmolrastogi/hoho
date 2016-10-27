@@ -335,8 +335,121 @@ $('#edit_line_color_route').validate({
 
 
   //===========EDIT route validation END=====
+$('#new_main_route').validate({
+   errorElement: "div",
+    rules: {
+            "main_route[name]": {
+                 required: true
+            },
+            "main_route[information]": {
+                 required: true
+            },
+            "main_route[price]": {
+                 required: true,
+                 number: true,
+                 range : [1, 9999999]
+            },
+            "main_route[duration]": {
+                 required: true,
+                 number: true,
+                 range : [1, 365]
+            },
+            "main_route[image]": {
+                 required: true
+            },
+            "main_route[start_point]": {
+                 required: true
+            },
+              
+  },
+
+    messages: {
+             
+            "main_route[name]": {
+                 required: "Please enter route name"
+            },
+            "main_route[information]": {
+                 required: "Please enter information of the route"
+            },
+            "main_route[price]": {
+                 required: "Please enter price for the route",
+                  number: "Please enter integers only",
+                 range : "Please enter valid amount"
+            },
+            "main_route[duration]": {
+                 required: "Please enter duration in days",
+                 number: "Please enter integer only",
+                 range : "Please enter valid number of days(should not exceed 365 days)"
+            },
+            "main_route[image]": {
+                 required: "Please select a image for route"
+            },
+            "main_route[start_point]": {
+                 required: "Please select a start point"
+            },
+        
+        
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
 
 
+
+$('#edit_main_route').validate({
+   errorElement: "div",
+    rules: {
+            "main_route[name]": {
+                 required: true
+            },
+            "main_route[information]": {
+                 required: true
+            },
+            "main_route[price]": {
+                 required: true,
+                 number: true,
+                 range : [1, 9999999]
+            },
+            "main_route[duration]": {
+                 required: true,
+                 number: true,
+                 range : [1, 365]
+            },
+            "main_route[start_point]": {
+                 required: true
+            },
+              
+  },
+
+    messages: {
+             
+            "main_route[name]": {
+                 required: "Please enter route name"
+            },
+            "main_route[information]": {
+                 required: "Please enter information of the route"
+            },
+            "main_route[price]": {
+                 required: "Please enter price for the route",
+                  number: "Please enter integers only",
+                 range : "Please enter valid amount"
+            },
+            "main_route[duration]": {
+                 required: "Please enter duration in days",
+                 number: "Please enter integer only",
+                 range : "Please enter valid number of days(should not exceed 365 days)"
+            },
+            "main_route[start_point]": {
+                 required: "Please select a start point"
+            },
+        
+        
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
 
 
 
