@@ -22,18 +22,6 @@ ActiveRecord::Schema.define(version: 20161027075312) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "acitvities", force: :cascade do |t|
-    t.string   "name"
-    t.text     "overview"
-    t.text     "information"
-    t.integer  "city_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_acitvities_on_category_id", using: :btree
-    t.index ["city_id"], name: "index_acitvities_on_city_id", using: :btree
-  end
-
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
@@ -195,6 +183,28 @@ ActiveRecord::Schema.define(version: 20161027075312) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
+  create_table "pass_bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "pass_id"
+    t.integer  "city_id"
+    t.date     "start_date"
+    t.date     "expiry_date"
+    t.boolean  "is_expired"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["city_id"], name: "index_pass_bookings_on_city_id", using: :btree
+    t.index ["pass_id"], name: "index_pass_bookings_on_pass_id", using: :btree
+    t.index ["user_id"], name: "index_pass_bookings_on_user_id", using: :btree
+  end
+
+  create_table "passes", force: :cascade do |t|
+    t.integer  "no_of_days"
+    t.integer  "no_of_stops"
+    t.float    "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string   "image"
     t.boolean  "status"
@@ -250,8 +260,6 @@ ActiveRecord::Schema.define(version: 20161027075312) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "acitvities", "categories"
-  add_foreign_key "acitvities", "cities"
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "cities"
   add_foreign_key "city_categories", "categories"
@@ -259,4 +267,7 @@ ActiveRecord::Schema.define(version: 20161027075312) do
   add_foreign_key "city_routes", "cities"
   add_foreign_key "city_routes", "line_color_routes"
   add_foreign_key "orders", "users"
+  add_foreign_key "pass_bookings", "cities"
+  add_foreign_key "pass_bookings", "passes"
+  add_foreign_key "pass_bookings", "users"
 end
