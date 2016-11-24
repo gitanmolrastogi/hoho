@@ -10,7 +10,7 @@ before_filter :check_for_main_routes , only: [:index]
 			    return
 			end
 		route = @current_route.line_color_routes.first
-		@weeks = route.duration.to_i/7
+		@weeks = route.try(:duration).try(:to_i)/7
         @days = route.try(:duration).try(:to_i) - @weeks*7
 		@city_dropdown = (route.cities + City.where(name: @current_route.start_point)).uniq
 		@city = @city_dropdown.last
