@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027075312) do
+ActiveRecord::Schema.define(version: 20161227100159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,31 +178,11 @@ ActiveRecord::Schema.define(version: 20161027075312) do
     t.integer  "orderable_id"
     t.integer  "user_id"
     t.boolean  "is_paid"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "transaction_id"
+    t.string   "ipg_transaction_id"
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
-  end
-
-  create_table "pass_bookings", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "pass_id"
-    t.integer  "city_id"
-    t.date     "start_date"
-    t.date     "expiry_date"
-    t.boolean  "is_expired"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["city_id"], name: "index_pass_bookings_on_city_id", using: :btree
-    t.index ["pass_id"], name: "index_pass_bookings_on_pass_id", using: :btree
-    t.index ["user_id"], name: "index_pass_bookings_on_user_id", using: :btree
-  end
-
-  create_table "passes", force: :cascade do |t|
-    t.integer  "no_of_days"
-    t.integer  "no_of_stops"
-    t.float    "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "photos", force: :cascade do |t|
@@ -267,7 +247,4 @@ ActiveRecord::Schema.define(version: 20161027075312) do
   add_foreign_key "city_routes", "cities"
   add_foreign_key "city_routes", "line_color_routes"
   add_foreign_key "orders", "users"
-  add_foreign_key "pass_bookings", "cities"
-  add_foreign_key "pass_bookings", "passes"
-  add_foreign_key "pass_bookings", "users"
 end

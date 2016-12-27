@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
  before_action :configure_permitted_parameters, if: :devise_controller?
 
-before_filter :set_cache_headers
+before_action :set_cache_headers
   def set_cache_headers
     response.headers["Cache-Control"] = "no-cache, no-store"
     response.headers["Pragma"] = "no-cache"
