@@ -29,9 +29,9 @@ class User::OrdersController < ApplicationController
   end
 
   def order_payment
-    @responseSuccessURL = "http://172.16.1.68:3000/user/orders/success"
-    @responseFailURL = "http://172.16.1.68:3000/user/orders/error"
-    @transactionNotificationURL = "http://172.16.1.68:3000/user/orders/my_cart"
+    @responseSuccessURL = "http://delhi-airport.herokuapp.com/user/orders/success"
+    @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
+    @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
     @cart_orders = current_user.orders.where("is_paid = ?" ,false)
     @sum =  @cart_orders.where("is_paid = ?" ,false).includes(:orderable).map{|o| o.orderable.price}.compact.sum 
   end
