@@ -51,6 +51,10 @@ put '/users/update_profile',to: 'user/users#update_profile'
         get 'my_cart'
         get 'my_order_history'
         get 'remove_item'
+        get 'order_payment'
+        post 'success'
+        post 'error'
+
       end
     end 
     resources :routes  , only: [] do 

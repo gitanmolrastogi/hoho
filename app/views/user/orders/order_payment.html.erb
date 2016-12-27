@@ -1,0 +1,36 @@
+		</br>
+		</br>
+		</br>
+		</br>
+
+		<section class="page-content add-to-cart">
+			<div class="container">
+				<div class="row" style="display: none;"><form id ="payment_form" method="post" action="https://test.ipg-online.com/connect/gateway/processing">
+	<input type="hidden" name="authenticateTransaction" value="true" />
+	<input type="hidden" name="txntype" value="sale">
+	<input type="hidden" name="timezone" value="IST"/>
+	<input type="hidden" name="txndatetime" value="<%=getDateTime()%>"/>
+	<input type="hidden" name="hash" value=" <%=createHash(100,356 )%>"/>
+	<input type="hidden" name="storename" value="3344000171"/>
+	<input type="hidden" name="mode" value="payonly"/>
+	<input type="text" name="chargetotal" value="<%=100%>"/>
+	<select name="language">
+	<option value="de_DE">Deutsch</option>
+	<option value="en_EN" selected>English</option>
+	</select>
+	<input type="text" name="currency" value="356"/>
+	<input type="hidden" name="user_id" value=<%="#{current_user.id}"%>/>
+	<input type="hidden" name="order_ids" value=<%=@cart_orders.ids%>/>
+	<input type="text" name="transactionNotificationURL" value="<%=@transactionNotificationURL%>">
+
+	<input type="text" name="responseSuccessURL" value="<%= @responseSuccessURL%>"><input type="text" name="responseFailURL" value="<%= @responseFailURL%>"><input type="hidden" name="hash_algorithm" value="SHA1"/><input type="submit" value="Submit"></form>
+	</div>
+	</div>
+	</section>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$('form').submit();
+	})
+		
+	
+</script>
