@@ -47,6 +47,7 @@ class User::OrdersController < ApplicationController
     end
   end
 
+
   def getDateTime
     @date = Time.now.strftime("%Y:%m:%d-%H:%M:%S")
     return @date   
@@ -77,8 +78,4 @@ class User::OrdersController < ApplicationController
   end
   helper_method :createHash
 end
-
-
-
-
 
