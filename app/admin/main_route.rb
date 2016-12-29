@@ -13,7 +13,7 @@ form do |f|
 	f.inputs do
 		f.input :name
 	    f.input :information
-		f.input :price
+		f.input :price#,as: :string
 		f.input :duration
 		f.input :image , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
 	    f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}, input_html: {class: "select_city",id: "select_city_id"}
