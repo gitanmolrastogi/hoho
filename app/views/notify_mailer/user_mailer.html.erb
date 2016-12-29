@@ -44,7 +44,7 @@
 										</thead>
 										<tbody>							
 											<tr>										
-												<td><%= @order_ids %></td>
+												<td><%= @order_ids.pluck(:id) %></td>
 												<td><%= @transaction_id %></td>
 												<td>$<%= @ipg_transaction_id %></td>
 											</tr>							
