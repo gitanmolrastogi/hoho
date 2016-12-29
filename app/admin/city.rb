@@ -24,6 +24,37 @@ form do |f|
 end
 actions
 end
+
+index do |f|
+     selectable_column
+     column :name  
+     column "overview" do |body|
+              truncate(body.overview, omision: "...", length: 100)
+     end
+     column "important" do |body|
+              truncate(body.important, omision: "...", length: 100)
+     end
+     column :created_at
+    actions
+  end
+ 
+ show do |city|
+    attributes_table do  
+    row :id
+    row :name
+    row :overview
+    row :important
+
+      row  :image do |img|
+        image_tag img.image_url,:width => 100, :height => 100
+      end
+      row :created_at
+      row :updated_at
+    end
+end
+
+
+
 controller do 
    def downcase_city
    	  if params[:city].present?

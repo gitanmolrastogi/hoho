@@ -29,8 +29,22 @@ form do  |f|
   actions
 end
 
+index do
+    selectable_column
+    column :name
+    column  :image do |img|
+      image_tag img.image_url(:homepage_images)
+    end
+     column  :zoomed_image do |img|
+      image_tag img.zoomed_image_url(:homepage_images)
+    end
+    column :created_at
+    actions
+  end
+
 show :title=> "Route Management" do |route|
-    attributes_table do	 
+    attributes_table do	
+      row :name
     row  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
@@ -40,7 +54,8 @@ show :title=> "Route Management" do |route|
     row :hops do |route|
       route.cities.pluck(:name).join(", ")
     end
-    	row :name
+    row :created_at
+    row :updated_at
     	# row :price
     	# row :duration
    end

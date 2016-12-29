@@ -14,6 +14,16 @@ form do  |f|
   actions
 end
 
+index do |f|
+     selectable_column
+     column :name  
+     column "Information" do |body|
+              truncate(body.info, omision: "...", length: 100)
+     end
+     column :created_at
+    actions
+  end
+
 
 show do |route|
     attributes_table do  

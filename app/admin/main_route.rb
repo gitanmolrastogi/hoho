@@ -21,4 +21,43 @@ form do |f|
 	end
 	actions
  end
+
+index do
+    selectable_column
+    column :id
+    column :name
+    column :information
+    column :price
+    column :duration
+    column :start_point
+    column :end_point
+
+    column  :image do |img|
+      image_tag img.image_url,:width => 100, :height => 100
+    end
+     
+    column :created_at
+    actions
+  end
+
+show :title=> "Main Route " do |route|
+    attributes_table do	
+      row :id
+      row :name
+      row :information
+      row :price
+      row :duration
+      row :start_point
+      row :end_point
+    row  :image do |img|
+      image_tag img.image_url,:width => 100, :height => 100
+    end
+    
+    row :created_at
+    row :updated_at
+    	# row :price
+    	# row :duration
+   end
+end
+
 end
