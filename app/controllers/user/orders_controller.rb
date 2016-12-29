@@ -49,7 +49,7 @@ class User::OrdersController < ApplicationController
 
 
   def getDateTime
-    @date = Time.now.strftime("%Y:%m:%d-%H:%M:%S")
+    @date = Time.zone.now.strftime("%Y:%m:%d-%H:%M:%S")
     return @date   
   end
 
