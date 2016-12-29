@@ -22,7 +22,7 @@ index do |f|
     column :end_time do |time|
          time.try(:end_time).strftime("%H:%M")
     end
-    column :price
+    column :price,as: :string
     actions
   end
 
@@ -79,7 +79,7 @@ form do |f|
     f.input :start_time
     f.input :end_time 
     f.input :image, :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
-    f.input :price 
+    f.input :price,as: :string
   end
   actions
 end
