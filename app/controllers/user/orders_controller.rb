@@ -13,9 +13,9 @@ class User::OrdersController < ApplicationController
      if @order
      	@order.update(user_id: current_user.id )
      	redirect_to my_cart_user_orders_path
-     	flash[:notice] = "Activity successfully added to your cart"  if params[:type] == "activity"
-      flash[:notice] = "Hop successfully added to your cart"  if params[:type] == "hop"
-      flash[:notice] = "Route successfully added to your cart"  if params[:type] == "route"
+     	flash[:success] = "Activity successfully added to your cart"  if params[:type] == "activity"
+      flash[:success] = "Hop successfully added to your cart"  if params[:type] == "hop"
+      flash[:success] = "Route successfully added to your cart"  if params[:type] == "route"
      end
   end
 
@@ -40,10 +40,10 @@ class User::OrdersController < ApplicationController
     order = Order.find_by_id(params[:id])
     if order and order.destroy
       redirect_to my_cart_user_orders_path
-      return flash[:notice] = "Item removed from your cart." 
+      return flash[:success] = "Item removed from your cart." 
     else
       redirect_to my_cart_user_orders_path
-      flash[:notice] = "Oops!! Something went wrong." 
+      flash[:danger] = "Oops!! Something went wrong." 
     end
   end
 

@@ -12,7 +12,7 @@ def dashboard
 		h["name"] = f.user.full_name
 		h["time"] = f.created_time
 		@arr << h
-	end
+	end	
 end
 
 def read_more

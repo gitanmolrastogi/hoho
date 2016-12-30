@@ -7,7 +7,7 @@ class User::SessionsController < Devise::SessionsController
 	    p "======@user===#{@user.inspect}====" 
        if !(@user && @user.valid_password?(params[:user][:password]))
        	    p "---------invalid------------"
-           flash[:notice] = "Invalid email/password"
+           flash[:danger] = "Invalid email/password"
            redirect_to new_user_session_path
 	    elsif @user && @user.confirmed_at == nil
 	    	p "-----------confirmation---------"

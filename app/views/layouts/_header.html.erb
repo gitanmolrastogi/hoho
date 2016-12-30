@@ -54,8 +54,13 @@
 						<% end %>
 					</ul>
 				</div>
-				<p id="notice_error"><%= flash[:notice] if flash[:notice].present?%></p>
-                 <% flash[:notice] = ""%>
+				<br>
+                 <% flash.each do |key, value| %>
+					  <div class="alert alert-<%= key %> alert-dismissible">
+					  <a title="close" aria-label="close" data-dismiss="alert" class="close" href="#">×</a>
+					    <%= value %>
+					   </div>
+				<% end %>
 			</div>
 
 		</nav>

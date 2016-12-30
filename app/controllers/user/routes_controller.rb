@@ -64,7 +64,7 @@ before_filter :check_for_main_routes , only: [:index]
   def check_for_main_routes
     if MainRoute.count == 0 
        redirect_to '/'
-       flash[:notice] = "Currently there are no main routes Available"
+       flash[:warning] = "Currently there are no main routes Available"
     end  
   end
 		
