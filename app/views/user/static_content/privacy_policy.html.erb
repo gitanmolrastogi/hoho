@@ -6,7 +6,7 @@
 					<div class="main-wrap">
 						<h2 class="heading">Privacy Policy</h2>
 						<div class="head-line m-b-10"></div>
-						<p class="para-text"> <%= @privacy_policy.html_safe %></p>
+						<p class="para-text"> <%= html_escape(@privacy_policy) %></p>
 						
 					</div>
 				</div>

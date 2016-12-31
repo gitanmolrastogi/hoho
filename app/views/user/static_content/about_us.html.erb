@@ -11,7 +11,7 @@
 					<div class="main-wrap">
 						<h2 class="heading">About Us</h2>
 						<div class="head-line m-b-10"></div>
-						<p class="para-text"><%= @about_us.html_safe %></p>
+						<p class="para-text"><%= html_escape(@about_us) %></p>
 					</div>
 				</div>
 			</div>
