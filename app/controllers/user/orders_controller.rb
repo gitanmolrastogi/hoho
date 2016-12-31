@@ -58,12 +58,14 @@ class User::OrdersController < ApplicationController
       f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
     end
      NotifyMailer.user_mailer(current_user,@order,params[:oid],params[:ipgTransactionId]).deliver_now
-    redirect_to root_path , :notice => "Your Transaction has been successfully completed."   
+    redirect_to root_path 
+    flash[:success] = "Your transaction has been successfully completed."
   end
 
   def error 
     params[:status] == "FAILED"
-    redirect_to root_path , :notice => "#{params[:fail_reason]}"   
+    redirect_to root_path 
+    flash[:success] = params[:fail_reason]
   end
   
   helper_method :getDateTime

@@ -18,15 +18,16 @@ before_action :set_cache_headers
 
   private
   def after_sign_in_path_for(resource)
+    if resource.class == User
       p "------after signin----#{resource.inspect}---------"
-       root_path
+       root_path 
+     elsif resource.class == AdminUser
+       admin_buses_path 
+     end
   end
   def after_sign_out_path_for(resource)
       p "------after signout----#{resource.inspect}---------"
        new_user_session_path
   end
-  
- 
-
 end
 
