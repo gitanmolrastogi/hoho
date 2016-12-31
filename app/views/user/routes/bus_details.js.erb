@@ -1,1 +1,5 @@
+<% if @buses.present? %>
 $("#bus_details_append").html("<%= escape_javascript(render 'bus_details', locals: {buses: @buses}) %>")
+<% else %>
+$("#bus_details_append").html("Sorry no bus is available")
+<% end %>
