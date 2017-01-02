@@ -101,4 +101,5 @@ Rails.application.configure do
     :domain         => "sendgrid.com",
     :openssl_verify_mode => "none"
   }
+  ENV["PRO_URL"] = 'a35bc7d4c3a587985c400f81d9cfc44bfe3c751df1bd436dd69617597127c6dffe6ce215d77388c7c91e5cac295278f3604c00e215fd584d03fcc36e42b48c8a' 
 end
