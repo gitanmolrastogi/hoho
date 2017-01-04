@@ -5,7 +5,9 @@ permit_params :image, :title,:content,:sub_title,:icon
 index do
     selectable_column
     column :title
-    column :content
+    column "Content" do |body|
+              truncate(body.content, omision: "...", length: 50)
+     end
     column :image do |img|
       image_tag img.image_url(:how_it_work_image)
     end

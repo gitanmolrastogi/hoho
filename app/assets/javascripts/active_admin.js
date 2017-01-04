@@ -107,17 +107,26 @@ $( document ).ready(function() {
                  required: true
             },
             "activity[name]": {
-                 required: true
+                 required: true,
+                 maxlength: 50
             },
             "activity[overview]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
             },
             "activity[information]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
             },
             "activity[image]": {
                  required: true
             },
+            "activity[price]": {
+                 required: true,
+                 number: true,
+                 maxlength: 10
+
+            }
   },
 
     messages: {
@@ -130,18 +139,26 @@ $( document ).ready(function() {
             },
 
             "activity[name]": {
-                required: "Please enter a activity name"
+                required: "Please enter a activity name",
+                maxlength: "Please provide valid name"
             },
             "activity[overview]": {
-                required: "Please enter overview"
+                required: "Please enter overview",
+                maxlength: "Overview should be 1 to 5000 characters"
             },
 
             "activity[information]": {
-                required: "Please enter information"
+                required: "Please enter information",
+                maxlength: "Information should be 1 to 5000 characters"
             },
              "activity[image]": {
                 required: "please select a image"
             },
+            "activity[price]": {
+                 required: "Please enter price",
+                 number: "Please enter only numbers",
+                 maxlength: "Please enter valid price"
+            }
         
         
         },
@@ -162,14 +179,23 @@ $( document ).ready(function() {
                  required: true
             },
             "activity[name]": {
-                 required: true
+                 required: true,
+                 maxlength: 50
             },
             "activity[overview]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
             },
             "activity[information]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
             },
+            "activity[price]": {
+                 required: true,
+                 number: true,
+                 maxlength: 10
+
+            }
               
   },
 
@@ -183,15 +209,23 @@ $( document ).ready(function() {
             },
 
             "activity[name]": {
-                required: "Please enter a activity name"
+                required: "Please enter a activity name",
+                maxlength: "Please provide valid name"
             },
             "activity[overview]": {
-                required: "Please Enter overview"
+                required: "Please enter overview",
+                maxlength: "Overview should be 1 to 5000 characters"
             },
 
             "activity[information]": {
-                required: "Please Enter information"
+                required: "Please enter information",
+                maxlength: "Information should be 1 to 5000 characters"
             },
+            "activity[price]": {
+                 required: "Please enter price",
+                 number: "Please enter only numbers",
+                 maxlength: "Please enter valid price"
+            }
            
         
         
@@ -210,12 +244,13 @@ $('#new_line_color_route').validate({
    errorElement: "div",
     rules: {
             "line_color_route[name]": {
-                 required: true
+                 required: true,
+                 maxlength:50
                
             },
             "line_color_route[information]": {
-                 required: true
-               
+                 required: true,
+                 maxlength:5000               
             },
             "line_color_route[start_point]": {
                  required: true
@@ -241,11 +276,13 @@ $('#new_line_color_route').validate({
 
     messages: {
             "line_color_route[name]": {
-                 required: "Please enter a route name"
-               
+                 required: "Please enter a route name",
+                 maxlength:"Line color route should be 1 to 50 characters"               
+
             },"line_color_route[information]": {
-                 required: "Please enter information about the route"
-               
+                 required: "Please enter information about the route",
+                 maxlength:"Line color route should be 1 to 5000 characters"               
+
             },
             "line_color_route[start_point]": {
                  required: "Please select start point"
@@ -280,11 +317,15 @@ $('#edit_line_color_route').validate({
    errorElement: "div",
     rules: {
             "line_color_route[name]": {
-                 required: true
+                 required: true,
+                 maxlength:50
+
                
             },
             "line_color_route[information]": {
-                 required: true
+                 required: true,
+                 maxlength:5000
+
                
             },
             "line_color_route[start_point]": {
@@ -306,10 +347,13 @@ $('#edit_line_color_route').validate({
 
     messages: {
             "line_color_route[name]": {
-                 required: "Please enter a route name"
-               
+                 required: "Please enter a route name",
+                 maxlength:"Line color route should be 1 to 50 characters"               
+
             },"line_color_route[information]": {
-                 required: "Please enter information about the route"
+                 required: "Please enter information about the route",
+                 maxlength:"Line color route should be 1 to 5000 characters"               
+
                
             },
             "line_color_route[start_point]": {
@@ -339,10 +383,12 @@ $('#new_main_route').validate({
    errorElement: "div",
     rules: {
             "main_route[name]": {
-                 required: true
+                 required: true,
+                 maxlength:50
             },
             "main_route[information]": {
-                 required: true
+                 required: true,
+                 maxlength:5000
             },
             "main_route[price]": {
                  required: true,
@@ -366,10 +412,12 @@ $('#new_main_route').validate({
     messages: {
              
             "main_route[name]": {
-                 required: "Please enter route name"
+                 required: "Please enter route name",
+                 maxlength: "Main route name should be 1 to 50 characters"
             },
             "main_route[information]": {
-                 required: "Please enter information of the route"
+                 required: "Please enter information of the route",
+                 maxlength: "Main route name should be 1 to 5000 characters"
             },
             "main_route[price]": {
                  required: "Please enter price for the route",
@@ -401,10 +449,12 @@ $('#edit_main_route').validate({
    errorElement: "div",
     rules: {
             "main_route[name]": {
-                 required: true
+                 required: true,
+                 maxlength: 50
             },
             "main_route[information]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
             },
             "main_route[price]": {
                  required: true,
@@ -425,10 +475,13 @@ $('#edit_main_route').validate({
     messages: {
              
             "main_route[name]": {
-                 required: "Please enter route name"
+                 required: "Please enter route name",
+                 maxlength: "Main route name should be 1 to 50 characters"
+
             },
             "main_route[information]": {
-                 required: "Please enter information of the route"
+                 required: "Please enter information of the route",
+                 maxlength: "Main route information should be 1 to 5000 characters"
             },
             "main_route[price]": {
                  required: "Please enter price for the route",
@@ -458,15 +511,18 @@ $('#edit_main_route').validate({
    errorElement: "div",
     rules: {
             "city[name]": {
+                 maxlength: 50,                
                  required: true
                
             },
             "city[overview]": {
+                 maxlength: 5000,
                  required: true
                
             },
             "city[important]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
             },
              "city[image]": {
                  required: true
@@ -476,15 +532,18 @@ $('#edit_main_route').validate({
 
     messages: {
             "city[name]": {
-                 required: "Please enter city name."
+                 required: "Please enter city name.",
+                  maxlength: "City name should be 1 to 50 characters"
                
             },
             "city[overview]": {
-                 required: "Please enter overview of city. "
+                 required: "Please enter overview of city. ",
+                  maxlength: "City overview should be 1 to 5000 characters"
                
             },
             "city[important]": {
-                 required: "Please enter important of city."
+                 required: "Please enter important of city.",
+                 maxlength: "City important should be 1 to 5000 characters"
             },
              "city[image]": {
                  required: "Please select a image."
@@ -507,15 +566,19 @@ $('#edit_main_route').validate({
    errorElement: "div",
     rules: {
             "city[name]": {
-                 required: true
+                 required: true,
+                 maxlength: 50                
+
                
             },
             "city[overview]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
                
             },
             "city[important]": {
-                 required: true
+                 required: true,
+                 maxlength: 5000
             },
             
 
@@ -523,15 +586,18 @@ $('#edit_main_route').validate({
 
     messages: {
             "city[name]": {
-                 required: "Please enter city name."
+                 required: "Please enter city name.",
+                  maxlength: "City name should be 1 to 50 characters"
                
             },
             "city[overview]": {
-                 required: "please enter overview of city. "
-               
+                 required: "please enter overview of city. ",
+                  maxlength: "City overview should be 1 to 5000 characters"
+
             },
             "city[important]": {
-                 required: "please enter important of city."
+                 required: "please enter important of city.",
+                  maxlength: "City important should be 1 to 5000 characters"
             },
             
   },
@@ -659,7 +725,7 @@ $("#activity_start_date").datepicker({
                  required: "Title can't be blank."
             },
             "accommodation[information]": {
-                 required: "Please enter Information about the city."
+                 required: "Please enter information about the city."
             },
             "accommodation[redirection_link]": {
                  required: "Please enter a redirection link.",
@@ -852,7 +918,7 @@ $("#bus_start_point").change(function(){
             console.log(bus_end_point);
              if($("#bus_start_point").val() == bus_end_point)
             {
-                alert("Start point and End point should not be same!");
+                alert("Start point and end point should not be same!");
                 $("#bus_start_point").val('<option value=""></option>')
                 return false;
             }
@@ -869,16 +935,26 @@ $("#bus_start_point").change(function(){
 
       rules: {
         "category[name]": {
-            required: true
+            required: true,
+            maxlength: 50
         },
         "category[image]":{
           required: true
+        },
+        "category[info]":{
+          required: true,
+          maxlength: 5000
         },
       },
 
       messages:{
         "category[name]": {
-          required: "Category name can't be blank."
+          required: "Category name can't be blank.",
+          maxlength: "Category name should be 1 to 50 characters"
+        },
+        "category[info]": {
+          required: "Category information can't be blank.",
+          maxlength: "Category information should be 1 to 5000 characters"
         },
         "category[image]": {
           required: "Please select a image"
@@ -902,14 +978,26 @@ $("#bus_start_point").change(function(){
 
       rules: {
         "category[name]": {
-            required: true
+            required: true,
+            maxlength:50
+        },
+        "category[info]": {
+            required: true,
+            maxlength:5000
         },
        
       },
 
       messages:{
         "category[name]": {
-          required: "Category name can't be blank."
+          required: "Category name can't be blank.",
+          maxlength: "Category name should be 1 to 50 characters"
+
+        },
+        "category[info]": {
+          required: "Category info can't be blank.",
+          maxlength: "Category info should be 1 to 5000 characters"
+
         },
        
       },
@@ -931,19 +1019,28 @@ $("#bus_start_point").change(function(){
       errorElement: "div",
       rules: {
         "questions_and_answer[question]": {
-            required: true
+            required: true,
+            maxlength: 300
+
+
         },
         "questions_and_answer[answer]":{
-          required: true
+          required: true,
+            maxlength: 500
+
         },
       },
 
       messages:{
         "questions_and_answer[question]": {
-          required: "Question can't be blank."
+          required: "Question can't be blank.",
+          maxlength: "Question should be 1 to 300 characters"
+
         },
         "questions_and_answer[answer]": {
-          required: "Answer can't be blank."
+          required: "Answer can't be blank.",
+          maxlength: "Answer should be 1 to 500 characters"
+
         },
 
       },
@@ -964,19 +1061,24 @@ $("#bus_start_point").change(function(){
       errorElement: "div",
       rules: {
         "questions_and_answer[question]": {
-            required: true
+            required: true,
+            maxlength:300
         },
         "questions_and_answer[answer]":{
-          required: true
+          required: true,
+            maxlength:500
         },
       },
 
       messages:{
         "questions_and_answer[question]": {
-          required: "Question can't be blank."
+          required: "Question can't be blank.",
+          maxlength: "Question should be 1 to 300 characters"
         },
         "questions_and_answer[answer]": {
-          required: "Answer can't be blank."
+          required: "Answer can't be blank.",
+          maxlength: "Answer should be 1 to 500 characters"
+
         },
 
       },
@@ -997,19 +1099,23 @@ $("#bus_start_point").change(function(){
       errorElement: "div",
       rules: {
         "tip[title]": {
-            required: true
+            required: true,
+            maxlength:500
         },
         "tip[content]":{
-          required: true
+          required: true,
+            maxlength:5000
         },
       },
 
       messages:{
         "tip[title]": {
-          required: "Title can't be blank."
+          required: "Title can't be blank.",
+          maxlength:"Title should be 1 to 500 characters"
         },
         "tip[content]": {
-          required: "Content can't be blank."
+          required: "Content can't be blank.",
+          maxlength:"Content should be 1 to 5000 characters"
         },
 
       },
@@ -1029,19 +1135,24 @@ $("#bus_start_point").change(function(){
       errorElement: "div",
       rules: {
         "tip[title]": {
-            required: true
+            required: true,
+            maxlength:500
         },
         "tip[content]":{
-          required: true
+          required: true,
+            maxlength:5000
         },
       },
 
       messages:{
         "tip[title]": {
-          required: "Title can't be blank."
+          required: "Title can't be blank.",
+            maxlength:"Title should be 1 to 500 characters"
+
         },
         "tip[content]": {
-          required: "Content can't be blank."
+          required: "Content can't be blank.",
+          maxlength:"Content should be 1 to 5000 characters"
         },
 
       },
@@ -1055,6 +1166,43 @@ $("#bus_start_point").change(function(){
 
 //==================EDIT Tips ends here==========================
 
+
+// edit how it works
+
+  $('#edit_how_it_work').validate({
+      errorElement: "div",
+      rules: {
+        "how_it_work[title]": {
+            required: true,
+            maxlength:300
+        },
+        "how_it_work[content]":{
+          required: true,
+            maxlength:1000
+        },
+      },
+
+      messages:{
+        "how_it_work[title]": {
+          required: "Title can't be blank.",
+            maxlength:"Title should be 1 to 300 characters"
+
+        },
+        "how_it_work[content]": {
+          required: "Content can't be blank.",
+          maxlength:"Content should be 1 to 1000 characters"
+        },
+
+      },
+     
+    submitHandler: function(form) {
+                form.submit();
+            }
+
+
+  });
+
+// end how it works
 
 // Home Page Image Validation
 window.URL = window.URL || window.webkitURL;

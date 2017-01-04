@@ -12,10 +12,10 @@ def after_inactive_sign_up_path_for(resource)
     p "========#{params.inspect}============="
   if current_user.valid_password?(params[:user][:current_password])	
     current_user.update_attributes(password: params[:user][:password],password_confirmation: params[:user][:password_confirmation])
-    flash[:notice] = "Password changed"
+    flash[:success] = "Password changed"
     redirect_to new_user_session_path
    else
- 	flash[:notice] = "Invalid current password"
+ 	flash[:danger] = "Invalid current password"
     redirect_to edit_user_registration_path
    end  
   end

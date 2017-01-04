@@ -6,7 +6,7 @@
 					<div class="main-wrap">
 						<h2 class="heading">Terms & Conditions</h2>
 						<div class="head-line m-b-10"></div>
-						<p class="para-text"><%= @terms_and_condition.html_safe %></p>
+						<p class="para-text"><%= html_escape(@terms_and_condition) %></p>
 						
 					</div>
 				</div>

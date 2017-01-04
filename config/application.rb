@@ -12,8 +12,7 @@ module DelhiAirport
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-config.time_zone = "New Delhi"
-config.active_record.time_zone_aware_types = [:datetime]
-
+	config.time_zone = 'Kolkata'
+	config.active_record.time_zone_aware_types = [:datetime]
   end
 end

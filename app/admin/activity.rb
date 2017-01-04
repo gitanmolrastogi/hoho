@@ -8,8 +8,12 @@ permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:over
 index do |f|
      selectable_column
      column :name
-     column :overview
-     column :information
+     column "Overview" do |body|
+              truncate(body.overview, omision: "...", length: 100)
+      end
+       column "Information" do |body|
+              truncate(body.information, omision: "...", length: 100)
+      end
      column :start_date
      column :end_date
      column :start_time do |time|
@@ -18,7 +22,7 @@ index do |f|
     column :end_time do |time|
          time.try(:end_time).strftime("%H:%M")
     end
-    column :price
+    column :price,as: :string
     actions
   end
 
@@ -75,7 +79,7 @@ form do |f|
     f.input :start_time
     f.input :end_time 
     f.input :image, :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
-    f.input :price 
+    f.input :price,as: :string
   end
   actions
 end

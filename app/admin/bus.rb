@@ -8,8 +8,6 @@ filter :start_point
 filter :end_point
 permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point
 
-
-
 index do |f|
      selectable_column
      column :start_date
@@ -23,7 +21,6 @@ index do |f|
      column :start_point
      column :end_point
      actions
-
 end
 
 
@@ -60,25 +57,7 @@ show :title=> "Route Management" do |route|
    end
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 controller do 
-
-  
-
    def date_format
       # p "-----#{params[:city][:name].inspect}---------"
       if params[:bus].present?
@@ -89,15 +68,9 @@ controller do
            p "=======sdddd===#{start_date.inspect}======="
            # params[:bus][:start_date] = start_date
            params[:bus][:end_date] = params[:bus][:end_date].gsub("/", "-")
-
       end
-
-  end 
-
-
+    end 
 end
-
-
 end
 
 

@@ -37,6 +37,10 @@ class HowItWorkImageUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fill => [700, 400, :north]
   # end
 
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
+
   version :how_it_work_image do
     process :eager => true
     process :resize_to_fill => [90, 50, :north]

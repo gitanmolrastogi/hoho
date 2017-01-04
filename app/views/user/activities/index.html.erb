@@ -19,7 +19,7 @@
               <p><b>Price: </b><%= activity.price %></p> 
               <p><b>City: </b> <%= activity.city.name%></p> 
               <p><b>Category: </b><%=  activity.category.name%></p> 
-               <%= activity.overview %>
+               <p><b>Overview:</b>&nbsp;&nbsp;<%= truncate(activity.overview, omision: "...", length: 3000)%>
               </p>
               <!-- <button > </button> -->
                <%= link_to "See Details" , user_activity_path(activity.id)  ,class:"btn btn-sm red-btn" %>

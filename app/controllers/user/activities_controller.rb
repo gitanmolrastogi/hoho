@@ -8,7 +8,7 @@ class User::ActivitiesController < ApplicationController
   def check_for_activities
     if Activity.count == 0 or Activity.where("start_date >= ?", Date.current).count == 0
         redirect_to dashboard_path 
-        flash[:notice] = "Currently there are no activities available in any city"
+        flash[:warning] = "Currently there are no activities available in any city"
     end
   end
 

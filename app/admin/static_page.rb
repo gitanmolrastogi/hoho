@@ -4,9 +4,10 @@ permit_params :title, :content, :type
 actions :all, :except => [:destroy , :new]
 index do |f|
     column :title
-    column :content
+    column "Content" do |body|
+              truncate(body.content, omision: "...", length: 100)
+     end
     column :created_at
-    column :updated_at
  actions
 end
 
@@ -28,6 +29,9 @@ end
     row  "Content" do 
     	ad.content.html_safe
     end
+    row  :created_at 
+    row  :updated_at 
+
    end
 end
 
