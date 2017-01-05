@@ -166,6 +166,154 @@ $( document ).ready(function() {
             form.submit();
         }
     });
+
+
+
+
+
+
+
+//=================Admin Validation start==========================
+
+
+
+    $('#session_new').validate({
+   errorElement: "div",
+    rules: {
+            "admin_user[email]": {
+                 required: true,
+                 maxlength: 30,
+                 email:true
+            },
+            "admin_user[password]": {
+                 required: true,
+                 minlength:8,
+                 maxlength: 16
+            }
+        },
+
+    messages: {
+             "admin_user[email]": {
+                required: "Please enter your email.",
+                maxlength: "Email should be less 30 characters",
+                email: "Please enter vaild email."
+               
+            },
+            "admin_user[password]": {
+                required: "Please enter password.",
+                maxlength: "Your password must be at least 16 characters long"  , 
+                minlength: "Your password must be grater than 8 characters"
+            }        
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
+
+
+
+$('#new_admin_user').validate({
+   errorElement: "div",
+    rules: {
+            "admin_user[email]": {
+                 required: true,
+                 maxlength: 30,
+                 email:true
+            },
+             "admin_user[password]": {
+                 required: true,
+                  minlength:8,
+                  maxlength: 16
+            },
+            'admin_user[password_confirmation]': {
+                            required: true,
+                            equalTo: "#admin_user_password"
+                        }
+        },
+
+    messages: {
+             "admin_user[email]": {
+                required: "Please enter your email.",
+                maxlength: "Email should be less than 30 characters",
+                email: "Please enter valid email."
+               
+            },
+             "admin_user[password]": {
+                required: "Please enter password.",
+                maxlength: "Your password must be at least 16 characters long"  , 
+                minlength: "Your password must be grater than 8 characters" 
+            },
+            'admin_user[password_confirmation]':{
+                    required: "Please enter confirm password",
+                    maxlength: "Your password must be at least 16 characters long"  ,
+                    minlength: "Your password must be grater than 8 characters",
+                    equalTo: "Password confirmation doesn't match." 
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
+
+
+$('#edit_admin_user').validate({
+   errorElement: "div",
+    rules: {
+            "admin_user[email]": {
+                 required: true,
+                 maxlength: 30,
+                 email:true
+            },
+             "admin_user[password]": {
+                 required: true,
+                  minlength:8,
+                  maxlength: 16
+            },
+            'admin_user[password_confirmation]': {
+                            required: true,
+                            equalTo: "#admin_user_password"
+                        }
+        },
+
+    messages: {
+             "admin_user[email]": {
+                required: "Please enter your email.",
+                maxlength: "Email should be less than 30 characters",
+                email: "Please enter valid email."
+               
+            },
+             "admin_user[password]": {
+                required: "Please enter password.",
+                maxlength: "Your password must be at least 16 characters long"  , 
+                minlength: "Your password must be grater than 8 characters" 
+            },
+            'admin_user[password_confirmation]':{
+                    required: "Please provide a password",
+                    maxlength: "Your password must be at least 16 characters long"  ,
+                    minlength: "Your password must be grater than 8 characters",
+                    equalTo: "Password confirmation doesn't match." 
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
+
+//================Admin Validation end=============================
+
+
+
+
+
+
+
+
 //==================New Activity Validation End==================================
 
 
