@@ -25,9 +25,9 @@ before_action :set_cache_headers
        admin_buses_path 
      end
   end
-  def after_sign_out_path_for(resource)
-      p "------after signout----#{resource.inspect}---------"
-       new_user_session_path
-  end
+  # def after_sign_out_path_for(resource)
+  #     p "------after signout----#{resource.inspect}---------"
+  #      new_user_session_path
+  # end
 end
 
