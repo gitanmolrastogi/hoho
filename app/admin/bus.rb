@@ -6,7 +6,7 @@ filter :start_time
 filter :end_time
 filter :start_point
 filter :end_point
-permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point
+permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price
 
 index do |f|
      selectable_column
@@ -32,6 +32,7 @@ form do |f|
       f.input :end_time 
       f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}
       f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]} , input_html: {class: "select_start_bus"}
+      f.input :price, as: :string
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 
     end
@@ -51,7 +52,7 @@ show :title=> "Route Management" do |route|
   end 
   row :start_point
   row :end_point
-
+  row :price
 
     # row  :status
    end

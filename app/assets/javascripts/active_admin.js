@@ -628,6 +628,10 @@ $('#edit_main_route').validate({
                  required: true,
                  accept: "image/jpg,image/jpeg,image/png,image/gif"
             },
+            "city[photos_attributes][0][image]": {
+               required: true,
+               accept: "image/jpg,image/jpeg,image/png,image/gif"
+             }   
 
   },
 
@@ -859,6 +863,11 @@ $("#activity_start_date").datepicker({
             "bus[end_point]": {
                  required: true
             },
+            "bus[price]": {
+                 required: true,
+                 number:true,
+                 maxlength: 8
+            },
            
   },
 
@@ -891,6 +900,10 @@ $("#activity_start_date").datepicker({
             },
             "bus[end_point]": {
                  required: "Please Select a end point"
+            },
+             "bus[price]": {
+                 required: "Please enter price",
+                 number: "Please enter valid price "
             },
   },
 
@@ -941,7 +954,11 @@ $("#activity_start_date").datepicker({
             "bus[end_point]": {
                  required: true
             },
-           
+            "bus[price]": {
+                 required: true,
+                 number:true,
+                 maxlength: 8
+            },
   },
 
     messages: {
@@ -973,6 +990,10 @@ $("#activity_start_date").datepicker({
             },
             "bus[end_point]": {
                  required: "Please select a end point"
+            },
+             "bus[price]": {
+                 required: "Please enter price",
+                 number: "Please enter valid price "
             },
   },
 
@@ -1012,7 +1033,7 @@ $("#bus_start_point").change(function(){
 //==================Category New =========================
 
   $('#new_category').validate({
-      errorElement: "div",
+      // errorElement: "div",
 
       rules: {
         "category[name]": {
@@ -1270,4 +1291,11 @@ $("#home_page_image_submit_action").click( function( e ) {
 
 });
 // Home Page Image Validation End
+
+
+
+// custom validation
+
+// end custom validation
 });
+
