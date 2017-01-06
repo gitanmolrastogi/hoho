@@ -8,9 +8,9 @@
 
 
 
-p 'Creating Accommodation Link'
-acc={ :title => "Accommodation", :content=>"https://google.com"}
-StaticPage.where(acc.slice(:title)).first_or_create(acc)
+# p 'Creating Accommodation Link'
+# acc={ :title => "Accommodation", :content=>"https://google.com"}
+# StaticPage.where(acc.slice(:title)).first_or_create(acc)
 
 p 'Creating Admin user'
 admin_hash = {:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password'}

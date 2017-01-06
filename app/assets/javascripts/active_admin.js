@@ -166,6 +166,104 @@ $( document ).ready(function() {
             form.submit();
         }
     });
+
+
+
+
+
+
+
+//=================Admin Validation start==========================
+
+
+
+    $('#session_new').validate({
+   errorElement: "div",
+    rules: {
+            "admin_user[email]": {
+                 required: true,
+                 maxlength: 30,
+                 email:true
+            },
+            "admin_user[password]": {
+                 required: true,
+                 minlength:8,
+                 maxlength: 16
+            }
+        },
+      submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
+
+
+
+$('#new_admin_user').validate({
+   errorElement: "div",
+    rules: {
+            "admin_user[email]": {
+                 required: true,
+                 maxlength: 30,
+                 email:true
+            },
+             "admin_user[password]": {
+                 required: true,
+                  minlength:8,
+                  maxlength: 16
+            },
+            'admin_user[password_confirmation]': {
+                            required: true,
+                            equalTo: "#admin_user_password"
+                        }
+        },
+
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
+
+
+$('#edit_admin_user').validate({
+   errorElement: "div",
+    rules: {
+            "admin_user[email]": {
+                 required: true,
+                 maxlength: 30,
+                 email:true
+            },
+             "admin_user[password]": {
+                 required: true,
+                  minlength:8,
+                  maxlength: 16
+            },
+            'admin_user[password_confirmation]': {
+                            required: true,
+                            equalTo: "#admin_user_password"
+                        }
+        },
+
+    messages: {
+             
+            'admin_user[password_confirmation]':{
+                    equalTo: "Password confirmation doesn't match." 
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+
+
+
+//================Admin Validation end=============================
+
+
+
+
 //==================New Activity Validation End==================================
 
 
