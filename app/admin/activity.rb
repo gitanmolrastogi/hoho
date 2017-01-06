@@ -66,7 +66,7 @@ form do |f|
   	f.input :information
     f.inputs "Please select images for the city." do
           f.has_many :photos  do |l|
-              l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : ""
+              l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : "",:input_html=>{:required=> true,:accept=>"Image/*"}
               l.input :status ,:as => :select, :collection => [['Active',true],['Inactive',false]] ,:include_blank => false
                if  request.original_url.include?("edit") 
                     l.input :_destroy, :as => :boolean, :label => "Delete"

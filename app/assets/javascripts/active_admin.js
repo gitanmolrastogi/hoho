@@ -119,7 +119,8 @@ $( document ).ready(function() {
                  maxlength: 5000
             },
             "activity[image]": {
-                 required: true
+                 required: true,
+                 accept: "image/jpg,image/jpeg,image/png,image/gif"
             },
             "activity[price]": {
                  required: true,
@@ -152,7 +153,8 @@ $( document ).ready(function() {
                 maxlength: "Information should be 1 to 5000 characters"
             },
              "activity[image]": {
-                required: "please select a image"
+                required: "please select a image",
+                accept: "Invalid image format"
             },
             "activity[price]": {
                  required: "Please enter price",
@@ -623,28 +625,16 @@ $('#edit_main_route').validate({
                  maxlength: 5000
             },
              "city[image]": {
-                 required: true
+                 required: true,
+                 accept: "image/jpg,image/jpeg,image/png,image/gif"
             },
 
   },
 
     messages: {
-            "city[name]": {
-                 required: "Please enter city name.",
-                  maxlength: "City name should be 1 to 50 characters"
-               
-            },
-            "city[overview]": {
-                 required: "Please enter overview of city. ",
-                  maxlength: "City overview should be 1 to 5000 characters"
-               
-            },
-            "city[important]": {
-                 required: "Please enter important of city.",
-                 maxlength: "City important should be 1 to 5000 characters"
-            },
-             "city[image]": {
-                 required: "Please select a image."
+            "city[image]": {
+                 required: "Please upload a image.",
+                 accept: "Invalid image format"
             },
   },
 
@@ -660,49 +650,42 @@ $('#edit_main_route').validate({
 
 
   //===========Edit city validation start====
-  $('#edit_city').validate({
+    $('#edit_city').validate({
    errorElement: "div",
     rules: {
             "city[name]": {
-                 required: true,
-                 maxlength: 50                
-
+                 maxlength: 50,                
+                 required: true
                
             },
             "city[overview]": {
-                 required: true,
-                 maxlength: 5000
+                 maxlength: 5000,
+                 required: true
                
             },
             "city[important]": {
                  required: true,
                  maxlength: 5000
             },
-            
+             "city[image]": {
+                 required: true,
+                 accept: "image/jpg,image/jpeg,image/png,image/gif"
+            },
 
   },
 
     messages: {
-            "city[name]": {
-                 required: "Please enter city name.",
-                  maxlength: "City name should be 1 to 50 characters"
-               
+            "city[image]": {
+                 required: "Please upload a image.",
+                 accept: "Invalid image format"
             },
-            "city[overview]": {
-                 required: "please enter overview of city. ",
-                  maxlength: "City overview should be 1 to 5000 characters"
-
-            },
-            "city[important]": {
-                 required: "please enter important of city.",
-                  maxlength: "City important should be 1 to 5000 characters"
-            },
-            
   },
 
         submitHandler: function(form) {
             form.submit();
         }
+
+
     });
 //=====================City city validation END==================
 
@@ -1037,7 +1020,8 @@ $("#bus_start_point").change(function(){
             maxlength: 50
         },
         "category[image]":{
-          required: true
+          required: true,
+          accept: "image/jpg,image/jpeg,image/png,image/gif"
         },
         "category[info]":{
           required: true,
@@ -1046,16 +1030,9 @@ $("#bus_start_point").change(function(){
       },
 
       messages:{
-        "category[name]": {
-          required: "Category name can't be blank.",
-          maxlength: "Category name should be 1 to 50 characters"
-        },
-        "category[info]": {
-          required: "Category information can't be blank.",
-          maxlength: "Category information should be 1 to 5000 characters"
-        },
-        "category[image]": {
-          required: "Please select a image"
+          "category[image]": {
+           required: "Please upload a image",
+           accept: "Invalid image format" 
         },
 
       },
@@ -1070,34 +1047,30 @@ $("#bus_start_point").change(function(){
 //==================Category new Ends==========================
 
 //==================EDIT Category New =========================
-
-  $('#edit_category').validate({
+$('#edit_category').validate({
       errorElement: "div",
 
       rules: {
         "category[name]": {
             required: true,
-            maxlength:50
+            maxlength: 50
         },
-        "category[info]": {
-            required: true,
-            maxlength:5000
+        "category[image]":{
+          required: true,
+          accept: "image/jpg,image/jpeg,image/png,image/gif"
         },
-       
+        "category[info]":{
+          required: true,
+          maxlength: 5000
+        },
       },
 
       messages:{
-        "category[name]": {
-          required: "Category name can't be blank.",
-          maxlength: "Category name should be 1 to 50 characters"
-
+          "category[image]": {
+           required: "Please upload a image",
+           accept: "Invalid image format" 
         },
-        "category[info]": {
-          required: "Category info can't be blank.",
-          maxlength: "Category info should be 1 to 5000 characters"
 
-        },
-       
       },
      
     submitHandler: function(form) {
@@ -1124,26 +1097,12 @@ $("#bus_start_point").change(function(){
         },
         "questions_and_answer[answer]":{
           required: true,
-            maxlength: 500
+          maxlength: 500
 
         },
       },
 
-      messages:{
-        "questions_and_answer[question]": {
-          required: "Question can't be blank.",
-          maxlength: "Question should be 1 to 300 characters"
-
-        },
-        "questions_and_answer[answer]": {
-          required: "Answer can't be blank.",
-          maxlength: "Answer should be 1 to 500 characters"
-
-        },
-
-      },
-     
-    submitHandler: function(form) {
+   submitHandler: function(form) {
                 form.submit();
             }
 
@@ -1168,19 +1127,6 @@ $("#bus_start_point").change(function(){
         },
       },
 
-      messages:{
-        "questions_and_answer[question]": {
-          required: "Question can't be blank.",
-          maxlength: "Question should be 1 to 300 characters"
-        },
-        "questions_and_answer[answer]": {
-          required: "Answer can't be blank.",
-          maxlength: "Answer should be 1 to 500 characters"
-
-        },
-
-      },
-     
     submitHandler: function(form) {
                 form.submit();
             }
@@ -1198,27 +1144,15 @@ $("#bus_start_point").change(function(){
       rules: {
         "tip[title]": {
             required: true,
-            maxlength:500
+            maxlength:50
         },
         "tip[content]":{
           required: true,
-            maxlength:5000
+         maxlength:5000
         },
       },
 
-      messages:{
-        "tip[title]": {
-          required: "Title can't be blank.",
-          maxlength:"Title should be 1 to 500 characters"
-        },
-        "tip[content]": {
-          required: "Content can't be blank.",
-          maxlength:"Content should be 1 to 5000 characters"
-        },
-
-      },
-     
-    submitHandler: function(form) {
+     submitHandler: function(form) {
                 form.submit();
             }
 
@@ -1229,33 +1163,20 @@ $("#bus_start_point").change(function(){
 
 //==================EDIT TIP=========================
 
-  $('#edit_tip').validate({
+ $('#edit_tip').validate({
       errorElement: "div",
       rules: {
         "tip[title]": {
             required: true,
-            maxlength:500
+            maxlength:50
         },
         "tip[content]":{
           required: true,
-            maxlength:5000
+         maxlength:5000
         },
       },
 
-      messages:{
-        "tip[title]": {
-          required: "Title can't be blank.",
-            maxlength:"Title should be 1 to 500 characters"
-
-        },
-        "tip[content]": {
-          required: "Content can't be blank.",
-          maxlength:"Content should be 1 to 5000 characters"
-        },
-
-      },
-     
-    submitHandler: function(form) {
+     submitHandler: function(form) {
                 form.submit();
             }
 
@@ -1276,20 +1197,21 @@ $("#bus_start_point").change(function(){
         },
         "how_it_work[content]":{
           required: true,
-            maxlength:1000
+          maxlength: 500
+        },
+        "how_it_work[image]":{
+          required: true,
+          accept: "image/jpg,image/jpeg,image/png,image/gif"
         },
       },
 
       messages:{
-        "how_it_work[title]": {
-          required: "Title can't be blank.",
-            maxlength:"Title should be 1 to 300 characters"
+        "how_it_work[image]": {
+          required: "Please upload a image",
+          accept: "Invalid image format"
 
         },
-        "how_it_work[content]": {
-          required: "Content can't be blank.",
-          maxlength:"Content should be 1 to 1000 characters"
-        },
+        
 
       },
      
