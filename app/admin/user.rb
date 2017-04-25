@@ -26,7 +26,7 @@ actions :all, :except => [:new,:destroy,:edit]
 	end
 	#action for block/unblock user by admin
 	collection_action :block_user, method: :get do
-		binding.pry
+		# binding.pry
 		user = User.find(params[:id]) 
 		if (user.is_block == true)
 			user.update_attributes(:is_block => false)
