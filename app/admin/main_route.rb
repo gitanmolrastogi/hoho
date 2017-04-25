@@ -12,7 +12,7 @@ permit_params :information , :start_point ,:end_point , :name , :image , :price 
 form do |f|
 	f.inputs do
 		f.input :name
-	    f.input :information
+	    f.input :information,as: :ckeditor
 		f.input :price#,as: :string
 		f.input :duration
 		f.input :image , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
@@ -37,7 +37,7 @@ index do
     end
      
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
 show :title=> "Main Route " do |route|

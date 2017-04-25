@@ -39,7 +39,7 @@ index do
       image_tag img.zoomed_image_url(:homepage_images)
     end
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
 show :title=> "Route Management" do |route|

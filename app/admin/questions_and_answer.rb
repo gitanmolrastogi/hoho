@@ -13,7 +13,7 @@ index do |f|
      end
      
      column :created_at
-    actions
+    actions name: "Actions"
   end
  
  show do |city|

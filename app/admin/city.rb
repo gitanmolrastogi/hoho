@@ -7,7 +7,7 @@ permit_params :name , :overview ,:important , :image, photos_attributes: [:id, :
 form do |f|
   f.inputs do
     f.input :name
-    f.input :overview 
+    f.input :overview ,as: :ckeditor
     f.input :image , as: :file , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
 
       f.inputs "Please select images for the city." do
@@ -20,7 +20,7 @@ form do |f|
 
           end
       end
-    f.input :important
+    f.input :important,as: :ckeditor
 end
 actions
 end
@@ -35,7 +35,7 @@ index do |f|
               truncate(body.important, omision: "...", length: 100)
      end
      column :created_at
-    actions
+    actions name: "Actions"
   end
  
  show do |city|

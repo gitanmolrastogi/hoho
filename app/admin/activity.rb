@@ -23,7 +23,7 @@ index do |f|
          time.try(:end_time).strftime("%H:%M")
     end
     column :price,as: :string
-    actions
+    actions name: "Actions"
   end
 
 show :title=> "Activity Details" do |activity|
@@ -62,11 +62,11 @@ form do |f|
   	f.input :city ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]}
     f.input :category ,:as => :select, :collection => Category.all.map{|u| ["#{u.name}", u.id]}
   	f.input :name
-  	f.input :overview
-  	f.input :information
+  	f.input :overview, :as => :ckeditor
+  	f.input :information, :as => :ckeditor
     f.inputs "Please select images for the city." do
           f.has_many :photos  do |l|
-              l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : "",:input_html=>{:required=> true,:accept=>"Image/*"}
+              l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : "",:input_html=>{:required=> false,:accept=>"Image/*"}
               l.input :status ,:as => :select, :collection => [['Active',true],['Inactive',false]] ,:include_blank => false
                if  request.original_url.include?("edit") 
                     l.input :_destroy, :as => :boolean, :label => "Delete"

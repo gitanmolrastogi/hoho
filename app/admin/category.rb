@@ -8,7 +8,7 @@ form do  |f|
   f.inputs do
     # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
     f.input :name # if params[:action]=="new"
-    f.input :info
+    f.input :info,as: :ckeditor
     f.input :image, as:  :file
   end
   actions
@@ -21,7 +21,7 @@ index do |f|
               truncate(body.info, omision: "...", length: 100)
      end
      column :created_at
-    actions
+    actions name: "Actions"
   end
 
 

@@ -20,7 +20,7 @@ index do |f|
      end
      column :start_point
      column :end_point
-     actions
+     actions name: "Actions"
 end
 
 

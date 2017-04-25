@@ -47,3 +47,7 @@
     color: red;
     //padding-left: 290px;
 }
+
+form fieldset ol > li .ckeditor {
+    float: inherit !important;
+}

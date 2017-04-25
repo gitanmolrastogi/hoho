@@ -12,7 +12,7 @@ filter :content
               truncate(body.content, omision: "...", length: 100)
      end
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
 show :title=> "Admin User Info" do |ad|

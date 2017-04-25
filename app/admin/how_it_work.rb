@@ -11,7 +11,7 @@ index do
     column :image do |img|
       image_tag img.image_url(:how_it_work_image)
     end
-    actions
+    actions name: "Actions"
   end
  
 show :title=> "How It Works" do |ad|
@@ -28,9 +28,9 @@ end
     f.inputs "New How It Works" do     
       f.input :image,:as => :file
       f.input :title
-      f.input :content ,as: :text 
+      f.input :content ,as: :ckeditor
     end
-     f.actions
+     f.actions 
   end
 
 

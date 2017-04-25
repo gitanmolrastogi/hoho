@@ -25,7 +25,7 @@ index do
     column :status
     column :created_at
     column :updated_at
-    actions
+    actions name: "Actions"
   end
  
 show :title=> "Image" do |ad|

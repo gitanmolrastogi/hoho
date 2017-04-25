@@ -8,7 +8,7 @@ index do |f|
               truncate(body.content, omision: "...", length: 100)
      end
     column :created_at
- actions
+ actions name: "Actions"
 end
 
 

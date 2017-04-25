@@ -10,7 +10,7 @@ actions :all, :except => [:destroy]
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
-    actions
+    actions name: "Actions"
   end
 
 show :title=> "Admin User Info" do |ad|

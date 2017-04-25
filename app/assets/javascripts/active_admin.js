@@ -3,6 +3,7 @@
 //= require jquery.validate.additional-methods
 
 $( document ).ready(function() {
+ $('#main_route_end_point').append('<option value='+$('#select_city_id').val()+'>'+$('#select_city_id').val()+'</option>');
       $('#select_city_id').change(function(){
       $('#main_route_end_point option').remove();
       $('#main_route_end_point').append('<option value='+$(this).val()+'>'+$(this).val()+'</option>');
