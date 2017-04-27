@@ -14,17 +14,17 @@
 				
 				<div class="collapse navbar-collapse hdr-navs" id="collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active">
+						<li class="firsttab">
 							<a href="/dashboard">Home </a>
 						</li>
-						<li>
+						<li class="firsttab1"> 
 							<a href="/user/routes/index">Routes</a>
 						</li>
-						<li>
+						<li class="firsttab2">
 							<a href="/user/routes/hop_on_hop_off">Hop On Hop Off</a>
 						</li>
 
-						<li>
+						<li class="firsttab3">
                           <a href="/user/activities">Activities</a>
 						</li>
 						
@@ -34,20 +34,20 @@
 						<li>
 						   <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.try(:first_name)%></a>
                                      <ul class="dropdown-menu">
-                                     <li><a href="/users/edit_profile">Edit Profile</a></li>
-                                     <li><a href="/users/edit">Change Password</a></li>
-                                     <li><a href="/user/orders/my_cart">My Cart</a></li>
-                                     <li><a href="/user/orders/my_order_history">My Bookings</a></li>
-                                     <li><a href="/users/sign_out">Logout</a></li>
+                                     <li class="firsttab4" ><a href="/users/edit_profile">Edit Profile</a></li>
+                                     <li class="firsttab5"><a href="/users/edit">Change Password</a></li>
+                                     <li class="firsttab6"><a href="/user/orders/my_cart">My Cart</a></li>
+                                     <li class="firsttab7" ><a href="/user/orders/my_order_history">My Bookings</a></li>
+                                     <li class="firsttab8"><a href="/users/sign_out">Logout</a></li>
 
                                      </ul>
 						</li>
 
 						<% else%>
-                         <li>
+                         <li class="firsttab9">
 							<a href="/users/sign_in">Login</a>
 						</li>
-						<li>
+						<li class="firsttab11" >
 							<a href="/users/sign_up">Sign Up</a>
 						</li>
                          
@@ -66,3 +66,21 @@
 		</nav>
 
 	</header>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var current_tab =  document.cookie;
+		if(current_tab != '')
+		{
+			$('.'+current_tab).addClass('active');
+		}
+		else
+		{
+			$('.firsttab').addClass('active');
+		}
+		$('.navbar-right li > a').click(function(){
+			document.cookie = ''
+			document.cookie = $( this ).parent().get(0).className
+		});
+	});
+	</script>

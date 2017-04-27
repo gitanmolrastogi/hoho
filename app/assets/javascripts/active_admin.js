@@ -128,8 +128,15 @@ $( document ).ready(function() {
                  number: true,
                  maxlength: 10
 
-            }
-  },
+            },
+            // "activity[overview]": {
+            //     required: function() 
+            //         {
+            //          CKEDITOR.instances.activity_overview.updateElement();
+            //         },
+            //      minlength:10
+            // }
+        },
 
     messages: {
              "activity[city_id]": {
@@ -161,7 +168,10 @@ $( document ).ready(function() {
                  required: "Please enter price",
                  number: "Please enter only numbers",
                  maxlength: "Please enter valid price"
-            }
+            },
+            // 'activity[overview]' : {
+            //      required: "Please ",
+            // },
         
         
         },

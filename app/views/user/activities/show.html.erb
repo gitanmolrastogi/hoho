@@ -62,7 +62,7 @@
 				              <p><b>City: </b> <%= @activity.city.name%></p> 
 				              <p><b>Category: </b><%= @activity.category.name%></p> 
 				            </p>
-							  <%= @activity.overview %></div>
+							  <%= @activity.overview.html_safe %></div>
 
 						   </div>
 						 </div>
@@ -72,7 +72,7 @@
 	                        <div class="head-line m-b-10"></div>
 	                       </div>
 						   <div class="overview-block">
-							<div class="txt"> <%= @activity.information %></div>
+							<div class="txt"> <%= @activity.information.html_safe %></div>
 						   </div>
 						 </div>
 						</div>

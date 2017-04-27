@@ -7,5 +7,7 @@ class Activity < ApplicationRecord
   has_many :orders , as: :orderable
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
-
+	validates :overview, presence: true
+	validates :information, presence: true
+	
 end
