@@ -8,11 +8,11 @@ permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:over
 index do |f|
      selectable_column
      column :name
-     column "Overview" do |body|
-              truncate(body.overview.html_safe, omision: "...", length: 100)
+      column "Overview" do |resource|
+       truncate(resource.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
       end
-       column "Information" do |body|
-              truncate(body.information.html_safe, omision: "...", length: 100)
+      column "Information" do |resource|
+        truncate(resource.try(:information).html_safe, omision: "...", length: 100, :escape => false)
       end
      column :start_date
      column :end_date
