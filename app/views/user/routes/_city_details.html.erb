@@ -64,7 +64,7 @@
 							    </li>
 							   </ul>	
 							   <p class="txt">
-								<%= category.try(:info).html_safe %>
+								<%#= category.try(:info).html_safe %>
 							   </p>
 							   <a><%= link_to "See More",category_details_user_routes_path(category_id: category.id , city_id: @city.id),:class=>"link-a pull-right",remote: true %></a>
 							   </br>
