@@ -40,11 +40,11 @@
 	   <div class="overview-block">
 		  <div class="txt">
 		  	<div id= "city_important_see_more">
-		    <%= truncate(@city.try(:important).html_safe, :length =>264, :escape => false) %>
+		  	<%= truncate(@city.try(:important).html_safe, omision: "...", length: 264, :escape => false) %>
 		    <a class="link-a pull-right" id= "city_important_more"> See More </a>
 		   </div>
 		   <div id= "city_important_see_less">
-		    <%= @city.try(:important).html_safe%>
+		    <%= @city.try(:important).html_safe %>
 		    <a class="link-a pull-right" id= "city_important_less" > See Less </a>
 		  </div>
 		  </div>						
