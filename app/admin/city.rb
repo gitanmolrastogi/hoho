@@ -29,10 +29,10 @@ index do |f|
      selectable_column
      column :name  
      column "overview" do |body|
-              truncate(body.overview, omision: "...", length: 100)
+        truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
      end
      column "important" do |body|
-              truncate(body.important, omision: "...", length: 100)
+        truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
      end
      column :created_at
     actions name: "Actions"
@@ -42,9 +42,12 @@ index do |f|
     attributes_table do  
     row :id
     row :name
-    row :overview
-    row :important
-
+    row "overview" do |body|
+        truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
+     end
+    row "important" do |body|
+      truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
+    end
       row  :image do |img|
         image_tag img.image_url,:width => 100, :height => 100
       end

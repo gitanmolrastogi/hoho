@@ -18,7 +18,7 @@ index do |f|
      selectable_column
      column :name  
      column "Information" do |body|
-              truncate(body.info, omision: "...", length: 100)
+        truncate(body.try(:info).html_safe, omision: "...", length: 100, :escape => false)
      end
      column :created_at
     actions name: "Actions"
@@ -28,7 +28,9 @@ index do |f|
 show do |route|
     attributes_table do  
     row :name
-    row :info
+    row "Information" do |body|
+        truncate(body.try(:info).html_safe, omision: "...", length: 100, :escape => false)
+     end
       row  :image do |img|
         image_tag img.image_url(:homepage_images)
       end

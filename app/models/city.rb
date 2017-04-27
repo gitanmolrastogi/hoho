@@ -14,6 +14,8 @@ class City < ApplicationRecord
 	# has_one  :accommodation
 
  accepts_nested_attributes_for :photos, :allow_destroy => true
+validates :overview, presence: true
+validates :important, presence: true
 
 
 end
