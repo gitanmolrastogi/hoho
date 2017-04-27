@@ -44,27 +44,27 @@ $(document).ready(function(){
         // // Specify the validation error messages
         messages: {
              "first_name": {
-                required: "Please enter first name",
-                pattern: "please enter only letters",
-                maxlength: "Should not exceed limit 10"
+                required: "Please enter first name.",
+                pattern: "Please enter only letters.",
+                maxlength: "Should not exceed limit 10."
                 
             },
             "last_name": {
-                required: "Please enter last name",
-                pattern: "please enter only letters",
-                maxlength: "Should not exceed limit 10"
+                required: "Please enter last name.",
+                pattern: "Please enter only letters.",
+                maxlength: "Should not exceed limit 10."
                 
             },
             "email": {
-                required: "Please enter a email id",
-                email: "Please enter valid email id",
+                required: "Please enter email Id.",
+                email: "Please enter valid email Id.",
                 
 
             },
             "mobile_number": {
-                required: "Please enter a mobile number",
-                number: "Enter only numbers",
-                exactlength: "Equal to only 10 characters"
+                required: "Please enter mobile number.",
+                number: "Enter only numbers.",
+                exactlength: "Equal to only 10 characters."
                 
             },
             "subject": {
