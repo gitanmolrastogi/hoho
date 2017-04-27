@@ -10,7 +10,7 @@ def dashboard
 		h["pic"]  = f.images.standard_resolution.url
 		h["tags"] = f.tags
 		h["name"] = f.user.full_name
-		h["time"] = f.created_time
+		# h["time"] = f.created_time
 		@arr << h
 	end	
 end
