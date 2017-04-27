@@ -9,10 +9,10 @@ index do |f|
      selectable_column
      column :name
      column "Overview" do |body|
-              truncate(body.overview, omision: "...", length: 100)
+              truncate(body.overview.html_safe, omision: "...", length: 100)
       end
        column "Information" do |body|
-              truncate(body.information, omision: "...", length: 100)
+              truncate(body.information.html_safe, omision: "...", length: 100)
       end
      column :start_date
      column :end_date
@@ -29,8 +29,12 @@ index do |f|
 show :title=> "Activity Details" do |activity|
     attributes_table do  
       row :name
-      row :overview
-      row :information
+      row :overview do |resource|
+         resource.overview.html_safe
+      end
+      row :information do |resource|
+         resource.information.html_safe
+      end
       row :start_date
       row :end_date
       row  :image do |img|
