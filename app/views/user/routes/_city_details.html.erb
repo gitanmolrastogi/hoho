@@ -29,7 +29,7 @@
        </div>
 	   <div class="overview-block">
 		  <div class="txt">
-		  <%= @city.try(:overview) %>
+		  <%= @city.try(:overview).html_safe %>
 	      </div>
 	 </div>
 	 <div class="imp-info-section">
@@ -40,11 +40,11 @@
 	   <div class="overview-block">
 		  <div class="txt">
 		  	<div id= "city_important_see_more">
-		    <%= truncate(@city.try(:important), :length =>264, :escape => false) %>
+		  	<%= truncate(@city.try(:important).html_safe, omision: "...", length: 264, :escape => false) %>
 		    <a class="link-a pull-right" id= "city_important_more"> See More </a>
 		   </div>
 		   <div id= "city_important_see_less">
-		    <%= @city.try(:important)%>
+		    <%= @city.try(:important).html_safe %>
 		    <a class="link-a pull-right" id= "city_important_less" > See Less </a>
 		  </div>
 		  </div>						
@@ -64,7 +64,7 @@
 							    </li>
 							   </ul>	
 							   <p class="txt">
-								<%= category.info %>
+								<%# category.try(:info) %>
 							   </p>
 							   <a><%= link_to "See More",category_details_user_routes_path(category_id: category.id , city_id: @city.id),:class=>"link-a pull-right",remote: true %></a>
 							   </br>
