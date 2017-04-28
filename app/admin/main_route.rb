@@ -31,7 +31,7 @@ index do
     column :start_point
     column :end_point
     column :information do |body|
-     truncate(body.try(:answer).html_safe, omision: "...", length: 100, :escape => false)
+     truncate(body.try(:information).html_safe, omision: "...", length: 100, :escape => false)
     end
     column  :image do |img|
       image_tag img.image_url,:width => 100, :height => 100
