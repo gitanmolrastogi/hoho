@@ -7,7 +7,7 @@
                 <div class="head-line m-b-10"></div>
               </div>
               <p class="txt">
-               <%= @current_route.try(:information) %>
+               <%= @current_route.try(:information).html_safe %>
               </p>
                <div class="row trip-info-3">
                 <div class="col-sm-3 bdr-right">

@@ -29,7 +29,7 @@ show do |route|
     attributes_table do  
     row :name
     row "Information" do |body|
-        truncate(body.try(:info).html_safe, omision: "...", length: 100, :escape => false)
+        body.try(:info).html_safe
      end
       row  :image do |img|
         image_tag img.image_url(:homepage_images)

@@ -26,12 +26,13 @@ index do
     selectable_column
     column :id
     column :name
-    column :information
     column :price
     column :duration
     column :start_point
     column :end_point
-
+    column :information do |body|
+     truncate(body.try(:answer).html_safe, omision: "...", length: 100, :escape => false)
+    end
     column  :image do |img|
       image_tag img.image_url,:width => 100, :height => 100
     end
@@ -44,7 +45,9 @@ show :title=> "Main Route " do |route|
     attributes_table do	
       row :id
       row :name
-      row :information
+      row :information do |resource|
+        resource.try(:information).html_safe
+      end
       row :price
       row :duration
       row :start_point

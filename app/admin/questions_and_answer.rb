@@ -9,7 +9,7 @@ permit_params :question, :answer
           truncate(body.question, omision: "...", length: 100)
     end
     column "Answer" do |body|
-          truncate(body.answer, omision: "...", length: 100)
+        truncate(body.try(:answer).html_safe, omision: "...", length: 100, :escape => false)
     end
     column :created_at
     actions name: "Actions"
@@ -19,7 +19,9 @@ permit_params :question, :answer
         attributes_table do  
         row :id
         row :question
-        row :answer   
+        row :answer do |resource|
+            resource.try(:answer).html_safe
+        end 
         row :created_at
         row :updated_at
         end

@@ -26,7 +26,7 @@
 
 								</div>
 								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-									<div class="panel-body"><%= @faq.try(:answer)%></div>
+									<div class="panel-body"><%= @faq.try(:answer).html_safe %></div>
 								</div>
 							</div>
 							<div class="panel panel-default">

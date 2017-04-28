@@ -6,8 +6,8 @@ index do
     selectable_column
     column :title
     column "Content" do |body|
-              truncate(body.content, omision: "...", length: 50)
-     end
+        truncate(body.try(:content).html_safe, omision: "...", length: 30, :escape => false)
+    end
     column :image do |img|
       image_tag img.image_url(:how_it_work_image)
     end
@@ -17,7 +17,9 @@ index do
 show :title=> "How It Works" do |ad|
     attributes_table do  
     row  :title
-    row :content
+    row :content do |resource|
+      resource.content.html_safe
+    end
     row  :image do |img|
       image_tag img.image_url(:how_it_work_image)
     end

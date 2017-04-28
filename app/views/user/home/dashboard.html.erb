@@ -27,7 +27,7 @@
 					<div class="login-box">					
 							<div class="carousel-caption-a text-center">
 							<div class="main-t-h">Track your Routes</div>
-							<div class="sub-t-h"><%= html_escape(StaticPage.find_by(title: "Track Your Routes").try(:content))%></div>
+							<div class="sub-t-h"><%= html_escape(StaticPage.find_by(title: "Track Your Routes").try(:content).html_safe)%></div>
 						</div>
 					</div>
 				</div>			

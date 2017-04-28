@@ -43,10 +43,10 @@ index do |f|
     row :id
     row :name
     row "overview" do |body|
-        truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
+       body.try(:overview).html_safe
      end
     row "important" do |body|
-      truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
+      body.try(:important).html_safe
     end
       row  :image do |img|
         image_tag img.image_url,:width => 100, :height => 100
