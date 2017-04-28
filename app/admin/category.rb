@@ -4,13 +4,25 @@ before_filter :downcase_category
 filter :name
 permit_params :name, :image, :info
 
-form do  |f|
-  f.inputs do
-    # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
+# form do  |f|
+#   f.inputs do
+#     # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
+#     f.input :name # if params[:action]=="new"
+#     f.input :info,as: :ckeditor
+#     f.input :image, as:  :file
+#   end
+#   actions
+# end
+
+form do |f|
+    f.inputs do
+          # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
     f.input :name # if params[:action]=="new"
     f.input :info,as: :ckeditor
     f.input :image, as:  :file
-  end
+      # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
+
+    end
   actions
 end
 
@@ -18,7 +30,7 @@ index do |f|
      selectable_column
      column :name  
      column "Information" do |body|
-        truncate(body.try(:info).html_safe, omision: "...", length: 100, :escape => false)
+        truncate(body.try(:info).try(:html_safe), omision: "...", length: 100, :escape => false)
      end
      column :created_at
     actions name: "Actions"
@@ -29,7 +41,7 @@ show do |route|
     attributes_table do  
     row :name
     row "Information" do |body|
-        body.try(:info).html_safe
+        body.try(:info).try(:html_safe)
      end
       row  :image do |img|
         image_tag img.image_url(:homepage_images)
