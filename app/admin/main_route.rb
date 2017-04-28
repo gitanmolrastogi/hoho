@@ -37,7 +37,7 @@ index do
       image_tag img.image_url,:width => 100, :height => 100
     end
      
-    column :created_at
+    # column :created_at
     actions name: "Actions"
   end
 
@@ -56,8 +56,8 @@ show :title=> "Main Route " do |route|
       image_tag img.image_url,:width => 100, :height => 100
     end
     
-    row :created_at
-    row :updated_at
+    # row :created_at
+    # row :updated_at
     	# row :price
     	# row :duration
    end

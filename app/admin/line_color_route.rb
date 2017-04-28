@@ -38,7 +38,7 @@ index do
      column  :zoomed_image do |img|
       image_tag img.zoomed_image_url(:homepage_images)
     end
-    column :created_at
+    # column :created_at
     actions name: "Actions"
   end
 
@@ -54,8 +54,8 @@ show :title=> "Route Management" do |route|
     row :hops do |route|
       route.cities.pluck(:name).join(", ")
     end
-    row :created_at
-    row :updated_at
+    # row :created_at
+    # row :updated_at
     	# row :price
     	# row :duration
    end

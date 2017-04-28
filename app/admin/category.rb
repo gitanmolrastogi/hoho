@@ -32,7 +32,7 @@ index do |f|
      column "Information" do |body|
         truncate(body.try(:info).try(:html_safe), omision: "...", length: 100, :escape => false)
      end
-     column :created_at
+     # column :created_at
     actions name: "Actions"
   end
 
@@ -46,8 +46,8 @@ show do |route|
       row  :image do |img|
         image_tag img.image_url(:homepage_images)
       end
-      row :created_at
-      row :updated_at
+      # row :created_at
+      # row :updated_at
     end
 end
 

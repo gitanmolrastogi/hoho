@@ -23,8 +23,8 @@ index do
       image_tag img.image_url(:homepage_images)
     end
     column :status
-    column :created_at
-    column :updated_at
+    # column :created_at
+    # column :updated_at
     actions name: "Actions"
   end
  
@@ -34,8 +34,8 @@ show :title=> "Image" do |ad|
       image_tag img.image_url(:homepage_images)
     end
     row  :status
-    row :created_at
-    row :updated_at
+    # row :created_at
+    # row :updated_at
    end
 end
 

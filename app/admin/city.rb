@@ -34,7 +34,7 @@ index do |f|
      column "important" do |body|
         truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
      end
-     column :created_at
+     # column :created_at
     actions name: "Actions"
   end
  
@@ -51,8 +51,8 @@ index do |f|
       row  :image do |img|
         image_tag img.image_url,:width => 100, :height => 100
       end
-      row :created_at
-      row :updated_at
+      # row :created_at
+      # row :updated_at
     end
 end
 

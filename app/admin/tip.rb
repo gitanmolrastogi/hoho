@@ -11,7 +11,7 @@ filter :content
     column "Content" do |body|
      truncate(body.try(:content).html_safe, omision: "...", length: 100, :escape => false)
     end
-    column :created_at
+    # column :created_at
     actions name: "Actions"
   end
 
@@ -21,8 +21,8 @@ show :title=> "Admin User Info" do |ad|
     row  :content do |resource|
       resource.try(:content).html_safe
     end
-    row  :created_at
-    row  :updated_at
+    # row  :created_at
+    # row  :updated_at
    end
 end
 
