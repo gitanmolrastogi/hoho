@@ -5,8 +5,8 @@ actions :all, :except => [:destroy , :new]
 index do |f|
     column :title
     column "Content" do |body|
-              truncate(body.content, omision: "...", length: 100)
-     end
+     truncate(body.try(:content).html_safe, omision: "...", length: 100, :escape => false)
+    end
     column :created_at
  actions name: "Actions"
 end

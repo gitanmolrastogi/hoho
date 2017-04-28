@@ -10,15 +10,15 @@ class User::StaticContentController < ApplicationController
   end
 
 	def about_us
-		@about_us=StaticPage.find_by(title: "About Us").try(:content)
+		@about_us=StaticPage.find_by(title: "About Us").try(:content).html_safe
 	end
 
 	def terms_and_condition
-		@terms_and_condition=StaticPage.find_by(title: "Terms and Conditions").try(:content)
+		@terms_and_condition=StaticPage.find_by(title: "Terms and Conditions").try(:content).html_safe
 	end
 
 	def privacy_policy
-		@privacy_policy=StaticPage.find_by(title: "Privacy Policy").try(:content)
+		@privacy_policy=StaticPage.find_by(title: "Privacy Policy").try(:content).html_safe
 	end
 
   def contact_us

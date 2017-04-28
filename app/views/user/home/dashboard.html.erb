@@ -67,7 +67,7 @@
 							<span></span>
 						</div>
 						<div class="who-cont">
-							<p><%= html_escape(StaticPage.find_by(title: "Who We Are").try(:content))%></p>
+							<p><%= html_escape(StaticPage.find_by(title: "Who We Are").try(:content).html_safe)%></p>
 						</div>
 					</div>
 				</div>
