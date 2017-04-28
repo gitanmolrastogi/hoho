@@ -635,22 +635,22 @@ $('#edit_main_route').validate({
                  required: true,
                  maxlength: 5000
             },
-             "city[image]": {
-                 required: true,
-                 accept: "image/jpg,image/jpeg,image/png,image/gif"
-            },
-            "city[photos_attributes][0][image]": {
-               required: true,
-               accept: "image/jpg,image/jpeg,image/png,image/gif"
-             }   
+            //  "city[image]": {
+            //      required: true,
+            //      accept: "image/jpg,image/jpeg,image/png,image/gif"
+            // },
+            // "city[photos_attributes][0][image]": {
+            //    required: true,
+            //    accept: "image/jpg,image/jpeg,image/png,image/gif"
+            //  }   
 
   },
 
     messages: {
-            "city[image]": {
-                 required: "Please upload a image.",
-                 accept: "Invalid image format"
-            },
+            // "city[image]": {
+            //      required: "Please upload a image.",
+            //      accept: "Invalid image format"
+            // },
   },
 
         submitHandler: function(form) {
