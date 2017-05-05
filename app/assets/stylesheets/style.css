@@ -297,3 +297,14 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 .img-repons-s img.img-responsive{min-height:254px;}
 
 
+
+
+/*for enlarge image*/
+.enlarge:hover {
+	transform:scale(3,4);
+	transform-origin:0 0;
+}
+
+
+
+

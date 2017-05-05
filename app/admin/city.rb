@@ -27,7 +27,9 @@ end
 
 index do |f|
      selectable_column
-     column :name  
+     column "Name" do |n|
+        n.name.try(:capitalize)
+     end 
      column "overview" do |body|
         truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
      end
@@ -41,7 +43,9 @@ index do |f|
  show do |city|
     attributes_table do  
     row :id
-    row :name
+    row "Name" do |n|
+      n.name.try(:capitalize)
+    end
     row "overview" do |body|
        body.try(:overview).html_safe
      end

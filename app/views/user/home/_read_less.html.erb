@@ -1,4 +1,4 @@
     <div id = "read_less_<%=@object.id%>">
-		<p><%= @object.try(:content) %></p>
+		<p><%= @object.try(:content).html_safe %></p>
 		<a id = "read_more_link_<%=@object.id%>" class = "read_less"> Read Less > </a>
 	</div>

@@ -1,6 +1,6 @@
  <div class="city-section-block">
   <div class="heading-block">
-    <h2 class="heading"><%= @city.try(:name) %></h2>
+    <h2 class="heading"><%= @city.try(:name).try(:capitalize) %></h2>
     <div class="head-line m-b-10"></div>
   </div>
   <div class="search-city-detail">
@@ -13,8 +13,8 @@
 	  <div class="col-md-5">
 	   <ul class="city-img6">
 	   <% @city.photos.each do |image| %>
-		<li class="city-6-images">
-		  <img class="img-responsive" src="<%= image.image.url %>">
+		<li class="city-6-images enlarge">
+		  <img class="img-responsive"  src="<%= image.image.url %>">
 	    </li>
 	    <%end %>
 	   </ul>

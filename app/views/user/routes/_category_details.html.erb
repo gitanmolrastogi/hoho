@@ -3,7 +3,7 @@
 <div class="category-section">
                     <div class="category-block">
                       <div class="heading-block">
-                        <h2 class="heading"><%= @category.name %></h2>
+                        <h2 class="heading"><%= @category.name.try(:capitalize) %></h2>
                         <div class="head-line m-b-10"></div>
                       </div>
                       <div class="category">
@@ -13,7 +13,7 @@
                       <% @activities.each do |activity| %>
                         <div class="activity-block">
                           <div class="heading-block">
-                            <h2 class="heading"><%= activity.name %></h2>
+                            <h2 class="heading"><%= activity.name.try(:capitalize) %></h2>
                             <div class="head-line m-b-10"></div>
                           </div>
                           <div class="activity-inner-block">
@@ -22,7 +22,7 @@
                             </div>
                             <div class="activity-detail">
                               <p class="para-text">
-                               <%= activity.information %>
+                               <%= activity.information.html_safe %>
                               </p>
                               <!-- <button > </button> -->
                                <%= link_to "See Details" , user_activity_path(activity.id)  ,class:"btn btn-sm red-btn" %>
