@@ -1283,8 +1283,8 @@ $("#home_page_image_submit_action").click( function( e ) {
         var width = img.naturalWidth,
         height = img.naturalHeight;
         window.URL.revokeObjectURL( img.src );
-        if( width == 1600 && height == 900 ) {
-                $('#new_home_page_image').submit();
+        if((width>=1600) && (height >= 900)) {
+                $('#new_home_page_image, #edit_home_page_image').submit();
             }
             else {
                 image_error= "Image dimension should be (1600 * 900)px"
