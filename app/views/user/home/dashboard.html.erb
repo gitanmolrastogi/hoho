@@ -10,7 +10,7 @@
              <!-- <img src="" alt=""> -->
            </div>
             <% (HomePageImage.all.where(status: "Active")-Array(first_image)).each do |f| %>
-             <div class="item" style="width:100%; background-image: url(<%= first_image.try(:image).try(:url) %>); background-size:cover; background-position: 61% center;">
+             <div class="item" style="width:100%; background-image: url(<%= f.try(:image).try(:url) %>); background-size:cover; background-position: 61% center;">
               <!-- <img src="<%#= f.try(:image).try(:url) %>" alt="" > -->
              </div>
              <% end %>

@@ -15,10 +15,16 @@ form do |f|
 	  f.input :information,as: :ckeditor
 		f.input :price#,as: :string
 		f.input :duration
-		f.input :image , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
-	  f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}, input_html: {class: "select_city",id: "select_city_id"}
-	  f.input :end_point, :as => :select , input_html: {:disabled => true }, :collection =>  {}, :include_blank => false
-	end
+		# f.input :image , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
+
+    f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}, input_html: {class: "select_city",id: "select_city_id"}
+    f.input :end_point, :as => :select , input_html: {:disabled => true }, :collection =>  {}, :include_blank => false
+    f.input :image ,:hint => f.object.image.present? ? image_tag(f.object.image.url, :id=> 'my_image1') : (
+      div :class=> "Pictures_Pannel" do 
+        image_tag("no_image.png", :id=> 'my_image')
+      end
+    )	
+  end
 	actions
  end
 
@@ -41,26 +47,31 @@ index do
     actions name: "Actions"
   end
 
-show :title=> "Main Route " do |route|
-    attributes_table do	
-      row :id
-      row :name
-      row :information do |resource|
-        resource.try(:information).html_safe
+  show :title=> "Main Route " do |route|
+      attributes_table do	
+        row :id
+        row :name
+        row :information do |resource|
+          resource.try(:information).html_safe
+        end
+        row :price
+        row :duration
+        row :start_point
+        row :end_point
+      row  :image do |img|
+        image_tag img.image_url,:width => 100, :height => 100
       end
-      row :price
-      row :duration
-      row :start_point
-      row :end_point
-    row  :image do |img|
-      image_tag img.image_url,:width => 100, :height => 100
-    end
-    
-    # row :created_at
-    # row :updated_at
-    	# row :price
-    	# row :duration
-   end
-end
+      
+      # row :created_at
+      # row :updated_at
+      	# row :price
+      	# row :duration
+     end
+  end
 
 end
+
+
+
+
+

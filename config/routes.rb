@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "user/forums" => "user/home#forums"  
 
-
+  get '/check_new_city_name' => 'user/users#check_new_city_name'
 
 mount Ckeditor::Engine => '/ckeditor'
 devise_for :admin_users, ActiveAdmin::Devise.config

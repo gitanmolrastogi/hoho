@@ -26,7 +26,7 @@ def check_email
       end  
 end
 #when entering email during forgot password 
- def find_email
+  def find_email
     @email_user= User.find_by(email: params[:user][:email].downcase)
      if @email_user.blank?
          render json: false
@@ -45,6 +45,13 @@ end
       render json: :false
      end 
   end
+
+  def check_new_city_name
+    city1 = City.exists?(:name => (params[:city][:name]).downcase)
+
+    render :json => (city1==false ? true : false) 
+  end
+
 
   private
 

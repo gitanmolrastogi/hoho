@@ -623,7 +623,8 @@ $('#edit_main_route').validate({
     rules: {
             "city[name]": {
                  maxlength: 50,                
-                 required: true
+                 required: true,
+                 remote: '/check_new_city_name'
                
             },
             "city[overview]": {
@@ -647,11 +648,14 @@ $('#edit_main_route').validate({
   },
 
     messages: {
+            "city[name]":{
+                remote: "Please select different name. This name is already exists."
+            },
             "city[image]": {
                  required: "Please upload a image.",
                  accept: "Invalid image format"
             },
-  },
+    },
 
         submitHandler: function(form) {
             form.submit();
@@ -666,12 +670,11 @@ $('#edit_main_route').validate({
 
   //===========Edit city validation start====
     $('#edit_city').validate({
-   errorElement: "div",
+    errorElement: "div",
     rules: {
             "city[name]": {
                  maxlength: 50,                
-                 required: true
-               
+                 required: true,
             },
             "city[overview]": {
                  maxlength: 5000,
@@ -681,7 +684,7 @@ $('#edit_main_route').validate({
             "city[important]": {
                  required: true,
                  maxlength: 5000
-            },
+            }
             //  "city[image]": {
             //      required: true,
             //      accept: "image/jpg,image/jpeg,image/png,image/gif"
@@ -1350,6 +1353,39 @@ $("#main_route_submit_action").click( function( e ) {
 
 });
 // end custom validation
+
+$(document).on('change', "#main_route_image", function() {
+    var readURL = '';
+    $targetTag = $(this).parent().find('img');
+    console.log($targetTag);
+    readURL = function(input) {
+        var reader;
+        reader = '';
+        if (input.files && input.files[0]) {
+            reader = new FileReader;
+            reader.onload = function(e) {
+                return $targetTag.attr('src', e.target.result);
+            };
+            return reader.readAsDataURL(input.files[0]);
+        }
+    };
+    return readURL(this);
+});
+
+
+$uploadCrop = $('#main_route_image').croppie({
+    enableExif: true,
+    viewport: {
+        width: 200,
+        height: 200,
+        type: 'circle'
+    },
+    boundary: {
+        width: 300,
+        height: 300
+    }
+});
+
 });
 
 
