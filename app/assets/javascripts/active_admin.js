@@ -1384,18 +1384,18 @@ $(document).on('change', "#main_route_image", function() {
 });
 
 
-$uploadCrop = $('#main_route_image').croppie({
-    enableExif: true,
-    viewport: {
-        width: 200,
-        height: 200,
-        type: 'circle'
-    },
-    boundary: {
-        width: 300,
-        height: 300
-    }
-});
+// $uploadCrop = $('#main_route_image').croppie({
+//     enableExif: true,
+//     viewport: {
+//         width: 200,
+//         height: 200,
+//         type: 'circle'
+//     },
+//     boundary: {
+//         width: 300,
+//         height: 300
+//     }
+// });
 
 });
 
