@@ -588,7 +588,6 @@ $('#edit_main_route').validate({
             "main_route[name]": {
                  required: "Please enter route name",
                  maxlength: "Main route name should be 1 to 50 characters"
-
             },
             "main_route[information]": {
                  required: "Please enter information of the route",
@@ -643,13 +642,13 @@ $('#edit_main_route').validate({
             "city[photos_attributes][0][image]": {
                required: true,
                accept: "image/jpg,image/jpeg,image/png,image/gif"
-             }   
+            }   
 
   },
 
     messages: {
             "city[name]":{
-                remote: "Please select different name. This name is already exists."
+                remote: "This city name is already taken! Try another."
             },
             "city[image]": {
                  required: "Please upload a image.",
@@ -1263,46 +1262,53 @@ $('#edit_category').validate({
 window.URL = window.URL || window.webkitURL;
 
 $("#home_page_image_submit_action").click( function( e ) {
-    e.preventDefault();
-      image_error=""
-     $("#home_page_image_image_input").find('.image-error').remove('.image-error')
-     $("#home_page_image_image_input").append("<span class= 'image-error' style='color:red;padding-left:90px;'></span>");
+    var href_link = window.location.href;
+    e.preventDefault();    
+    image_error=""
+    $("#home_page_image_image_input").find('.image-error').remove('.image-error')
+    $("#home_page_image_image_input").append("<span class= 'image-error' style='color:red;padding-left:90px;'></span>");
     var fileInput = document.getElementById("home_page_image_image");
-        file = fileInput.files && fileInput.files[0];
-        var FileUploadPath = fileInput.value;
-    if( file ) {
+    file = fileInput.files && fileInput.files[0];
+    var FileUploadPath = fileInput.value;
+    if( file ) 
+    {
         var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
         if (!(Extension == "gif" || Extension == "png" || Extension == "bmp"
                     || Extension == "jpeg" || Extension == "jpg"))
-            {
-                 image_error= "Allowed file format are gif,png,jpeg,jpg,bmp"
-                 $(".image-error").text(image_error);
-                 return false
+        {
+             image_error= "Allowed file format are gif,png,jpeg,jpg,bmp"
+             $(".image-error").text(image_error);
+             return false
+        }
+        else
+        {
+            var img = new Image();
+            img.src = window.URL.createObjectURL( file );
+            img.onload = function() {
+            var width = img.naturalWidth,
+            height = img.naturalHeight;
+            window.URL.revokeObjectURL( img.src );
+            if((width>=1600) && (height >= 900)) {
+                    $('#new_home_page_image, #edit_home_page_image').submit();
+                }
+                else {
+                    image_error= "Image dimension should be (1600 * 900)px"
+                    $(".image-error").text(image_error);
+                    return false
+                }
             }
-                else{
-        var img = new Image();
-        img.src = window.URL.createObjectURL( file );
-        img.onload = function() {
-        var width = img.naturalWidth,
-        height = img.naturalHeight;
-        window.URL.revokeObjectURL( img.src );
-        if((width>=1600) && (height >= 900)) {
-                $('#new_home_page_image, #edit_home_page_image').submit();
-            }
-            else {
-                image_error= "Image dimension should be (1600 * 900)px"
-                 $(".image-error").text(image_error);
-                 return false
-            }
-        };
-    }}
-    else { 
-        
-        image_error= "Please select a file to upload"
-                 $(".image-error").text(image_error);
-                 return false
+        }
     }
-
+    else if(href_link.split('/')[5]=="new") { 
+        alert(href_link.split('/')[5]);
+        image_error= "Please select a file to upload"
+        $(".image-error").text(image_error);
+        return false
+    }
+    else{
+        $('#edit_home_page_image').submit();
+        // return true
+    }
 });
 // Home Page Image Validation End
 
@@ -1310,14 +1316,16 @@ $("#home_page_image_submit_action").click( function( e ) {
 
 // custom validation for main route image
 $("#main_route_submit_action").click( function( e ) {
+    var href_link = window.location.href;
     e.preventDefault();
-      image_error=""
-     $("#main_route_image_input").find('.image-error').remove('.image-error')
-     $("#main_route_image_input").append("<span class= 'image-error' style='color:red;padding-left:20px;'></span>");
+    image_error=""
+    $("#main_route_image_input").find('.image-error').remove('.image-error')
+    $("#main_route_image_input").append("<span class= 'image-error' style='color:red;padding-left:20px;'></span>");
     var fileInput = document.getElementById("main_route_image");
-        file = fileInput.files && fileInput.files[0];
-        var FileUploadPath = fileInput.value;
-    if( file ) {
+    file = fileInput.files && fileInput.files[0];
+    var FileUploadPath = fileInput.value;
+    if( file ) 
+    {
         var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
         if (!(Extension == "gif" || Extension == "png" || Extension == "bmp"
                     || Extension == "jpeg" || Extension == "jpg"))
@@ -1326,31 +1334,34 @@ $("#main_route_submit_action").click( function( e ) {
                  $(".image-error").text(image_error);
                  return false
             }
-                else{
-        var img = new Image();
-        img.src = window.URL.createObjectURL( file );
-        img.onload = function() {
-        var width = img.naturalWidth,
-        height = img.naturalHeight;
-        window.URL.revokeObjectURL( img.src );
-        if((width>=1600) && (height >= 900)) {
-            $(".image-error").text('');
-                $('#main_route_submit_action').submit();
+        else
+        {
+            var img = new Image();
+            img.src = window.URL.createObjectURL( file );
+            img.onload = function() {
+            var width = img.naturalWidth,
+            height = img.naturalHeight;
+            window.URL.revokeObjectURL( img.src );
+            if((width>=1600) && (height >= 900)) {
+                $(".image-error").text('');
+                    $('#main_route_submit_action').submit();
+                }
+                else {
+                    image_error= "Image dimension must be (1600 * 900)px"
+                     $(".image-error").text(image_error);
+                     return false
+                }
             }
-            else {
-                image_error= "Image dimension must be (1600 * 900)px"
-                 $(".image-error").text(image_error);
-                 return false
-            }
-        };
-    }}
-    else { 
-        
-        image_error= "Please select a file to upload"
-                 $(".image-error").text(image_error);
-                 return false
+        }
     }
-
+    else if(href_link.split('/')[5]=="new") { 
+        image_error= "Please select a file to upload"
+        $(".image-error").text(image_error);
+        return false
+    }
+    else{
+        $('#main_route_submit_action').submit();
+    }
 });
 // end custom validation
 
