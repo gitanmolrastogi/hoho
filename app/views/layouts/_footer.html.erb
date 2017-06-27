@@ -4,7 +4,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 col-xs-12">
-              <h1 class="logo-footer">Logo Here</h1>
+              <h1 class="logo-footer"><img src="/assets/rsz_3logo3.png" alt=""></h1>
             </div>
             <div class="col-md-3 col-xs-12">
               <ul class="quick-links">
@@ -25,7 +25,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12">
               <address class="addr">
                 <p>Reservation and Sales<br>Information</p>
-                <p>Phone: +91 <%= html_escape(StaticPage.find_by(title: "Phone Number").try(:content))%></p>
+                <p>Phone: +91 <%= raw(StaticPage.find_by(title: "Phone Number").try(:content))%></p>
               </address>
             
             </div>

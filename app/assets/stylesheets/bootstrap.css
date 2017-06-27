@@ -4276,8 +4276,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 50px;
-  padding: 15px 15px;
+  height: 200px;
+  #padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
 }
@@ -4286,6 +4286,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   text-decoration: none;
 }
 .navbar-brand > img {
+  height: 55px;
   display: block;
 }
 @media (min-width: 768px) {

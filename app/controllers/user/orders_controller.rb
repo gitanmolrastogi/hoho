@@ -29,11 +29,17 @@ class User::OrdersController < ApplicationController
   end
 
   def order_payment
-    @responseSuccessURL = "http://delhi-airport.herokuapp.com/user/orders/success"
-    @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
-    @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
+    # @responseSuccessURL = "http://delhi-airport.herokuapp.com/user/orders/success"
+    # @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
+    # @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
+
+    @responseSuccessURL = "http://localhost:3000/user/orders/success"
+    @responseFailURL = "http://localhost:3000/user/orders/error"
+    @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
     @cart_orders = current_user.orders.where("is_paid = ?" ,false)
     @sum =  @cart_orders.where("is_paid = ?" ,false).includes(:orderable).map{|o| o.orderable.price}.compact.sum 
+    redirect_to success_user_orders_path(order_ids: @cart_orders.pluck(:id) )
+
   end
 
   def remove_item
@@ -54,7 +60,10 @@ class User::OrdersController < ApplicationController
   end
 
   def success 
-    @order = Order.where(:id=>params[:order_ids].scan( /\d+/ )).each do |f|
+    p "=========================SUCCESS========================="
+    p params
+    p "=========================SUCCESS========================="
+    @order = Order.where(:id=>params[:order_ids]).each do |f|
       f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
     end
      NotifyMailer.user_mailer(current_user,@order,params[:oid],params[:ipgTransactionId]).deliver_now

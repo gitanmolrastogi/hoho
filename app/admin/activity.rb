@@ -17,10 +17,10 @@ index do |f|
      column :start_date
      column :end_date
      column :start_time do |time|
-         time.try(:start_time).strftime("%H:%M")
+        time.start_time.present? ? time.start_time.strftime("%H:%M") : "00:00"
      end
     column :end_time do |time|
-         time.try(:end_time).strftime("%H:%M")
+        time.end_time.present? ? time.end_time.strftime("%H:%M") : "00:00"
     end
     column :price,as: :string
     actions name: "Actions"
@@ -42,10 +42,10 @@ show :title=> "Activity Details" do |activity|
       end
       
       row "start_time" do |activity|
-        activity.start_time.strftime("%H:%M")
+        activity.try(:start_time).strftime("%H:%M")
       end 
        row "end_time" do |activity|
-        activity.end_time.strftime("%H:%M")
+        activity.try(:end_time).strftime("%H:%M")
       end 
       row :price
       end

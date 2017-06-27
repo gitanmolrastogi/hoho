@@ -122,6 +122,7 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 .social_links{padding:0;}
 .social_links li{display:inline-block; margin-right: 7px;}
 .top-footer{padding:30px 0 30px;}
+.logo-footer img { height: 65px;}
 
 .home-slide.slider-content{top:22%;}
 .carousel-caption-a{color:#fff; width: 80%;  margin: 0 auto;}

@@ -52,7 +52,7 @@ put '/users/update_profile',to: 'user/users#update_profile'
         get 'my_order_history'
         get 'remove_item'
         get 'order_payment'
-        post 'success'
+        get 'success'
         post 'error'
 
       end
