@@ -30,8 +30,8 @@ form do |f|
       f.input :end_date,as: :datepicker
       f.input :start_time
       f.input :end_time 
-      f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]}
-      f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}", "#{u.name}"]} , input_html: {class: "select_start_bus"}
+      f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}
+      f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]} , input_html: {class: "select_start_bus"}
       f.input :price, as: :string
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 

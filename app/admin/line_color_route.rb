@@ -10,11 +10,11 @@ permit_params :name , :duration , :image, :zoomed_image,:main_route_id ,city_rou
 
 form do  |f|
   f.inputs do
-    f.input :main_route_id ,:as => :select, :collection => MainRoute.all.map{|u| ["#{u.name}", u.id]} , :include_blank => false #, input_html: {class: "select_city",id: "select_city_id"}
+    f.input :main_route_id ,:as => :select, :collection => MainRoute.all.map{|u| ["#{u.name}".capitalize, u.id]} , :include_blank => false #, input_html: {class: "select_city",id: "select_city_id"}
     f.input :name
       f.inputs "Please select the stops points as their sequences!!" do
           f.has_many :city_routes  do |l|
-              l.input :city_id ,:as => :select, :collection => City.all.map{|u| ["#{u.name}", u.id]},:include_blank => true, input_html: {class: "select_city"}
+              l.input :city_id ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, u.id]},:include_blank => true, input_html: {class: "select_city"}
               a = 1..100
               puts "-----------------------------------------------------------------------------"
               if  request.original_url.include?("edit") 
