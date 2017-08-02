@@ -9,6 +9,7 @@ index do |f|
      selectable_column
      column :name
       column "Overview" do |resource|
+
        truncate(resource.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
       end
       # column "Information" do |resource|
@@ -17,10 +18,10 @@ index do |f|
      column :start_date
      column :end_date
      column :start_time do |time|
-        time.start_time.present? ? time.start_time.strftime("%H:%M") : "00:00"
+        time.start_time.present? ? time.start_time.strftime("%I:%M %p") : "00:00"
      end
     column :end_time do |time|
-        time.end_time.present? ? time.end_time.strftime("%H:%M") : "00:00"
+        time.end_time.present? ? time.end_time.strftime("%I:%M %p") : "00:00"
     end
     column :price,as: :string
     actions name: "Actions"
@@ -42,10 +43,10 @@ show :title=> "Activity Details" do |activity|
       end
       
       row "start_time" do |activity|
-        activity.try(:start_time).strftime("%H:%M")
+        activity.try(:start_time).strftime("%I:%M %p")
       end 
        row "end_time" do |activity|
-        activity.try(:end_time).strftime("%H:%M")
+        activity.try(:end_time).strftime("%I:%M %p")
       end 
       row :price
       end
@@ -78,10 +79,10 @@ form do |f|
 
           end
       end
-    f.input :start_date,as: :datepicker
-    f.input :end_date,as: :datepicker
-    f.input :start_time
-    f.input :end_time 
+    f.input :start_date,as: :datepicker,input_html: { required: true }
+    f.input :end_date,as: :datepicker,input_html: { required: true }
+    f.input :start_time, :ampm=> true,input_html: { required: true }
+    f.input :end_time, :ampm=> true ,input_html: { required: true }
     f.input :image, :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
     f.input :price,as: :string
   end
@@ -91,16 +92,18 @@ end
 
 
  controller do 
-    # def create
-    #      if (params[:activity][:photos_attributes].nil?)
-    #        return redirect_to :back, :alert => "Please Select images for activity" if (params[:activity][:photos_attributes].nil?)
-    #      else
-    #        return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
-    #          super do |success,failure|
-    #            success.html { redirect_to admin_activities_path ,notice: 'City  was successfully created.' }
-    #            failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
-    #          end
-    #      end  
-    # end
+    def create
+         if (params[:activity][:photos_attributes].nil?)
+           return redirect_to :back, :alert => "Please Select images for activity" if (params[:activity][:photos_attributes].nil?)
+         else
+           return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
+             super do |success,failure|
+               success.html { redirect_to admin_activities_path ,notice: 'City  was successfully created.' }
+               failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
+             end
+         end  
+    end
+
+    
   end
 end

@@ -13,10 +13,10 @@ index do |f|
      column :start_date
      column :end_date
      column :start_time do |time|
-         time.start_time.strftime("%H:%M")
+         time.start_time.strftime("%I:%M %p")
      end
     column :end_time do |time|
-         time.start_time.strftime("%H:%M")
+         time.end_time.strftime("%I:%M %p")
      end
      column :start_point
      column :end_point
@@ -28,8 +28,8 @@ form do |f|
     f.inputs do
       f.input :start_date,as: :datepicker
       f.input :end_date,as: :datepicker
-      f.input :start_time
-      f.input :end_time 
+      f.input :start_time, :ampm=> true
+      f.input :end_time, :ampm=> true
       f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}
       f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]} , input_html: {class: "select_start_bus"}
       f.input :price, as: :string
@@ -45,10 +45,10 @@ show :title=> "Route Management" do |route|
   row :end_date
   
   row "start_time" do |r|
-    r.start_time.strftime("%H:%M")
+    r.start_time.strftime("%I:%M %p")
   end 
    row "end_time" do |r|
-    r.end_time.strftime("%H:%M")
+    r.end_time.strftime("%I:%M %p")
   end 
   row :start_point
   row :end_point
@@ -70,7 +70,15 @@ controller do
            # params[:bus][:start_date] = start_date
            params[:bus][:end_date] = params[:bus][:end_date].gsub("/", "-")
       end
-    end 
+   end
+
+   def create
+      create! { |success,failure|
+               success.html do
+            redirect_to(admin_buses_path)
+      end
+      }
+   end 
 end
 end
 

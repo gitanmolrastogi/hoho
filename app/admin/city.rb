@@ -31,10 +31,11 @@ index do |f|
         n.name.try(:capitalize)
      end 
      column "overview" do |body|
-        truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
+        truncate(body.try(:overview).html_safe, omision: "...", length: 100)
+        #truncate(body.try(:overview), omision: "...", length: 100)
      end
      column "important" do |body|
-        truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
+        #truncate(body.try(:important).html_safe, omision: "...", length: 100)
      end
      # column :created_at
     actions name: "Actions"

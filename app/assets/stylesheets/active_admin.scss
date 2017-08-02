@@ -52,3 +52,16 @@
 form fieldset ol > li .ckeditor {
     float: inherit !important;
 }
+
+body.active_admin {
+  .cke_toolbar {
+    .cke_button {
+      padding: 5px;
+    }
+  }
+}
+
+.cke_chrome {
+  width: 79.5% !important;
+  overflow: hidden;
+}
