@@ -18,7 +18,7 @@ form do |f|
     f.inputs do
           # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
     f.input :name # if params[:action]=="new"
-    f.input :info,as: :ckeditor
+    f.input :info,as: :ckeditor, label: "Information"
     f.input :image, as:  :file
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 
@@ -58,5 +58,20 @@ controller do
    	       params[:category][:name] = params[:category][:name].downcase
       end
    end	
-  end
+
+#    def create
+       
+#          if (var = params[:category][:info].nil?)
+#           puts var
+#            return redirect_to :back, :alert => "Please Fill In The Infomations" if (params[:category][:info].nil?)
+#          # else
+#          #   return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
+#               debugger
+#               super do |success,failure|
+#                success.html { redirect_to admin_activities_path ,notice: 'Category  was successfully created.' }
+#                failure.html { redirect_to :back, :alert => "Please fill in the Information" }
+#            end
+#          end  
+#     end
+ end
 end

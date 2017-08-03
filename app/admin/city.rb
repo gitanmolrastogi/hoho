@@ -30,27 +30,33 @@ index do |f|
      column "Name" do |n|
         n.name.try(:capitalize)
      end 
-     column "overview" do |body|
-        truncate(body.try(:overview).html_safe, omision: "...", length: 100)
-        #truncate(body.try(:overview), omision: "...", length: 100)
-     end
-     column "important" do |body|
-        #truncate(body.try(:important).html_safe, omision: "...", length: 100)
-     end
+     # column "Overview" do |body|
+     #    truncate(body.try(:overview).html_safe, omision: "...", length: 150, :escape => false)
+     #    #truncate(body.try(:overview), omision: "...", length: 100)
+     # end
+     # column "Important" do |body|
+     #    truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
+     # end
      # column :created_at
+     column "Overview" do |body|
+         truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
+     end
+     column "Important" do |body|
+         truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
+     end
     actions name: "Actions"
-  end
+end
  
- show do |city|
+show do |city|
     attributes_table do  
     row :id
     row "Name" do |n|
       n.name.try(:capitalize)
     end
-    row "overview" do |body|
+    row "Overview" do |body|
        body.try(:overview).html_safe
      end
-    row "important" do |body|
+    row "Important" do |body|
       body.try(:important).html_safe
     end
       row  :image do |img|

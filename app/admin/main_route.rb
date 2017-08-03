@@ -69,6 +69,24 @@ index do
      end
   end
 
+  # controller do 
+  #   def create
+  #        if (params[:a][:photos_attributes].nil?)
+  #          return redirect_to :back, :alert => "Please Select images for activity" if (params[:activity][:photos_attributes].nil?)
+  #        else
+  #          return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
+  #            super do |success,failure|
+  #              success.html { redirect_to admin_activities_path ,notice: 'City  was successfully created.' }
+  #              failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
+  #            end
+  #        end  
+
+         
+  #   end
+
+    
+  # end
+
 end
 
 

@@ -34,6 +34,19 @@ form do |f|
   f.actions
 end
 
+controller do 
+    def create
+         if (params[:tip][:title].nil?)
+           return redirect_to :back, :alert => "Title field is empty" if (params[:tip][:title].nil?)
+         else
+           return redirect_to :back, :alert => "Content is empty" if (params[:tip][:content].nil?)
+             super do |success,failure|
+               success.html { redirect_to admin_tips_path ,notice: 'Tip  was successfully created.' }
+               failure.html { redirect_to :back, :alert => "Tip was not created successfully." }
+             end
+         end  
+    end
+end
 
 end
 

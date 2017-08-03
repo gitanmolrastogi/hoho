@@ -10,7 +10,7 @@ index do |f|
      column :name
       column "Overview" do |resource|
 
-       truncate(resource.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
+       truncate(resource.try(:overview).html_safe, omision: "...", length: 200, :escape => false)
       end
       # column "Information" do |resource|
       #   truncate(resource.try(:information).html_safe, omision: "...", length: 100, :escape => false)

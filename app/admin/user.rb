@@ -17,9 +17,11 @@ actions :all, :except => [:new,:destroy,:edit]
 		column 'Actions' do |resource|
 			a do 
 				if !(resource.is_block == true)
-					link_to 'Block' ,block_user_admin_users_path(id: resource.id)
+					link_to 'Block' ,block_user_admin_users_path(id: resource.id),
+              data: { confirm: 'Are you sure?' }
 				else
-					link_to 'Unblock' ,block_user_admin_users_path(id: resource.id)
+					link_to 'Unblock' ,block_user_admin_users_path(id: resource.id),
+              data: { confirm: 'Are you sure?' }
 				end
 			end
 		end
