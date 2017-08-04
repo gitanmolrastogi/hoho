@@ -28,8 +28,8 @@ form do |f|
     f.inputs do
       f.input :start_date,as: :datepicker
       f.input :end_date,as: :datepicker
-      f.input :start_time, :ampm=> true
-      f.input :end_time, :ampm=> true
+      f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'}
+      f.input :end_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'}
       f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}
       f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]} , input_html: {class: "select_start_bus"}
       f.input :price, as: :string

@@ -553,7 +553,9 @@ $('#new_main_route').validate({
         
         },
         submitHandler: function(form) {
-            form.submit();
+            info_val = CKEDITOR.instances["inp_info"].getData().trim();
+            if(info_val == ""){alert("Please fill information field");}
+            else{form.submit();} 
         }
     });
 
@@ -614,7 +616,9 @@ $('#edit_main_route').validate({
         
         },
         submitHandler: function(form) {
-            form.submit();
+            info_val = CKEDITOR.instances["inp_info"].getData().trim();
+            if(info_val == ""){alert("Please fill information field");}
+            else{form.submit();} 
         }
     });
 

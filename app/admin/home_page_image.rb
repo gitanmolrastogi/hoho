@@ -48,6 +48,23 @@ end
   end
 
 controller do 
+ def create
+  debugger
+    if (params[:home_page_image][:image].blank?)
+                  return redirect_to :back, :alert => "Please select Home Page Image" if (params[:home_page_image][:image].blank?)
+   # end
+   
+    else
+            
+              super do |success,failure|
+                success.html { redirect_to admin_home_page_images_path ,notice: 'Home Page Image  was successfully created.' }
+                failure.html { redirect_to :back, :alert => "Please select Home Page Image" }
+              end
+             
+
+    end  
+ end
+
  def destroy
     if HomePageImage.where(status: "Active").count <= 2 && HomePageImage.find_by(id: params[:id]).try(:status) == "Active"
          redirect_to :back , :alert => "You can't delete last two active images"

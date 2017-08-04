@@ -30,7 +30,7 @@ index do |f|
      selectable_column
      column :name  
      column "Information" do |body|
-        truncate(body.try(:info).try(:html_safe), omision: "...", length: 100, :escape => false)
+        sanitize(body.info.truncate(50).html_safe)
      end
      # column :created_at
     actions name: "Actions"
@@ -59,19 +59,18 @@ controller do
       end
    end	
 
-#    def create
+   # def create
        
-#          if (var = params[:category][:info].nil?)
-#           puts var
-#            return redirect_to :back, :alert => "Please Fill In The Infomations" if (params[:category][:info].nil?)
-#          # else
-#          #   return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
-#               debugger
-#               super do |success,failure|
-#                success.html { redirect_to admin_activities_path ,notice: 'Category  was successfully created.' }
-#                failure.html { redirect_to :back, :alert => "Please fill in the Information" }
-#            end
-#          end  
-#     end
+   #       if (var = params[:category][:info].nil?)     
+   #         return redirect_to :back, :alert => "Please Fill In The Infomations" if (params[:category][:info].nil?)
+   #       # else
+   #       #   return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
+   #            debugger
+   #            super do |success,failure|
+   #             success.html { redirect_to admin_activities_path ,notice: 'Category  was successfully created.' }
+   #             failure.html { redirect_to :back, :alert => "Please fill in the Information" }
+   #         end
+   #       end  
+   #  end
  end
 end

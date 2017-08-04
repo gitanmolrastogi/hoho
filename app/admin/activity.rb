@@ -66,7 +66,7 @@ form do |f|
   f.inputs do
   	f.input :city ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, u.id]}
     f.input :category ,:as => :select, :collection => Category.all.map{|u| ["#{u.name}".capitalize, u.id]}
-  	f.input :name
+  	f.input :name, :input_html => {:maxlength => 100}
   	f.input :overview, :as => :ckeditor
   	f.input :information, :as => :ckeditor
     f.inputs "Please select images for the city." do
@@ -81,8 +81,8 @@ form do |f|
       end
     f.input :start_date,as: :datepicker,input_html: { required: true }
     f.input :end_date,as: :datepicker,input_html: { required: true }
-    f.input :start_time, :ampm=> true,input_html: { required: true }
-    f.input :end_time, :ampm=> true ,input_html: { required: true }
+    f.input :start_time, :ampm=> true, prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
+    f.input :end_time, :ampm=> true , prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
     f.input :image, :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
     f.input :price,as: :string
   end

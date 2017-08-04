@@ -35,4 +35,24 @@ permit_params :question, :answer
         f.actions
     end
 
+    controller do 
+
+    def create
+      
+        if (params[:questions_and_answer][:question].blank?)
+            return redirect_to :back, :alert => "Please provide question for FAQs" if (params[:questions_and_answer][:question].blank?)
+        else
+            return redirect_to :back, :alert => "Please provide answer for FAQs" if (params[:questions_and_answer][:answer].blank?)
+              super do |success,failure|
+                success.html { redirect_to admin_faqs_path ,notice: 'Faqs  was successfully created.' }
+                failure.html { redirect_to :back, :alert => "Please provide answers for FAQs" }
+              end
+             
+
+         end  
+    end
+
+    
+  end
+
 end
