@@ -179,7 +179,12 @@ $( document ).ready(function() {
         
         },
         submitHandler: function(form) {
-            form.submit();
+            overview_val = CKEDITOR.instances["activity_overview"].getData().trim();
+            info_val = CKEDITOR.instances["activity_information"].getData().trim();
+
+            if(overview_val == ""){alert("Please fill overview field");}
+            if(info_val == ""){alert("Please fill information field");}
+            else{form.submit()};
         }
     });
 
