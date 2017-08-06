@@ -83,9 +83,9 @@ controller do
          return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:city][:photos_attributes].count < 2)
          super do |success,failure|
            success.html { redirect_to admin_cities_path,notice: 'City  was successfully created.' }
-           failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
+           failure.html { redirect_to :back, :alert => "Please Select images for city" }
          end
        end	
        end
   end
-end
+ end  

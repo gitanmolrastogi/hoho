@@ -350,7 +350,12 @@ $('#edit_admin_user').validate({
         
         },
         submitHandler: function(form) {
-            form.submit();
+            overview_val = CKEDITOR.instances["activity_overview"].getData().trim();
+            info_val = CKEDITOR.instances["activity_information"].getData().trim();
+
+            if(overview_val == ""){alert("Please fill overview field");}
+            if(info_val == ""){alert("Please fill information field");}
+            else{form.submit()};
         }
     });
 
@@ -670,7 +675,12 @@ $('#edit_main_route').validate({
     },
 
         submitHandler: function(form) {
-            form.submit();
+            
+            overview_val = CKEDITOR.instances["city_overview"].getData().trim();
+            info_val = CKEDITOR.instances["city_important"].getData().trim();
+            if(overview_val == ""){alert("Please fill overview field");}
+            else if(info_val == ""){alert("Please fill important field")}
+            else{form.submit();} 
         }
 
 
@@ -712,7 +722,11 @@ $('#edit_main_route').validate({
   },
 
         submitHandler: function(form) {
-            form.submit();
+            overview_val = CKEDITOR.instances["city_overview"].getData().trim();
+            info_val = CKEDITOR.instances["city_important"].getData().trim();
+            if(overview_val == ""){alert("Please fill overview field");}
+            else if(info_val == ""){alert("Please fill important field")}
+            else{form.submit();} 
         }
 
 
@@ -1085,7 +1099,13 @@ $("#bus_start_point").change(function(){
       },
      
     submitHandler: function(form) {
-                form.submit();
+
+        
+
+         info_val = CKEDITOR.instances["category_info"].getData().trim();
+            if(info_val == ""){alert("Please fill Information field");}
+            else{form.submit();} 
+                
             }
 
 
@@ -1121,7 +1141,9 @@ $('#edit_category').validate({
       },
      
     submitHandler: function(form) {
-                form.submit();
+            info_val = CKEDITOR.instances["category_info"].getData().trim();
+            if(info_val == ""){alert("Please fill Information field");}
+            else{form.submit();} 
             }
 
 
@@ -1150,7 +1172,9 @@ $('#edit_category').validate({
       },
 
    submitHandler: function(form) {
-                form.submit();
+            answer_val = CKEDITOR.instances["questions_and_answer_answer"].getData().trim();
+            if(answer_val == ""){alert("Please fill answer field");}
+            else{form.submit();} 
             }
 
 
@@ -1175,7 +1199,9 @@ $('#edit_category').validate({
       },
 
     submitHandler: function(form) {
-                form.submit();
+            answer_val = CKEDITOR.instances["questions_and_answer_answer"].getData().trim();
+            if(answer_val == ""){alert("Please fill answer field");}
+            else{form.submit();} 
             }
 
 
@@ -1200,7 +1226,9 @@ $('#edit_category').validate({
       },
 
      submitHandler: function(form) {
-                form.submit();
+            content_val = CKEDITOR.instances["tip_content"].getData().trim();
+            if(content_val == ""){alert("Please fill content field");}
+            else{form.submit();} 
             }
 
 
@@ -1224,7 +1252,9 @@ $('#edit_category').validate({
       },
 
      submitHandler: function(form) {
-                form.submit();
+            content_val = CKEDITOR.instances["tip_content"].getData().trim();
+            if(content_val == ""){alert("Please fill content field");}
+            else{form.submit();}
             }
 
 
@@ -1263,13 +1293,38 @@ $('#edit_category').validate({
       },
      
     submitHandler: function(form) {
-                form.submit();
+
+            content_val = CKEDITOR.instances["how_it_work_content"].getData().trim();
+            if(content_val == ""){alert("Please fill content field");}
+            else{form.submit();} 
             }
 
 
   });
 
 // end how it works
+
+// =====================EDIT STATIC PAGE===========================
+
+ $('#edit_static_page').validate({
+      errorElement: "div",
+      rules: {
+        "static_page[content]": {
+            required: true,
+            maxlength:5000
+        },
+      },
+
+     submitHandler: function(form) {
+            content_val = CKEDITOR.instances["static_page_content"].getData().trim();
+            if(content_val == ""){alert("Please fill content field");}
+            else{form.submit();}
+            }
+
+
+  });
+
+// ================EDIT STATIC PAGE ENDS HER=======================
 
 // Home Page Image Validation
 window.URL = window.URL || window.webkitURL;
