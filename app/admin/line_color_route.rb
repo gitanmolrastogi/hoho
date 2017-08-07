@@ -67,6 +67,13 @@ controller do
   def to_s
     self.name.to_s
   end
+
+  def create
+             super do |success,failure|
+               success.html { redirect_to  admin_line_color_routes_path ,notice: 'Line color route  was successfully created.' }
+               failure.html { redirect_to :back, :alert => "Line color route was not successfully created !!!" }
+             end
+    end
 end
 
 

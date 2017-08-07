@@ -9,7 +9,7 @@ permit_params :question, :answer
           truncate(body.question, omision: "...", length: 100)
     end
     column "Answer" do |body|
-        truncate(body.try(:answer).html_safe, omision: "...", length: 100, :escape => false)
+        sanitize(truncate(body.try(:answer).html_safe, omision: "...", length: 100, :escape => false))
     end
     # column :created_at
     actions name: "Actions"

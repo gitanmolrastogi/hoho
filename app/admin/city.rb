@@ -39,10 +39,10 @@ index do |f|
      # end
      # column :created_at
      column "Overview" do |body|
-         truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false)
+         sanitize(truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false))
      end
      column "Important" do |body|
-         truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false)
+         sanitize(truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false))
      end
     actions name: "Actions"
 end

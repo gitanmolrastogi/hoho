@@ -1317,7 +1317,7 @@ $('#edit_category').validate({
 
      submitHandler: function(form) {
             content_val = CKEDITOR.instances["static_page_content"].getData().trim();
-            if(content_val == ""){alert("Please fill content field");}
+            if(content_val == ""){alert("Please fill description field");}
             else{form.submit();}
             }
 

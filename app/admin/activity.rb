@@ -10,7 +10,7 @@ index do |f|
      column :name
       column "Overview" do |resource|
 
-       truncate(resource.try(:overview).html_safe, omision: "...", length: 200, :escape => false)
+       sanitize(truncate(resource.try(:overview).html_safe, omision: "...", length: 200, :escape => false))
       end
       # column "Information" do |resource|
       #   truncate(resource.try(:information).html_safe, omision: "...", length: 100, :escape => false)
@@ -64,8 +64,8 @@ show :title=> "Activity Details" do |activity|
 
 form do |f|
   f.inputs do
-  	f.input :city ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, u.id]}
-    f.input :category ,:as => :select, :collection => Category.all.map{|u| ["#{u.name}".capitalize, u.id]}
+  	f.input :city ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort
+    f.input :category ,:as => :select, :collection => (Category.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort
   	f.input :name, :input_html => {:maxlength => 100}
   	f.input :overview, :as => :ckeditor
   	f.input :information, :as => :ckeditor

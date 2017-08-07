@@ -9,7 +9,7 @@ filter :content
     id_column
     column :title
     column "Content" do |body|
-     truncate(body.try(:content).html_safe, omision: "...", length: 100, :escape => false)
+     sanitize(truncate(body.try(:content).html_safe, omision: "...", length: 100, :escape => false))
     end
     # column :created_at
     actions name: "Actions"

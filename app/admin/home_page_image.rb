@@ -49,11 +49,9 @@ end
 
 controller do 
  def create
-  debugger
+ 
     if (params[:home_page_image][:image].blank?)
                   return redirect_to :back, :alert => "Please select Home Page Image" if (params[:home_page_image][:image].blank?)
-   # end
-   
     else
             
               super do |success,failure|

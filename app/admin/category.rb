@@ -28,7 +28,9 @@ end
 
 index do |f|
      selectable_column
-     column :name  
+     column :name do |n|
+        n.name.try(:capitalize)
+     end 
      column "Information" do |body|
         sanitize(body.info.truncate(50).html_safe)
      end
@@ -59,18 +61,12 @@ controller do
       end
    end	
 
-   # def create
-       
-   #       if (var = params[:category][:info].nil?)     
-   #         return redirect_to :back, :alert => "Please Fill In The Infomations" if (params[:category][:info].nil?)
-   #       # else
-   #       #   return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
-   #            debugger
-   #            super do |success,failure|
-   #             success.html { redirect_to admin_activities_path ,notice: 'Category  was successfully created.' }
-   #             failure.html { redirect_to :back, :alert => "Please fill in the Information" }
-   #         end
-   #       end  
-   #  end
+   def create
+              super do |success,failure|
+               success.html { redirect_to admin_categories_path ,notice: 'Category  was successfully created.' }
+               failure.html { redirect_to :back, :alert => "Please fill in the Information" }
+           end
+ 
+   end
  end
 end

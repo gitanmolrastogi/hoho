@@ -44,7 +44,8 @@
                         <ul class="contact-list">
                             <li>
                                 <i class="fa fa-map-marker"></i>
-                                <%= html_escape(StaticPage.find_by(title: "Address").try(:content))%>
+                                <%= sanitize(StaticPage.find_by(title: "Address").try(:content))%>
+                                <!-- html_escape(StaticPage.find_by(title: "Address").try(:content)) -->
                             </li>
                             <li>
                                 <i class="fa fa-phone"></i>
@@ -52,7 +53,8 @@
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                <%= html_escape(StaticPage.find_by(title: "Email").try(:content))%>
+                                <%= sanitize(StaticPage.find_by(title: "Email").try(:content))%>
+                                <!-- html_escape(StaticPage.find_by(title: "Email").try(:content)) -->
                             </li>
                         </ul>
                     </div>

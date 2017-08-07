@@ -37,7 +37,7 @@ index do
     column :start_point
     column :end_point
     column :information do |body|
-     truncate(body.try(:information).html_safe, omision: "...", length: 100, :escape => false)
+     sanitize(truncate(body.try(:information).html_safe, omision: "...", length: 100, :escape => false))
     end
     column  :image do |img|
       image_tag img.image_url,:width => 100, :height => 100
@@ -67,6 +67,16 @@ index do
       	# row :price
       	# row :duration
      end
+  end
+
+  controller do 
+    def create
+             super do |success,failure|
+               success.html { redirect_to admin_main_routes_path ,notice: 'City  was successfully created.' }
+               failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
+             end
+         
+    end
   end
 
   
