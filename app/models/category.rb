@@ -11,4 +11,11 @@ has_many :activities , dependent: :destroy
 
 # has_many :info , dependent: :destroy
 
+#validation starts here...
+
+   validates :name, presence: true
+   validates :info, presence: true
+
+#validation ends here...
+
 end

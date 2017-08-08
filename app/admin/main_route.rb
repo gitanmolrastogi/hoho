@@ -26,7 +26,7 @@ form do |f|
     )	
   end
 	actions
- end
+end
 
 index do
     selectable_column
@@ -47,7 +47,7 @@ index do
     actions name: "Actions"
   end
 
-  show :title=> "Main Route " do |route|
+show :title=> "Main Route " do |route|
       attributes_table do	
         row :id
         row :name
