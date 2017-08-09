@@ -6,7 +6,7 @@ permit_params :question, :answer
     index do |f|
     selectable_column
     column "Question" do |body|
-          truncate(body.question, omision: "...", length: 100)
+          truncate(body.question, omision: "...", length: 100).capitalize
     end
     column "Answer" do |body|
         sanitize(truncate(body.try(:answer).html_safe, omision: "...", length: 100, :escape => false))
@@ -18,7 +18,10 @@ permit_params :question, :answer
     show do |city|
         attributes_table do  
         row :id
-        row :question
+        #row :question
+        row "Question" do |q|
+            q.question.try(:capitalize)
+        end
         row :answer do |resource|
             resource.try(:answer).html_safe
         end 

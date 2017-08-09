@@ -31,7 +31,10 @@ end
 
 index do
     selectable_column
-    column :name
+    #column :name
+    column "Name" do |n|
+      n.name.capitalize
+    end
     column  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
@@ -44,7 +47,10 @@ index do
 
 show :title=> "Route Management" do |route|
     attributes_table do	
-      row :name
+    #0row :name
+    row "Name" do |n|
+        n.name.try(:capitalize)
+    end
     row  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
@@ -52,7 +58,7 @@ show :title=> "Route Management" do |route|
       image_tag zoomed_image.zoomed_image_url(:homepage_images)
     end
     row :hops do |route|
-      route.cities.pluck(:name).join(", ")
+      route.cities.pluck(:name).map(&:capitalize).join(", ")
     end
     # row :created_at
     # row :updated_at

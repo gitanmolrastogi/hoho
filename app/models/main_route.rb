@@ -9,12 +9,12 @@ has_many :line_color_routes , dependent: :destroy
 
 #validation starts here...
 
-   validates :name, presence: true
-   validates :information, presence: true
-   validates :start_point, presence: true
-   validates :end_point, presence: true
-   validates :price, presence: true
-   validates :duration, presence: true
+   # validates :name, presence: true
+   # validates :information, presence: true
+   # validates :start_point, presence: true
+   # validates :end_point, presence: true
+   # validates :price, presence: true
+   # validates :duration, presence: true
 
 #validation ends here...
 

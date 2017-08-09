@@ -7,10 +7,14 @@ permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:over
 
 index do |f|
      selectable_column
-     column :name
+     #column :name
+      column "Name" do |resource|
+          resource.name.try(:capitalize)
+      end
       column "Overview" do |resource|
 
        sanitize(truncate(resource.try(:overview).html_safe, omision: "...", length: 200, :escape => false))
+      
       end
       # column "Information" do |resource|
       #   truncate(resource.try(:information).html_safe, omision: "...", length: 100, :escape => false)
@@ -29,7 +33,10 @@ index do |f|
 
 show :title=> "Activity Details" do |activity|
     attributes_table do  
-      row :name
+      #row :name
+      row "Name" do |resource|
+          resource.name.try(:capitalize)
+      end
       row :overview do |resource|
          resource.overview.html_safe
       end

@@ -7,7 +7,10 @@ filter :content
  index do
     selectable_column
     id_column
-    column :title
+    #column :title
+    column "Title" do |t|
+        t.title.try(:capitalize)
+    end
     column "Content" do |body|
      sanitize(truncate(body.try(:content).html_safe, omision: "...", length: 100, :escape => false))
     end
@@ -17,7 +20,10 @@ filter :content
 
 show :title=> "Admin User Info" do |ad|
     attributes_table do  
-    row  :title
+    #row  :title
+    row "Title" do |t|
+        t.title.try(:capitalize)
+    end
     row  :content do |resource|
       resource.try(:content).html_safe
     end

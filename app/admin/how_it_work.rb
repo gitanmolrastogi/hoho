@@ -4,7 +4,10 @@ filter :title
 permit_params :image, :title,:content,:sub_title,:icon
 index do
     selectable_column
-    column :title
+    #column :title
+    column "Title" do |t|
+        t.title.try(:capitalize)
+    end
     column "Content" do |body|
         truncate(body.try(:content).html_safe, omision: "...", length: 30, :escape => false)
     end
@@ -16,7 +19,10 @@ index do
  
 show :title=> "How It Works" do |ad|
     attributes_table do  
-    row  :title
+    #row  :title
+    row "Title" do |t|
+        t.title.try(:capitalize)
+    end
     row :content do |resource|
       resource.content.html_safe
     end

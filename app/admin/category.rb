@@ -41,7 +41,10 @@ index do |f|
 
 show do |route|
     attributes_table do  
-    row :name
+    #row :name
+    row "Name" do |n|
+       n.name.try(:capitalize)
+    end
     row "Information" do |body|
         body.try(:info).try(:html_safe)
      end

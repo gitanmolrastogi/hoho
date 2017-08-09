@@ -31,7 +31,10 @@ end
 index do
     selectable_column
     column :id
-    column :name
+    #column :name
+    column "Name" do |n|
+       n.name.try(:capitalize)
+    end
     column :price
     column :duration
     column :start_point
@@ -50,7 +53,10 @@ index do
 show :title=> "Main Route " do |route|
       attributes_table do	
         row :id
-        row :name
+        #row :name
+        row "Name" do |n|
+            n.name.try(:capitalize)
+        end
         row :information do |resource|
           resource.try(:information).html_safe
         end

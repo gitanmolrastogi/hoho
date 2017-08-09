@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+#gem "letter_opener", :group => :development
 #pagination
 gem 'will_paginate'
 #Image Uploading
