@@ -1,6 +1,6 @@
 class MainRoute < ApplicationRecord
 mount_uploader :image, HomePageImageUploader
-before_save :end_point_setter
+#before_save :end_point_setter
 
 
 has_many :orders , as: :orderable

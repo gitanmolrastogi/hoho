@@ -3,7 +3,7 @@ ActiveAdmin.register Activity do
 filter :name
 filter :overview
 filter :information
-permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:overview ,:information ,:city_id, :category_id , :image , photos_attributes: [:id, :image ,:status ,:_destroy]
+permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:overview ,:information ,:city_id, :category_id , :image, :image_credit , photos_attributes: [:id, :image ,:status ,:_destroy]
 
 index do |f|
      selectable_column
@@ -48,7 +48,7 @@ show :title=> "Activity Details" do |activity|
       row  :image do |img|
         image_tag img.image_url(:photos)
       end
-      
+      row :image_credit
       row "start_time" do |activity|
         activity.try(:start_time).strftime("%I:%M %p")
       end 
@@ -91,6 +91,7 @@ form do |f|
     f.input :start_time, :ampm=> true, prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
     f.input :end_time, :ampm=> true , prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
     f.input :image, :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
+    f.input :image_credit, :input_html => {:maxlength => 100}
     f.input :price,as: :string
   end
   actions

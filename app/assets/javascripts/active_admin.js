@@ -6,7 +6,7 @@ $( document ).ready(function() {
     //Fading out the flash message
     $(".flash").fadeOut(5000);
     //---
-    $('#main_route_end_point').append('<option value='+$('#select_city_id').val()+'>'+$('#select_city_id').val()+'</option>');
+   /* $('#main_route_end_point').append('<option value='+$('#select_city_id').val()+'>'+$('#select_city_id').val()+'</option>');
       $('#select_city_id').change(function(){
       $('#main_route_end_point option').remove();
       $('#main_route_end_point').append('<option value='+$(this).val()+'>'+$(this).val()+'</option>');
@@ -19,7 +19,7 @@ $( document ).ready(function() {
     {
       var t = arr.push($(this).val());
       console.log(t);
-    });
+    });*/
 
 //     // $('.has_many_add').click(function(){
 //     //   var cls = $(this).attr('class');//.class();
@@ -55,7 +55,7 @@ $( document ).ready(function() {
 
 });
  
-  function myFunction($target,$id){
+/*  function myFunction($target,$id){
       arr = [];
       $('.select_city').each(function(){
           if($(this).attr('id') != $id){
@@ -88,7 +88,7 @@ $( document ).ready(function() {
         console.log($(this));
 
        
-    });
+    });*/
 
 
 
@@ -101,98 +101,7 @@ $( document ).ready(function() {
 
   $(document).ready(function(){
 
-   $('#new_activity').validate({
-   errorElement: "div",
-    rules: {
-            "activity[city_id]": {
-                 required: true
-            },
-            "activity[category_id]": {
-                 required: true
-            },
-            "activity[name]": {
-                 required: true,
-                 maxlength: 50
-            },
-            "activity[overview]": {
-                 required: true,
-                 maxlength: 5000
-            },
-            "activity[information]": {
-                 required: true,
-                 maxlength: 5000
-            },
-            "activity[image]": {
-                 required: true,
-                 accept: "image/jpg,image/jpeg,image/png,image/gif"
-            },
-            "activity[price]": {
-                 required: true,
-                 number: true,
-                 maxlength: 10
-
-            },
-            // "activity[overview]": {
-            //     required: function() 
-            //         {
-            //          CKEDITOR.instances.activity_overview.updateElement();
-            //         },
-            //      minlength:10
-            // }
-        },
-
-    messages: {
-             "activity[city_id]": {
-                required: "Please select a city"
-               
-            },
-            "activity[category_id]": {
-                required: "Please select a category"
-            },
-
-            "activity[name]": {
-                required: "Please enter a activity name",
-                maxlength: "Please provide valid name"
-            },
-            "activity[overview]": {
-                required: "Please enter overview",
-                maxlength: "Overview should be 1 to 5000 characters"
-            },
-
-            "activity[information]": {
-                required: "Please enter information",
-                maxlength: "Information should be 1 to 5000 characters"
-            },
-             "activity[image]": {
-                required: "please select a image",
-                accept: "Invalid image format"
-            },
-            "activity[price]": {
-                 required: "Please enter price",
-                 number: "Please enter only numbers",
-                 maxlength: "Please enter valid price"
-            },
-            // 'activity[overview]' : {
-            //      required: "Please ",
-            // },
-        
-        
-        },
-        submitHandler: function(form) {
-            overview_val = CKEDITOR.instances["activity_overview"].getData().trim();
-            info_val = CKEDITOR.instances["activity_information"].getData().trim();
-
-            if(overview_val == ""){alert("Please fill overview field");}
-            if(info_val == ""){alert("Please fill information field");}
-            else{form.submit()};
-        }
-    });
-
-
-
-
-
-
+   
 
 //=================Admin Validation start==========================
 
@@ -283,6 +192,102 @@ $('#edit_admin_user').validate({
 //================Admin Validation end=============================
 
 
+$('#new_activity').validate({
+   errorElement: "div",
+    rules: {
+            "activity[city_id]": {
+                 required: true
+            },
+            "activity[category_id]": {
+                 required: true
+            },
+            "activity[name]": {
+                 required: true,
+                 maxlength: 50
+            },
+            "activity[overview]": {
+                 required: true,
+                 maxlength: 5000
+            },
+            "activity[information]": {
+                 required: true,
+                 maxlength: 5000
+            },
+            "activity[image]": {
+                 required: true,
+                 accept: "image/jpg,image/jpeg,image/png,image/gif"
+            },
+            "activity[image_credit]":{
+                 required: true,
+                 maxlength: 50
+            },
+            "activity[price]": {
+                 required: true,
+                 number: true,
+                 maxlength: 10
+
+            },
+            // "activity[overview]": {
+            //     required: function() 
+            //         {
+            //          CKEDITOR.instances.activity_overview.updateElement();
+            //         },
+            //      minlength:10
+            // }
+        },
+
+    messages: {
+             "activity[city_id]": {
+                required: "Please select a city"
+               
+            },
+            "activity[category_id]": {
+                required: "Please select a category"
+            },
+
+            "activity[name]": {
+                required: "Please enter a activity name",
+                maxlength: "Please provide valid name"
+            },
+            "activity[overview]": {
+                required: "Please enter overview",
+                maxlength: "Overview should be 1 to 5000 characters"
+            },
+
+            "activity[information]": {
+                required: "Please enter information",
+                maxlength: "Information should be 1 to 5000 characters"
+            },
+             "activity[image]": {
+                required: "please select a image",
+                accept: "Invalid image format"
+            },
+            "activity[image_credit]":{
+                required: "Please enter Image Credit",
+                maxlength: "Please enter valid Image Credit"
+            },
+            "activity[price]": {
+                 required: "Please enter price",
+                 number: "Please enter only numbers",
+                 maxlength: "Please enter valid price"
+            },
+            // 'activity[overview]' : {
+            //      required: "Please ",
+            // },
+        
+        
+        },
+        submitHandler: function(form) {
+            overview_val = CKEDITOR.instances["activity_overview"].getData().trim();
+            info_val = CKEDITOR.instances["activity_information"].getData().trim();
+
+            if(overview_val == ""){alert("Please fill overview field");}
+            if(info_val == ""){alert("Please fill information field");}
+            else{form.submit()};
+        }
+    });
+
+
 
 
 //==================New Activity Validation End==================================
@@ -308,6 +313,10 @@ $('#edit_admin_user').validate({
             "activity[information]": {
                  required: true,
                  maxlength: 5000
+            },
+            "activity[image_credit]":{
+                 required: true,
+                 maxlength: 50
             },
             "activity[price]": {
                  required: true,
@@ -339,6 +348,10 @@ $('#edit_admin_user').validate({
             "activity[information]": {
                 required: "Please enter information",
                 maxlength: "Information should be 1 to 5000 characters"
+            },
+            "activity[image_credit]":{
+                required: "Please enter Image Credit",
+                maxlength: "Please enter valid Image Credit"
             },
             "activity[price]": {
                  required: "Please enter price",
@@ -501,7 +514,7 @@ $('#edit_line_color_route').validate({
         }
     });
 
-
+  
   //===========EDIT route validation END=====
 $('#new_main_route').validate({
    errorElement: "div",
