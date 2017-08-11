@@ -8,9 +8,10 @@ filter :price
 filter :duration
 
 
-permit_params :information , :start_point ,:end_point , :name , :image , :price , :duration
+permit_params :information , :start_point ,:end_point , :name , :image ,:image_credit, :price , :duration
 form do |f|
 	f.inputs do
+
 		f.input :name
 	  f.input :information,input_html: {id: "inp_info"},as: :ckeditor
 		f.input :price#,as: :string
@@ -23,7 +24,8 @@ form do |f|
       div :class=> "Pictures_Pannel" do 
         image_tag("no_image.png", :id=> 'my_image')
       end
-    )	
+    )
+    f.input :image_credit, input_html: {maxlength: 100}	
   end
 	actions
 end
@@ -45,7 +47,7 @@ index do
     column  :image do |img|
       image_tag img.image_url,:width => 100, :height => 100
     end
-     
+    column :image_credit
     # column :created_at
     actions name: "Actions"
   end
@@ -67,7 +69,7 @@ show :title=> "Main Route " do |route|
       row  :image do |img|
         image_tag img.image_url,:width => 100, :height => 100
       end
-      
+        row :image_credit
       # row :created_at
       # row :updated_at
       	# row :price

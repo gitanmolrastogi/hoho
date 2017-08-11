@@ -195,6 +195,7 @@ $('#edit_admin_user').validate({
 $('#new_activity').validate({
    errorElement: "div",
     rules: {
+
             "activity[city_id]": {
                  required: true
             },
@@ -406,8 +407,16 @@ $('#new_line_color_route').validate({
             "line_color_route[image]": {
                  required: true
             },
+            "line_color_route[image_credit]": {
+                required: true,
+                maxlength: 50
+            },
             "line_color_route[zoomed_image]": {
                  required: true
+            },
+            "line_color_route[image_credit_zoomed]": {
+                required: true,
+                maxlength: 50
             },
   },
 
@@ -437,8 +446,16 @@ $('#new_line_color_route').validate({
             "line_color_route[image]": {
                  required: "Please upload image"
             },
+            "line_color_route[image_credit]": {
+                required: "Please provide Image Credit",
+                maxlength: "Please provide valid Image Credit"
+            },
             "line_color_route[zoomed_image]": {
                  required: "Please upload zoomed image"
+            },
+            "line_color_route[image_credit_zoomed]": {
+                required: "Please provide Image Credit",
+                maxlength: "Please provide valid Image Credit"
             },
   },
 
@@ -478,6 +495,14 @@ $('#edit_line_color_route').validate({
                 number: true,
                 range : [1, 365]
             },
+            "line_color_route[image_credit]": {
+                required: true,
+                maxlength: 50
+            },
+            "line_color_route[image_credit_zoomed]": {
+                required: true,
+                maxlength: 50
+            },
 
            
   },
@@ -505,6 +530,14 @@ $('#edit_line_color_route').validate({
                  required: "Please enter duration",
                  number: "Please enter integers only.",
                  range: "Please enter days between 1 to 365"
+            },
+            "line_color_route[image_credit]": {
+                required: "Please provide Image Credit",
+                maxlength: "Please provide valid Image Credit"
+            },
+            "line_color_route[image_credit_zoomed]": {
+                required: "Please provide Image Credit",
+                maxlength: "Please provide valid Image Credit"
             },
           
   },
@@ -670,6 +703,10 @@ $('#edit_main_route').validate({
                  required: true,
                  accept: "image/jpg,image/jpeg,image/png,image/gif"
             },
+            "city[image_credit]": {
+                  required: true,
+                  maxlength: 50
+            },
             "city[photos_attributes][0][image]": {
                required: true,
                accept: "image/jpg,image/jpeg,image/png,image/gif"
@@ -684,6 +721,10 @@ $('#edit_main_route').validate({
             "city[image]": {
                  required: "Please upload a image.",
                  accept: "Invalid image format"
+            },
+            "city[image_credit]": {
+                 required: "Please provide Image Credit",
+                 maxlength: "Please provide valid Image Credit"
             },
     },
 
@@ -1097,6 +1138,10 @@ $("#bus_start_point").change(function(){
           required: true,
           accept: "image/jpg,image/jpeg,image/png,image/gif"
         },
+        "category[image_credit]":{
+           required: true,
+           maxlength: 50
+        },
         "category[info]":{
           required: true,
           maxlength: 5000
@@ -1107,6 +1152,10 @@ $("#bus_start_point").change(function(){
           "category[image]": {
            required: "Please upload a image",
            accept: "Invalid image format" 
+        },
+        "category[image_credit]": {
+            required: "Please provide Image Credit",
+            maxlength: "Please provide valid Image Credit"
         },
 
       },
@@ -1139,6 +1188,10 @@ $('#edit_category').validate({
           required: true,
           accept: "image/jpg,image/jpeg,image/png,image/gif"
         },
+        "category[image_credit]": {
+           required: true,
+           maxlength: 50                          
+        },
         "category[info]":{
           required: true,
           maxlength: 5000
@@ -1149,6 +1202,10 @@ $('#edit_category').validate({
           "category[image]": {
            required: "Please upload a image",
            accept: "Invalid image format" 
+        },
+        "category[image_credit]": {
+            required: "Please provide Image Credit",
+            maxlength: "Please provide valid Image Credit"
         },
 
       },
@@ -1293,6 +1350,10 @@ $('#edit_category').validate({
           required: true,
           accept: "image/jpg,image/jpeg,image/png,image/gif"
         },
+        "how_it_work[image_credit]":{
+           required: true,
+           maxlength: 50
+        },
       },
 
       messages:{
@@ -1300,6 +1361,10 @@ $('#edit_category').validate({
           required: "Please upload a image",
           accept: "Invalid image format"
 
+        },
+        "how_it_work[image_credit]":{
+            required: "Please provide Image Credit",
+            maxlength: "Please provide valid Image Credi"
         },
         
 
@@ -1338,6 +1403,33 @@ $('#edit_category').validate({
   });
 
 // ================EDIT STATIC PAGE ENDS HER=======================
+
+
+
+
+   /*$('new_home_page_image').validate({
+
+        errorElement: "div",
+        rules: {
+            "home_page_image[image_credit]": {
+                required: true
+            },
+        },
+
+       submitHandler: function(form){
+           form.submit();
+       }
+   });*/
+
+
+
+
+
+
+
+
+
+
 
 // Home Page Image Validation
 window.URL = window.URL || window.webkitURL;

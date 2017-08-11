@@ -5,7 +5,7 @@ filter :name
 filter :duration
 
 
-permit_params :name , :duration , :image, :zoomed_image,:main_route_id ,city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
+permit_params :name , :duration , :image,:image_credit, :zoomed_image,:image_credit_zoomed,:main_route_id ,city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
 
 
 form do  |f|
@@ -24,7 +24,9 @@ form do  |f|
       end
     # f.input :duration ,:label => 'Duration in Days'
     f.input :image, as: :file
+    f.input :image_credit
     f.input :zoomed_image , as: :file
+    f.input :image_credit_zoomed, :label => "Image Credit"
   end
   actions
 end
@@ -38,8 +40,12 @@ index do
     column  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
-     column  :zoomed_image do |img|
+    column :image_credit
+    column  :zoomed_image do |img|
       image_tag img.zoomed_image_url(:homepage_images)
+    end
+    column "Image Credit" do |n|
+      n.image_credit_zoomed
     end
     # column :created_at
     actions name: "Actions"
@@ -54,8 +60,12 @@ show :title=> "Route Management" do |route|
     row  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
+    row :image_credit
     row  :zoomed_image do |zoomed_image|
       image_tag zoomed_image.zoomed_image_url(:homepage_images)
+    end
+    row "Image Credit" do |n|
+      n.image_credit_zoomed
     end
     row :hops do |route|
       route.cities.pluck(:name).map(&:capitalize).join(", ")

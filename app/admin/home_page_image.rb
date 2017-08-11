@@ -16,12 +16,13 @@ batch_action :destroy do |ids|
   end
 
 filter :status
-permit_params :image, :status
+permit_params :image,:image_credit, :status
 index do
     selectable_column
     column :image do |img|
       image_tag img.image_url(:homepage_images)
     end
+    column :image_credit
     column :status
     # column :created_at
     # column :updated_at
@@ -33,6 +34,7 @@ show :title=> "Image" do |ad|
     row  :image do |img|
       image_tag img.image_url(:homepage_images)
     end
+    row :image_credit
     row  :status
     # row :created_at
     # row :updated_at
@@ -43,6 +45,7 @@ end
     f.inputs "New Home Page Image" do     
       f.input :image,:as => :file
       f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
+      f.input :image_credit, :input_html => {:maxlength => 100}
     end
      f.actions
   end

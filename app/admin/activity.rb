@@ -3,7 +3,7 @@ ActiveAdmin.register Activity do
 filter :name
 filter :overview
 filter :information
-permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:overview ,:information ,:city_id, :category_id , :image, :image_credit , photos_attributes: [:id, :image ,:status ,:_destroy]
+permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:overview ,:information ,:city_id, :category_id , :image, :image_credit , photos_attributes: [:id, :image ,:image_credit, :status ,:_destroy]
 
 index do |f|
      selectable_column
@@ -79,7 +79,9 @@ form do |f|
     f.inputs "Please select images for the city." do
           f.has_many :photos  do |l|
               l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : "",:input_html=>{:required=> false,:accept=>"Image/*"}
+              l.input :image_credit
               l.input :status ,:as => :select, :collection => [['Active',true],['Inactive',false]] ,:include_blank => false
+
                if  request.original_url.include?("edit") 
                     l.input :_destroy, :as => :boolean, :label => "Delete"
                end

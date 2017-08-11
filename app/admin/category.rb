@@ -2,7 +2,7 @@ ActiveAdmin.register Category do
 
 before_filter :downcase_category
 filter :name
-permit_params :name, :image, :info
+permit_params :name, :image, :info, :image_credit
 
 # form do  |f|
 #   f.inputs do
@@ -20,6 +20,7 @@ form do |f|
     f.input :name # if params[:action]=="new"
     f.input :info,as: :ckeditor, label: "Information"
     f.input :image, as:  :file
+    f.input :image_credit, :input_html => {:maxlength => 100}
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 
     end
@@ -48,9 +49,10 @@ show do |route|
     row "Information" do |body|
         body.try(:info).try(:html_safe)
      end
-      row  :image do |img|
+    row  :image do |img|
         image_tag img.image_url(:homepage_images)
-      end
+     end
+    row :image_credit
       # row :created_at
       # row :updated_at
     end

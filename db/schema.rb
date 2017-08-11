@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810055430) do
+ActiveRecord::Schema.define(version: 20170811053438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,18 +88,20 @@ ActiveRecord::Schema.define(version: 20170810055430) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.text     "info"
+    t.string   "image_credit"
   end
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.text     "overview"
     t.text     "important"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "image"
+    t.string   "image_credit"
   end
 
   create_table "city_categories", force: :cascade do |t|
@@ -139,8 +141,9 @@ ActiveRecord::Schema.define(version: 20170810055430) do
   create_table "home_page_images", force: :cascade do |t|
     t.string   "image"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "image_credit"
   end
 
   create_table "how_it_works", force: :cascade do |t|
@@ -149,17 +152,20 @@ ActiveRecord::Schema.define(version: 20170810055430) do
     t.string   "content"
     t.string   "image"
     t.string   "icon"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "image_credit"
   end
 
   create_table "line_color_routes", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
     t.string   "zoomed_image"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "main_route_id"
+    t.string   "image_credit"
+    t.string   "image_credit_zoomed"
   end
 
   create_table "main_routes", force: :cascade do |t|
@@ -173,6 +179,7 @@ ActiveRecord::Schema.define(version: 20170810055430) do
     t.integer  "price"
     t.integer  "duration"
     t.boolean  "is_open_ended", default: false
+    t.string   "image_credit"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -194,6 +201,7 @@ ActiveRecord::Schema.define(version: 20170810055430) do
     t.string   "imageable_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "image_credit"
     t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id", using: :btree
   end
 

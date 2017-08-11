@@ -1,7 +1,7 @@
 ActiveAdmin.register HowItWork do
 actions :all, :except => [:destroy,:new]
 filter :title
-permit_params :image, :title,:content,:sub_title,:icon
+permit_params :image,:image_credit, :title,:content,:sub_title,:icon
 index do
     selectable_column
     #column :title
@@ -14,6 +14,7 @@ index do
     column :image do |img|
       image_tag img.image_url(:how_it_work_image)
     end
+    column :image_credit
     actions name: "Actions"
   end
  
@@ -29,12 +30,14 @@ show :title=> "How It Works" do |ad|
     row  :image do |img|
       image_tag img.image_url(:how_it_work_image)
     end
+    row :image_credit
    end
 end
 
  form do |f|
     f.inputs "New How It Works" do     
       f.input :image,:as => :file
+      f.input :image_credit, :input_html => {:maxlength => 100}
       f.input :title
       f.input :content ,as: :ckeditor
     end
