@@ -18,6 +18,7 @@
 								<div class="city-img">
 								  <!-- <img class="img-responsive" src="/assets/lotus.png"> -->
 								  <%= image_tag(@activity.image.url , class:"img-responsive" ) %>
+								  Image Courtesy: <%= @activity.image_credit%>
 							    </div>
 							  </div>
 							  <div class="col-md-5">
@@ -25,7 +26,9 @@
 							   <% @activity.photos.each do |img| %>
 								<li class="city-6-images enlarge">
 								  <img class="img-responsive" src= <%= img.image.url %> >
+								  Image Courtesy: <%= img.image_credit%>
 							    </li>
+
 							    <%end%>
 								
 							   </ul>

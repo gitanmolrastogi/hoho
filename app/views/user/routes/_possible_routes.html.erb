@@ -4,11 +4,14 @@
          <% @posssible_routes.each do |route| %>
           <div class="col-xs-12 col-sm-4 col-md-4">
             <div class="sec_contain">
+
               <figure class="post-thumb">
                 <img src="<%= route.image_url %>" alt="" class="img-responsive">
                 <figcaption><span><img src="/assets/plus-red.png" alt=""></span></figcaption>
               </figure>
+
               <div class="thumb-info text-center">
+
                 <h4><%= route.name %></h4>
                 <div class="detail-trip-block">
                   <div class="detail-t">
@@ -26,8 +29,11 @@
                 </div>
               </div>
             </div>
+            Image Courtesy: <%= route.main_route.image_credit%>
           </div>
+           
          <%end%>
         </div>
       </div>
+
 <%end%>

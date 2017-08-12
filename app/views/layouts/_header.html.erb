@@ -68,19 +68,19 @@
 	</header>
 
 	<script type="text/javascript">
-	$(document).ready(function(){
-		var current_tab =  document.cookie;
-		if(current_tab != '')
-		{
-			$('.'+current_tab).addClass('active');
-		}
-		else
-		{
-			$('.firsttab').addClass('active');
-		}
-		$('.navbar-right li > a').click(function(){
-			document.cookie = ''
-			document.cookie = $( this ).parent().get(0).className
-		});
-	});
+	// $(document).ready(function(){
+	// 	var current_tab =  document.cookie;
+	// 	if(current_tab != '')
+	// 	{
+	// 		$('.'+current_tab).addClass('active');
+	// 	}
+	// 	else
+	// 	{
+	// 		$('.firsttab').addClass('active');
+	// 	}
+	// 	$('.navbar-right li > a').click(function(){
+	// 		document.cookie = ''
+	// 		document.cookie = $(this).parent().get(0).className
+	// 	});
+	// });
 	</script>

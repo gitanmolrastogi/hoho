@@ -66,6 +66,8 @@ class User::OrdersController < ApplicationController
     @order = Order.where(:id=>params[:order_ids]).each do |f|
       f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
     end
+
+    puts "------#{@order.inspect}-------"
      NotifyMailer.user_mailer(current_user,@order,params[:oid],params[:ipgTransactionId]).deliver_now
     redirect_to root_path 
     flash[:success] = "Your transaction has been successfully completed."

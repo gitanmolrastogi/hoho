@@ -7,7 +7,7 @@
 	<div class="row">
 	  <div class="col-md-7">
 		<div class="city-img">
-		  <img class="img-responsive" src="<%= @city.image.url %>">
+		  <img class="img-responsive" src="<%= @city.image.url %>">Image Courtesy:  <%= @city.image_credit %>
 		</div>
 	  </div>
 	  <div class="col-md-5">
@@ -15,12 +15,15 @@
 	   <% @city.photos.each do |image| %>
 		<li class="city-6-images enlarge">
 		  <img class="img-responsive"  src="<%= image.image.url %>">
+		  Image Courtesy: <%= image.image_credit%>
 	    </li>
+
 	    <%end %>
 	   </ul>
 	  </div>
 	</div>
   </div>
+
  </div>
  <div class="overview-section">
 	   <div class="heading-block">
@@ -60,7 +63,7 @@
 						   <div class="category-view-block">
 							  <ul class="city-img6 clearfix">
 								<li class="city-6-images">
-								  <img class="img-responsive" src="<%= category.image %>">
+								  <img class="img-responsive" src="<%= category.image %>">Image Courtesy: <%= category.image_credit%>
 							    </li>
 							   </ul>	
 							   <p class="txt">

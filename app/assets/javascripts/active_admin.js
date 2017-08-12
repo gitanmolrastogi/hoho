@@ -2,9 +2,9 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 
-$( document ).ready(function() {
+// $(document).ready(function() {
     //Fading out the flash message
-    $(".flash").fadeOut(5000);
+    // $(".flash").fadeOut(5000);
     //---
    /* $('#main_route_end_point').append('<option value='+$('#select_city_id').val()+'>'+$('#select_city_id').val()+'</option>');
       $('#select_city_id').change(function(){
@@ -53,7 +53,7 @@ $( document ).ready(function() {
     //   alert("hiiiii");
     // });
 
-});
+// });
  
 /*  function myFunction($target,$id){
       arr = [];
@@ -104,11 +104,8 @@ $( document ).ready(function() {
    
 
 //=================Admin Validation start==========================
-
-
-
-    $('#session_new').validate({
-   errorElement: "div",
+  $('#session_new').validate({
+    errorElement: "div",
     rules: {
             "admin_user[email]": {
                  required: true,
@@ -710,7 +707,10 @@ $('#edit_main_route').validate({
             "city[photos_attributes][0][image]": {
                required: true,
                accept: "image/jpg,image/jpeg,image/png,image/gif"
-             }   
+             },  
+             "city[photos_attributes][0][image_credit]": {
+                required: true
+             }
 
   },
 
@@ -1545,18 +1545,18 @@ $(document).on('change', "#main_route_image", function() {
 });
 
 
-$uploadCrop = $('#main_route_image').croppie({
-    enableExif: true,
-    viewport: {
-        width: 200,
-        height: 200,
-        type: 'circle'
-    },
-    boundary: {
-        width: 300,
-        height: 300
-    }
-});
+// $uploadCrop = $('#main_route_image').croppie({
+//     enableExif: true,
+//     viewport: {
+//         width: 200,
+//         height: 200,
+//         type: 'circle'
+//     },
+//     boundary: {
+//         width: 300,
+//         height: 300
+//     }
+// });
 
 });
 
