@@ -19,7 +19,7 @@ form do |f|
           # f.input :name #,:input_html=>{:disabled=>true} if params[:action]=="edit"
     f.input :name # if params[:action]=="new"
     f.input :info,as: :ckeditor, label: "Information"
-    f.input :image, as:  :file
+    f.input :image, label: "Image (preferably 1200X900 px)" ,as:  :file
     f.input :image_credit, :input_html => {:maxlength => 100}
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 

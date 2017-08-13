@@ -101,7 +101,7 @@
 
   $(document).ready(function(){
 
-   
+   $(".flash").fadeOut(5000);
 
 //=================Admin Validation start==========================
   $('#session_new').validate({
@@ -733,7 +733,7 @@ $('#edit_main_route').validate({
             overview_val = CKEDITOR.instances["city_overview"].getData().trim();
             info_val = CKEDITOR.instances["city_important"].getData().trim();
             if(overview_val == ""){alert("Please fill overview field");}
-            else if(info_val == ""){alert("Please fill important field")}
+            else if(info_val == ""){alert("Please fill information field")}
             else{form.submit();} 
         }
 
@@ -1435,7 +1435,7 @@ $('#edit_category').validate({
 window.URL = window.URL || window.webkitURL;
 
 $("#home_page_image_submit_action").click( function( e ) {
-    e.preventDefault();
+    e.defaultPrevented();
       image_error=""
      $("#home_page_image_image_input").find('.image-error').remove('.image-error')
      $("#home_page_image_image_input").append("<span class= 'image-error' style='color:red;padding-left:90px;'></span>");
@@ -1482,7 +1482,7 @@ $("#home_page_image_submit_action").click( function( e ) {
 
 // custom validation for main route image
 $("#main_route_submit_action").click( function( e ) {
-    e.preventDefault();
+    e.defaultPrevented();
       image_error=""
      $("#main_route_image_input").find('.image-error').remove('.image-error')
      $("#main_route_image_input").append("<span class= 'image-error' style='color:red;padding-left:20px;'></span>");

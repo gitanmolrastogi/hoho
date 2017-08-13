@@ -43,7 +43,7 @@ end
 
  form do |f|
     f.inputs "New Home Page Image" do     
-      f.input :image,:as => :file
+      f.input :image,:as => :file, label: "Image (preferable 1600 x 900 px)"
       f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
       f.input :image_credit, :input_html => {:maxlength => 100}
     end

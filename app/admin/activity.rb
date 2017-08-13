@@ -76,7 +76,7 @@ form do |f|
   	f.input :name, :input_html => {:maxlength => 100}
   	f.input :overview, :as => :ckeditor
   	f.input :information, :as => :ckeditor
-    f.inputs "Please select images for the city." do
+    f.inputs "Please select atleast 2 images for the city." do
           f.has_many :photos  do |l|
               l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : "",:input_html=>{:required=> false,:accept=>"Image/*"}
               l.input :image_credit
@@ -92,7 +92,7 @@ form do |f|
     f.input :end_date,as: :datepicker,input_html: { required: true }
     f.input :start_time, :ampm=> true, prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
     f.input :end_time, :ampm=> true , prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
-    f.input :image, :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
+    f.input :image, label: "Image (preferably 1200x900 px)" ,:hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
     f.input :image_credit, :input_html => {:maxlength => 100}
     f.input :price,as: :string
   end

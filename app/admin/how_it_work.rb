@@ -36,7 +36,7 @@ end
 
  form do |f|
     f.inputs "New How It Works" do     
-      f.input :image,:as => :file
+      f.input :image,:as => :file, label: "Image (preferably 1600 x 900 px)"
       f.input :image_credit, :input_html => {:maxlength => 100}
       f.input :title
       f.input :content ,as: :ckeditor

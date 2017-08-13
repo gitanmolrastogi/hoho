@@ -23,9 +23,9 @@ form do  |f|
           end
       end
     # f.input :duration ,:label => 'Duration in Days'
-    f.input :image, as: :file
+    f.input :image, as: :file, label: "Image (preferably 1600 x 900 px)"
     f.input :image_credit
-    f.input :zoomed_image , as: :file
+    f.input :zoomed_image , as: :file, label: "Image (preferably 1600 x 900 px)"
     f.input :image_credit_zoomed, :label => "Image Credit"
   end
   actions

@@ -8,9 +8,9 @@ form do |f|
   f.inputs do
     f.input :name
     f.input :overview ,as: :ckeditor
-    f.input :image , as: :file , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
+    f.input :image , as: :file , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : "", label: "Image (preferable 1600 x 900 px)"
     f.input :image_credit, :input_html => {:maxlength => 100}
-      f.inputs "Please select images for the city." do
+      f.inputs "Please select atleast 2 images for the city." do
           f.has_many :photos  do |l|
               l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : ""
               l.input :image_credit
@@ -42,7 +42,7 @@ index do |f|
      column "Overview" do |body|
          sanitize(truncate(body.try(:overview).html_safe, omision: "...", length: 100, :escape => false))
      end
-     column "Important" do |body|
+     column "Information" do |body|
          sanitize(truncate(body.try(:important).html_safe, omision: "...", length: 100, :escape => false))
      end
     actions name: "Actions"
@@ -57,7 +57,7 @@ show do |city|
     row "Overview" do |body|
        body.try(:overview).html_safe
      end
-    row "Important" do |body|
+    row "Information" do |body|
       body.try(:important).html_safe
     end
       row  :image do |img|
