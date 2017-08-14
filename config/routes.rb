@@ -53,6 +53,7 @@ put '/users/update_profile',to: 'user/users#update_profile'
         get 'remove_item'
         get 'order_payment'
         get 'success'
+        post 'success'
         post 'error'
 
       end

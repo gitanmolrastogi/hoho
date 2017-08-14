@@ -245,7 +245,7 @@ $('#new_activity').validate({
 
             "activity[name]": {
                 required: "Please enter a activity name",
-                maxlength: "Please provide valid name"
+                maxlength: "Please provide valid name ( Max 50 charecters)"
             },
             "activity[overview]": {
                 required: "Please enter overview",
@@ -262,7 +262,7 @@ $('#new_activity').validate({
             },
             "activity[image_credit]":{
                 required: "Please enter Image Credit",
-                maxlength: "Please enter valid Image Credit"
+                maxlength: "Please enter valid Image Credit( Max 50 charecters)"
             },
             "activity[price]": {
                  required: "Please enter price",
@@ -336,7 +336,7 @@ $('#new_activity').validate({
 
             "activity[name]": {
                 required: "Please enter a activity name",
-                maxlength: "Please provide valid name"
+                maxlength: "Please provide valid name( Max 50 charecters)"
             },
             "activity[overview]": {
                 required: "Please enter overview",
@@ -349,12 +349,12 @@ $('#new_activity').validate({
             },
             "activity[image_credit]":{
                 required: "Please enter Image Credit",
-                maxlength: "Please enter valid Image Credit"
+                maxlength: "Please enter valid Image Credit( Max 50 charecters)"
             },
             "activity[price]": {
                  required: "Please enter price",
                  number: "Please enter only numbers",
-                 maxlength: "Please enter valid price"
+                 maxlength: "Please enter valid price ( Max 10 digits)"
             }
            
         
@@ -445,14 +445,14 @@ $('#new_line_color_route').validate({
             },
             "line_color_route[image_credit]": {
                 required: "Please provide Image Credit",
-                maxlength: "Please provide valid Image Credit"
+                maxlength: "Please provide valid Image Credit( Max 50 charecters)"
             },
             "line_color_route[zoomed_image]": {
                  required: "Please upload zoomed image"
             },
             "line_color_route[image_credit_zoomed]": {
                 required: "Please provide Image Credit",
-                maxlength: "Please provide valid Image Credit"
+                maxlength: "Please provide valid Image Credit( Max 50 charecters)"
             },
   },
 
@@ -530,11 +530,11 @@ $('#edit_line_color_route').validate({
             },
             "line_color_route[image_credit]": {
                 required: "Please provide Image Credit",
-                maxlength: "Please provide valid Image Credit"
+                maxlength: "Please provide valid Image Credit( Max 50 charecters)"
             },
             "line_color_route[image_credit_zoomed]": {
                 required: "Please provide Image Credit",
-                maxlength: "Please provide valid Image Credit"
+                maxlength: "Please provide valid Image Credit( Max 50 charecters)"
             },
           
   },
@@ -724,7 +724,7 @@ $('#edit_main_route').validate({
             },
             "city[image_credit]": {
                  required: "Please provide Image Credit",
-                 maxlength: "Please provide valid Image Credit"
+                 maxlength: "Please provide valid Image Credit( Max 50 charecters)"
             },
     },
 
@@ -1155,7 +1155,7 @@ $("#bus_start_point").change(function(){
         },
         "category[image_credit]": {
             required: "Please provide Image Credit",
-            maxlength: "Please provide valid Image Credit"
+            maxlength: "Please provide valid Image Credit( Max 50 charecters)"
         },
 
       },
@@ -1205,7 +1205,7 @@ $('#edit_category').validate({
         },
         "category[image_credit]": {
             required: "Please provide Image Credit",
-            maxlength: "Please provide valid Image Credit"
+            maxlength: "Please provide valid Image Credit( Max 50 charecters)"
         },
 
       },
@@ -1364,7 +1364,7 @@ $('#edit_category').validate({
         },
         "how_it_work[image_credit]":{
             required: "Please provide Image Credit",
-            maxlength: "Please provide valid Image Credi"
+            maxlength: "Please provide valid Image Credit( Max 50 charecters)"
         },
         
 
@@ -1407,19 +1407,33 @@ $('#edit_category').validate({
 
 
 
-   /*$('new_home_page_image').validate({
+   $('#new_home_page_image').validate({
 
         errorElement: "div",
         rules: {
             "home_page_image[image_credit]": {
-                required: true
+                required: true,
+                maxlength: 50
+                
+            },
+            "home_page_image[image]": {
+                required: true             
+
             },
         },
+
+        messages:{
+        "home_page_image[image_credit]": {
+          required: "Please provide image credit",
+          maxlength: "Please provide valid Image Credit( Max 50 charecters)"
+      },
+        },
+        
 
        submitHandler: function(form){
            form.submit();
        }
-   });*/
+   });
 
 
 
