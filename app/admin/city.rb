@@ -21,7 +21,7 @@ form do |f|
 
           end
       end
-    f.input :important,as: :ckeditor
+    f.input :important,as: :ckeditor, :label => "Information"
 end
 actions
 end

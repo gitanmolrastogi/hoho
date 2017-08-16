@@ -28,10 +28,10 @@ form do |f|
     f.inputs do
       f.input :start_date,as: :datepicker
       f.input :end_date,as: :datepicker
-      f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'}
-      f.input :end_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'}
-      f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}
-      f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]} , input_html: {class: "select_start_bus"}
+      f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
+      f.input :end_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
+      f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]},include_blank: false, include_hidden: false
+      f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]} , input_html: {class: "select_start_bus"},include_blank: false, include_hidden: false
       f.input :price, as: :string
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 

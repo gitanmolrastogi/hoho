@@ -71,8 +71,8 @@ show :title=> "Activity Details" do |activity|
 
 form do |f|
   f.inputs do
-  	f.input :city ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort
-    f.input :category ,:as => :select, :collection => (Category.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort
+  	f.input :city ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort, include_blank: false, include_hidden: false
+    f.input :category ,:as => :select, :collection => (Category.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort,include_blank: false, include_hidden: false
   	f.input :name, :input_html => {:maxlength => 100}
   	f.input :overview, :as => :ckeditor
   	f.input :information, :as => :ckeditor
@@ -88,10 +88,10 @@ form do |f|
 
           end
       end
-    f.input :start_date,as: :datepicker,input_html: { required: true }
-    f.input :end_date,as: :datepicker,input_html: { required: true }
-    f.input :start_time, :ampm=> true, prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
-    f.input :end_time, :ampm=> true , prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true }
+    f.input :start_date,as: :datepicker,input_html: { required: true },include_blank: false, include_hidden: false
+    f.input :end_date,as: :datepicker,input_html: { required: true },include_blank: false, include_hidden: false
+    f.input :start_time, :ampm=> true, prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true },include_blank: false, include_hidden: false
+    f.input :end_time, :ampm=> true , prompt: {hour: "Choose   Hour", minute: 'Choose minute'},input_html: { required: true },include_blank: false, include_hidden: false
     f.input :image, label: "Image (preferably 1200x900 px)" ,:hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
     f.input :image_credit, :input_html => {:maxlength => 100}
     f.input :price,as: :string

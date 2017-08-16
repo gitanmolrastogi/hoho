@@ -105,6 +105,12 @@ $(document).ready(function(){
 
    });
 
+   /*$(document).on('click' , '#to_city', function(){
+      var main_route = $('#city_route').val();
+      if (main_route == ""){
+      alert("What is this??");};
+   });*/
+
   $(document).on('click', '#go_hop', function(){
     var to_city_id = $('#to_city').val();
     var from_city_id = $('#from_city').val();

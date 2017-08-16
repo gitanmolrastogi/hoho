@@ -28,9 +28,13 @@
 	</div>
 	</section>
 <script type="text/javascript">
-	$( document ).ready(function() {
+	/*$( document ).ready(function() {
 		$('form').submit();
-	})
+	})*/
 		
-	
+	$(document).on('turbolinks:load', function() {
+
+         		$('form').submit();
+
+    });
 </script>
