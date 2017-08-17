@@ -15,9 +15,5 @@ test:
   database: delhi_airport_test
   <<: *defaults
 
-production:
-  <<: *defaults
-  database: delhi_airport_production
-  adapter: postgresql
-  username: postgres
-  password: postgres
+# production:
+#   url: <%= ENV['DATABASE_URL'] %>
