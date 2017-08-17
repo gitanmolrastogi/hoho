@@ -12,7 +12,7 @@ before_filter :check_for_main_routes , only: [:index]
 			end
 		route = @current_route.line_color_routes.first
 		# @weeks = route.try(:duration).try(:to_i)/7
-  #       @days = route.try(:duration).try(:to_i) - @weeks*7
+    # @days = route.try(:duration).try(:to_i) - @weeks*7
 		@city_dropdown = (route.cities + City.where(name: @current_route.start_point)).uniq
 		@city = @city_dropdown.last
 		@city_categories = Category.where(id: @city.try(:activities).pluck(:category_id))
@@ -43,8 +43,9 @@ before_filter :check_for_main_routes , only: [:index]
     end  
     if params[:city_id].present? && params[:type] == "To"
        @city= City.find_by_id(params[:city_id])
+       # @cities = City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)).pluck(:id,:name) 
        @cities = City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)).pluck(:id,:name) 
-       
+    
     end  
       respond_to do |format|
         format.html 

@@ -14,7 +14,7 @@ form do  |f|
     f.input :name
       f.inputs "Please select the stops points as their sequences!!" do
           f.has_many :city_routes  do |l|
-              l.input :city_id ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort,:include_blank => true, input_html: {class: "select_city"}
+              l.input :city_id ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort,:include_blank => false, input_html: {class: "select_city"}
               a = 1..100
               puts "-----------------------------------------------------------------------------"
               if  request.original_url.include?("edit") 

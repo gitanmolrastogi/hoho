@@ -29,7 +29,8 @@ end
 index do |f|
      selectable_column
      column "Name" do |n|
-        n.name.try(:capitalize)
+        #n.name.try(:capitalize)
+        n.name.try(:titleize)
      end 
      # column "Overview" do |body|
      #    truncate(body.try(:overview).html_safe, omision: "...", length: 150, :escape => false)

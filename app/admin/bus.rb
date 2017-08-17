@@ -18,8 +18,15 @@ index do |f|
     column :end_time do |time|
          time.end_time.strftime("%I:%M %p")
      end
-     column :start_point
-     column :end_point
+     #column :start_point
+     #column :end_point
+
+     column "Start Point" do |n|
+         n.start_point.try(:titleize)
+     end
+     column "End Point" do |n|
+         n.end_point.try(:titleize)
+     end
      actions name: "Actions"
 end
 
@@ -30,8 +37,8 @@ form do |f|
       f.input :end_date,as: :datepicker
       f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
       f.input :end_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
-      f.input :start_point ,:as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]},include_blank: false, include_hidden: false
-      f.input :end_point, :as => :select, :collection => City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]} , input_html: {class: "select_start_bus"},include_blank: false, include_hidden: false
+      f.input :start_point ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort,include_blank: false, include_hidden: false
+      f.input :end_point, :as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort, input_html: {class: "select_start_bus"},include_blank: false, include_hidden: false
       f.input :price, as: :string
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 
@@ -50,8 +57,14 @@ show :title=> "Route Management" do |route|
    row "end_time" do |r|
     r.end_time.strftime("%I:%M %p")
   end 
-  row :start_point
-  row :end_point
+  # row :start_point
+  # row :end_point
+  row "Start Point" do |n|
+    n.start_point.try(:titleize)
+  end
+  row "End Point" do |n|
+    n.end_point.try(:titleize)
+  end
   row :price
 
     # row  :status

@@ -1427,6 +1427,10 @@ $('#edit_category').validate({
           required: "Please provide image credit",
           maxlength: "Please provide valid Image Credit( Max 50 charecters)"
       },
+
+        "home_page_image[image]" :{
+           required: "Please upload an image"
+        },
         },
         
 
@@ -1434,6 +1438,35 @@ $('#edit_category').validate({
            form.submit();
        }
    });
+
+   $('#edit_home_page_image').validate({
+
+        errorElement: "div",
+        rules: {
+            "home_page_image[image_credit]": {
+                required: true,
+                maxlength: 50
+                
+            },
+            "home_page_image[image]": {
+                required: true             
+
+            },
+        },
+
+        messages:{
+        "home_page_image[image_credit]": {
+          required: "Please provide image credit",
+          maxlength: "Please provide valid Image Credit( Max 50 charecters)"
+      },
+        },
+        
+
+       submitHandler: function(form){
+           form.submit();
+       }
+   });
+
 
 
 
