@@ -15,15 +15,16 @@ form do |f|
               l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : ""
               l.input :image_credit
               l.input :status ,:as => :select, :collection => [['Active',true],['Inactive',false]] ,:include_blank => false
-               if  request.original_url.include?("edit") 
+               if request.original_url.include?("edit") 
                     l.input :_destroy, :as => :boolean, :label => "Delete"
                end
-
           end
       end
+
     f.input :important,as: :ckeditor, :label => "Information"
+    f.actions
 end
-actions
+
 end
 
 index do |f|

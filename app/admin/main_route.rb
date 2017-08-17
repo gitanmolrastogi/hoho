@@ -18,6 +18,7 @@ form do |f|
 		f.input :duration
 		# f.input :image , :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
 
+
     f.input :start_point ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort,include_blank: false, include_hidden: false#, input_html: {class: "select_city",id: "select_city_id"}
     f.input :end_point, :as => :select ,:collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort,include_blank: false, include_hidden: false# input_html: {:disabled => true }, :collection =>  {}, :include_blank => false
     f.input :image ,label: "Image (preferably 1600 x 900 px)",:hint => f.object.image.present? ? image_tag(f.object.image.url, :id=> 'my_image1') : (
@@ -26,6 +27,7 @@ form do |f|
       end
     )
     f.input :image_credit, input_html: {maxlength: 100}	
+
   end
 	actions
 end
