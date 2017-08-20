@@ -38,17 +38,11 @@ $(document).ready(function(){
   });
 
 
-
-
-
-
-
-
+  
 
 
 
   
-
   //hop on hop
   $(document).on('change', '#city_route', function(){
   var c_id=this.value;

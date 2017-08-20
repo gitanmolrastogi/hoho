@@ -39,7 +39,7 @@ before_filter :check_for_main_routes , only: [:index]
   def hop_on_hop_off
     if params[:route_id].present? && params[:type] == "From"
       @current_route = MainRoute.find_by_id(params[:route_id]) 
-      @cities=MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id"').select("main_routes.id","main_routes.name","cities.name as city_name","cities.id as city_id").where(:main_routes => {id: @current_route.id}).distinct.pluck("cities.id,cities.name")
+      @cities=MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id"').select("main_routes.id","main_routes.name","cities.name as city_name","cities.id as city_id").where(:main_routes => {id: @current_route.id}).distinct.pluck("cities.id,cities.name") + City.where(name: MainRoute.find(45).start_point.downcase!).pluck(:id,:name)
     end  
     if params[:city_id].present? && params[:type] == "To"
        @city= City.find_by_id(params[:city_id])

@@ -3,7 +3,7 @@ class User::OrdersController < ApplicationController
  before_action :authenticate_user!
  skip_before_action :verify_authenticity_token  
   def add_to_cart
-  	p "====ADD TO CART===========#{params.inspect}====================================="
+  	# p "====ADD TO CART===========#{params.inspect}====================================="
     	@object = Activity.find_by_id(params[:id]) if params[:type] == "activity"
     	@object = Bus.find_by_id(params[:id]) if params[:type] == "hop"
     	@object = MainRoute.find_by_id(params[:id]) if params[:type] == "route"
@@ -39,6 +39,7 @@ class User::OrdersController < ApplicationController
      @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
      
      
+
     # redirect_to success_user_orders_path(order_ids: @cart_orders.pluck(:id) )
 
   end
@@ -61,15 +62,15 @@ class User::OrdersController < ApplicationController
   end
 
   def success 
-    p "=========================SUCCESS========================="
+    # p "=========================SUCCESS========================="
     p params
-    p "=========================SUCCESS========================="
+    # p "=========================SUCCESS========================="
     @order = Order.where(:id=>params[:order_ids]).each do |f|
 
       f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
     end
 
-    puts "------#{@order.inspect}-------"
+    # puts "------#{@order.inspect}-------"
      NotifyMailer.user_mailer(current_user,@order,params[:oid],params[:ipgTransactionId]).deliver_now
     redirect_to root_path 
     flash[:success] = "Your transaction has been successfully completed."
