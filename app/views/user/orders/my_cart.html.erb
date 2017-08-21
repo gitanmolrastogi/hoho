@@ -9,7 +9,8 @@
 				<div class="row">
 					<div class="col-md-10">
 						<div class="heading-block">
-							<h2 class="heading">Items In Your Cart</h2> <div class="text-right"><%= link_to "Cont.", user_routes_path %></div>
+							<h2 class="heading">Items In Your Cart</h2> 
+							<!-- <div class="text-right"><%= link_to "Continue...", user_routes_path %></div> -->
 							<div class="head-line m-b-10"></div>
 						</div>
 						<!-- <div class="text-right"><%= link_to "Continue Booking..." , user_routes_path , class:"btn btn-success"%></div> -->
@@ -95,7 +96,10 @@
 											<span class="span-r"> <i class="fa fa-usd"></i><%= @sum %></span>
 										</div>
 									</div>
-									<div class="text-right"><%= link_to order_payment_user_orders_path  do%><button class="btn red-btn">Place Order Now</button><%end%></div>
+
+									<div class="text-right">
+										<%= link_to "Continue Booking..." , :back , class:"btn btn-success"%>
+										<%= link_to order_payment_user_orders_path  do%><button class="btn red-btn">Place Order Now</button><%end%></div>
 								    </div>
 								    <div id="order_process" style="display:none;">
 
@@ -129,3 +133,8 @@
 				}
 
 		</style>
+		<script>
+		$(document).ready(function(){
+			$(".alert-success").fadeOut(3000);
+		});
+		</script>

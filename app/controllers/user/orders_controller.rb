@@ -65,6 +65,7 @@ class User::OrdersController < ApplicationController
     # p "=========================SUCCESS========================="
     p params
     # p "=========================SUCCESS========================="
+    debugger
     @order = Order.where(:id=>params[:order_ids]).each do |f|
 
       f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
