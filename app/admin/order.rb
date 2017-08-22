@@ -13,6 +13,8 @@ ActiveAdmin.register Order do
 #   permitted
 # end
 filter :created_at, label: "Order Date"
+filter :is_paid, label: "Payment Status"
+filter :user_id, label: "User"
 
 
 index do |f|
@@ -53,7 +55,18 @@ index do |f|
       	  	   var = Bus.find_by(id: resource.orderable_id).start_date
       	  end  	
       end
-     actions
+       column "Payment"  do |resource|
+         if resource.is_paid  
+              "Yes" 
+          else
+               "No"
+          end
+      end
+       column "User" do |resource|
+          var = User.find_by(id: resource.user_id)
+          var.first_name + " " + var.last_name
+      end
+     actions name: "Actions"
     end
   #     column "Overview" do |resource|
 

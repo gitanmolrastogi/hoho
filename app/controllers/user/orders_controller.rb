@@ -33,6 +33,7 @@ class User::OrdersController < ApplicationController
     # @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
     # @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
      @cart_orders = current_user.orders.where("is_paid = ?" ,false)
+
      @sum =  @cart_orders.where("is_paid = ?" ,false).includes(:orderable).map{|o| o.orderable.price}.compact.sum 
      @responseSuccessURL = "http://localhost:3000/user/orders/success"
      @responseFailURL = "http://localhost:3000/user/orders/error"
@@ -65,14 +66,23 @@ class User::OrdersController < ApplicationController
     # p "=========================SUCCESS========================="
     p params
     # p "=========================SUCCESS========================="
-    debugger
-    @order = Order.where(:id=>params[:order_ids]).each do |f|
 
-      f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
+    @cart_orders = current_user.orders.where("is_paid = ?" ,false)
+    
+
+    if @cart_orders.first.id == params[:order_ids].to_i
+        @order = @cart_orders.each do |f|
+          f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
+        end
     end
 
+    # @order = Order.where(:id=>params[:order_ids].to_i).each do |f|
+
+    #   f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
+    # end
+
     # puts "------#{@order.inspect}-------"
-     NotifyMailer.user_mailer(current_user,@order,params[:oid],params[:ipgTransactionId]).deliver_now
+    NotifyMailer.user_mailer(current_user,@order,params[:oid],params[:ipgTransactionId]).deliver_now
     redirect_to root_path 
     flash[:success] = "Your transaction has been successfully completed."
   end
