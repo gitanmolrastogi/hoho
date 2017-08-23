@@ -27,6 +27,10 @@ get '/admin/check_category',to: 'user/static_content#check_category'
 get '/users/edit_profile',to: 'user/users#edit_profile'
 put '/users/update_profile',to: 'user/users#update_profile' 
 
+#Routes to see more and see less in Activity
+ get '/user/activity/read_more',to: 'user/activities#read_more'
+ get '/user/activity/read_less',to: 'user/activities#read_less'
+
  namespace :user do
   get '/cities' => "users#get_city"
 

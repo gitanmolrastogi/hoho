@@ -8,10 +8,12 @@
 				<% first_image= HomePageImage.where(status: "Active").first %>
            <div class="item active" style="width:100%; background-image: url(<%= first_image.try(:image).try(:url) %>); background-size:cover; background-position: 61% center;">
              <!-- <img src="" alt=""> -->
+             
            </div>
             <% (HomePageImage.all.where(status: "Active")-Array(first_image)).each do |f| %>
              <div class="item" style="width:100%; background-image: url(<%= f.try(:image).try(:url) %>); background-size:cover; background-position: 61% center;">
               <!-- <img src="<%#= f.try(:image).try(:url) %>" alt="" > -->
+             <!--  Image Courtesy: <%= f.image_credit %> -->
              </div>
              <% end %>
 			</div>

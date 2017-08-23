@@ -573,6 +573,10 @@ $('#new_main_route').validate({
             "main_route[start_point]": {
                  required: true
             },
+            "main_route[image_credit]": {
+                 required: true,
+                 maxlength: 50
+            },
               
   },
 
@@ -602,7 +606,10 @@ $('#new_main_route').validate({
             "main_route[start_point]": {
                  required: "Please select a start point"
             },
-        
+            "main_route[image_credit]": {
+                 required: "Please enter Image Credit",
+                 maxlength: "Image credit should be 1 to 50 characters"
+            },
         
         },
         submitHandler: function(form) {
@@ -638,6 +645,10 @@ $('#edit_main_route').validate({
             "main_route[start_point]": {
                  required: true
             },
+            "main_route[image_credit]": {
+                 required: true,
+                 maxlength: 50
+            },
               
   },
 
@@ -664,6 +675,10 @@ $('#edit_main_route').validate({
             },
             "main_route[start_point]": {
                  required: "Please select a start point"
+            },
+            "main_route[image_credit]": {
+                 required: "Please enter Image Credit",
+                 maxlength: "Image credit should be 1 to 50 characters"
             },
         
         

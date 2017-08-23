@@ -1,7 +1,8 @@
     <% object = @object if @object.present? %>
     <div id = "read_more_<%=object.id%>">
+		  <p> <%= object.id %></p>
 		  <p><%= truncate(object.try(:content).html_safe, :length =>30, :escape => false) %></p>
-		  <a id = "read_more_link_<%=object.id%>" class= "read_more"> Read More > </a>
+		  <a id = "read_more_link_<%=object.id%>" class= "read_more"> Read More  </a>
 	</div>
 
 						

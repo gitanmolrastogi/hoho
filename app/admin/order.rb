@@ -14,7 +14,6 @@ ActiveAdmin.register Order do
 # end
 filter :created_at, label: "Order Date"
 filter :is_paid, label: "Payment Status"
-filter :user_id, label: "User"
 
 
 index do |f|

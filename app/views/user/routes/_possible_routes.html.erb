@@ -6,13 +6,13 @@
             <div class="sec_contain">
 
               <figure class="post-thumb">
-                <img src="<%= route.image_url %>" alt="" class="img-responsive">
+                <img src="<%= route.image_url %>" alt="" class="img-responsive" style="width:100%; max-height:180px;">
                 <figcaption><span><img src="/assets/plus-red.png" alt=""></span></figcaption>
               </figure>
 
               <div class="thumb-info text-center">
 
-                <h4><%= route.name %></h4>
+                <h4><%= truncate(route.name, length: 26, omision: "..." )%></h4>
                 <div class="detail-trip-block">
                   <div class="detail-t">
                     <label>Price :  </label> 
