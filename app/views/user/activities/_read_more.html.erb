@@ -1,9 +1,38 @@
 <% object = @object if @object.present? %>
-    <div id = "more_read_<%=object.id%>">
-		  <p> <%= object.id %></p>
-		  <a id = "read_more_link_<%=object.id%>" class= "read_more"> Read More  </a>
-	</div>
 
+     <br>
+     <br>
+     <a id ="reading_more" >Read More</a>
+     
+     <div id = "more">
+		   <%= object.information.html_safe %>
+	 </div>
+     
+     <br>
+     <br>
+     <a id ="reading_less" >Read Less</a>
+     
 
+<script>
+$(document).ready(function(){
 
-	<!-- problem of same id conflict -->
+  
+
+    	$("#more").hide();
+    	$("#reading_less").hide();
+  
+    $("#reading_more").click(function(){
+         $("#more").show();
+         $("#reading_more").hide();
+    	 $("#reading_less").show();
+    }),
+
+    $("#reading_less").click(function(){
+         $("#more").hide();
+         $("#reading_more").show();
+    	 $("#reading_less").hide();
+    })
+   
+ }); 
+</script>
+

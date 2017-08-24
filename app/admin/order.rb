@@ -42,18 +42,22 @@ index do |f|
       	  end  	
       end
 
+      # column "Order Date" do |resource|
+      # 	  type = resource.orderable_type
+      # 	  if type == "Activity"
+      #           #Activity.find_by(id: resource.orderable_id)
+      #           "Avail within 7 days"
+      # 	  elsif type == "MainRoute" 
+      #           #MainRoute.find_by(id: resource.orderable_id)
+      #           "Avail within 7 days"
+      # 	  elsif type == "Bus"
+      # 	  	   var = Bus.find_by(id: resource.orderable_id).start_date
+      # 	  end  	
+      # end
       column "Order Date" do |resource|
-      	  type = resource.orderable_type
-      	  if type == "Activity"
-                #Activity.find_by(id: resource.orderable_id)
-                "Avail within 7 days"
-      	  elsif type == "MainRoute" 
-                #MainRoute.find_by(id: resource.orderable_id)
-                "Avail within 7 days"
-      	  elsif type == "Bus"
-      	  	   var = Bus.find_by(id: resource.orderable_id).start_date
-      	  end  	
+          resource.created_at
       end
+       
        column "Payment"  do |resource|
          if resource.is_paid  
               "Yes" 
