@@ -14,7 +14,7 @@
 	   <ul class="city-img6">
 	   <% @city.photos.each do |image| %>
 		<li class="city-6-images enlarge">
-		  <img class="img-responsive"  src="<%= image.image.url %>">
+		  <img class="img-responsive"  src="<%= image.image.url %>" style="width:100%; height:70px;">
 		  Image Courtesy: <%= image.image_credit%>
 	    </li>
 

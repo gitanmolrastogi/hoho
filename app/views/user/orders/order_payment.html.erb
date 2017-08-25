@@ -20,7 +20,7 @@
 	</select>
 	<input type="text" name="currency" value="356"/>
 	<input type="hidden" name="user_id" value=<%="#{current_user.id}"%>/>
-	<input type="hidden" name="order_ids" value=<%=@cart_orders.ids%>/>
+	<input type="hidden" name="order_ids" value=<%=@cart_orders.first.id%>/>
 	<input type="text" name="transactionNotificationURL" value="<%=@transactionNotificationURL%>">
 
 	<input type="text" name="responseSuccessURL" value="<%= @responseSuccessURL%>"><input type="text" name="responseFailURL" value="<%= @responseFailURL%>"><input type="hidden" name="hash_algorithm" value="SHA1"/><input type="submit" value="Submit"></form>

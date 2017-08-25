@@ -1,5 +1,6 @@
 class NotifyMailer < ApplicationMailer
-	default from: "info@mobiledevelopmenttaxiapp.com"
+	#default from: "info@mobiledevelopmenttaxiapp.com"
+	default from: "info@mobiledevelopmentdelhiairport.com"
 
 	def inform_admin contact_params
 		@contact_params=contact_params

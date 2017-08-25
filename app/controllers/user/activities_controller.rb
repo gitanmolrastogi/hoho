@@ -18,7 +18,14 @@ class User::ActivitiesController < ApplicationController
   end
 
   def show
-  @activity = Activity.find_by(id: params[:id])
+    @activity = Activity.find_by(id: params[:id])
   end
   
+  def read_more
+    @object= Activity.find_by(id: params[:object_id])
+  end
+
+  def read_less
+    @object= Activity.find_by(id: params[:object_id])
+  end
 end

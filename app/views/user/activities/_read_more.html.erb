@@ -1,0 +1,38 @@
+<% object = @object if @object.present? %>
+
+     <br>
+     <br>
+     <a id ="reading_more" >Read More</a>
+     
+     <div id = "more">
+		   <%= object.information.html_safe %>
+	 </div>
+     
+     <br>
+     <br>
+     <a id ="reading_less" >Read Less</a>
+     
+
+<script>
+$(document).ready(function(){
+
+  
+
+    	$("#more").hide();
+    	$("#reading_less").hide();
+  
+    $("#reading_more").click(function(){
+         $("#more").show();
+         $("#reading_more").hide();
+    	 $("#reading_less").show();
+    }),
+
+    $("#reading_less").click(function(){
+         $("#more").hide();
+         $("#reading_more").show();
+    	 $("#reading_less").hide();
+    })
+   
+ }); 
+</script>
+

@@ -7,6 +7,7 @@
    <th>Arrives</th>
    <th>From</th>
    <th>Until</th>
+  <!--  <th>Book Route</th> -->
  </tr>
 </thead>
 <tbody>
@@ -18,8 +19,10 @@
       <td><%= bus.bus_end_time.strftime("%I:%M") rescue ""%></td>
       <td><%= bus.bus_start_date.strftime("%e %b") rescue ""%></td>
       <td><%= bus.bus_end_date.strftime("%e %b") rescue ""%></td>
+      <!-- <td><%= link_to "Add To Cart",  add_to_cart_user_orders_path(:id => @current_route.id , :type => "route"),:class=>"cart-i cart-book"%></td> -->
     </tr>
    <% end%>
  
 </tbody>
+
 </table>

@@ -13,6 +13,10 @@ class User::SessionsController < Devise::SessionsController
 	    	p "-----------confirmation---------"
 		  flash[:notice] = "Your email address not confirmed yet."
           redirect_to new_user_session_path
+        elsif @user.is_block
+        	p "-----------block---------"
+		  flash[:notice] = "Your email has been blocked by the administrator."
+          redirect_to new_user_session_path
 	   else
 	   	 super
 	   end

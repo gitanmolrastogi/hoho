@@ -25,7 +25,7 @@
 							   <ul class="city-img6">
 							   <% @activity.photos.each do |img| %>
 								<li class="city-6-images enlarge">
-								  <img class="img-responsive" src= <%= img.image.url %> >
+								  <img class="img-responsive" src= <%= img.image.url %> style="width:100%; height:70px;">
 								  Image Courtesy: <%= img.image_credit%>
 							    </li>
 
@@ -71,11 +71,16 @@
 						 </div>
 						 <div class="imp-info-section">
 						   <div class="heading-block">
-	                        <h2 class="heading">Important info <a class="link-a pull-right" href="#"> See More &gt;&gt; </a></h2>
+	                        <h2 class="heading">Important info <!-- <a class="link-a pull-right" href="#"> See More &gt;&gt; </a> -->
+	                        	<span class="link-a pull-right">
+	                        		<%= render :partial => 'user/activities/read_more', :locals => {object: @activity } %>
+	                        	</span>
+	                        </h2>
+
 	                        <div class="head-line m-b-10"></div>
 	                       </div>
 						   <div class="overview-block">
-							<div class="txt"> <%= @activity.information.html_safe %></div>
+							<!-- <div class="txt"> <%= @activity.name %></div> -->
 						   </div>
 						 </div>
 						</div>
