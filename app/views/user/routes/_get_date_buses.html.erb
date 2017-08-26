@@ -13,12 +13,17 @@
 <tbody>
    <% @buses.each do |bus| %>
     <tr>
-      <td><%= bus.bus_start_point %></td>
-      <td><%= bus.bus_end_point %></td>
-      <td><%= bus.bus_start_time.strftime("%I:%M") rescue ""%></td>
-      <td><%= bus.bus_end_time.strftime("%I:%M") rescue ""%></td>
-      <td><%= bus.bus_start_date.strftime("%e %b") rescue ""%></td>
-      <td><%= bus.bus_end_date.strftime("%e %b") rescue ""%></td>
+   
+    <!-- My code starts here -->
+      <td><%= bus.start_point %></td>
+      <td><%= bus.end_point %></td>
+      <td><%= bus.start_time.strftime("%I:%M") rescue ""%></td>
+      <td><%= bus.end_time.strftime("%I:%M") rescue ""%></td>
+      <td><%= bus.start_date.strftime("%e %b") rescue ""%></td>
+      <td><%= bus.end_date.strftime("%e %b") rescue ""%></td>
+      
+    <!-- My code ends here -->
+
       <!-- <td><%= link_to "Add To Cart",  add_to_cart_user_orders_path(:id => @current_route.id , :type => "route"),:class=>"cart-i cart-book"%></td> -->
     </tr>
    <% end%>

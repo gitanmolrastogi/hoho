@@ -23,7 +23,7 @@ before_filter :check_for_main_routes , only: [:index]
     end
 
  def get_date_buses
-  @buses = MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id" RIGHT OUTER JOIN "buses" ON "buses"."start_point" = "cities"."name"').select("main_routes.id","main_routes.name","cities.id as city_id","cities.name as city_name", "buses.id as bus_id","buses.start_date as bus_start_date","buses.end_date as bus_end_date","buses.start_time as bus_start_time","buses.end_time as bus_end_time","buses.start_point as bus_start_point","buses.end_point as bus_end_point").distinct.where(:buses => {start_date: params[:date]})
+    #@buses = MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id" RIGHT OUTER JOIN "buses" ON "buses"."start_point" = "cities"."name"').select("main_routes.id","main_routes.name","cities.id as city_id","cities.name as city_name", "buses.id as bus_id","buses.start_date as bus_start_date","buses.end_date as bus_end_date","buses.start_time as bus_start_time","buses.end_time as bus_end_time","buses.start_point as bus_start_point","buses.end_point as bus_end_point").distinct.where(:buses => {start_date: params[:date]})
  end 
 	def city_details
 		@city = City.find_by_id(params[:city_id])
@@ -56,7 +56,7 @@ before_filter :check_for_main_routes , only: [:index]
   def bus_details
     from_city=City.find_by(id: params[:from_city_id])
     to_city=City.find_by(id: params[:to_city_id])
-    @buses=Bus.where("start_point = ? and end_point =? and start_date >= ? " ,from_city.name, to_city.name , Date.current)
+    #@buses=Bus.where("start_point = ? and end_point =? and start_date >= ? " ,from_city.name, to_city.name , Date.current)
   end
 
   def check_for_main_routes

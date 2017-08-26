@@ -38,7 +38,7 @@ index do |f|
                 MainRoute.find_by(id: resource.orderable_id)
       	  elsif type == "Bus"
       	  	   var = Bus.find_by(id: resource.orderable_id)
-      	  	   var.start_point.titleize + "-" + var.end_point.titleize
+      	  	   
       	  end  	
       end
 
