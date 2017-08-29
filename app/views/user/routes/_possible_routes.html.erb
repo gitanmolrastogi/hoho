@@ -38,6 +38,43 @@
 
 <%end%>
 <!--  My code for adding routes-->
+<section class="page-content hop-content">
+      <div class="container">
+        <div class="heading-block">
+          <h2 class="heading">HOP TO HOP ROUTES</h2>
+          <div class="head-line m-b-10"></div>
+        </div>
+        <div class="row city-search-block">
+                    <div class="col-md-4">
+                        <form class="form-block">
+                          <div class="form-group">
+                            <%= select_tag "from_city",nil,:class=> "form-control", :prompt=> 'From' ,:id=>"from_city"%> 
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-4">
+                        <form class="form-block">
+                          <div class="form-group">
+                           <%= select_tag "to_city",nil,:prompt=>"To",:class=> "form-control",:id=>"to_city"%> 
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-4 col-sm-6 col-xs-12">
+                        <button class="btn red-btn go" id = "go_hop" >Go</button>
+            
+                      </div>
+                </div>
+          <div class="hop-to-hop-block">
+                    <div class="heading-block">
+                      <h2 class="heading">Detail</h2>
+                      <div class="head-line m-b-10"></div>
+                    </div>
+                    <p class="txt" id = "bus_details_append">
+                      <%= render :partial=>'user/routes/bus_details'%>
+                    </p>
+                  </div>
+      </div>
+    </section>
 <div class="panel panel-default div_height">
                             <div class="panel-heading" role="tab" id="headingOne">
                               <h4 class="panel-title">
