@@ -1,8 +1,9 @@
 class Bus < ApplicationRecord
 	has_many :orders , as: :orderable
+  has_many :bus_timings, dependent: :destroy
     #callbacks
     before_save :convert_into_downcase_start_and_end_point
-
+    accepts_nested_attributes_for :bus_timings
 
    #validation starts here...
   
