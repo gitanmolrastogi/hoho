@@ -8,10 +8,22 @@ filter :start_point
 filter :end_point
 permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price
 
-member_action :bus_scheduling, method: :get do
-     # debugger
-      arr = []
+
+member_action :bus_scheduling, method: :get do    
+    @cities = Bus.find_by(id: params[:id]).bus_timings.sort
 end
+
+member_action :bus_scheduling_update, method: :put do
+        bus_timing_city_ids = params[:cities].keys
+        
+
+        bus_timing_city_ids.each do |city_id|
+           bus_timining_city = BusTiming.find_by(id: city_id)       
+           bus_timining_city.update(arrival: params[:cities][city_id][:arrival],day_of_arrival: params[:cities][city_id][:day_of_arrival],deperture: params[:cities][city_id][:deperture],day_of_deperture: params[:cities][city_id][:day_of_deperture])
+        end
+  redirect_to(admin_buses_path)
+end
+
 
 index do |f|
      selectable_column
@@ -41,7 +53,7 @@ end
 
 form do |f|
     f.inputs do
-      f.input :route_id, :as => :select, :collection => (LineColorRoute.all.pluck(:name)), :include_blank => false
+      f.input :route_id, :as => :select, :collection => (LineColorRoute.all.pluck(:name,:id)), :include_blank => false
       f.input :start_date,as: :datepicker
       f.input :end_date,as: :datepicker
       f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
@@ -101,17 +113,14 @@ controller do
 
       create! { |success,failure|
                success.html do
-                line_route_id = 18
+
+                line_route_id = params[:bus][:route_id]
                 bus = Bus.last
-
                 city_array= LineColorRoute.find_by(id: line_route_id).city_routes.pluck(:city_id)
-
+               
                 city_array.each do |arr|
-                  bus.bus_timings.create(city: City.find_by(id: arr.to_i).name)
+                    bus.bus_timings.create(city: City.find_by(id: arr.to_i).name)
                 end
-
-
-
             redirect_to(admin_buses_path)
       end
       }
