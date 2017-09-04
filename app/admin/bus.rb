@@ -6,7 +6,7 @@ filter :start_time
 filter :end_time
 filter :start_point
 filter :end_point
-permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price
+permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price ,:route_id
 
 
 member_action :bus_scheduling, method: :get do    

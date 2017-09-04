@@ -35,17 +35,44 @@ before_filter :check_for_main_routes , only: [:index]
     @activities =  @category.activities.where(city_id: params[:city_id])
   end
 
+
+
+
+
+
+
    #for point to point selection
   def hop_on_hop_off
     if params[:route_id].present? && params[:type] == "From"
       @current_route = MainRoute.find_by_id(params[:route_id]) 
-      @cities=(MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id"').select("main_routes.id","main_routes.name","cities.name as city_name","cities.id as city_id").where(:main_routes => {id: @current_route.id}).distinct.pluck("cities.id,cities.name") + City.where(name: MainRoute.find_by_id(@current_route.id).start_point.downcase!).pluck(:id,:name)).sort{|a,b| a[1] <=> b[1]}
+      #@cities=(MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id"').select("main_routes.id","main_routes.name","cities.name as city_name","cities.id as city_id").where(:main_routes => {id: @current_route.id}).distinct.pluck("cities.id,cities.name") + City.where(name: MainRoute.find_by_id(@current_route.id).start_point.downcase!).pluck(:id,:name)).sort{|a,b| a[1] <=> b[1]}
+      city = []
+      @current_route.line_color_routes.each do |a|
+             a.city_routes.pluck(:city_id).each do |b|
+                city << b
+             end
+      end
+      @cities = City.where(id: city.uniq).pluck(:id,:name)
+
+
+
     end  
-    if params[:city_id].present? && params[:type] == "To"
-       @city= City.find_by_id(params[:city_id])
+    if params[:route_id].present? && params[:type] == "To"
+       #@city= City.find_by_id(params[:city_id])
        # @cities = City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)).pluck(:id,:name) 
-       @cities = (City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)).pluck(:id,:name)).sort{|a,b| a[1] <=> b[1]}
-    
+       #@cities = (City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)).pluck(:id,:name)).sort{|a,b| a[1] <=> b[1]}
+       @current_route = MainRoute.find_by_id(params[:route_id]) 
+      cit = []
+      @current_route.line_color_routes.each do |a|
+             a.city_routes.pluck(:city_id).each do |b|
+                cit << b
+             end
+      end
+      arr = cit.uniq
+      arr.delete(params[:city_id].to_i)
+      # p "------#{arr}--#{params[:city_id].to_i}-------"
+      @cities = City.where(id: arr).pluck(:id,:name)
+
     end  
       respond_to do |format|
         format.html 
@@ -53,10 +80,29 @@ before_filter :check_for_main_routes , only: [:index]
       end
   end
 
+
+
+
+
+
+
   def bus_details
     from_city=City.find_by(id: params[:from_city_id])
     to_city=City.find_by(id: params[:to_city_id])
     #@buses=Bus.where("start_point = ? and end_point =? and start_date >= ? " ,from_city.name, to_city.name , Date.current)
+
+       
+    find_routes_for_from_and_to(from_city,to_city)
+
+     p "-------#{@line_id}-------"
+
+     bus_available
+
+     p "--------#{@variable}---------"
+
+
+    
+
   end
 
   def check_for_main_routes
@@ -64,6 +110,38 @@ before_filter :check_for_main_routes , only: [:index]
        redirect_to '/'
        flash[:warning] = "Currently there are no main routes Available"
     end  
+  end
+
+
+  def find_routes_for_from_and_to(from_city,to_city)
+     line_route_ids = CityRoute.where(city_id: from_city).distinct.pluck(:line_color_route_id)
+    
+      #p "-----------#{line_route_ids}---------------"
+         @line_id = []
+   
+         line_route_ids.each do |a|
+         #p "-------#{a}---------"
+         var_to = LineColorRoute.find(a).city_routes.where(city_id: to_city)
+         if var_to.present?    
+            var_from = LineColorRoute.find(a).city_routes.where(city_id: from_city)
+              if (var_to.first.id - var_from.first.id) > 0
+                  p "------There is a route--------------"
+                  @line_id << a
+              end 
+         else
+          p "-------error----------"
+         end
+         end
+  end
+
+  def bus_available
+    @variable = @line_id
+    p "------aryan#{@line_id}----------"
+    @variable.each do |q|
+
+      @buses = Bus.where(route_id: q)
+
+    end
   end
 		
 end
