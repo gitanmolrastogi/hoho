@@ -103,6 +103,30 @@
 
    $(".flash").fadeOut(5000);
 
+   //===========On ready drop down population in pass ============
+    
+    var category = $("#pass_category").val();
+
+    str = "";
+    $.ajax({
+           type: "GET",
+           url: "/admin/passes/find_route_type",
+           data : {category_type: category},
+           dataType: "JSON",
+           success: function(response){
+                 console.log(response);      
+
+               $.each( response.route, function(i,l){
+                   str += '<option value="'+l+'">' + l+'</option>';
+               });
+                
+              $('#pass_route_name').empty().append('<option value="">Select Route</option>');
+              $('#pass_route_name').append(str);
+               }
+  });
+
+   //===========On ready drop down population in pass ends============
+
 //=================Admin Validation start==========================
   $('#session_new').validate({
     errorElement: "div",
@@ -1605,6 +1629,43 @@ $(document).on('change', "#main_route_image", function() {
     };
     return readURL(this);
 });
+
+
+
+// Pass Model : Route selection on the basis of Category starts here
+
+
+  $(document).on('change',"#pass_category", function(){
+        var category = $("#pass_category").val();
+
+    str = "";
+    $.ajax({
+           type: "GET",
+           url: "/admin/passes/find_route_type",
+           data : {category_type: category},
+           dataType: "JSON",
+           success: function(response){
+                 console.log(response);      
+
+               $.each( response.route, function(i,l){
+                   str += '<option value="'+l+'">' + l+'</option>';
+               });
+                
+              $('#pass_route_name').empty().append('<option value="">Select Route</option>');
+              $('#pass_route_name').append(str);
+               }
+           });
+  });
+
+//  Pass Model : Route selection ends here
+
+
+
+
+
+
+
+
 
 
 // $uploadCrop = $('#main_route_image').croppie({

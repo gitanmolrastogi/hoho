@@ -94,11 +94,11 @@ before_filter :check_for_main_routes , only: [:index]
        
     find_routes_for_from_and_to(from_city,to_city)
 
-     p "-------#{@line_id}-------"
+     #p "-------#{@line_id}-------"
 
-     bus_available
+     bus_available(from_city,to_city)
 
-     p "--------#{@variable}---------"
+     #p "--------#{@variable}---------"
 
 
     
@@ -111,37 +111,83 @@ before_filter :check_for_main_routes , only: [:index]
        flash[:warning] = "Currently there are no main routes Available"
     end  
   end
-
+  # my code start here
 
   def find_routes_for_from_and_to(from_city,to_city)
+
+     # Finding all the line color routes where a souce city belongs
      line_route_ids = CityRoute.where(city_id: from_city).distinct.pluck(:line_color_route_id)
     
       #p "-----------#{line_route_ids}---------------"
-         @line_id = []
+         @line_id = []  #For holding the line color route id after filtering
    
          line_route_ids.each do |a|
          #p "-------#{a}---------"
+
+         # checking whether destination exits on that particular line route or not
          var_to = LineColorRoute.find(a).city_routes.where(city_id: to_city)
          if var_to.present?    
             var_from = LineColorRoute.find(a).city_routes.where(city_id: from_city)
-              if (var_to.first.id - var_from.first.id) > 0
-                  p "------There is a route--------------"
+
+
+        #checking the allowed direction of travel and saving the valid result in @line_id
+              if (var_to.last.id - var_from.first.id) > 0
+                #  p "------There is a route(#{LineColorRoute.find(a).name})--------------"
                   @line_id << a
               end 
          else
-          p "-------error----------"
+         # p "-------error----------"
          end
          end
   end
 
-  def bus_available
+  def bus_available(from_city,to_city)
     @variable = @line_id
-    p "------aryan#{@line_id}----------"
-    @variable.each do |q|
+    #p "------aryan#{@line_id}----------"
+    @buses = []
 
-      @buses = Bus.where(route_id: q)
+    #intial coding for bus generation
 
-    end
+    # @variable.each do |q|
+    #   #@buses = Bus.where(route_id: q)
+  
+    #     bus1 = Bus.find_by(route_id: q)
+    #    if bus1
+    #       freq = 7
+    #       start_date = bus1.start_date
+    #       end_date = bus1.end_date
+    #       var = start_date - 7.days
+    #         ((start_date..end_date).count/freq).times do 
+    #            @buses << var = var + 7.days
+    #         end
+    #    end
+    # end
+
+    # end of initial coding for bus generation
+
+    #New coding
+
+    #looping through the routes which matches with the souce and destination
+   var = []
+     @line_id.each do |line|
+
+         p "--------Route id: #{line}-From City#{from_city.name}---------"  
+
+         bus = Bus.where(route_id: line)
+
+         p "-----------Bus#{bus.count}------------"
+
+         if !bus.nil?
+         bus.each do |b|
+           b.bus_timings.where(city_id: from_city)#.first.day_of_deperture
+
+           p "------#{b.bus_timings}-----------"
+         end
+        end
+      end
+
+
+    @buses.sort!
   end
 		
 end

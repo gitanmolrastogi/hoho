@@ -27,6 +27,7 @@ end
 
 index do |f|
      selectable_column
+     column :route_id
      column :start_date
      column :end_date
      column :start_time do |time|
@@ -71,6 +72,7 @@ end
 
 show :title=> "Route Management" do |route|
     attributes_table do  
+  row :route_id
   row :start_date
   row :end_date
   
