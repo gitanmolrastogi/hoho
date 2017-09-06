@@ -70,6 +70,7 @@ put '/users/update_profile',to: 'user/users#update_profile'
         get 'hop_on_hop_off'
         get 'bus_details'
         get 'get_date_buses'
+        post 'bus_booking'
       end
    end
  end

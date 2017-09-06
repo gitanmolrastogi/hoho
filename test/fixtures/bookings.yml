@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  bus_id: 1
+  route: MyString
+  source: MyString
+  destination: MyString
+  arrival: 2017-09-06 17:24:51
+  departure: 2017-09-06 17:24:51
+
+two:
+  user_id: 1
+  bus_id: 1
+  route: MyString
+  source: MyString
+  destination: MyString
+  arrival: 2017-09-06 17:24:51
+  departure: 2017-09-06 17:24:51

@@ -2,21 +2,37 @@
 <table class="table">
 <thead>
  <tr>
-   <th>From</th>
+   <!-- <th>From</th>
    <th>To</th>
    <th>Price</th>
    <th>Departs</th>
    <th>Arrives</th>
    <th>Start Date</th>
    <th>Until</th>
-   <th></th>
+   <th></th> -->
+
+  <th>Date</th>
+  <th>Route</th>
+  <th>Source</th>
+  <th>Destination</th>
+  <th>Departure Time</th>
+  <th>Arrival Time</th>
+  <th>Booking</th>
+
  </tr>
 </thead>
 <tbody>
 <% @buses.each do |bus| %>
  <tr>
-   <%= bus %><br>
+   <td><%= bus["date"].strftime("%e %b %Y") rescue "" %></td>
+   <td><%= bus["route"]%></td>
+   <td><%= bus["source"]%></td>
+   <td><%= bus["destination"]%></td>
+   <td><%= bus["departure"].strftime("%I:%M %p") rescue ""%></td>
+   <td><%= bus["arrival"].strftime("%I:%M %p") rescue ""%></td>
+   <td><%= link_to "Book", bus_booking_user_routes_path(:bus=> bus) ,:class=>"cart-i cart-book", data: { confirm: 'Are you sure?' }, method: :post%></td>
  </tr>
+
 <% end%>
  
 </tbody>

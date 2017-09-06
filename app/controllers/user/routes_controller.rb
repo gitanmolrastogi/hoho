@@ -140,54 +140,81 @@ before_filter :check_for_main_routes , only: [:index]
          end
          end
   end
-
+   # my code for finding the bus that are available  
   def bus_available(from_city,to_city)
     @variable = @line_id
-    #p "------aryan#{@line_id}----------"
     @buses = []
+    p "--------Current User(#{current_user.id})---------------"
+          freq = 7
+      
+      @line_id.each do |line|
+           available_buses = Bus.where(route_id: line)
+           p "--------Line Id: #{line}--Bus #{available_buses.present?}---------"
 
-    #intial coding for bus generation
+           if available_buses
 
-    # @variable.each do |q|
-    #   #@buses = Bus.where(route_id: q)
-  
-    #     bus1 = Bus.find_by(route_id: q)
-    #    if bus1
-    #       freq = 7
-    #       start_date = bus1.start_date
-    #       end_date = bus1.end_date
-    #       var = start_date - 7.days
-    #         ((start_date..end_date).count/freq).times do 
-    #            @buses << var = var + 7.days
-    #         end
-    #    end
-    # end
+                available_buses.each do |bus|
+                    p "---------Bus#{bus.bus_timings.find_by(city: from_city.name).day_of_deperture}-City#{from_city.name}----------"
+                    
 
-    # end of initial coding for bus generation
+                     bus_time = bus.bus_timings
+                       
 
-    #New coding
+                    start_date = bus.start_date + (bus_time.find_by(city: from_city.name).day_of_deperture - 1).day
+                    end_date = bus.end_date + (bus_time.find_by(city: from_city.name).day_of_deperture - 1).day
 
-    #looping through the routes which matches with the souce and destination
-   var = []
-     @line_id.each do |line|
+                    p "-------Start #{start_date}--End #{end_date}-------"                   
 
-         p "--------Route id: #{line}-From City#{from_city.name}---------"  
+                    var = start_date - freq.day
+                    p "----------var#{var}------------"
 
-         bus = Bus.where(route_id: line)
+                    (start_date..end_date).step(freq) do |date|
+                      if (Date.today <= date)
+                        @buses << {"user_id" => current_user,"bus_id" => bus.id, "date" => date , "route" => LineColorRoute.find(line).name ,"source" => from_city.name.titleize,  "departure" => bus_time.where(city: from_city.name).first.deperture,"destination" => to_city.name.titleize, "arrival" => bus_time.where(city: from_city.name).last.arrival }
+                      end
+                    end
+                end
+           end
+      end
+      @buses = @buses.sort_by{ |hash| hash["departure_date"]}
+  end
 
-         p "-----------Bus#{bus.count}------------"
+  # my code for booking management of buses 
 
-         if !bus.nil?
-         bus.each do |b|
-           b.bus_timings.where(city_id: from_city)#.first.day_of_deperture
+  def bus_booking
+      #debugger
+     # p "--------Pass--#{Order.where('user_id = ? AND orderable_type = ?', params[:bus][:user_id], "pass")}-------------"     
+      
+     # 1.  Check for pass with the valid route
+     # 2.  Check for the validity and number of hops...
+      order = Order.where('user_id = ? AND orderable_type = ?', params[:bus][:user_id], "pass")
+      if order.present?
 
-           p "------#{b.bus_timings}-----------"
-         end
-        end
+          pass = Pass.where(id: order.first.orderable_id).pluck(:category,:route_name,:max_hops,:validity)
+          p "-------------Pass #{pass[0][0]}------------***"
+
       end
 
-
-    @buses.sort!
+      if  false
+          book = Booking.new(bus_booking_params)
+          if book.save
+               redirect_to hop_on_hop_off_user_routes_path
+               flash[:success] = "Bus has been successfully booked !!!"
+          else
+              flash[:notice] = "Booking Failed. Please try again." 
+               redirect_to :back
+          end
+      else 
+            redirect_to :back
+             flash[:notice] = "Pass is required to book a bus. Buy a Pass."
+      end
   end
-		
+	
+
+  private 
+
+  def bus_booking_params
+      params.require(:bus).permit(:user_id,:bus_id,:date,:route,:source, :destination,:arrival, :departure )
+  end
+
 end
