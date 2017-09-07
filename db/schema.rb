@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906115451) do
+ActiveRecord::Schema.define(version: 20170907065035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,19 @@ ActiveRecord::Schema.define(version: 20170906115451) do
     t.string   "transaction_id"
     t.string   "ipg_transaction_id"
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "pass_bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "category"
+    t.string   "route"
+    t.integer  "hops_remaining"
+    t.date     "valid_from"
+    t.date     "valid_upto"
+    t.boolean  "status"
+    t.boolean  "default_pass"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "passes", force: :cascade do |t|

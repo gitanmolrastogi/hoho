@@ -144,17 +144,17 @@ before_filter :check_for_main_routes , only: [:index]
   def bus_available(from_city,to_city)
     @variable = @line_id
     @buses = []
-    p "--------Current User(#{current_user.id})---------------"
+   # p "--------Current User(#{current_user.id})---------------"
           freq = 7
       
       @line_id.each do |line|
            available_buses = Bus.where(route_id: line)
-           p "--------Line Id: #{line}--Bus #{available_buses.present?}---------"
+         #  p "--------Line Id: #{line}--Bus #{available_buses.present?}---------"
 
            if available_buses
 
                 available_buses.each do |bus|
-                    p "---------Bus#{bus.bus_timings.find_by(city: from_city.name).day_of_deperture}-City#{from_city.name}----------"
+                   # p "---------Bus#{bus.bus_timings.find_by(city: from_city.name).day_of_deperture}-City#{from_city.name}----------"
                     
 
                      bus_time = bus.bus_timings
@@ -163,10 +163,10 @@ before_filter :check_for_main_routes , only: [:index]
                     start_date = bus.start_date + (bus_time.find_by(city: from_city.name).day_of_deperture - 1).day
                     end_date = bus.end_date + (bus_time.find_by(city: from_city.name).day_of_deperture - 1).day
 
-                    p "-------Start #{start_date}--End #{end_date}-------"                   
+                   # p "-------Start #{start_date}--End #{end_date}-------"                   
 
                     var = start_date - freq.day
-                    p "----------var#{var}------------"
+                   # p "----------var#{var}------------"
 
                     (start_date..end_date).step(freq) do |date|
                       if (Date.today <= date)
@@ -176,40 +176,105 @@ before_filter :check_for_main_routes , only: [:index]
                 end
            end
       end
-      @buses = @buses.sort_by{ |hash| hash["departure_date"]}
+      @buses = @buses.sort_by{ |hash| hash["date"]}
   end
 
   # my code for booking management of buses 
 
   def bus_booking
-      #debugger
-     # p "--------Pass--#{Order.where('user_id = ? AND orderable_type = ?', params[:bus][:user_id], "pass")}-------------"     
-      
-     # 1.  Check for pass with the valid route
-     # 2.  Check for the validity and number of hops...
-      order = Order.where('user_id = ? AND orderable_type = ?', params[:bus][:user_id], "pass")
-      if order.present?
+          # checking whether user is logged in or not
+              if current_user
+          # # checking whether pass exist for that particular user , route and default pass         
+          #               if (pass_booking = PassBooking.where("user_id = ? AND default_pass = ? AND route = ?", params[:bus][:user_id], true , params[:bus][:route])).present?
+          # # checking whether the user has hops available and pass validity.
+          #                     if  ((( hops_count = pass_booking.first.hops_remaining )  > 0) && (pass_booking.first.valid_upto >= Date.today))                      
+          #                               book = Booking.new(bus_booking_params)
+          #                               if book.save
+          #                                    pass_booking.first.update(hops_remaining: hops_count -1)
+          #                                    redirect_to hop_on_hop_off_user_routes_path
+          #                                    flash[:success] = "Bus has been successfully booked !!!"
+          #                               else
+          #                                    flash[:notice] = "Booking Failed. Please try again." 
+          #                                    redirect_to :back
+          #                               end
+          #                     else
+          #                         redirect_to :back
+          #                         flash[:notice] = "Pass has expired."
+          #                     end
+          #               else
+          #                   redirect_to :back
+          #                   flash[:notice] = "Please select a pass for this route."
+          #               end
 
-          pass = Pass.where(id: order.first.orderable_id).pluck(:category,:route_name,:max_hops,:validity)
-          p "-------------Pass #{pass[0][0]}------------***"
 
-      end
 
-      if  false
-          book = Booking.new(bus_booking_params)
-          if book.save
-               redirect_to hop_on_hop_off_user_routes_path
-               flash[:success] = "Bus has been successfully booked !!!"
-          else
-              flash[:notice] = "Booking Failed. Please try again." 
-               redirect_to :back
-          end
-      else 
-            redirect_to :back
-             flash[:notice] = "Pass is required to book a bus. Buy a Pass."
-      end
+
+
+                        if (pass_booking = PassBooking.where("user_id = ? AND default_pass =?", params[:bus][:user_id], true))
+
+                                pass_catg = pass_booking.first.category
+
+                                if pass_catg == "Open"
+                                    p "---------Open Pass is selected#{pass_booking.first.route}---------"
+                                     
+                                     route_exist = false
+                                                MainRoute.find_by(name: pass_booking.first.route).line_color_routes.pluck(:name).each do |r|
+
+                                                    if r == params[:bus][:route]
+                                                        p "---------Route Exist(#{r})------"
+                                                        route_exist = true
+                                                    end
+                                                 end
+                                                
+                                                if route_exist
+                                                   bus_booking_create(pass_booking)
+                                                else
+                                                   redirect_to :back
+                                                   flash[:notice] = "Please select a pass for this route."
+                                                end
+
+
+                                elsif pass_catg == "Closed"
+                         
+                                    if pass_booking.first.route == params[:bus][:route]
+                                          bus_booking_create(pass_booking)                     
+                                    else
+                                          redirect_to :back
+                                          flash[:notice] = "Please select a pass for this route."
+                                    end           
+                                end
+
+                        else
+                            redirect_to :back
+                            flash[:notice] = "Please select a pass for this route."
+                        end
+              else
+                     redirect_to :back
+                     flash[:notice] = "Please login first to book buses"
+              end
   end
 	
+
+  def bus_booking_create(pass_booking)
+       p "------You have created#{pass_booking}--------"
+        # checking whether the user has hops available and pass validity.
+
+
+            if  ((( hops_count = pass_booking.first.hops_remaining )  > 0) && ( Date.parse(params[:bus][:date]) <= pass_booking.first.valid_upto))                      
+                      book = Booking.new(bus_booking_params)
+                      if book.save
+                           pass_booking.first.update(hops_remaining: hops_count -1)
+                           redirect_to hop_on_hop_off_user_routes_path
+                           flash[:success] = "Bus has been successfully booked !!!"
+                      else
+                           flash[:notice] = "Booking Failed. Please try again." 
+                           redirect_to :back
+                      end
+            else
+                redirect_to :back
+                flash[:notice] = "Pass has expired."
+            end
+  end
 
   private 
 

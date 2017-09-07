@@ -1,0 +1,2 @@
+class PassBooking < ApplicationRecord
+end
