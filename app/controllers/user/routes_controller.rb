@@ -92,7 +92,7 @@ before_filter :check_for_main_routes , only: [:index]
     #@buses=Bus.where("start_point = ? and end_point =? and start_date >= ? " ,from_city.name, to_city.name , Date.current)
 
        
-    find_routes_for_from_and_to(from_city,to_city)
+     find_routes_for_from_and_to(from_city,to_city)
 
      #p "-------#{@line_id}-------"
 
@@ -124,20 +124,20 @@ before_filter :check_for_main_routes , only: [:index]
          line_route_ids.each do |a|
          #p "-------#{a}---------"
 
-         # checking whether destination exits on that particular line route or not
-         var_to = LineColorRoute.find(a).city_routes.where(city_id: to_city)
-         if var_to.present?    
-            var_from = LineColorRoute.find(a).city_routes.where(city_id: from_city)
+           # checking whether destination exits on that particular line route or not
+           var_to = LineColorRoute.find(a).city_routes.where(city_id: to_city)
+           if var_to.present?    
+              var_from = LineColorRoute.find(a).city_routes.where(city_id: from_city)
 
 
-        #checking the allowed direction of travel and saving the valid result in @line_id
-              if (var_to.last.id - var_from.first.id) > 0
-                #  p "------There is a route(#{LineColorRoute.find(a).name})--------------"
-                  @line_id << a
-              end 
-         else
-         # p "-------error----------"
-         end
+          #checking the allowed direction of travel and saving the valid result in @line_id
+                if (var_to.last.id - var_from.first.id) > 0
+                  #  p "------There is a route(#{LineColorRoute.find(a).name})--------------"
+                    @line_id << a
+                end 
+           else
+           # p "-------error----------"
+           end
          end
   end
    # my code for finding the bus that are available  
@@ -160,7 +160,7 @@ before_filter :check_for_main_routes , only: [:index]
                      bus_time = bus.bus_timings
                        
 
-                    start_date = bus.start_date + (bus_time.find_by(city: from_city.name).day_of_deperture - 1).day
+                    start_date = bus.start_date + (day_offset = (bus_time.find_by(city: from_city.name).day_of_deperture - 1)).day
                     end_date = bus.end_date + (bus_time.find_by(city: from_city.name).day_of_deperture - 1).day
 
                    # p "-------Start #{start_date}--End #{end_date}-------"                   
@@ -169,9 +169,11 @@ before_filter :check_for_main_routes , only: [:index]
                    # p "----------var#{var}------------"
 
                     (start_date..end_date).step(freq) do |date|
-                      if (Date.today <= date)
-                        @buses << {"user_id" => current_user,"bus_id" => bus.id, "date" => date , "route" => LineColorRoute.find(line).name ,"source" => from_city.name.titleize,  "departure" => bus_time.where(city: from_city.name).first.deperture,"destination" => to_city.name.titleize, "arrival" => bus_time.where(city: from_city.name).last.arrival }
+
+                      if (Date.today <= date) && seat_availability(bus,(date - day_offset.day))
+                        @buses << {"user_id" => current_user,"bus_id" => bus.id, "date" => date, "start_date" => (date - day_offset.day), "start_time" => bus_time.first.deperture ,"route" => LineColorRoute.find(line).name ,"source" => from_city.name.titleize,  "departure" => bus_time.where(city: from_city.name).first.deperture,"destination" => to_city.name.titleize, "arrival" => bus_time.where(city: from_city.name).last.arrival }
                       end
+                    
                     end
                 end
            end
@@ -276,10 +278,28 @@ before_filter :check_for_main_routes , only: [:index]
             end
   end
 
+
+  # my code for seat availability
+
+  def seat_availability(bus,start_date)
+      #start_date = bus.start_date
+      # deperture = bus.bus_timings.first.deperture
+      # route_name = LineColorRoute.find(bus.route_id).name
+      #  p "-----Seat Available(#{start_date})(#{deperture})(#{route_name})----------"
+      var = true
+
+  end
+
+
+
+
+
+
+
   private 
 
   def bus_booking_params
-      params.require(:bus).permit(:user_id,:bus_id,:date,:route,:source, :destination,:arrival, :departure )
+      params.require(:bus).permit(:user_id,:bus_id, :date, :start_date, :start_time, :route,:source, :destination,:arrival, :departure )
   end
 
 end

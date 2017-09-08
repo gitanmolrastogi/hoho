@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  # namespace :user do
+  #   get 'bookings/index'
+  # end
+
+  # namespace :user do
+  #   get 'passes/index'
+  # end
+
   get "user/forums" => "user/home#forums"  
 
   get '/check_new_city_name' => 'user/users#check_new_city_name'
@@ -32,8 +40,10 @@ put '/users/update_profile',to: 'user/users#update_profile'
  get '/user/activity/read_less',to: 'user/activities#read_less'
 
  namespace :user do
+  resources :passes
+  resources :bookings
   get '/cities' => "users#get_city"
-
+  # get '/passes/index' => "users/passes#index"
    resources :static_content, only: [] do
          collection do
             get 'about_us'

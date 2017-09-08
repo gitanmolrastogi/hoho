@@ -306,6 +306,10 @@ footer{background: rgb(238, 238, 238) none repeat scroll 0% 0%;}
 	transform-origin:0 0;
 }
 
-
-
-
+/* Deepak Css Starting */
+.passes-page{padding-top: 120px;min-height:calc(100vh - 230px)}
+.tab-desc{font-size: 20px; line-height:28px; margin-top: 20px; text-align: left;}
+.thumb-info h4.passes-name{font-size: 20px;border-bottom:2px solid #ee5351;background:#f1f1f1;padding: 10px 0;margin-bottom: 10px;}
+.cart-box{background:  #ee5351;margin-top: 15px;display: block;}
+.cart-box .add-cart-btn,.cart-box .add-cart-btn:hover {color: #fff; display: block; font-size: 16px; width: 100%; }
+.set-default-active {border-bottom-color: #ddd; border-bottom-style: solid; border-bottom-width: 1px; font-size: 18px; line-height: 32px; padding-bottom: 0; padding-left: 15px; padding-right: 15px; padding-top: 0; }

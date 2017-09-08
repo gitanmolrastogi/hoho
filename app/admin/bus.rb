@@ -112,14 +112,14 @@ controller do
 
    def create
      
-
       create! { |success,failure|
                success.html do
 
                 line_route_id = params[:bus][:route_id]
                 bus = Bus.last
                 city_array= LineColorRoute.find_by(id: line_route_id).city_routes.pluck(:city_id)
-               
+                # start_point = City.find_by(name: params[:bus][:start_point])
+                # end_point = City.find_by(name: params[:bus][:end_point])
                 city_array.each do |arr|
                     bus.bus_timings.create(city: City.find_by(id: arr.to_i).name)
                 end
