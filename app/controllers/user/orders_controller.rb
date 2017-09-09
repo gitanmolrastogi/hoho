@@ -3,20 +3,33 @@ class User::OrdersController < ApplicationController
  before_action :authenticate_user!
  skip_before_action :verify_authenticity_token  
   def add_to_cart
-  	# p "====ADD TO CART===========#{params.inspect}====================================="
-    	@object = Activity.find_by_id(params[:id]) if params[:type] == "activity"
-    	@object = Bus.find_by_id(params[:id]) if params[:type] == "hop"
-    	@object = MainRoute.find_by_id(params[:id]) if params[:type] == "route"
-      @order = @object.orders.find_or_create_by(orderable_type: "Activity" , is_paid: false) if params[:type] == "activity"
-      @order = @object.orders.find_or_create_by(orderable_type: "MainRoute" , is_paid: false) if params[:type] == "route"
-      @order = @object.orders.find_or_create_by(orderable_type: "Bus" , is_paid: false) if params[:type] == "hop"
-     if @order
-     	@order.update(user_id: current_user.id )
-     	redirect_to my_cart_user_orders_path
-     	flash[:success] = "Activity successfully added to your cart"  if params[:type] == "activity"
-      flash[:success] = "Hop successfully added to your cart"  if params[:type] == "hop"
-      flash[:success] = "Route successfully added to your cart"  if params[:type] == "route"
-     end
+  	# # p "====ADD TO CART===========#{params.inspect}====================================="
+   #  	@object = Activity.find_by_id(params[:id]) if params[:type] == "activity"
+   #  	@object = Bus.find_by_id(params[:id]) if params[:type] == "hop"
+   #  	@object = MainRoute.find_by_id(params[:id]) if params[:type] == "route"
+   #    @order = @object.orders.find_or_create_by(orderable_type: "Activity" , is_paid: false) if params[:type] == "activity"
+   #    @order = @object.orders.find_or_create_by(orderable_type: "MainRoute" , is_paid: false) if params[:type] == "route"
+   #    @order = @object.orders.find_or_create_by(orderable_type: "Bus" , is_paid: false) if params[:type] == "hop"
+   #   if @order
+   #   	@order.update(user_id: current_user.id )
+   #   	redirect_to my_cart_user_orders_path
+   #   	flash[:success] = "Activity successfully added to your cart"  if params[:type] == "activity"
+   #    flash[:success] = "Hop successfully added to your cart"  if params[:type] == "hop"
+   #    flash[:success] = "Route successfully added to your cart"  if params[:type] == "route"
+   #   end
+
+    #my modified code ......
+        @object = Activity.find_by_id(params[:id]) if params[:type] == "activity"
+        @object = Pass.find_by_id(params[:id]) if params[:type] == "pass"
+        @order = @object.orders.find_or_create_by(orderable_type: "Activity" , is_paid: false) if params[:type] == "activity"
+        @order = @object.orders.find_or_create_by(orderable_type: "Pass" , is_paid: false) if params[:type] == "pass"
+        if @order
+          @order.update(user_id: current_user.id )
+          redirect_to my_cart_user_orders_path
+          flash[:success] = "Activity successfully added to your cart"  if params[:type] == "activity"
+          flash[:success] = "Pass successfully added to your cart"  if params[:type] == "pass"
+        end
+
   end
 
   def my_cart
@@ -73,6 +86,7 @@ class User::OrdersController < ApplicationController
     if @cart_orders.first.id == params[:order_ids].to_i
         @order = @cart_orders.each do |f|
           f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
+          create_pass_booking(f)
         end
     end
 
@@ -86,6 +100,19 @@ class User::OrdersController < ApplicationController
     redirect_to root_path 
     flash[:success] = "Your transaction has been successfully completed."
   end
+
+  def create_pass_booking(cart_order)
+    p "------Cart Orders #{current_user}-------"
+    if cart_order.orderable_type == "Pass"
+       
+        pass = Pass.find_by_id(cart_order.orderable_id)
+
+        PassBooking.create(user_id: current_user.id, category: pass.category, route: pass.route_name,hops_remaining: pass.max_hops,default_pass: false, pass_id: pass.id )
+
+    end      
+    
+  end
+
 
   def error 
     params[:status] == "FAILED"

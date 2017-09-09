@@ -217,13 +217,13 @@ before_filter :check_for_main_routes , only: [:index]
                                 pass_catg = pass_booking.first.category
 
                                 if pass_catg == "Open"
-                                    p "---------Open Pass is selected#{pass_booking.first.route}---------"
+                               #     p "---------Open Pass is selected#{pass_booking.first.route}---------"
                                      
                                      route_exist = false
                                                 MainRoute.find_by(name: pass_booking.first.route).line_color_routes.pluck(:name).each do |r|
 
                                                     if r == params[:bus][:route]
-                                                        p "---------Route Exist(#{r})------"
+                                                       # p "---------Route Exist(#{r})------"
                                                         route_exist = true
                                                     end
                                                  end
@@ -258,7 +258,7 @@ before_filter :check_for_main_routes , only: [:index]
 	
 
   def bus_booking_create(pass_booking)
-       p "------You have created#{pass_booking}--------"
+     #  p "------You have created#{pass_booking}--------"
         # checking whether the user has hops available and pass validity.
 
 
@@ -281,13 +281,10 @@ before_filter :check_for_main_routes , only: [:index]
 
   # my code for seat availability
 
-  def seat_availability(bus,start_date)
-      #start_date = bus.start_date
-      # deperture = bus.bus_timings.first.deperture
-      # route_name = LineColorRoute.find(bus.route_id).name
-      #  p "-----Seat Available(#{start_date})(#{deperture})(#{route_name})----------"
-      var = true
-
+  def seat_availability(bus,bus_start_date)
+      
+      Booking.where(start_date: bus_start_date, bus_id: bus.id).count < 4 #  seat capacity.
+ 
   end
 
 

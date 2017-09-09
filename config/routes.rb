@@ -41,7 +41,7 @@ put '/users/update_profile',to: 'user/users#update_profile'
 
  namespace :user do
   resources :passes
-  resources :bookings
+  
   get '/cities' => "users#get_city"
   # get '/passes/index' => "users/passes#index"
    resources :static_content, only: [] do
@@ -83,5 +83,13 @@ put '/users/update_profile',to: 'user/users#update_profile'
         post 'bus_booking'
       end
    end
+
+    resources :bookings , only: [] do
+       collection do
+         get 'index'
+         get 'set_default_pass'
+       end
+
+    end
  end
 end
