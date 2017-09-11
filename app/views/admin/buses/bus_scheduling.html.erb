@@ -8,14 +8,14 @@
 
           <%= "Time of Arrival"%>
           <%#=pf.time_select :arrival, :ignore_date => true, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false %>
-          <%=pf.text_field :arrival, :class=> "time_picker", :style=> "width: 8%;" %><br>
+          <%=pf.text_field :arrival, :class=> "time_picker", :style=> "width: 8%;",value: city.arrival.strftime("%I:%M %p") rescue ""  %><br>
           <%= "Day of Arrival"%>
           <%= pf.text_field :day_of_arrival %><br>
          
 
 
           <%= "Time of Departure"%>
-          <%= pf.text_field :deperture, :class => "time_picker", :style=> "width: 8%;" %><br>
+          <%= pf.text_field :deperture, :class => "time_picker", :style=> "width: 8%;",value: city.deperture.strftime("%I:%M %p") rescue ""  %><br>
 
           <%= "Day of Departure"%>
            <%= pf.text_field :day_of_deperture %><br><br><br><br>

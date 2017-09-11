@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 20170909091019) do
     t.datetime "updated_at",  null: false
     t.integer  "price"
     t.integer  "route_id"
+    t.integer  "capacity"
+    t.integer  "frequency"
   end
 
   create_table "categories", force: :cascade do |t|

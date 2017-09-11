@@ -17,7 +17,7 @@
                              <% if @cart_orders.present? %>
 								<% @cart_orders.each do |order| %>
 										<% if order.orderable_type == "Bus" %>
-												<div class="col-sm-12">
+												<!-- <div class="col-sm-12">
 													<div class="cart-heading"><h4>Booked Hop</h4></div>
 													<div class="cart-route-block">
 															<div class="route-detail-a">
@@ -42,7 +42,7 @@
 															</div>
 													</div>
 												    </hr>											
-												</div>
+												</div> -->
 		 								<%end%>
 										<% if order.orderable_type == "Activity" %>
 											 <div class="col-sm-12">
@@ -64,8 +64,34 @@
 											 	<hr>
 											 </div>
 										<%end%>
+
+										<% if order.orderable_type == "Pass" %>
+											 <div class="col-sm-12">
+												<div class="cart-heading"><h4>Booked Pass</h4></div>
+												<div class="cart-route-block">
+													<div class="route-detail-a">
+														<label class="label-r">Pass Name :</label>
+														<span class="span-r"><%= link_to "#{order.orderable.name}" , user_activity_path(order.orderable_id) %></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">Maximum Hops:</label>
+														<span class="span-r"><%= order.orderable.max_hops %></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">Validity:</label>
+														<span class="span-r"><%= order.orderable.validity %></span>
+													</div>
+													<div class="route-detail-a">
+														<label class="label-r">Price:</label>
+														<span class="span-r"> <i class="fa fa-usd"></i> <%= order.orderable.price %></span>
+													</div>
+											 	</div>
+											 	<hr>
+											 </div>
+										<%end%>
+
 										<% if order.orderable_type == "MainRoute" %>
-										  <div class="col-sm-12">
+										  <!-- <div class="col-sm-12">
 											<div class="cart-heading"><h4>Booked Route</h4></div>
 												<div class="cart-route-block">
 													<div class="route-detail-a">
@@ -86,7 +112,7 @@
 													</div>
 												</div>
 										 	<hr>
-										  </div>
+										  </div> -->
 	 									<%end%>
 	                            <%end%>
 								

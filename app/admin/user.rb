@@ -1,4 +1,7 @@
 ActiveAdmin.register User do
+
+menu :priority=> 16
+
 filter :email_cont,as: :string,label: 'Email'
 filter :first_name_cont,as: :string,label: 'First Name'
 filter :last_name_cont,as: :string,label: 'Last Name'

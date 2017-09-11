@@ -6,7 +6,7 @@ filter :start_time
 filter :end_time
 filter :start_point
 filter :end_point
-permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price ,:route_id
+permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price ,:route_id,:capacity,:frequency
 
 
 member_action :bus_scheduling, method: :get do    
@@ -27,25 +27,31 @@ end
 
 index do |f|
      selectable_column
-     column :route_id
+     column "Route" do |resource|
+         LineColorRoute.find_by_id(resource.route_id).name
+     end
      column :start_date
      column :end_date
-     column :start_time do |time|
-         time.start_time.strftime("%I:%M %p")
-     end
-    column :end_time do |time|
-         time.end_time.strftime("%I:%M %p")
-     end
-     #column :start_point
-     #column :end_point
+    #  column :start_time do |time|
+    #      time.start_time.strftime("%I:%M %p")
+    #   end
+    # column :end_time do |time|
+    #      time.end_time.strftime("%I:%M %p")
+    #  end
+    #  #column :start_point
+    #  #column :end_point
 
-     column "Start Point" do |n|
-         n.start_point.try(:titleize)
-     end
-     column "End Point" do |n|
-         n.end_point.try(:titleize)
-     end
+    #  column "Start Point" do |n|
+    #      n.start_point.try(:titleize)
+    #  end
+    #  column "End Point" do |n|
+    #      n.end_point.try(:titleize)
+    #  end
      #actions name: "Actions"
+
+     column :frequency
+     column :capacity
+
      actions name: "Actions" do |f|
        link_to 'Bus Timings', bus_scheduling_admin_bus_path(f)
      end
@@ -57,12 +63,13 @@ form do |f|
       f.input :route_id, :as => :select, :collection => (LineColorRoute.all.pluck(:name,:id)), :include_blank => false
       f.input :start_date,as: :datepicker
       f.input :end_date,as: :datepicker
-      f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
-      f.input :end_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
-      f.input :start_point ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort,include_blank: false, include_hidden: false
-      f.input :end_point, :as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort, input_html: {class: "select_start_bus"},include_blank: false, include_hidden: false
-      f.input :price, as: :string
-      
+      #f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
+      #f.input :end_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
+      #f.input :start_point ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort,include_blank: false, include_hidden: false
+      #f.input :end_point, :as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, "#{u.name}".capitalize]}).sort, input_html: {class: "select_start_bus"},include_blank: false, include_hidden: false
+      f.input :frequency
+      f.input :capacity
+      #f.input :price, as: :string
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 
     end
@@ -72,27 +79,31 @@ end
 
 show :title=> "Route Management" do |route|
     attributes_table do  
-  row :route_id
+  row "Route" do |resource|
+      LineColorRoute.find_by_id(resource.route_id).name
+   end
   row :start_date
   row :end_date
   
-  row "start_time" do |r|
-    r.start_time.strftime("%I:%M %p")
-  end 
-   row "end_time" do |r|
-    r.end_time.strftime("%I:%M %p")
-  end 
-  # row :start_point
-  # row :end_point
-  row "Start Point" do |n|
-    n.start_point.try(:titleize)
-  end
-  row "End Point" do |n|
-    n.end_point.try(:titleize)
-  end
-  row :price
+  # row "start_time" do |r|
+  #   r.start_time.strftime("%I:%M %p")
+  # end 
+  #  row "end_time" do |r|
+  #   r.end_time.strftime("%I:%M %p")
+  # end 
+  # # row :start_point
+  # # row :end_point
+  # row "Start Point" do |n|
+  #   n.start_point.try(:titleize)
+  # end
+  # row "End Point" do |n|
+  #   n.end_point.try(:titleize)
+  # end
+  # row :price
 
     # row  :status
+  row :capacity
+  row :frequency
    end
 end
 

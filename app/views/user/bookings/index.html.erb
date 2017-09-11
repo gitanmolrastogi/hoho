@@ -30,8 +30,8 @@
                                 <td><%= booking.route%></td>
                                 <td><%= booking.source%></td>
                                 <td><%= booking.destination%></td>
-                                <td><%= booking.arrival%></td>
-                                <td><%= booking.departure%></td>
+                                <td><%= booking.arrival.strftime("%I:%M %p")%></td>
+                                <td><%= booking.departure.strftime("%I:%M %p")%></td>
                               </tr>
                            <% end %>
                           </tbody>
@@ -55,7 +55,7 @@
                      
                                               
                                   <%if  (p = @passes.where(default_pass: true)).present? %>
-                                  Default Pass:<br><%= Pass.find_by(id: p.first.pass_id).name %>
+                                  Default Pass<br><%= Pass.find_by(id: p.first.pass_id).name %>
 
                                   <% else %>
                                       Default Pass : Not Selected
@@ -64,14 +64,23 @@
                   </div>
                   <div id="bus_data_append" class="panel-body panel-table table-responsive">
                      <table class="table">
+                           
+
                           <tbody>
                               <% @passes.each do |pass| %>
                                  <tr>
-                                   <td><%= Pass.find_by(id: pass.pass_id).name%></td>
+                                   <tr><td style = "color: Blue; font-weight: bold;" ><%= Pass.find_by(id: pass.pass_id).name%><%= " (Default)" if pass.default_pass == true%></td></tr>
+                                   <tr><td>Valid Upto:<%= pass.valid_upto %></td></tr>
+                                   <tr><td>Hops Remaining:   <%= pass.hops_remaining%></td><tr>
                                    <!-- <td> <a class="btn btn-danger" href="/user/bookings/set_default_pass">Set as default</a></td> -->
                                    <td><%= link_to "Set as default", set_default_pass_user_bookings_path(pass_book_id: pass.id),:data => {:confirm => 'Are you sure?'}, :class =>"btn btn-danger"%></td>
                                 </tr>
+                                <tr>
+
+                                </tr>
+
                               <% end %>
+                              <br/>
                           </tbody>
                       </table>
                   </div>

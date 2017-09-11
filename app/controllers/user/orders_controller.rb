@@ -51,8 +51,10 @@ class User::OrdersController < ApplicationController
      @responseSuccessURL = "http://localhost:3000/user/orders/success"
      @responseFailURL = "http://localhost:3000/user/orders/error"
      @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
-     
-     
+     # temporary code, delete it
+             # @order = @cart_orders.each do |f|
+             #    create_pass_booking(f)
+             # end
 
     # redirect_to success_user_orders_path(order_ids: @cart_orders.pluck(:id) )
 
@@ -84,6 +86,8 @@ class User::OrdersController < ApplicationController
     
 
     if @cart_orders.first.id == params[:order_ids].to_i
+ 
+        
         @order = @cart_orders.each do |f|
           f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
           create_pass_booking(f)
@@ -107,7 +111,7 @@ class User::OrdersController < ApplicationController
        
         pass = Pass.find_by_id(cart_order.orderable_id)
 
-        PassBooking.create(user_id: current_user.id, category: pass.category, route: pass.route_name,hops_remaining: pass.max_hops,default_pass: false, pass_id: pass.id )
+        PassBooking.create(user_id: current_user.id, category: pass.category, route: pass.route_name,hops_remaining: pass.max_hops,default_pass: false, pass_id: pass.id, valid_upto: Date.today+1.month)
 
     end      
     

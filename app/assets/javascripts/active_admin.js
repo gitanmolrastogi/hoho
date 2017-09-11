@@ -998,8 +998,18 @@ $("#activity_start_date").datepicker({
             },
             "bus[price]": {
                  required: true,
-                 number:true,
+                 number: true,
                  maxlength: 8
+            },
+            "bus[frequency]": {
+                required: true,
+                number: true,
+                maxlength: 5
+            },
+            "bus[capacity]": {
+                required: true,
+                number: true,
+                maxlength: 5
             },
            
   },
@@ -1038,6 +1048,14 @@ $("#activity_start_date").datepicker({
                  required: "Please enter price",
                  number: "Please enter valid price "
             },
+            "bus[frequency]": {
+                required: "Please enter frequency",
+                number: "Please enter valid frequency",
+            },
+            "bus[capacity]": {
+                required: "Please enter capacity",
+                number: "Please enter valid capacity",
+            },
   },
 
         submitHandler: function(form) {
@@ -1048,6 +1066,126 @@ $("#activity_start_date").datepicker({
     });
 //==================Ends here new_bus=======================
 
+//============= New Pass Validation Starts Here =============
+
+
+    $('#new_pass').validate({
+       errorElement: "div",
+
+        rules: {
+            "pass[name]": {
+                required: true
+            },
+            "pass[route_name]": {
+                required: true
+            },
+            "pass[max_hops]": {
+                required: true,
+                number: true,
+                maxlength: 3
+            },
+            "pass[validity]": {
+                required: true,
+                maxlength: 5
+            },
+            "pass[price]": {
+                required: true,
+                number: true,
+                maxlength: 8
+            },
+        },
+
+        messages: {
+
+
+            "pass[name]": {
+                required: "Please provide a name"
+            },
+            "pass[route_name]": {
+                required: "Please select a route"
+            },
+            "pass[max_hops]": {
+                required: "Please enter maximum hops",
+                number: "Please enter valid price"
+            },
+            "pass[validity]": {
+                required: "Please enter validity days",
+                number: "Please enter valid validity"
+            },
+            "pass[price]": {
+                required: "Please enter price",
+                number: "Please enter valid price"
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+
+
+//============= New Pass Validation Ends here ===============
+
+//============= Edit Pass Validation Starts here =============
+
+$('#edit_pass').validate({
+       errorElement: "div",
+
+        rules: {
+            "pass[name]": {
+                required: true
+            },
+            "pass[route_name]": {
+                required: true
+            },
+            "pass[max_hops]": {
+                required: true,
+                number: true,
+                maxlength: 3
+            },
+            "pass[validity]": {
+                required: true,
+                maxlength: 5
+            },
+            "pass[price]": {
+                required: true,
+                number: true,
+                maxlength: 8
+            },
+        },
+
+        messages: {
+
+
+            "pass[name]": {
+                required: "Please provide a name"
+            },
+            "pass[route_name]": {
+                required: "Please select a route"
+            },
+            "pass[max_hops]": {
+                required: "Please enter maximum hops",
+                number: "Please enter valid price"
+            },
+            "pass[validity]": {
+                required: "Please enter validity days",
+                number: "Please enter valid validity"
+            },
+            "pass[price]": {
+                required: "Please enter price",
+                number: "Please enter valid price"
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+    
+
+//============= Edit Pass Validation Ends here ===============
 
 
 //==================Starts edit_accommodation=======================
@@ -1092,6 +1230,16 @@ $("#activity_start_date").datepicker({
                  number:true,
                  maxlength: 8
             },
+            "bus[frequency]": {
+                required: true,
+                number: true,
+                maxlength: 5
+            },
+            "bus[capacity]": {
+                required: true,
+                number: true,
+                maxlength: 5
+            },
   },
 
     messages: {
@@ -1127,6 +1275,14 @@ $("#activity_start_date").datepicker({
              "bus[price]": {
                  required: "Please enter price",
                  number: "Please enter valid price "
+            },
+            "bus[frequency]": {
+                required: "Please enter frequency",
+                number: "Please enter valid frequency",
+            },
+            "bus[capacity]": {
+                required: "Please enter capacity",
+                number: "Please enter valid capacity",
             },
   },
 

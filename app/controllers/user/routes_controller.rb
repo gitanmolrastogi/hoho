@@ -24,7 +24,10 @@ before_filter :check_for_main_routes , only: [:index]
 
  def get_date_buses
     #@buses = MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id" RIGHT OUTER JOIN "buses" ON "buses"."start_point" = "cities"."name"').select("main_routes.id","main_routes.name","cities.id as city_id","cities.name as city_name", "buses.id as bus_id","buses.start_date as bus_start_date","buses.end_date as bus_end_date","buses.start_time as bus_start_time","buses.end_time as bus_end_time","buses.start_point as bus_start_point","buses.end_point as bus_end_point").distinct.where(:buses => {start_date: params[:date]})
- end 
+    
+ end
+
+  
 	def city_details
 		@city = City.find_by_id(params[:city_id])
 		@city_categories = Category.where(id: @city.try(:activities).pluck(:category_id))
@@ -145,7 +148,7 @@ before_filter :check_for_main_routes , only: [:index]
     @variable = @line_id
     @buses = []
    # p "--------Current User(#{current_user.id})---------------"
-          freq = 7
+          #freq = 7
       
       @line_id.each do |line|
            available_buses = Bus.where(route_id: line)
@@ -157,6 +160,7 @@ before_filter :check_for_main_routes , only: [:index]
                    # p "---------Bus#{bus.bus_timings.find_by(city: from_city.name).day_of_deperture}-City#{from_city.name}----------"
                     
 
+                     freq = bus.frequency
                      bus_time = bus.bus_timings
                        
 
@@ -213,7 +217,7 @@ before_filter :check_for_main_routes , only: [:index]
 
 
                         if (pass_booking = PassBooking.where("user_id = ? AND default_pass =?", params[:bus][:user_id], true))
-
+                            if pass_booking.present?
                                 pass_catg = pass_booking.first.category
 
                                 if pass_catg == "Open"
@@ -246,6 +250,11 @@ before_filter :check_for_main_routes , only: [:index]
                                     end           
                                 end
 
+                            else
+                                  redirect_to :back
+                                  flash[:notice] = "Please select a pass for this route.Buy a Pass"
+                            end
+
                         else
                             redirect_to :back
                             flash[:notice] = "Please select a pass for this route."
@@ -265,7 +274,15 @@ before_filter :check_for_main_routes , only: [:index]
             if  ((( hops_count = pass_booking.first.hops_remaining )  > 0) && ( Date.parse(params[:bus][:date]) <= pass_booking.first.valid_upto))                      
                       book = Booking.new(bus_booking_params)
                       if book.save
-                           pass_booking.first.update(hops_remaining: hops_count -1)
+                           if pass_booking.first.hops_remaining == Pass.find_by(id: pass_booking.first.pass_id).max_hops
+                               #pass_booking.first.update(valid_upto:  (Pass.find_by(id: pass_booking.first.pass_id).validity).day + DateTime.parse(params[:bus][:date]))
+                          
+                                pass_booking.first.update(valid_upto: Date.parse(params[:bus][:date]) + ((Pass.find_by(id: pass_booking.first.pass_id).validity)-1).day)
+
+                                p "--- I am here whatever------"
+
+                           end
+                           pass_booking.first.update(hops_remaining: (hops_count -1))
                            redirect_to hop_on_hop_off_user_routes_path
                            flash[:success] = "Bus has been successfully booked !!!"
                       else
@@ -278,12 +295,12 @@ before_filter :check_for_main_routes , only: [:index]
             end
   end
 
-
+  
   # my code for seat availability
 
   def seat_availability(bus,bus_start_date)
       
-      Booking.where(start_date: bus_start_date, bus_id: bus.id).count < 4 #  seat capacity.
+      Booking.where(start_date: bus_start_date, bus_id: bus.id).count < bus.capacity #  seat capacity.
  
   end
 
