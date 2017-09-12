@@ -1,29 +1,60 @@
+<style type="text/css">
+.cus_row {
+    border-bottom-color: none;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+}
+.c_city {
+    font-size: 23px;
+    font-weight: 600;
+}
+.c_arrival-tym,.c_depart-tym,.c_depart-day {
+    font-size: 17px;
+    display: inline-block;
+}
+.cus_row input{width: 200px!important;display: inline-block;}
+.fld_row {
+    display: inline-block;
+    width: 24%;
+}
+.c_save-btn {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 20px;
+}
+</style>
+
 <%= form_tag(bus_scheduling_update_admin_bus_path, method: :put) do %>
 
    
    <% @cities.each do |city| %>
        <%= fields_for "cities[#{city.id}]", city do |pf| %>
-          <div>
-          <%= city.city.titleize%><br>
+          <div class="cus_row">
+          <div class="c_city"><%= city.city.titleize%></div>
 
-          <%= "Time of Arrival"%>
+          <div class="fld_row"><div class="c_arrival-tym"><%= "Time of Arrival"%></div>
           <%#=pf.time_select :arrival, :ignore_date => true, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false %>
-          <%=pf.text_field :arrival, :class=> "time_picker", :style=> "width: 8%;" ,required: true, value: (city.deperture.strftime("%I:%M %p") if city.deperture.present?)%><br>
-          <%= "Day of Arrival"%>
-          <%= pf.text_field :day_of_arrival, required: true %><br>
+          <div class="c_input"><%=pf.text_field :arrival, :class=> "time_picker", :style=> "" ,required: true, value: (city.deperture.strftime("%I:%M %p") if city.deperture.present?)%></div></div>
+          <div class="fld_row"><div class="c_arrival-tym"><%= "Day of Arrival"%></div>
+          <div class="c_input"><%= pf.text_field :day_of_arrival, required: true %></div></div>
          
 
 
-          <%= "Time of Departure"%>
-          <%= pf.text_field :deperture, :class => "time_picker", :style=> "width: 8%;" ,required: true, value: (city.deperture.strftime("%I:%M %p") if city.deperture.present?)%><br>
+          <div class="fld_row"><div class="c_depart-tym"><%= "Time of Departure"%></div>
+          <div class="c_input"><%= pf.text_field :deperture, :class => "time_picker", :style=> "" ,required: true, value: (city.deperture.strftime("%I:%M %p") if city.deperture.present?)%></div></div>
 
-          <%= "Day of Departure"%>
-           <%= pf.text_field :day_of_deperture , required: true %><br><br><br><br>
+          <div class="fld_row"><div class="c_depart-day"><%= "Day of Departure"%></div>
+           <div class="c_input"><%= pf.text_field :day_of_deperture , required: true %></div></div>
         </div>
        <% end %>
    <% end %>
 
-<div><%= submit_tag 'Save' %></div>
+<div class="c_save-btn"><%= submit_tag 'Save' %></div>
 <% end %>
 
 
