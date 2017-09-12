@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: MyString
+  route_id: 1
+  max_hops: 1
+  validity: 1
+  price: 1.5
+
+two:
+  name: MyString
+  category: MyString
+  route_id: 1
+  max_hops: 1
+  validity: 1
+  price: 1.5

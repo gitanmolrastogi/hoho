@@ -72,13 +72,38 @@ $(document).ready(function(){
 }
         });
    
-   $(document).on('change', '#from_city', function(){
+  //  $(document).on('change', '#from_city', function(){
+  // var c_id=this.value;
+  // str = "";
+  //   $.ajax({
+  //          type: "GET",
+  //          url: "/user/routes/hop_on_hop_off",
+  //          data : {city_id: c_id,type: "To"},
+  //          dataType: "JSON",
+  //          success: function(response){
+  //                console.log(response.cities);      
+  //          $.each( response.cities, function( i, l ){
+  //                  str += '<option value="'+l[0]+'">'+l[1]+'</option>';
+  //                });
+
+  //         $('#to_city').empty().append('<option value="">To</option>');
+  //         $('#to_city').append(str);
+  //              }
+           
+
+  //          });
+  //       });
+
+   // my version
+
+         $(document).on('change', '#from_city', function(){
+  var r_id=$('#city_route').val();
   var c_id=this.value;
   str = "";
     $.ajax({
            type: "GET",
            url: "/user/routes/hop_on_hop_off",
-           data : {city_id: c_id,type: "To"},
+           data : {route_id: r_id,city_id: c_id,type: "To"},
            dataType: "JSON",
            success: function(response){
                  console.log(response.cities);      
@@ -92,7 +117,10 @@ $(document).ready(function(){
            
 
            });
-        });
+});
+
+   //my version ends here
+
 
    $(document).on('click', '#to_city', function(){
     var from_city_id = $('#from_city').val();

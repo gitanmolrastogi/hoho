@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  category: MyString
+  route_id: 1
+  hops_remaining: 1
+  valid_from: 2017-09-07
+  valid_upto: MyString
+  status: false
+  default: false
+
+two:
+  user_id: 1
+  category: MyString
+  route_id: 1
+  hops_remaining: 1
+  valid_from: 2017-09-07
+  valid_upto: MyString
+  status: false
+  default: false

@@ -103,6 +103,30 @@
 
    $(".flash").fadeOut(5000);
 
+   //===========On ready drop down population in pass ============
+    
+    var category = $("#pass_category").val();
+
+    str = "";
+    $.ajax({
+           type: "GET",
+           url: "/admin/passes/find_route_type",
+           data : {category_type: category},
+           dataType: "JSON",
+           success: function(response){
+                 console.log(response);      
+
+               $.each( response.route, function(i,l){
+                   str += '<option value="'+l+'">' + l+'</option>';
+               });
+                
+              $('#pass_route_name').empty().append('<option value="">Select Route</option>');
+              $('#pass_route_name').append(str);
+               }
+  });
+
+   //===========On ready drop down population in pass ends============
+
 //=================Admin Validation start==========================
   $('#session_new').validate({
     errorElement: "div",
@@ -974,8 +998,18 @@ $("#activity_start_date").datepicker({
             },
             "bus[price]": {
                  required: true,
-                 number:true,
+                 number: true,
                  maxlength: 8
+            },
+            "bus[frequency]": {
+                required: true,
+                number: true,
+                maxlength: 5
+            },
+            "bus[capacity]": {
+                required: true,
+                number: true,
+                maxlength: 5
             },
            
   },
@@ -1014,6 +1048,14 @@ $("#activity_start_date").datepicker({
                  required: "Please enter price",
                  number: "Please enter valid price "
             },
+            "bus[frequency]": {
+                required: "Please enter frequency",
+                number: "Please enter valid frequency",
+            },
+            "bus[capacity]": {
+                required: "Please enter capacity",
+                number: "Please enter valid capacity",
+            },
   },
 
         submitHandler: function(form) {
@@ -1024,6 +1066,126 @@ $("#activity_start_date").datepicker({
     });
 //==================Ends here new_bus=======================
 
+//============= New Pass Validation Starts Here =============
+
+
+    $('#new_pass').validate({
+       errorElement: "div",
+
+        rules: {
+            "pass[name]": {
+                required: true
+            },
+            "pass[route_name]": {
+                required: true
+            },
+            "pass[max_hops]": {
+                required: true,
+                number: true,
+                maxlength: 3
+            },
+            "pass[validity]": {
+                required: true,
+                maxlength: 5
+            },
+            "pass[price]": {
+                required: true,
+                number: true,
+                maxlength: 8
+            },
+        },
+
+        messages: {
+
+
+            "pass[name]": {
+                required: "Please provide a name"
+            },
+            "pass[route_name]": {
+                required: "Please select a route"
+            },
+            "pass[max_hops]": {
+                required: "Please enter maximum hops",
+                number: "Please enter valid price"
+            },
+            "pass[validity]": {
+                required: "Please enter validity days",
+                number: "Please enter valid validity"
+            },
+            "pass[price]": {
+                required: "Please enter price",
+                number: "Please enter valid price"
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+
+
+//============= New Pass Validation Ends here ===============
+
+//============= Edit Pass Validation Starts here =============
+
+$('#edit_pass').validate({
+       errorElement: "div",
+
+        rules: {
+            "pass[name]": {
+                required: true
+            },
+            "pass[route_name]": {
+                required: true
+            },
+            "pass[max_hops]": {
+                required: true,
+                number: true,
+                maxlength: 3
+            },
+            "pass[validity]": {
+                required: true,
+                maxlength: 5
+            },
+            "pass[price]": {
+                required: true,
+                number: true,
+                maxlength: 8
+            },
+        },
+
+        messages: {
+
+
+            "pass[name]": {
+                required: "Please provide a name"
+            },
+            "pass[route_name]": {
+                required: "Please select a route"
+            },
+            "pass[max_hops]": {
+                required: "Please enter maximum hops",
+                number: "Please enter valid price"
+            },
+            "pass[validity]": {
+                required: "Please enter validity days",
+                number: "Please enter valid validity"
+            },
+            "pass[price]": {
+                required: "Please enter price",
+                number: "Please enter valid price"
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+
+    });
+    
+
+//============= Edit Pass Validation Ends here ===============
 
 
 //==================Starts edit_accommodation=======================
@@ -1068,6 +1230,16 @@ $("#activity_start_date").datepicker({
                  number:true,
                  maxlength: 8
             },
+            "bus[frequency]": {
+                required: true,
+                number: true,
+                maxlength: 5
+            },
+            "bus[capacity]": {
+                required: true,
+                number: true,
+                maxlength: 5
+            },
   },
 
     messages: {
@@ -1103,6 +1275,14 @@ $("#activity_start_date").datepicker({
              "bus[price]": {
                  required: "Please enter price",
                  number: "Please enter valid price "
+            },
+            "bus[frequency]": {
+                required: "Please enter frequency",
+                number: "Please enter valid frequency",
+            },
+            "bus[capacity]": {
+                required: "Please enter capacity",
+                number: "Please enter valid capacity",
             },
   },
 
@@ -1631,6 +1811,43 @@ $(document).on('change', "#main_route_image", function() {
     };
     return readURL(this);
 });
+
+
+
+// Pass Model : Route selection on the basis of Category starts here
+
+
+  $(document).on('change',"#pass_category", function(){
+        var category = $("#pass_category").val();
+
+    str = "";
+    $.ajax({
+           type: "GET",
+           url: "/admin/passes/find_route_type",
+           data : {category_type: category},
+           dataType: "JSON",
+           success: function(response){
+                 console.log(response);      
+
+               $.each( response.route, function(i,l){
+                   str += '<option value="'+l+'">' + l+'</option>';
+               });
+                
+              $('#pass_route_name').empty().append('<option value="">Select Route</option>');
+              $('#pass_route_name').append(str);
+               }
+           });
+  });
+
+//  Pass Model : Route selection ends here
+
+
+
+
+
+
+
+
 
 
 // $uploadCrop = $('#main_route_image').croppie({

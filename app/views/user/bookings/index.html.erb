@@ -1,0 +1,92 @@
+<section class="page-content passes-page">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-9">
+             <div class="panel panel-default div_height">
+                <div id="headingOne" role="tab" class="panel-heading">
+                  <h4 class="panel-title">
+                    <a aria-controls="collapseOne" aria-expanded="false" href="#collapseOne" data-parent="#accordion" data-toggle="collapse">
+                    Buses
+                    </a>
+                  </h4>
+                </div>
+                <div aria-labelledby="headingOne" role="tabpanel" class="panel-collapse collapse in" id="collapseOne">
+                  <div id="bus_data_append" class="panel-body panel-table table-responsive">
+                     <table class="table">
+                        <thead>
+                         <tr>
+                           <th>Date of Journey</th>
+                           <th>Route</th>
+                           <th>Source</th>
+                           <th>Destination</th>
+                           <th>Departure Time</th>
+                           <th>Arrival Time</th>
+                         </tr>
+                        </thead>
+                          <tbody>
+                            <% @bookings.each do |booking| %>
+                              <tr>
+                                <td><%= booking.date%></td>
+                                <td><%= booking.route%></td>
+                                <td><%= booking.source%></td>
+                                <td><%= booking.destination%></td>
+                                <td><%= booking.arrival.strftime("%I:%M %p")%></td>
+                                <td><%= booking.departure.strftime("%I:%M %p")%></td>
+                              </tr>
+                           <% end %>
+                          </tbody>
+
+                          </table>
+                  </div>
+                </div>
+              </div>
+           </div>
+           <div class="col-md-3">
+             <div class="panel panel-default div_height">
+                <div id="headingOne" role="tab" class="panel-heading">
+                  <h4 class="panel-title">
+                    <a aria-controls="collapseTwo" aria-expanded="false" href="#collapseTwo" data-parent="#accordion" data-toggle="collapse">
+                    Passes
+                    </a>
+                  </h4>
+                </div>
+                <div aria-labelledby="headingTwo" role="tabpanel" class="panel-collapse collapse in" id="collapseTwo">
+                  <div class="set-default-active">
+                     
+                                              
+                                  <%if  (p = @passes.where(default_pass: true)).present? %>
+                                  Default Pass<br><%= Pass.find_by(id: p.first.pass_id).name %>
+
+                                  <% else %>
+                                      Default Pass : Not Selected
+                                  <% end %>
+
+                  </div>
+                  <div id="bus_data_append" class="panel-body panel-table table-responsive">
+                     <table class="table">
+                           
+
+                          <tbody>
+                              <% @passes.each do |pass| %>
+                                 <tr>
+                                   <tr><td style = "color: Blue; font-weight: bold;" ><%= Pass.find_by(id: pass.pass_id).name%><%= " (Default)" if pass.default_pass == true%></td></tr>
+                                   <tr><td>Valid Upto:<%= pass.valid_upto %></td></tr>
+                                   <tr><td>Hops Remaining:   <%= pass.hops_remaining%></td><tr>
+                                   <!-- <td> <a class="btn btn-danger" href="/user/bookings/set_default_pass">Set as default</a></td> -->
+                                   <td><%= link_to "Set as default", set_default_pass_user_bookings_path(pass_book_id: pass.id),:data => {:confirm => 'Are you sure?'}, :class =>"btn btn-danger"%></td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+
+                              <% end %>
+                              <br/>
+                          </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+           </div>
+      </div>
+    </div>
+  </section>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811053438) do
+ActiveRecord::Schema.define(version: 20170912064858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,42 @@ ActiveRecord::Schema.define(version: 20170811053438) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "bus_id"
+    t.date     "date"
+    t.string   "route"
+    t.string   "source"
+    t.string   "destination"
+    t.time     "arrival"
+    t.time     "departure"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.date     "start_date"
+    t.time     "start_time"
+  end
+
+  create_table "bus_availables", force: :cascade do |t|
+    t.string   "source"
+    t.string   "destination"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "capacity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "bus_timings", force: :cascade do |t|
+    t.string   "city"
+    t.time     "arrival"
+    t.time     "deperture"
+    t.integer  "day_of_arrival"
+    t.integer  "day_of_deperture"
+    t.integer  "bus_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "buses", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
@@ -80,9 +116,13 @@ ActiveRecord::Schema.define(version: 20170811053438) do
     t.string   "start_point"
     t.string   "end_point"
     t.boolean  "is_full"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "price"
+    t.integer  "route_id"
+    t.integer  "capacity"
+    t.integer  "frequency"
+    t.boolean  "status",      default: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -192,6 +232,31 @@ ActiveRecord::Schema.define(version: 20170811053438) do
     t.string   "transaction_id"
     t.string   "ipg_transaction_id"
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "pass_bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "category"
+    t.string   "route"
+    t.integer  "hops_remaining"
+    t.date     "valid_from"
+    t.date     "valid_upto"
+    t.boolean  "status"
+    t.boolean  "default_pass"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "pass_id"
+  end
+
+  create_table "passes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.string   "route_name"
+    t.integer  "max_hops"
+    t.integer  "validity"
+    t.float    "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "photos", force: :cascade do |t|

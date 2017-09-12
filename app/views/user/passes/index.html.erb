@@ -1,0 +1,115 @@
+<section class="page-content passes-page">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-10">
+            <div class="tab-block">
+              <ul class="nav nav-tabs nav-justified">
+                <li><a data-toggle="tab" href="#menu2" id = "hide_see_less">Open Passes</a></li>
+                <li class="active"><a data-toggle="tab" href="#menu3">Closed Passes</a></li>
+              </ul>
+              <!------ Detail itinerary  ------>
+              <div class="tab-content">
+                
+                <div class="tab-pane fade in" id="menu2">
+                      <div class="tab-desc clearfix">
+                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </div>
+                        <div class="possible-routes-block">
+                            <div class="row">
+
+                              <!---for loop-->
+                              <% @passes.each do |pass| %>
+                                <% if pass.category == "Open" %>
+                                      <div class="col-xs-12 col-sm-4 col-md-4">
+                                        <div class="sec_contain">
+                                          <div class="thumb-info text-center">
+                                            <h4 class="passes-name"><%= pass.name %></h4>
+                                            <div class="detail-trip-block">
+                                              <div class="detail-t">
+                                                <label>Route :  </label> 
+                                                <span><%= pass.route_name%></span>
+                                              </div>
+                                              <div class="detail-t">
+                                                <label>Maximum Hops :  </label> 
+                                                <span><%= pass.max_hops %></span>
+                                              </div>
+                                              <div class="detail-t">
+                                                <label>Validity:  </label> 
+                                                <span><%= pass.validity %>days</span>
+                                              </div>
+                                              <div class="detail-t">
+                                                <label>Price :  </label> 
+                                                <span>Rs. <%= pass.price %></span>
+                                              </div>
+                                            </div>
+                                            <div class="clearfix cart-box">
+                                             <!--  <a class="add-cart-btn" href="#">Add to cart</a> -->
+                                              <%= link_to  "Add to cart" , add_to_cart_user_orders_path(:id => pass.id , :type => "pass") , class:"add-cart-btn" %>
+                                            </div>
+                                            
+                                          </div>
+                                        </div>
+                                       </div>
+                                <% end %>
+                               <% end %>
+                               <!---for loop-->
+                            </div>
+                          </div>
+
+                  </div>
+               
+                <div class="tab-pane fade active in" id="menu3">
+                        <div class="tab-desc clearfix">
+                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </div>
+                        <div class="possible-routes-block">
+                            <div class="row">
+
+                              <!---for loop-->
+                             <% @passes.each do |pass| %>
+
+                                 <% if pass.category == "Closed" %>
+                                      <div class="col-xs-12 col-sm-4 col-md-4">
+                                        <div class="sec_contain">
+                                          <div class="thumb-info text-center">
+                                            <h4 class="passes-name"><%= pass.name %></h4>
+                                            <div class="detail-trip-block">
+                                              <div class="detail-t">
+                                                <label>Route :  </label> 
+                                                <span><%= pass.route_name%></span>
+                                              </div>
+                                              <div class="detail-t">
+                                                <label>Maximum Hops :  </label> 
+                                                <span><%= pass.max_hops %></span>
+                                              </div>
+                                              <div class="detail-t">
+                                                <label>Validity:  </label> 
+                                                <span><%= pass.validity %>days</span>
+                                              </div>
+                                              <div class="detail-t">
+                                                <label>Price :  </label> 
+                                                <span>Rs. <%= pass.price %></span>
+                                              </div>
+                                            </div>
+                                            <div class="clearfix cart-box">
+                                              <!-- <a class="add-cart-btn" href="#">Add to cart</a> -->
+                                              <%= link_to  "Add to cart" , add_to_cart_user_orders_path(:id => pass.id , :type => "pass") , class:"add-cart-btn" %>
+                                            </div>
+                                            
+                                          </div>
+                                        </div>
+                                       </div>
+                                <% end %>
+
+                               <% end %>
+
+                               <!---for loop-->
+                            </div>
+                          </div>
+                     </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

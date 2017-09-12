@@ -2,28 +2,38 @@
 <table class="table">
 <thead>
  <tr>
-   <th>From</th>
+   <!-- <th>From</th>
    <th>To</th>
    <th>Price</th>
    <th>Departs</th>
    <th>Arrives</th>
    <th>Start Date</th>
    <th>Until</th>
-   <th></th>
+   <th></th> -->
+
+  <th>Date</th>
+  <th>Route</th>
+  <th>Source</th>
+  <th>Destination</th>
+  <th>Departure Time</th>
+  <th>Arrival Time</th>
+  <th>Booking</th>
+
  </tr>
 </thead>
 <tbody>
 <% @buses.each do |bus| %>
  <tr>
-   <td><%= bus.start_point %></td>
-   <td><%= bus.end_point %></td>
-   <td><%= bus.try(:price) %></td>
-   <td><%= bus.start_time.strftime("%I:%M") %></td>
-   <td><%= bus.end_time.strftime("%I:%M") %></td>
-   <td><%= bus.start_date.strftime("%e %b") %></td>
-   <td><%= bus.end_date.strftime("%e %b") %></td>
-   <td><span class="cart-i"><i class="fa fa-cart-arrow-down" style="font-size:1.6em;"></i> <%= link_to "Add to cart"  , add_to_cart_user_orders_path(:id => bus.id , :type => "hop" ) ,  :class => "btn red-btn cart"  %></span></td>
+   <td><%= bus["date"].strftime("%e %b %Y") rescue "" %></td>
+   <td><%= bus["route"]%></td>
+   <td><%= bus["source"]%></td>
+   <td><%= bus["destination"]%></td>
+   <td><%= bus["departure"].strftime("%I:%M %p") rescue ""%></td>
+   <td><%= bus["arrival"].strftime("%I:%M %p") rescue ""%></td>
+   <td><%= link_to "Book", bus_booking_user_routes_path(:bus=> bus) ,:class=>"cart-i cart-book", data: { confirm: 'Are you sure?' }, method: :post%></td>
+  <!--  <td><%= link_to "Book", '#' ,:class=>"cart-i cart-book", data: { confirm: 'Are you sure?' }, method: :post%></td> -->
  </tr>
+
 <% end%>
  
 </tbody>

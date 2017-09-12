@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  # namespace :user do
+  #   get 'bookings/index'
+  # end
+
+  # namespace :user do
+  #   get 'passes/index'
+  # end
+
   get "user/forums" => "user/home#forums"  
 
   get '/check_new_city_name' => 'user/users#check_new_city_name'
@@ -32,8 +40,10 @@ put '/users/update_profile',to: 'user/users#update_profile'
  get '/user/activity/read_less',to: 'user/activities#read_less'
 
  namespace :user do
+  resources :passes
+  
   get '/cities' => "users#get_city"
-
+  # get '/passes/index' => "users/passes#index"
    resources :static_content, only: [] do
          collection do
             get 'about_us'
@@ -70,7 +80,16 @@ put '/users/update_profile',to: 'user/users#update_profile'
         get 'hop_on_hop_off'
         get 'bus_details'
         get 'get_date_buses'
+        post 'bus_booking'
       end
    end
+
+    resources :bookings , only: [] do
+       collection do
+         get 'index'
+         get 'set_default_pass'
+       end
+
+    end
  end
 end
