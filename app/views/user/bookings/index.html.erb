@@ -63,11 +63,10 @@
 
                   </div>
                   <div id="bus_data_append" class="panel-body panel-table table-responsive">
-                     <table class="table">
-                           
-
+                    <% @passes.each do |pass| %>
+                     <table class="table" style="border-bottom:1px solid #000;">
                           <tbody>
-                              <% @passes.each do |pass| %>
+                              
                                  <tr>
                                    <tr><td style = "color: Blue; font-weight: bold;" ><%= Pass.find_by(id: pass.pass_id).name%><%= " (Default)" if pass.default_pass == true%></td></tr>
                                    <tr><td>Valid Upto:<%= pass.valid_upto %></td></tr>
