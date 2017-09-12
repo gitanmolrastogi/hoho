@@ -68,7 +68,7 @@
                           <tbody>
                               
                                  <tr>
-                                   <tr><td style = "color: Blue; font-weight: bold;" ><%= Pass.find_by(id: pass.pass_id).name%><%= " (Default)" if pass.default_pass == true%></td></tr>
+                                   <tr><td style = "color: Blue; font-weight: bold;" ><%= Pass.find_by(id: pass.pass_id).name if pass.present? %><%= " (Default)" if pass.default_pass == true%></td></tr>
                                    <tr><td>Valid Upto:<%= pass.valid_upto %></td></tr>
                                    <tr><td>Hops Remaining:   <%= pass.hops_remaining%></td><tr>
                                    <!-- <td> <a class="btn btn-danger" href="/user/bookings/set_default_pass">Set as default</a></td> -->
