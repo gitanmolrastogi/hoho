@@ -48,21 +48,18 @@ class User::OrdersController < ApplicationController
      @cart_orders = current_user.orders.where("is_paid = ?" ,false)
 
      @sum =  @cart_orders.where("is_paid = ?" ,false).includes(:orderable).map{|o| o.orderable.price}.compact.sum 
-<<<<<<< HEAD
      # @responseSuccessURL = "http://localhost:3000/user/orders/success"
      # @responseFailURL = "http://localhost:3000/user/orders/error"
      # @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
      
      
-=======
-     @responseSuccessURL = "http://localhost:3000/user/orders/success"
-     @responseFailURL = "http://localhost:3000/user/orders/error"
-     @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
+     # @responseSuccessURL = "http://localhost:3000/user/orders/success"
+     # @responseFailURL = "http://localhost:3000/user/orders/error"
+     # @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
      # temporary code, delete it
              # @order = @cart_orders.each do |f|
              #    create_pass_booking(f)
              # end
->>>>>>> 967f9bf57193d4107c94db4caad57241299df763
 
     # redirect_to success_user_orders_path(order_ids: @cart_orders.pluck(:id) )
 
