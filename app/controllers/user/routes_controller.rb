@@ -151,7 +151,7 @@ before_filter :check_for_main_routes , only: [:index]
           #freq = 7
       
       @line_id.each do |line|
-           available_buses = Bus.where(route_id: line)
+           available_buses = Bus.where(route_id: line, status: true)
          #  p "--------Line Id: #{line}--Bus #{available_buses.present?}---------"
 
            if available_buses

@@ -12,6 +12,15 @@ ActiveAdmin.register Pass do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+
+filter :name
+filter :category
+filter :route_name
+filter :max_hops
+filter :validity
+filter :price
+
+
 permit_params :name, :category,:route_name,:max_hops,:validity,:price
 
 

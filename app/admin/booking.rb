@@ -14,6 +14,18 @@ ActiveAdmin.register Booking do
 # end
 menu :priority=> 15
 
+
+filter :date
+filter :route
+filter :destination
+filter :start_date
+#filter :user_id
+
+filter :user_id, label: 'User', as: :select,
+        collection: proc { User.pluck(:email,:id) }
+
+
+
 index do |f|
      selectable_column
       column :id

@@ -51,12 +51,45 @@ index do |f|
 
      column :frequency
      column :capacity
+     column 'Status' do |resource|
+      if (resource.status == true)
+        '<i class = "status_tag yes"> Available </i>'.html_safe
+      else
+        '<i class = "status_tag no"> Blocked </i>'.html_safe
+      end
+    end
+    
 
      actions name: "Actions" do |f|
+      a do
        link_to 'Bus Timings', bus_scheduling_admin_bus_path(f)
+      end
+
+      a do 
+        if (f.status == true)
+          link_to 'Block' ,block_bus_admin_buses_path(id: f.id),
+              data: { confirm: 'Are you sure?' }
+        else
+          link_to 'Unblock' ,block_bus_admin_buses_path(id: f.id),
+              data: { confirm: 'Are you sure?' }
+        end
+      end
      end
+
+
+     
 end
 
+collection_action :block_bus, method: :get do
+         bus = Bus.find(params[:id]) 
+         if (bus.status == true)
+          bus.update_attributes(:status => false)
+          redirect_to  :back
+        else
+          bus.update_attributes(:status => true)
+          redirect_to  :back
+        end
+     end
 
 form do |f|
     f.inputs do
