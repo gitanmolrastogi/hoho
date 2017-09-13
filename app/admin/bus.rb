@@ -8,7 +8,7 @@ filter :start_point
 filter :end_point
 permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price ,:route_id,:capacity,:frequency
 
-
+actions :all, :except => [:edit]
 member_action :bus_scheduling, method: :get do    
     @cities = Bus.find_by(id: params[:id]).bus_timings.sort
 end

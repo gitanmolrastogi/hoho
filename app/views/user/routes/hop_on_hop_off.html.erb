@@ -7,7 +7,7 @@
 					<div class="search-route">
 					  <form class="form-block">
 						<div class="form-group">
-						 <%= select_tag "city_route", options_for_select(MainRoute.pluck(:name,:id)),:class=>"form-control",:include_blank => "Select Route" %>
+						 <%= select_tag "city_route", options_for_select(MainRoute.where(is_active: true).pluck(:name,:id)),:class=>"form-control",:include_blank => "Select Route" %>
 						</div>
 					  </form>
 					</div>

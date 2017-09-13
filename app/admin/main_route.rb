@@ -7,6 +7,7 @@ filter :end_point
 filter :price
 filter :duration
 
+actions :all, :except => [:edit,:destroy]
 
 permit_params :information , :start_point ,:end_point , :name , :image ,:image_credit, :price , :duration
 form do |f|
@@ -51,8 +52,66 @@ index do
     end
     column :image_credit
     # column :created_at
-    actions name: "Actions"
+    #actions name: "Actions"
+
+    column 'Status' do |resource|
+      if (resource.is_active == true)
+        '<i class = "status_tag yes"> Available </i>'.html_safe
+      else
+        '<i class = "status_tag no"> Blocked </i>'.html_safe
+      end
+    end
+
+
+   
+
+
+
+
+
+    actions name: "Actions" do |ff|
+      
+      
+      a do 
+        if (ff.is_active == true)
+          link_to 'Block' , block_main_routes_admin_main_routes_path(id: ff.id),
+              data: { confirm: 'Are you sure?' }
+        else
+          link_to 'Unblock' , block_main_routes_admin_main_routes_path(id: ff.id),
+              data: { confirm: 'Are you sure?' }
+        end
+      end
+      
+     end
+
+
   end
+
+
+collection_action :block_main_routes, method: :get do
+         main_route = MainRoute.find(params[:id]) 
+         if (main_route.is_active == true)
+
+
+          main_route.update_attributes(:is_active => false)
+          
+          main_route.line_color_routes.update_all(:is_active => false)
+
+
+
+          redirect_to  :back
+        else
+          main_route.update_attributes(:is_active => true)
+          redirect_to  :back
+        end
+     end
+
+
+
+
+
+
+
 
 show :title=> "Main Route " do |route|
       attributes_table do	

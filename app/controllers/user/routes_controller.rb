@@ -64,9 +64,13 @@ before_filter :check_for_main_routes , only: [:index]
        #@city= City.find_by_id(params[:city_id])
        # @cities = City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)).pluck(:id,:name) 
        #@cities = (City.where(name: Bus.where(start_point: @city.name).pluck(:end_point)).pluck(:id,:name)).sort{|a,b| a[1] <=> b[1]}
+       
+
+      #my code starts here...
+
        @current_route = MainRoute.find_by_id(params[:route_id]) 
-      cit = []
-      @current_route.line_color_routes.each do |a|
+       cit = []
+       @current_route.line_color_routes.each do |a|
              a.city_routes.pluck(:city_id).each do |b|
                 cit << b
              end
@@ -93,19 +97,8 @@ before_filter :check_for_main_routes , only: [:index]
     from_city=City.find_by(id: params[:from_city_id])
     to_city=City.find_by(id: params[:to_city_id])
     #@buses=Bus.where("start_point = ? and end_point =? and start_date >= ? " ,from_city.name, to_city.name , Date.current)
-
-       
      find_routes_for_from_and_to(from_city,to_city)
-
-     #p "-------#{@line_id}-------"
-
      bus_available(from_city,to_city)
-
-     #p "--------#{@variable}---------"
-
-
-    
-
   end
 
   def check_for_main_routes
@@ -121,11 +114,11 @@ before_filter :check_for_main_routes , only: [:index]
      # Finding all the line color routes where a souce city belongs
      line_route_ids = CityRoute.where(city_id: from_city).distinct.pluck(:line_color_route_id)
     
-      #p "-----------#{line_route_ids}---------------"
          @line_id = []  #For holding the line color route id after filtering
    
          line_route_ids.each do |a|
-         #p "-------#{a}---------"
+
+           if LineColorRoute.find_by(id: a).is_active
 
            # checking whether destination exits on that particular line route or not
            var_to = LineColorRoute.find(a).city_routes.where(city_id: to_city)
@@ -141,6 +134,9 @@ before_filter :check_for_main_routes , only: [:index]
            else
            # p "-------error----------"
            end
+
+         end
+
          end
   end
    # my code for finding the bus that are available  

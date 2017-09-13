@@ -37,13 +37,89 @@ form do |f|
 end
 
 
+actions :all, :except => [:edit,:destroy]
 
+index do |f|
+    column :id  
+    column :name
+    column :category
+    column :route_name
+    column :max_hops
+    column :validity
+    column :price
+    column 'Status' do |resource|
+      if (resource.is_active == true)
+        '<i class = "status_tag yes"> Available </i>'.html_safe
+      else
+        '<i class = "status_tag no"> Blocked </i>'.html_safe
+      end
+    end
+
+
+   
+
+
+
+
+
+    actions name: "Actions" do |ff|
+      
+      
+      a do 
+        if (ff.is_active == true)
+          link_to 'Block' , block_pass_admin_passes_path(id: ff.id),
+              data: { confirm: 'Are you sure?' }
+        else
+          link_to 'Unblock' , block_pass_admin_passes_path(id: ff.id),
+              data: { confirm: 'Are you sure?' }
+        end
+      end
+      a do
+       if !Order.where(orderable_type: "Pass", orderable_id: ff.id).present?
+        link_to 'Delete', destroy_pass_admin_passes_path(id: ff),method: :delete,data: { confirm: 'Are you sure?' }
+      end
+      end
+     end
+    #actions name: "Actions"
+
+end
+
+
+
+
+
+collection_action :destroy_pass, method: :delete do
+      
+      pass = Pass.find_by(id: params[:id])
+
+
+      if pass && pass.destroy();
+         redirect_to :back
+         flash[:notice] = "Pass successfully deleted."
+      else
+         redirect_to :back
+         flash[:error] = "Unable to delete pass. Please try again"
+      end
+
+end
+
+
+collection_action :block_pass, method: :get do
+         pass = Pass.find(params[:id]) 
+         if (pass.is_active == true)
+          pass.update_attributes(:is_active => false)
+          redirect_to  :back
+        else
+          pass.update_attributes(:is_active => true)
+          redirect_to  :back
+        end
+     end
 
 
 collection_action :find_route_type do 
  @route = []
- @route = MainRoute.all.pluck(:name,:name) if params[:category_type] == "Open"
- @route = LineColorRoute.all.pluck(:name,:name) if params[:category_type] == "Closed"
+ @route = MainRoute.where(is_active: true).pluck(:name,:name) if params[:category_type] == "Open"
+ @route = LineColorRoute.where(is_active: true).pluck(:name,:name) if params[:category_type] == "Closed"
 
  respond_to do |format|
         format.html 

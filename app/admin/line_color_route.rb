@@ -4,7 +4,7 @@ filter :name
 # filter :price 
 filter :duration
 
-
+actions :all, :except => [:edit,:destroy]
 permit_params :name , :duration , :image,:image_credit, :zoomed_image,:image_credit_zoomed,:main_route_id ,city_routes_attributes: [:id, :city_id ,:priority ,:_destroy]
 
 
@@ -48,8 +48,40 @@ index do
       n.image_credit_zoomed
     end
     # column :created_at
-    actions name: "Actions"
-  end
+    #actions name: "Actions"
+
+
+    column 'Status' do |resource|
+      if (resource.is_active == true)
+        '<i class = "status_tag yes"> Available </i>'.html_safe
+      else
+        '<i class = "status_tag no"> Blocked </i>'.html_safe
+      end
+    end
+    actions name: "Actions" do |ff|      
+      a do 
+        if (ff.is_active == true)
+          link_to 'Block' , block_line_color_routes_admin_line_color_routes_path(id: ff.id),
+              data: { confirm: 'Are you sure?' }
+        else
+          link_to 'Unblock' , block_line_color_routes_admin_line_color_routes_path(id: ff.id),
+              data: { confirm: 'Are you sure?' }
+        end
+      end
+      
+     end
+end
+
+collection_action :block_line_color_routes, method: :get do
+         line_color_route = LineColorRoute.find(params[:id]) 
+         if (line_color_route.is_active == true)
+          line_color_route.update_attributes(:is_active => false)
+          redirect_to  :back
+        else
+          line_color_route.update_attributes(:is_active => true)
+          redirect_to  :back
+        end
+     end
 
 show :title=> "Route Management" do |route|
     attributes_table do	

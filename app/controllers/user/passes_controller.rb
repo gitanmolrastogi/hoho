@@ -1,7 +1,7 @@
 class User::PassesController < ApplicationController
   def index
 
-    @passes = Pass.all
+    @passes = Pass.where(is_active: true)
 
   end
   
@@ -9,8 +9,7 @@ class User::PassesController < ApplicationController
   end
 
   def create
-     debugger
-     dfsl.lds
+    
   end
 
   def show

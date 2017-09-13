@@ -14,6 +14,7 @@ ActiveAdmin.register Booking do
 # end
 menu :priority=> 15
 
+actions :all, :except => [:edit,:destroy,:new]
 
 filter :date
 filter :route

@@ -42,15 +42,15 @@ class User::OrdersController < ApplicationController
   end
 
   def order_payment
-     @responseSuccessURL = "http://delhi-airport.herokuapp.com/user/orders/success"
-     @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
-     @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
+     # @responseSuccessURL = "http://delhi-airport.herokuapp.com/user/orders/success"
+     # @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
+     # @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
     @cart_orders = current_user.orders.where("is_paid = ?" ,false)
 
      @sum =  @cart_orders.where("is_paid = ?" ,false).includes(:orderable).map{|o| o.orderable.price}.compact.sum 
-     # @responseSuccessURL = "http://localhost:3000/user/orders/success"
-     # @responseFailURL = "http://localhost:3000/user/orders/error"
-     # @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
+     @responseSuccessURL = "http://localhost:3000/user/orders/success"
+     @responseFailURL = "http://localhost:3000/user/orders/error"
+     @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
      
      
      # @responseSuccessURL = "http://localhost:3000/user/orders/success"
@@ -100,24 +100,20 @@ class User::OrdersController < ApplicationController
     end
 
     # @order = Order.where(:id=>params[:order_ids].to_i).each do |f|
-
     #   f.update(:is_paid=>true , transaction_id: params[:oid] , ipg_transaction_id: params[:ipgTransactionId])
     # end
-
     # puts "------#{@order.inspect}-------"
+
     NotifyMailer.user_mailer(current_user,@order,params[:oid],params[:ipgTransactionId]).deliver_now
     redirect_to root_path 
     flash[:success] = "Your transaction has been successfully completed."
   end
 
   def create_pass_booking(cart_order)
-    p "------Cart Orders #{current_user}-------"
-    if cart_order.orderable_type == "Pass"
-       
+#    p "------Cart Orders #{current_user}-------"
+    if cart_order.orderable_type == "Pass"      
         pass = Pass.find_by_id(cart_order.orderable_id)
-
         PassBooking.create(user_id: current_user.id, category: pass.category, route: pass.route_name,hops_remaining: pass.max_hops,default_pass: false, pass_id: pass.id, valid_upto: Date.today+1.month)
-
     end      
     
   end

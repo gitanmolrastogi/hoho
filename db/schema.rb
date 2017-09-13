@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912064858) do
+ActiveRecord::Schema.define(version: 20170913131137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,11 +201,12 @@ ActiveRecord::Schema.define(version: 20170912064858) do
     t.string   "name"
     t.string   "image"
     t.string   "zoomed_image"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "main_route_id"
     t.string   "image_credit"
     t.string   "image_credit_zoomed"
+    t.boolean  "is_active",           default: false
   end
 
   create_table "main_routes", force: :cascade do |t|
@@ -220,6 +221,7 @@ ActiveRecord::Schema.define(version: 20170912064858) do
     t.integer  "duration"
     t.boolean  "is_open_ended", default: false
     t.string   "image_credit"
+    t.boolean  "is_active",     default: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -255,8 +257,9 @@ ActiveRecord::Schema.define(version: 20170912064858) do
     t.integer  "max_hops"
     t.integer  "validity"
     t.float    "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "is_active",  default: false
   end
 
   create_table "photos", force: :cascade do |t|

@@ -17,9 +17,9 @@ menu :priority=> 14
 filter :created_at, label: "Order Date"
 filter :is_paid, label: "Payment Status"
 
+actions :all, :except => [:edit,:destroy,:new]
 
 index do |f|
-     selectable_column
       #column :id
       column "Order Type" do |resource|
           type = resource.orderable_type
