@@ -54,7 +54,7 @@
                   <div class="set-default-active">
                      
                                               
-                                  <%if  (@passes.where(default_pass: true)).any? %>
+                                  <%if  (p = @passes.where(default_pass: true)).present? %>
                                   Default Pass<br><%= (ps = Pass.find_by(id: p.first.pass_id)).name %>
 
                                   <% else %>
