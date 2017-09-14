@@ -20,6 +20,7 @@ form do |f|
     f.input :name # if params[:action]=="new"
     f.input :info,as: :ckeditor, label: "Information"
     f.input :image, label: "Image (preferably 1200X900 px)" ,as:  :file
+    #f.input :image, label: "Image (preferably 1200x900 px)" ,:hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
     f.input :image_credit, :input_html => {:maxlength => 100}
       # f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
 

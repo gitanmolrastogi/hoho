@@ -112,8 +112,13 @@ collection_action :block_bus, method: :get do
           bus.update_attributes(:status => false)
           redirect_to  :back
         else
-          bus.update_attributes(:status => true)
-          redirect_to  :back
+          if bus.bus_timings.first.day_of_deperture.nil?
+             redirect_to :back
+             flash[:error] = "Please fill Bus Timings before unblocking"
+          else
+             bus.update_attributes(:status => true)
+             redirect_to  :back
+          end
         end
      end
 

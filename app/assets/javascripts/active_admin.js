@@ -1379,10 +1379,10 @@ $('#edit_category').validate({
             required: true,
             maxlength: 50
         },
-        "category[image]":{
-          required: true,
-          accept: "image/jpg,image/jpeg,image/png,image/gif"
-        },
+        // "category[image]":{
+        //   required: true,
+        //   accept: "image/jpg,image/jpeg,image/png,image/gif"
+        // },
         "category[image_credit]": {
            required: true,
            maxlength: 50                          
@@ -1394,10 +1394,10 @@ $('#edit_category').validate({
       },
 
       messages:{
-          "category[image]": {
-           required: "Please upload a image",
-           accept: "Invalid image format" 
-        },
+        //   "category[image]": {
+        //    required: "Please upload a image",
+        //    accept: "Invalid image format" 
+        // },
         "category[image_credit]": {
             required: "Please provide Image Credit",
             maxlength: "Please provide valid Image Credit( Max 50 charecters)"
