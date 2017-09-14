@@ -8,7 +8,7 @@ filter :start_point
 filter :end_point
 permit_params :start_date ,:end_date ,:start_time,:end_time  ,:start_point , :end_point,:price ,:route_id,:capacity,:frequency
 
-actions :all, :except => [:edit]
+actions :all, :except => [:edit,:destroy]
 member_action :bus_scheduling, method: :get do    
     @cities = Bus.find_by(id: params[:id]).bus_timings.sort
 end
@@ -74,10 +74,36 @@ index do |f|
               data: { confirm: 'Are you sure?' }
         end
       end
+
+      a do
+       if !Booking.where(bus_id: f.id).present?
+        link_to 'Delete',  destroy_bus_admin_buses_path(id: f.id),method: :delete,data: { confirm: 'Are you sure?' }
+      end
+      end
+
      end
 
 
      
+end
+collection_action :destroy_bus, method: :delete do
+      
+    if !Booking.where(bus_id: params[:id]).present?
+
+      bus = Bus.find_by(id: params[:id])
+      if bus && bus.destroy();
+         redirect_to :back
+         flash[:notice] = "Bus successfully deleted."
+      else
+         redirect_to :back
+         flash[:error] = "Unable to delete bus. Please try again"
+      end
+
+    else
+         redirect_to :back
+         flash[:error] = "Unable to delete. User has already booked the bus."
+    end
+
 end
 
 collection_action :block_bus, method: :get do

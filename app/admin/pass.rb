@@ -89,9 +89,9 @@ end
 
 
 collection_action :destroy_pass, method: :delete do
-      
-      pass = Pass.find_by(id: params[:id])
 
+    if !Order.where(orderable_type: "Pass", orderable_id: params[:id]).present?
+      pass = Pass.find_by(id: params[:id])
 
       if pass && pass.destroy();
          redirect_to :back
@@ -100,6 +100,10 @@ collection_action :destroy_pass, method: :delete do
          redirect_to :back
          flash[:error] = "Unable to delete pass. Please try again"
       end
+    else
+         redirect_to :back
+         flash[:error] = "Unable to delete pass. User has already added to cart or has bought the pass."
+    end
 
 end
 
