@@ -23,7 +23,7 @@ before_filter :check_for_main_routes , only: [:index]
     end
 
  def get_date_buses
-    #@buses = MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id" RIGHT OUTER JOIN "buses" ON "buses"."start_point" = "cities"."name"').select("main_routes.id","main_routes.name","cities.id as city_id","cities.name as city_name", "buses.id as bus_id","buses.start_date as bus_start_date","buses.end_date as bus_end_date","buses.start_time as bus_start_time","buses.end_time as bus_end_time","buses.start_point as bus_start_point","buses.end_point as bus_end_point").distinct.where(:buses => {start_date: params[:date]})
+    @buses = MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id" RIGHT OUTER JOIN "buses" ON "buses"."start_point" = "cities"."name"').select("main_routes.id","main_routes.name","cities.id as city_id","cities.name as city_name", "buses.id as bus_id","buses.start_date as bus_start_date","buses.end_date as bus_end_date","buses.start_time as bus_start_time","buses.end_time as bus_end_time","buses.start_point as bus_start_point","buses.end_point as bus_end_point").distinct.where(:buses => {start_date: params[:date]})
     
  end
 
@@ -186,32 +186,7 @@ before_filter :check_for_main_routes , only: [:index]
   def bus_booking
           # checking whether user is logged in or not
               if current_user
-          # # checking whether pass exist for that particular user , route and default pass         
-          #               if (pass_booking = PassBooking.where("user_id = ? AND default_pass = ? AND route = ?", params[:bus][:user_id], true , params[:bus][:route])).present?
-          # # checking whether the user has hops available and pass validity.
-          #                     if  ((( hops_count = pass_booking.first.hops_remaining )  > 0) && (pass_booking.first.valid_upto >= Date.today))                      
-          #                               book = Booking.new(bus_booking_params)
-          #                               if book.save
-          #                                    pass_booking.first.update(hops_remaining: hops_count -1)
-          #                                    redirect_to hop_on_hop_off_user_routes_path
-          #                                    flash[:success] = "Bus has been successfully booked !!!"
-          #                               else
-          #                                    flash[:notice] = "Booking Failed. Please try again." 
-          #                                    redirect_to :back
-          #                               end
-          #                     else
-          #                         redirect_to :back
-          #                         flash[:notice] = "Pass has expired."
-          #                     end
-          #               else
-          #                   redirect_to :back
-          #                   flash[:notice] = "Please select a pass for this route."
-          #               end
-
-
-
-
-
+        
                         if (pass_booking = PassBooking.where("user_id = ? AND default_pass =?", params[:bus][:user_id], true))
                             if pass_booking.present?
                                 pass_catg = pass_booking.first.category
@@ -223,7 +198,6 @@ before_filter :check_for_main_routes , only: [:index]
                                                 MainRoute.find_by(name: pass_booking.first.route).line_color_routes.pluck(:name).each do |r|
 
                                                     if r == params[:bus][:route]
-                                                       # p "---------Route Exist(#{r})------"
                                                         route_exist = true
                                                     end
                                                  end
@@ -232,7 +206,7 @@ before_filter :check_for_main_routes , only: [:index]
                                                    bus_booking_create(pass_booking)
                                                 else
                                                    redirect_to :back
-                                                   flash[:notice] = "Please select a pass for this route."
+                                                   flash[:warning] = "Please select a pass for this route."
                                                 end
 
 
@@ -242,22 +216,22 @@ before_filter :check_for_main_routes , only: [:index]
                                           bus_booking_create(pass_booking)                     
                                     else
                                           redirect_to :back
-                                          flash[:notice] = "Please select a pass for this route."
+                                          flash[:warning] = "Please select a pass for this route."
                                     end           
                                 end
 
                             else
                                   redirect_to :back
-                                  flash[:notice] = "Please select a pass for this route.Buy a Pass"
+                                  flash[:warning] = "Please select a pass for this route.Buy a Pass"
                             end
 
                         else
                             redirect_to :back
-                            flash[:notice] = "Please select a pass for this route."
+                            flash[:warning] = "Please select a pass for this route."
                         end
               else
                      redirect_to :back
-                     flash[:notice] = "Please login first to book buses"
+                     flash[:warning] = "Please login first to book buses"
               end
   end
 	
@@ -267,27 +241,29 @@ before_filter :check_for_main_routes , only: [:index]
         # checking whether the user has hops available and pass validity.
 
 
-            if  ((( hops_count = pass_booking.first.hops_remaining )  > 0) && ( Date.parse(params[:bus][:date]) <= pass_booking.first.valid_upto))                      
+            if  ((( hops_count = pass_booking.first.hops_remaining )  > 0) && ( (Date.parse(params[:bus][:date]) <= pass_booking.first.valid_upto) && (Date.parse(params[:bus][:date]) >= pass_booking.first.valid_from)  ))                      
                       book = Booking.new(bus_booking_params)
+                      
                       if book.save
                            if pass_booking.first.hops_remaining == Pass.find_by(id: pass_booking.first.pass_id).max_hops
                                #pass_booking.first.update(valid_upto:  (Pass.find_by(id: pass_booking.first.pass_id).validity).day + DateTime.parse(params[:bus][:date]))
                           
-                                pass_booking.first.update(valid_upto: Date.parse(params[:bus][:date]) + ((Pass.find_by(id: pass_booking.first.pass_id).validity)-1).day)
+                                pass_booking.first.update(valid_from: Date.parse(params[:bus][:date]),valid_upto: Date.parse(params[:bus][:date]) + ((Pass.find_by(id: pass_booking.first.pass_id).validity)-1).day)
 
                                 p "--- I am here whatever------"
 
                            end
+                           Booking.last.update(pass_id: pass_booking.first.pass_id)
                            pass_booking.first.update(hops_remaining: (hops_count -1))
                            redirect_to hop_on_hop_off_user_routes_path
                            flash[:success] = "Bus has been successfully booked !!!"
                       else
-                           flash[:notice] = "Booking Failed. Please try again." 
+                           flash[:warning] = "Booking Failed. Please try again." 
                            redirect_to :back
                       end
             else
                 redirect_to :back
-                flash[:notice] = "Pass has expired."
+                flash[:warning] = "Pass has expired."
             end
   end
 

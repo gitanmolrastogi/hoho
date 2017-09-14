@@ -15,7 +15,7 @@ def after_inactive_sign_up_path_for(resource)
     flash[:success] = "Password changed"
     redirect_to new_user_session_path
    else
- 	flash[:danger] = "Invalid current password"
+ 	flash[:warning] = "Invalid current password"
     redirect_to edit_user_registration_path
    end  
   end

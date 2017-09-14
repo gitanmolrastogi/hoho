@@ -30,8 +30,9 @@
                                 <td><%= booking.route%></td>
                                 <td><%= booking.source%></td>
                                 <td><%= booking.destination%></td>
-                                <td><%= booking.arrival.strftime("%I:%M %p")%></td>
                                 <td><%= booking.departure.strftime("%I:%M %p")%></td>
+                                <td><%= booking.arrival.strftime("%I:%M %p")%></td>
+                                
                               </tr>
                            <% end %>
                           </tbody>

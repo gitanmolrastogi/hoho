@@ -32,7 +32,7 @@ form do  |f|
 end
 
 index do
-    selectable_column
+   # selectable_column
     #column :name
     column "Name" do |n|
       n.name.capitalize

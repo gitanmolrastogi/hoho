@@ -28,9 +28,9 @@ filter :user_id, label: 'User', as: :select,
 
 
 index do |f|
-     selectable_column
+     #selectable_column
       column :id
-      column "Date of Booking" do |resource|
+      column "Date of Journey" do |resource|
           resource.date 
       end
       column :route
@@ -39,13 +39,20 @@ index do |f|
        end
       column :source
       column :destination
+      column "Departure" do |resource|
+        resource.departure.strftime("%I:%M %p") rescue "" 
+       end
       column "Arrival" do |resource|
       	resource.arrival.strftime("%I:%M %p") rescue "" 
       end
-      column "Departure" do |resource|
-      	resource.departure.strftime("%I:%M %p") rescue "" 
+      
+      column "Start Date (Source)" do |resource|
+        resource.start_date
+      end
+
+      column "Pass Used" do |resource|
+        Pass.find_by(id: resource.pass_id)
        end
-      column :start_date
       column "User" do |resource|
         User.find_by(id: resource.user_id).email
        end

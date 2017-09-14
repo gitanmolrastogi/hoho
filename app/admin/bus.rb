@@ -26,7 +26,7 @@ end
 
 
 index do |f|
-     selectable_column
+     #selectable_column
      column "Route" do |resource|
          LineColorRoute.find_by_id(resource.route_id).name if resource.route_id.present?
      end

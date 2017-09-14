@@ -42,15 +42,15 @@ class User::OrdersController < ApplicationController
   end
 
   def order_payment
-     @responseSuccessURL = "http://delhi-airport.herokuapp.com/user/orders/success"
-     @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
-     @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
+     # @responseSuccessURL = "http://delhi-airport.herokuapp.com/user/orders/success"
+     # @responseFailURL = "http://delhi-airport.herokuapp.com/user/orders/error"
+     # @transactionNotificationURL = "http://delhi-airport.herokuapp.com/user/orders/my_cart"
     @cart_orders = current_user.orders.where("is_paid = ?" ,false)
 
      @sum =  @cart_orders.where("is_paid = ?" ,false).includes(:orderable).map{|o| o.orderable.price}.compact.sum 
-     # @responseSuccessURL = "http://localhost:3000/user/orders/success"
-     # @responseFailURL = "http://localhost:3000/user/orders/error"
-     # @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
+     @responseSuccessURL = "http://localhost:3000/user/orders/success"
+     @responseFailURL = "http://localhost:3000/user/orders/error"
+     @transactionNotificationURL = "http://localhost:3000/user/orders/my_cart"
      
      
      # @responseSuccessURL = "http://localhost:3000/user/orders/success"
@@ -72,7 +72,7 @@ class User::OrdersController < ApplicationController
       return flash[:success] = "Item removed from your cart." 
     else
       redirect_to my_cart_user_orders_path
-      flash[:danger] = "Oops!! Something went wrong." 
+      flash[:warning] = "Oops!! Something went wrong." 
     end
   end
 
@@ -113,7 +113,7 @@ class User::OrdersController < ApplicationController
 #    p "------Cart Orders #{current_user}-------"
     if cart_order.orderable_type == "Pass"      
         pass = Pass.find_by_id(cart_order.orderable_id)
-        PassBooking.create(user_id: current_user.id, category: pass.category, route: pass.route_name,hops_remaining: pass.max_hops,default_pass: false, pass_id: pass.id, valid_upto: Date.today+1.month)
+        PassBooking.create(user_id: current_user.id, category: pass.category, route: pass.route_name,hops_remaining: pass.max_hops,default_pass: false, pass_id: pass.id, valid_from: Date.today,valid_upto: Date.today+1.month)
     end      
     
   end
