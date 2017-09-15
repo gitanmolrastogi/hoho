@@ -21,13 +21,38 @@ class User::OrdersController < ApplicationController
     #my modified code ......
         @object = Activity.find_by_id(params[:id]) if params[:type] == "activity"
         @object = Pass.find_by_id(params[:id]) if params[:type] == "pass"
+         order_already_in_cart = false
+
+
+
+         # if (!@object.orders.find_by(orderable_type: "Activity" , is_paid: false).nil?) if params[:type] == "activity"          
+         #     order_already_in_cart = true
+         # end
+
+         # if true#!@object.orders.find_or_create_by(orderable_type: "Pass" , is_paid: false).nil? if params[:type] == "pass"
+         #     order_already_in_cart = true
+         # end
+
+
+         if (!@object.orders.find_by(orderable_type: "Activity" , is_paid: false).nil? if params[:type] == "activity")
+            order_already_in_cart = true
+         end
+
+         if (!@object.orders.find_by(orderable_type: "Pass" , is_paid: false).nil? if params[:type] == "pass")
+            order_already_in_cart = true 
+         end
+
         @order = @object.orders.find_or_create_by(orderable_type: "Activity" , is_paid: false) if params[:type] == "activity"
         @order = @object.orders.find_or_create_by(orderable_type: "Pass" , is_paid: false) if params[:type] == "pass"
         if @order
           @order.update(user_id: current_user.id )
           redirect_to my_cart_user_orders_path
+          if order_already_in_cart
+            flash[:warning] = "Item already in cart."
+          else
           flash[:success] = "Activity successfully added to your cart"  if params[:type] == "activity"
           flash[:success] = "Pass successfully added to your cart"  if params[:type] == "pass"
+          end       
         end
 
   end
