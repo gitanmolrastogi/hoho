@@ -68,16 +68,16 @@ index do |f|
       a do 
         if (f.status == true)
           link_to 'Block' ,block_bus_admin_buses_path(id: f.id),
-              data: { confirm: 'Are you sure?' }
+              data: { confirm: 'Are you sure you want to Block?' }
         else
           link_to 'Unblock' ,block_bus_admin_buses_path(id: f.id),
-              data: { confirm: 'Are you sure?' }
+              data: { confirm: 'Are you sure you want to Unblock?' }
         end
       end
 
       a do
        if !Booking.where(bus_id: f.id).present?
-        link_to 'Delete',  destroy_bus_admin_buses_path(id: f.id),method: :delete,data: { confirm: 'Are you sure?' }
+        link_to 'Delete',  destroy_bus_admin_buses_path(id: f.id),method: :delete,data: { confirm: 'Are you sure you want to Delete?' }
       end
       end
 

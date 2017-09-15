@@ -75,10 +75,10 @@ index do
       a do 
         if (ff.is_active == true)
           link_to 'Block' , block_main_routes_admin_main_routes_path(id: ff.id),
-              data: { confirm: 'Are you sure?' }
+              data: { confirm: 'Are you sure you want to Block?' }
         else
           link_to 'Unblock' , block_main_routes_admin_main_routes_path(id: ff.id),
-              data: { confirm: 'Are you sure?' }
+              data: { confirm: 'Are you sure you want to Unblock?' }
         end
       end
       

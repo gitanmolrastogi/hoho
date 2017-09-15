@@ -16,7 +16,7 @@ form do  |f|
           f.has_many :city_routes  do |l|
               l.input :city_id ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort,:include_blank => false, input_html: {class: "select_city"}
               a = 1..100
-              puts "-----------------------------------------------------------------------------"
+             # puts "-----------------------------------------------------------------------------"
               if  request.original_url.include?("edit") 
                l.input :_destroy, :as => :boolean, :label => "Delete"
               end
@@ -62,10 +62,10 @@ index do
       a do 
         if (ff.is_active == true)
           link_to 'Block' , block_line_color_routes_admin_line_color_routes_path(id: ff.id),
-              data: { confirm: 'Are you sure?' }
+              data: { confirm: 'Are you sure you want to Block?' }
         else
           link_to 'Unblock' , block_line_color_routes_admin_line_color_routes_path(id: ff.id),
-              data: { confirm: 'Are you sure?' }
+              data: { confirm: 'Are you sure you want to Unblock?' }
         end
       end
       
