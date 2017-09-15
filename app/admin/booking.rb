@@ -31,8 +31,9 @@ index do |f|
      #selectable_column
       column :id
       column "Date of Journey" do |resource|
-          resource.date 
+          resource.date.strftime("%b %d,  %Y") 
       end
+
       column :route
       column "Bus Id" do |resource|
       	  resource.bus_id
@@ -47,7 +48,7 @@ index do |f|
       end
       
       column "Start Date (Source)" do |resource|
-        resource.start_date
+        resource.start_date.strftime("%b %d,  %Y")
       end
 
       column "Pass Used" do |resource|
@@ -56,7 +57,9 @@ index do |f|
       column "User" do |resource|
         User.find_by(id: resource.user_id).email
        end
-
+      column "Date of Booking" do |resource|
+         resource.created_at.strftime("%b %d,  %Y") rescue ""
+      end
 
 end
 

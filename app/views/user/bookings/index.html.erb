@@ -17,22 +17,25 @@
                          <tr>
                            <th>Date of Journey</th>
                            <th>Route</th>
+                           <th>Pass Used</th>
                            <th>Source</th>
                            <th>Destination</th>
                            <th>Departure Time</th>
                            <th>Arrival Time</th>
+                           <th>Date of Booking</th>
                          </tr>
                         </thead>
                           <tbody>
                             <% @bookings.each do |booking| %>
                               <tr>
-                                <td><%= booking.date%></td>
+                                <td><%= booking.date.strftime("%b %d,  %Y")%></td>
                                 <td><%= booking.route%></td>
+                                <td><%= Pass.find_by(id: booking.pass_id).name if booking.pass_id.present? %></td>
                                 <td><%= booking.source%></td>
                                 <td><%= booking.destination%></td>
                                 <td><%= booking.departure.strftime("%I:%M %p")%></td>
                                 <td><%= booking.arrival.strftime("%I:%M %p")%></td>
-                                
+                                <td><%= booking.created_at.strftime("%b %d,  %Y") %><td>
                               </tr>
                            <% end %>
                           </tbody>

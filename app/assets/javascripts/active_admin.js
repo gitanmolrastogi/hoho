@@ -102,6 +102,15 @@
   $(document).ready(function(){
 
    $(".flash").fadeOut(5000);
+   $(".alert").fadeOut(5000);
+
+
+
+
+
+
+
+
 
    //===========On ready drop down population in pass ============
     
@@ -1059,7 +1068,10 @@ $("#activity_start_date").datepicker({
   },
 
         submitHandler: function(form) {
-            form.submit();
+            var freq = $("#bus_frequency").val();
+            if(freq > 0 ){   form.submit();  }
+            else { alert("Frequency cannot be equal to or less than Zero.");}
+            
         }
 
 
