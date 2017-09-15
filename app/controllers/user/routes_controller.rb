@@ -56,6 +56,15 @@ before_filter :check_for_main_routes , only: [:index]
       end
       @cities = City.where(id: city.uniq).pluck(:id,:name)
 
+      
+
+    #@cities = []
+        @cities.each do |city| 
+              city[1] = city[1].titleize if city.present?
+
+        end
+
+
 
 
     end  
@@ -78,7 +87,10 @@ before_filter :check_for_main_routes , only: [:index]
       arr.delete(params[:city_id].to_i)
       # p "------#{arr}--#{params[:city_id].to_i}-------"
       @cities = City.where(id: arr).pluck(:id,:name)
+       @cities.each do |city| 
+              city[1] = city[1].titleize if city.present?
 
+        end
     end  
       respond_to do |format|
         format.html 
