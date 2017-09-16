@@ -7,7 +7,17 @@
             <div class="search-route">
               <form class="form-block">
                 <div class="form-group">
-                  <%= select_tag "route", options_for_select(@route_dropdown.pluck(:name,:id)),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" ,  :include_blank => "Select Route" %>
+
+
+                  <% routes = @route_dropdown.pluck(:name,:id)%>
+                  <% routes.each do |route|%>
+                  <% route[0] = route[0].titleize %>
+                  <% end %>
+
+
+
+
+                  <%= select_tag "route", options_for_select(routes),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" ,  :include_blank => "Select Route" %>
                 </div>
               </form>
             </div>

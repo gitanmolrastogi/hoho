@@ -240,10 +240,12 @@ before_filter :check_for_main_routes , only: [:index]
                             redirect_to :back
                             flash[:warning] = "Please select a pass for this route."
                         end
+
               else
                      redirect_to :back
                      flash[:warning] = "Please login first to book buses"
               end
+
   end
 	
 
@@ -261,7 +263,7 @@ before_filter :check_for_main_routes , only: [:index]
                           
                                 pass_booking.first.update(valid_from: Date.parse(params[:bus][:date]),valid_upto: Date.parse(params[:bus][:date]) + ((Pass.find_by(id: pass_booking.first.pass_id).validity)-1).day)
 
-                                p "--- I am here whatever------"
+                               # p "--- I am here whatever------"
 
                            end
                            Booking.last.update(pass_id: pass_booking.first.pass_id)
