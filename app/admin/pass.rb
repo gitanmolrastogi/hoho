@@ -133,6 +133,25 @@ collection_action :find_route_type do
 end
 
 
+controller do 
+    def create
+         super do |success,failure|
+               success.html { redirect_to admin_passes_path ,notice: 'Pass  was successfully created.' }
+               failure.html { 
+
+                    if resource.errors.any?
+                       redirect_to :back, :alert => "Name has to be unique." 
+                    else
+                       redirect_to :back, :alert => "Oops! Something went wrong." 
+                    end
+
+
+              }
+             end
+         end  
+    end
+
+    
 
 
 

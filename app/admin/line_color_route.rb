@@ -122,6 +122,23 @@ controller do
                failure.html { redirect_to :back, :alert => "Line color route was not successfully created !!!" }
              end
     end
+
+
+    def create
+         super do |success,failure|
+               success.html { redirect_to admin_line_color_routes_path ,notice: 'Pass  was successfully created.' }
+               failure.html { 
+
+                    if resource.errors.any?
+                       redirect_to :back, :alert => "Line Color Route already exists." 
+                    else
+                       redirect_to :back, :alert => "Oops! Something went wrong." 
+                    end
+
+
+              }
+         end
+    end  
 end
 
 

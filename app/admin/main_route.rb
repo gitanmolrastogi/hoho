@@ -141,8 +141,15 @@ show :title=> "Main Route " do |route|
   controller do 
     def create
              super do |success,failure|
-               success.html { redirect_to admin_main_routes_path ,notice: 'City  was successfully created.' }
-               failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
+               success.html { redirect_to admin_main_routes_path ,notice: 'MainRoute was successfully created.' }
+               failure.html { 
+
+                if resource.errors.any?
+                   redirect_to :back, :alert => "Main Route already exists."
+                else
+                   redirect_to :back, :alert => "Oops! something went wrong."
+                end
+                 }
              end
          
     end
