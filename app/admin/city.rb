@@ -54,7 +54,7 @@ show do |city|
     attributes_table do  
     row :id
     row "Name" do |n|
-      n.name.try(:capitalize)
+      n.name.try(:titleize)
     end
     row "Overview" do |body|
        body.try(:overview).html_safe

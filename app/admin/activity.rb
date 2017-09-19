@@ -9,7 +9,7 @@ index do |f|
      selectable_column
      #column :name
       column "Name" do |resource|
-          resource.name.try(:capitalize)
+          resource.name.try(:titleize)
       end
       column "Overview" do |resource|
 
@@ -35,7 +35,7 @@ show :title=> "Activity Details" do |activity|
     attributes_table do  
       #row :name
       row "Name" do |resource|
-          resource.name.try(:capitalize)
+          resource.name.try(:titleize)
       end
       row :overview do |resource|
          resource.overview.html_safe
@@ -71,7 +71,7 @@ show :title=> "Activity Details" do |activity|
 
 form do |f|
   f.inputs do
-  	f.input :city ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort, include_blank: false, include_hidden: false
+  	f.input :city ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".titleize, u.id]}).sort, include_blank: false, include_hidden: false
     f.input :category ,:as => :select, :collection => (Category.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort,include_blank: false, include_hidden: false
   	f.input :name, :input_html => {:maxlength => 100}
   	f.input :overview, :as => :ckeditor

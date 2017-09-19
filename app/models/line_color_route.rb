@@ -11,7 +11,7 @@ accepts_nested_attributes_for :city_routes , :allow_destroy => true
 
 #validation starts here...
 
-   validates :name, presence: true, uniqueness: true
+   validates :name, presence: true, uniqueness: {:case_sensitive => false}
 
 #validation ends here...
 end

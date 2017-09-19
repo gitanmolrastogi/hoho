@@ -31,7 +31,7 @@ end
 index do |f|
      selectable_column
      column :name do |n|
-        n.name.try(:capitalize)
+        n.name.try(:titleize)
      end 
      column "Information" do |body|
         sanitize(body.info.truncate(50).html_safe)
@@ -45,7 +45,7 @@ show do |route|
     attributes_table do  
     #row :name
     row "Name" do |n|
-       n.name.try(:capitalize)
+       n.name.try(:titleize)
     end
     row "Information" do |body|
         body.try(:info).try(:html_safe)

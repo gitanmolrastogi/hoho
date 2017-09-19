@@ -7,19 +7,9 @@
 					<div class="search-route">
 					  <form class="form-block">
 						<div class="form-group">
-						
-						<% main_routes = MainRoute.where(is_active: true).pluck(:name,:id)%>
-						<% main_routes.each do |main_route| %>
-						<% main_route[0] = main_route[0].titleize %>
-						<% end %>
+	
 
-
-
-
-
-
-
-						<%= select_tag "city_route", options_for_select(main_routes),:class=>"form-control",:include_blank => "Select Route" %>
+						<%= select_tag "city_route", options_for_select(MainRoute.where(is_active: true).pluck(:name,:id).map{|k,v| [k.titleize,v]}),:class=>"form-control",:include_blank => "Select Route" %>
 
 
 

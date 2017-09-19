@@ -87,12 +87,7 @@
                           <div class="form-group">
                            
 
-                           <% city_dropdown = @city_dropdown.pluck(:name,:id)%>
-                           <% city_dropdown.each do |city_dropdown| %>
-                                 <% city_dropdown[0] = city_dropdown[0].titleize %>
-                           <% end %>
-
-                           <%= select_tag :city , options_for_select(city_dropdown) , :id => "city_dropdown", :class => "form-control" , :include_blank => "Select City"%>
+                           <%= select_tag :city , options_for_select(@city_dropdown.pluck(:name,:id).map{|k,v| [k.titleize,v]}) , :id => "city_dropdown", :class => "form-control" , :include_blank => "Select City"%>
 
                           </div>
                         </form>

@@ -9,15 +9,7 @@
                 <div class="form-group">
 
 
-                  <% routes = @route_dropdown.pluck(:name,:id)%>
-                  <% routes.each do |route|%>
-                  <% route[0] = route[0].titleize %>
-                  <% end %>
-
-
-
-
-                  <%= select_tag "route", options_for_select(routes),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" ,  :include_blank => "Select Route" %>
+                  <%= select_tag "route", options_for_select(@route_dropdown.pluck(:name,:id).map{|k,v| [k.titleize,v]}),:class=>"form-control",:onchange=>"window.location.href='/user/routes/index?route_id='+this.value" ,  :include_blank => "Select Route" %>
                 </div>
               </form>
             </div>

@@ -8,7 +8,7 @@ has_many :line_color_routes , dependent: :destroy
 
 
 #validation starts here...
-     validates :name, uniqueness: true
+     validates :name, uniqueness: {:case_sensitive => false}
    # validates :name, presence: true
    # validates :information, presence: true
    # validates :start_point, presence: true

@@ -10,11 +10,11 @@ permit_params :name , :duration , :image,:image_credit, :zoomed_image,:image_cre
 
 form do  |f|
   f.inputs do
-    f.input :main_route_id ,:as => :select, :collection => (MainRoute.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort , :include_blank => false #, input_html: {class: "select_city",id: "select_city_id"}
+    f.input :main_route_id ,:as => :select, :collection => (MainRoute.all.map{|u| ["#{u.name}".titleize, u.id]}).sort , :include_blank => false #, input_html: {class: "select_city",id: "select_city_id"}
     f.input :name
       f.inputs "Please select the stops points as their sequences!!" do
           f.has_many :city_routes  do |l|
-              l.input :city_id ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".capitalize, u.id]}).sort,:include_blank => false, input_html: {class: "select_city"}
+              l.input :city_id ,:as => :select, :collection => (City.all.map{|u| ["#{u.name}".titleize, u.id]}).sort,:include_blank => false, input_html: {class: "select_city"}
               a = 1..100
              # puts "-----------------------------------------------------------------------------"
               if  request.original_url.include?("edit") 
@@ -35,7 +35,7 @@ index do
    # selectable_column
     #column :name
     column "Name" do |n|
-      n.name.capitalize
+      n.name.titleize
     end
     column  :image do |img|
       image_tag img.image_url(:homepage_images)
@@ -87,7 +87,7 @@ show :title=> "Route Management" do |route|
     attributes_table do	
     #0row :name
     row "Name" do |n|
-        n.name.try(:capitalize)
+        n.name.try(:titleize)
     end
     row  :image do |img|
       image_tag img.image_url(:homepage_images)
@@ -100,7 +100,7 @@ show :title=> "Route Management" do |route|
       n.image_credit_zoomed
     end
     row :hops do |route|
-      route.cities.pluck(:name).map(&:capitalize).join(", ")
+      route.cities.pluck(:name).map(&:titleize).join(", ")
     end
     # row :created_at
     # row :updated_at
@@ -126,7 +126,7 @@ controller do
 
     def create
          super do |success,failure|
-               success.html { redirect_to admin_line_color_routes_path ,notice: 'Pass  was successfully created.' }
+               success.html { redirect_to admin_line_color_routes_path ,notice: 'Line color route  was successfully created.' }
                failure.html { 
 
                     if resource.errors.any?

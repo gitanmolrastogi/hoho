@@ -113,7 +113,7 @@
 
 
    //===========On ready drop down population in pass ============
-    
+   $("#new_pass").ready(function(){ 
     var category = $("#pass_category").val();
 
     str = "";
@@ -133,7 +133,7 @@
               $('#pass_route_name').append(str);
                }
   });
-
+});
    //===========On ready drop down population in pass ends============
 
 //=================Admin Validation start==========================
@@ -678,6 +678,9 @@ $('#edit_main_route').validate({
             "main_route[start_point]": {
                  required: true
             },
+            "main_route[end_point]": {
+                  required: true
+            },
             "main_route[image_credit]": {
                  required: true,
                  maxlength: 50
@@ -707,6 +710,9 @@ $('#edit_main_route').validate({
             },
             "main_route[start_point]": {
                  required: "Please select a start point"
+            },
+            "main_route[end_point]": {
+                 required: "Please select an end point"
             },
             "main_route[image_credit]": {
                  required: "Please enter Image Credit",
@@ -976,6 +982,9 @@ $("#activity_start_date").datepicker({
   $('#new_bus').validate({
    errorElement: "div",
     rules: {
+            "bus[route_id]": {
+                required: true
+            },
             "bus[start_date]": {
                  required: true
             },
@@ -1024,6 +1033,9 @@ $("#activity_start_date").datepicker({
   },
 
     messages: {
+            "bus[route_id]": {
+                 required: "Please select a route."
+            },
             "bus[start_date]": {
                  required: "Select a start date."
             },

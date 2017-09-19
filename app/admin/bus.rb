@@ -86,45 +86,11 @@ index do |f|
 
      
 end
-collection_action :destroy_bus, method: :delete do
-      
-    if !Booking.where(bus_id: params[:id]).present?
 
-      bus = Bus.find_by(id: params[:id])
-      if bus && bus.destroy();
-         redirect_to :back
-         flash[:notice] = "Bus successfully deleted."
-      else
-         redirect_to :back
-         flash[:error] = "Unable to delete bus. Please try again"
-      end
-
-    else
-         redirect_to :back
-         flash[:error] = "Unable to delete. User has already booked the bus."
-    end
-
-end
-
-collection_action :block_bus, method: :get do
-         bus = Bus.find(params[:id]) 
-         if (bus.status == true)
-          bus.update_attributes(:status => false)
-          redirect_to  :back
-        else
-          if bus.bus_timings.first.day_of_deperture.nil?
-             redirect_to :back
-             flash[:error] = "Please fill Bus Timings before unblocking"
-          else
-             bus.update_attributes(:status => true)
-             redirect_to  :back
-          end
-        end
-     end
 
 form do |f|
     f.inputs do
-      f.input :route_id, :as => :select, :collection => (LineColorRoute.all.pluck(:name,:id)), :include_blank => false
+      f.input :route_id, :as => :select, :collection => (LineColorRoute.all.pluck(:name,:id).map{|k,v| [k.titleize,v]}), :include_blank => false
       f.input :start_date,as: :datepicker
       f.input :end_date,as: :datepicker
       #f.input :start_time, :ampm=> true,prompt: {hour: "Choose   Hour", minute: 'Choose minute'},include_blank: false, include_hidden: false
@@ -170,7 +136,41 @@ show :title=> "Route Management" do |route|
   row :frequency
    end
 end
+collection_action :destroy_bus, method: :delete do
+      
+    if !Booking.where(bus_id: params[:id]).present?
 
+      bus = Bus.find_by(id: params[:id])
+      if bus && bus.destroy();
+         redirect_to :back
+         flash[:notice] = "Bus successfully deleted."
+      else
+         redirect_to :back
+         flash[:error] = "Unable to delete bus. Please try again"
+      end
+
+    else
+         redirect_to :back
+         flash[:error] = "Unable to delete. User has already booked the bus."
+    end
+
+end
+
+collection_action :block_bus, method: :get do
+         bus = Bus.find(params[:id]) 
+         if (bus.status == true)
+          bus.update_attributes(:status => false)
+          redirect_to  :back
+        else
+          if bus.bus_timings.first.day_of_deperture.nil?
+             redirect_to :back
+             flash[:error] = "Please fill Bus Timings before unblocking"
+          else
+             bus.update_attributes(:status => true)
+             redirect_to  :back
+          end
+        end
+     end
 controller do 
    def date_format
       # p "-----#{params[:city][:name].inspect}---------"
