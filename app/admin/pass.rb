@@ -122,8 +122,8 @@ collection_action :block_pass, method: :get do
 
 collection_action :find_route_type do 
  @route = []
- @route = MainRoute.where(is_active: true).pluck(:name,:name).map{|k,v| [k.titleize,v]} if params[:category_type] == "Open"
- @route = LineColorRoute.where(is_active: true).pluck(:name,:name).map{|k,v| [k.titleize,v]} if params[:category_type] == "Closed"
+ @route = MainRoute.where(is_active: true).pluck(:name).map{|k| k.titleize } if params[:category_type] == "Open"
+ @route = LineColorRoute.where(is_active: true).pluck(:name).map{|k| k.titleize } if params[:category_type] == "Closed"
 
 
 

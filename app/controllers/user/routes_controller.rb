@@ -1,7 +1,7 @@
 class User::RoutesController < ApplicationController
 before_filter :check_for_main_routes , only: [:index]
 	def index
-		@current_route = (params[:route_id].present? and MainRoute.find_by_id(params[:route_id]).present?) ? MainRoute.find(params[:route_id]) : MainRoute.first
+		@current_route = (params[:route_id].present? and MainRoute.find_by_id(params[:route_id]).present?) ? MainRoute.find(params[:route_id]) : MainRoute.find_by(id: LineColorRoute.where(is_active: true).first.main_route_id)
     @image = params[:route_id].present? ? @current_route.image.url : MainRoute.first.image.url
     @image_credit = params[:route_id].present? ? @current_route.image_credit : MainRoute.first.image_credit
 		@route_dropdown = MainRoute.all.sort{|left,right| left.name <=> right.name}  #MainRoute.all

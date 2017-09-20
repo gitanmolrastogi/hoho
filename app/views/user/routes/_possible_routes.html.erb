@@ -14,22 +14,29 @@
 
                 <h4><%= truncate(route.name.titleize, length: 26, omision: "..." )%></h4>
                 <div class="detail-trip-block">
-                  <div class="detail-t">
+                  <!-- <div class="detail-t">
                     <label>Price :  </label> 
                     <span><%= route.main_route.price %></span>
                   </div>
                   <div class="detail-t">
                     <label>Duration :  </label> 
                     <span><%= route.main_route.duration %> days</span>
-                  </div>
+                  </div> -->
                   <div class="detail-t">
                     <label>Start Point:  </label> 
-                    <span><%= route.main_route.start_point %></span>
+                   <!--  <span><%= route.main_route.start_point %></span> -->
+                       <span><%= City.find_by(id: route.city_routes.first.city_id).try(:name).titleize %></span>
+                  </div>
+                  <div class="detail-t">
+                    <label>End Point:  </label> 
+                   <!--  <span><%= route.main_route.end_point %></span> -->
+                       <span><%= City.find_by(id: route.city_routes.last.city_id).try(:name).titleize %></span>
                   </div>
                 </div>
               </div>
-            </div>
             Image Courtesy: <%= route.main_route.image_credit%>
+            </div>
+           
           </div>
            
          <%end%>

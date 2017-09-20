@@ -100,7 +100,12 @@ show :title=> "Route Management" do |route|
       n.image_credit_zoomed
     end
     row :hops do |route|
-      route.cities.pluck(:name).map(&:titleize).join(", ")
+      #route.cities.pluck(:name).map(&:titleize).join(", ")
+      arr = []
+      route.city_routes.each do |c_r|
+        arr << City.find_by(id: c_r.city_id).try(:name).titleize
+      end 
+      arr.join(",")
     end
     # row :created_at
     # row :updated_at
