@@ -28,7 +28,7 @@ end
 index do |f|
      #selectable_column
      column "Route" do |resource|
-         LineColorRoute.find_by_id(resource.route_id).name if resource.route_id.present?
+         LineColorRoute.find_by_id(resource.route_id).try(:name) if resource.route_id.present?
      end
      column :start_date
      column :end_date
