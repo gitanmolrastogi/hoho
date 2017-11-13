@@ -76,28 +76,28 @@ $(document).ready(function(){
  
 
 
-$($('div.c_depart-day').siblings('.c_input')).focusout(function() {
-var totalBusCount = $($('div.c_depart-day').siblings('.c_input')).parent().parent().length;
-var index = $(this).parent().parent().index();
-index=(index+1)-totalBusCount;
+// $($('div.c_depart-day').siblings('.c_input')).focusout(function() {
+// var totalBusCount = $($('div.c_depart-day').siblings('.c_input')).parent().parent().length;
+// var index = $(this).parent().parent().index();
+// index=(index+1)-totalBusCount;
 
 
-if(index!=0){
-  alert("fsafafa");
-var a=$($('div.cus_row').get(index)).find('div.c_depart-day').siblings('.c_input').children('input').val();
-var b=$($('div.cus_row').get(index-1)).find('div.c_depart-day').siblings('.c_input').children('input').val();
-if(a<b){
-    alert("a<b");
-   $('div.error').remove();
-   $($('div.cus_row').get(index)).find('div.c_depart-day').append("<div class='error'>Day of departure can't be less than previous station day of departure.</div>");
-   setTimeout(function(){$($('div.cus_row').get(index)).find('div.c_depart-day').siblings('.c_input').children('input').focus();},1);
+// if(index!=0){
+//   alert("fsafafa");
+// var a=$($('div.cus_row').get(index)).find('div.c_depart-day').siblings('.c_input').children('input').val();
+// var b=$($('div.cus_row').get(index-1)).find('div.c_depart-day').siblings('.c_input').children('input').val();
+// if(a<b){
+//     alert("a<b");
+//    $('div.error').remove();
+//    $($('div.cus_row').get(index)).find('div.c_depart-day').append("<div class='error'>Day of departure can't be less than previous station day of departure.</div>");
+//    setTimeout(function(){$($('div.cus_row').get(index)).find('div.c_depart-day').siblings('.c_input').children('input').focus();},1);
      
-}
-else{
- $('div.error').remove();
-}
-}
-});
+// }
+// else{
+//  $('div.error').remove();
+// }
+// }
+// });
 
-});
+// });
 </script>

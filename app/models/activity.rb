@@ -3,13 +3,13 @@ class Activity < ApplicationRecord
   belongs_to :category
   mount_uploader :image, PhotoUploader
 
-  has_many :photos, as: :imageable	
+  has_many :photos, as: :imageable,dependent: :destroy	
   has_many :orders , as: :orderable
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
    #validation starts here...
 
-    validates :name, presence: true
+  validates :name, presence: true
 	validates :overview, presence: true
 	validates :information, presence: true
 	validates :start_date, presence: true

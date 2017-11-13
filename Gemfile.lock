@@ -69,6 +69,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    alertifyjs-rails (1.10.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
@@ -311,6 +312,7 @@ PLATFORMS
 DEPENDENCIES
   active_skin
   activeadmin!
+  alertifyjs-rails
   brakeman
   byebug
   carrierwave

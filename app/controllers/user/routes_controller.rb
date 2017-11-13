@@ -1,11 +1,17 @@
 class User::RoutesController < ApplicationController
 before_filter :check_for_main_routes , only: [:index]
 	def index
-		@current_route = (params[:route_id].present? and MainRoute.find_by_id(params[:route_id]).present?) ? MainRoute.find(params[:route_id]) : MainRoute.find_by(id: LineColorRoute.where(is_active: true).first.main_route_id)
+		@current_route = (params[:route_id].present? and MainRoute.find_by_id(params[:route_id]).present?) ? MainRoute.find(params[:route_id]) : MainRoute.find_by(id: LineColorRoute.where(is_active: true).first.try(:main_route_id))
+
+
+
+
+
+
     @image = params[:route_id].present? ? @current_route.image.url : MainRoute.first.image.url
     @image_credit = params[:route_id].present? ? @current_route.image_credit : MainRoute.first.image_credit
 		@route_dropdown = MainRoute.all.sort{|left,right| left.name <=> right.name}  #MainRoute.all
-			if @current_route.line_color_routes.blank?
+			if @current_route.try(:line_color_routes).blank?
 				  redirect_to '/' 
 			    flash[:notice] = "No Routes have been added yet"
 			    return
@@ -19,7 +25,7 @@ before_filter :check_for_main_routes , only: [:index]
 		@category = @city_categories.first
 		@posssible_routes = @current_route.line_color_routes
     #@buses = MainRoute.joins(:line_color_routes).joins('LEFT OUTER JOIN "city_routes" ON "city_routes"."line_color_route_id" = "line_color_routes"."id" LEFT OUTER JOIN "cities" ON "cities"."id" = "city_routes"."city_id" RIGHT OUTER JOIN "buses" ON "buses"."start_point" = "cities"."name"').select("main_routes.id","main_routes.name","cities.id as city_id","cities.name as city_name", "buses.id as bus_id","buses.start_date as bus_start_date","buses.end_date as bus_end_date","buses.start_time as bus_start_time","buses.end_time as bus_end_time","buses.start_point as bus_start_point","buses.end_point as bus_end_point").distinct.where(:main_routes => {id: @current_route.id})
-    @buses = [{"bus_start_date" => Date.today ,"bus_id" => 1}, {"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today+2.day ,"bus_id" => 1}]
+   #@buses = [{"bus_start_date" => Date.today ,"bus_id" => 1}, {"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today ,"bus_id" => 1},{"bus_start_date" => Date.today+2.day ,"bus_id" => 1}]
     end
 
  def get_date_buses
