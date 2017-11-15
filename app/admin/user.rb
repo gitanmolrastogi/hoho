@@ -12,9 +12,9 @@ actions :all, :except => [:new,:destroy,:edit]
 		column :email,:sortable => false
 		column 'Status' do |user|
 			if !(user.is_block == true)
-				'<i class = "status_tag yes"> Unblock </i>'.html_safe
+				'<i class = "status_tag yes"> Unblocked </i>'.html_safe
 			else
-				'<i class = "status_tag no"> Block </i>'.html_safe
+				'<i class = "status_tag no"> Blocked </i>'.html_safe
 			end
 		end
 		column 'Actions' do |resource|
