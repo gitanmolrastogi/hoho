@@ -126,7 +126,6 @@
                  console.log(response);      
 
                $.each( response.route , function(i,l){
-                   alert(l);
                    str += '<option value="'+l+'">' + l+'</option>';
                });
                 

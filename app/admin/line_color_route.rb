@@ -37,6 +37,9 @@ index do
     column "Name" do |n|
       n.name.titleize
     end
+    column "Main Route" do |n|
+       MainRoute.find_by(id: n.main_route_id)
+    end
     column  :image do |img|
       image_tag img.image_url(:homepage_images)
     end

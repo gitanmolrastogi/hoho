@@ -210,9 +210,8 @@ before_filter :check_for_main_routes , only: [:index]
 
                                 if pass_catg == "Open"
                                #     p "---------Open Pass is selected#{pass_booking.first.route}---------"
-                                     
                                      route_exist = false
-                                                MainRoute.find_by(name: pass_booking.first.route).line_color_routes.pluck(:name).each do |r|
+                                                MainRoute.find_by('lower(name) = ? ', pass_booking.first.route.downcase).line_color_routes.pluck(:name).each do |r|
 
                                                     if r == params[:bus][:route]
                                                         route_exist = true
