@@ -12,8 +12,8 @@ before_filter :check_for_main_routes , only: [:index]
     @image_credit = params[:route_id].present? ? @current_route.image_credit : MainRoute.first.image_credit
 		@route_dropdown = MainRoute.all.sort{|left,right| left.name <=> right.name}  #MainRoute.all
 			if @current_route.try(:line_color_routes).blank?
-				  redirect_to '/' 
-			    flash[:notice] = "No Routes have been added yet"
+				  redirect_to :back 
+			    flash[:success] = "No Routes have been added yet"
 			    return
 			end
 		route = @current_route.line_color_routes.first
