@@ -9,7 +9,15 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/dashboard"><img src="/assets/rsz_3logo3.png" alt=""></a>
+					<a class="navbar-brand" href="/dashboard">
+					<% if CompanyLogo.try(:last).present?%>
+						<img src="<%= CompanyLogo.try(:last).image_url%>" alt="">
+					<% else %>
+					    <img src="/assets/rsz_3logo3.png" alt="">
+					<% end %>	
+
+
+					</a>
 				</div>
 				
 				<div class="collapse navbar-collapse hdr-navs" id="collapse">
