@@ -5,16 +5,24 @@
 		<div id="myCarousel" class="home-cro carousel slide">
 		<h3><%= flash[:alert] if flash[:alert].present?%></h3>
 			<div class="carousel-inner custom-carousel">
-				<% first_image= HomePageImage.where(status: "Active").first %>
+				<%  first_image= HomePageImage.where(status: "Active").first %>
            <div class="item active" style="width:100%; background-image: url(<%= first_image.try(:image).try(:url) %>); background-size:cover; background-position: 61% center;">
              <!-- <img src="" alt=""> -->
+             	<div class="img-description">
+           			Image Credit: <%= first_image.image_credit  %>
+           		</div>
              
            </div>
+           
             <% (HomePageImage.all.where(status: "Active")-Array(first_image)).each do |f| %>
              <div class="item" style="width:100%; background-image: url(<%= f.try(:image).try(:url) %>); background-size:cover; background-position: 61% center;">
               <!-- <img src="<%#= f.try(:image).try(:url) %>" alt="" > -->
              <!--  Image Courtesy: <%= f.image_credit %> -->
+             	<div class="img-description">
+           			Image Credit: <%= f.image_credit  %>
+           		</div>
              </div>
+
              <% end %>
 			</div>
 			<a class="left carousel-control arrow" href="#myCarousel" data-slide="prev">
@@ -45,16 +53,21 @@
 				<div class="row">
 					<% HowItWork.first(3).each do |object|%>
 					<div class="col-xs-12 col-sm-4 col-md-4">
-						<div class="sec_contain img-repons-s">
-							<figure class="post-thumb"> 
-							 <img src="<%= object.try(:image).try(:url) %>" alt="" class="img-responsive" />
-								<figcaption><span><img src="/assets/t1.png" alt="" /></span></figcaption>	
-							</figure>
-							<div class="thumb-info text-center">
-							<h4><%= object.try(:title) %></h4>
-					      <%= render :partial => 'user/home/read_more', :locals => {object: object } %>
-					  </div>
-					</div>
+						<div class="image-block">
+							<div class="sec_contain img-repons-s">
+								<figure class="post-thumb"> 
+								 <img src="<%= object.try(:image).try(:url) %>" alt="" class="img-responsive" />
+									<figcaption><span><img src="/assets/t1.png" alt="" /></span></figcaption>	
+								</figure>
+								<div class="thumb-info text-center">
+								<h4><%= object.try(:title) %></h4>
+						      <%= render :partial => 'user/home/read_more', :locals => {object: object } %>
+						  		</div>
+							</div>
+							<div class="image-title">
+								Image Credit: <%= object.try(:image_credit)%>
+							</div>
+						</div>
 					</div>
 				  <% end %>
 				</div>
@@ -99,6 +112,9 @@
 								</div>
 							</div>
 						</div>
+
+
+
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="sec_contain1">
