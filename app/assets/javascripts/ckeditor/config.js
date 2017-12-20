@@ -4,4 +4,3 @@ CKEDITOR.editorConfig = function (config) {
    //config.removeFormatTags = 'p,li,br';
    config.fillEmptyBlocks = false;
 }
-;

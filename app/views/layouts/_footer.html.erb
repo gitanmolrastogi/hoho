@@ -4,7 +4,15 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3 col-xs-12">
-              <h1 class="logo-footer"><img src="/assets/rsz_3logo3.png" alt=""></h1>
+              <h1 class="logo-footer">
+                <a class="navbar-brand" href="/dashboard">
+                <% if CompanyLogo.try(:last).present?%>
+                  <img src="<%= CompanyLogo.try(:last).image_url%>" alt="">
+                <% else %>
+                  <img src="/assets/rsz_3logo3.png" alt="">
+                <% end %> 
+                </a>
+</h1>
             </div>
             <div class="col-md-3 col-xs-12">
               <ul class="quick-links">
