@@ -16,6 +16,9 @@ index do |f|
        sanitize(truncate(resource.try(:overview).html_safe, omision: "...", length: 200, :escape => false))
       
       end
+      column "Category" do |resource|
+         resource.try(:category)
+      end
       # column "Information" do |resource|
       #   truncate(resource.try(:information).html_safe, omision: "...", length: 100, :escape => false)
       # end
@@ -39,6 +42,9 @@ show :title=> "Activity Details" do |activity|
       end
       row :overview do |resource|
          resource.overview.html_safe
+      end
+      row :category do |resource|
+         resource.try(:category)
       end
       row :information do |resource|
          resource.information.html_safe
@@ -108,10 +114,17 @@ end
          else
            return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
              super do |success,failure|
-               success.html { redirect_to admin_activities_path ,notice: 'City  was successfully created.' }
+               success.html { redirect_to admin_activities_path ,notice: 'Activity is successfully created.' }
                failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
              end
          end  
+    end
+
+    def update
+      super do |success,failure|
+               success.html { redirect_to admin_activities_path ,notice: 'Activity is successfully updated.' }
+               failure.html { redirect_to :back, :alert => "Activity is not updated successfully." }
+      end
     end
 
     

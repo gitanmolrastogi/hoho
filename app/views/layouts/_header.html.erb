@@ -32,14 +32,14 @@
                           <a href="/user/passes">Passes</a>
 						</li>
 
-						<li class="firsttab4">
-                          <a href="/user/bookings/index">Bookings</a>
-						</li>
+						
 
 
 
 						<% if current_user %>
-						
+						<li class="firsttab4">
+                          <a href="/user/bookings/index">Bookings</a>
+						</li>
 						
 						<li>
 						   <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.try(:first_name)%></a>

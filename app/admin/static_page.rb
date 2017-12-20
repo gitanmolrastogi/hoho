@@ -35,6 +35,13 @@ end
    end
 end
 
- 
+controller do 
+    def update
+      super do |success,failure|
+               success.html { redirect_to admin_static_pages_path ,notice: 'Static Page is successfully updated.' }
+               failure.html { redirect_to :back, :alert => "Static Page is not successfully updated." }
+      end
+    end
+ end 
 
 end

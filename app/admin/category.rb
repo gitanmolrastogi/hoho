@@ -68,11 +68,18 @@ controller do
    end	
 
    def create
-              super do |success,failure|
+          super do |success,failure|
                success.html { redirect_to admin_categories_path ,notice: 'Category  was successfully created.' }
                failure.html { redirect_to :back, :alert => "Please fill in the Information" }
-           end
+          end
  
+   end
+
+   def update
+          super do |success,failure|
+               success.html { redirect_to admin_categories_path ,notice: 'Category was successfully updated.' }
+               failure.html { redirect_to :back, :alert => "Category was not successfully updated." }
+          end 
    end
  end
 end

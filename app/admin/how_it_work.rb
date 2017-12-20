@@ -45,4 +45,13 @@ end
   end
 
 
+ controller do 
+    def update
+      super do |success,failure|
+               success.html { redirect_to admin_how_it_works_path ,notice: 'How it works is successfully updated.' }
+               failure.html { redirect_to :back, :alert => "How it works is not successfully updated." }
+      end
+    end
+ end
+
 end

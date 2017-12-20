@@ -47,10 +47,17 @@ controller do
          else
            return redirect_to :back, :alert => "Content is empty" if (params[:tip][:content].nil?)
              super do |success,failure|
-               success.html { redirect_to admin_tips_path ,notice: 'Tip  was successfully created.' }
-               failure.html { redirect_to :back, :alert => "Tip was not created successfully." }
+               success.html { redirect_to admin_tips_path ,notice: 'Tip was successfully created.' }
+               failure.html { redirect_to :back, :alert => "Tip is not created successfully." }
              end
          end  
+    end
+
+    def update
+        super do |success,failure|
+               success.html { redirect_to admin_tips_path ,notice: 'Tip was successfully updated.' }
+               failure.html { redirect_to :back, :alert => "Tip is not updated successfully." }
+        end
     end
 end
 

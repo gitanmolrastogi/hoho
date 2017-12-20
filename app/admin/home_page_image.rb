@@ -77,16 +77,22 @@ controller do
    end
  def update
    p "==========#{params.inspect}============"
-    if HomePageImage.count <= 2 && params[:home_page_image][:status] == "Inactive"
-      redirect_to :back , :alert => "You can't inactive last two images"
-     elsif  HomePageImage.where(status: "Active").count <= 2 && params[:home_page_image][:status] == "Inactive"
-       redirect_to :back , :alert => "You can't inactive all images"
-     else
-      super
-    end
-   end
-   end
+        if HomePageImage.count <= 2 && params[:home_page_image][:status] == "Inactive"
+          redirect_to :back , :alert => "You can't inactive last two images"
+        elsif  HomePageImage.where(status: "Active").count <= 2 && params[:home_page_image][:status] == "Inactive"
+           redirect_to :back , :alert => "You can't inactive all images"
+        else
+          #super
+              super do |success,failure|
+                success.html { redirect_to admin_home_page_images_path ,notice: 'Home Page Image was successfully updated.' }
+                failure.html { redirect_to :back, :alert => "Home Page Image was not successfully updated." }
+              end
+        end
  end
+
+
+end
+end
 
 
 

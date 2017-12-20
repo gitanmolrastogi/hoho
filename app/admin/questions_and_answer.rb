@@ -47,12 +47,19 @@ permit_params :question, :answer
         else
             return redirect_to :back, :alert => "Please provide answer for FAQs" if (params[:questions_and_answer][:answer].blank?)
               super do |success,failure|
-                success.html { redirect_to admin_faqs_path ,notice: 'Faqs  was successfully created.' }
+                success.html { redirect_to admin_faqs_path ,notice: 'Faqs was successfully created.' }
                 failure.html { redirect_to :back, :alert => "Please provide answers for FAQs" }
               end
              
 
          end  
+    end
+
+    def update
+            super do |success,failure|
+                success.html { redirect_to admin_faqs_path ,notice: 'Faqs was successfully updated.' }
+                failure.html { redirect_to :back, :alert => "Faqs was not successfully updated." }
+            end
     end
 
     
