@@ -105,9 +105,12 @@ show :title=> "Route Management" do |route|
     row :hops do |route|
       #route.cities.pluck(:name).map(&:titleize).join(", ")
       arr = []
-      route.city_routes.each do |c_r|
-        arr << City.find_by(id: c_r.city_id).try(:name).titleize
-      end 
+      # route.city_routes.each do |c_r|
+      #   arr << City.find_by(id: c_r.city_id).try(:name).titleize
+      # end
+      route.city_routes.order(:id).each do |c_r|
+          arr << City.find_by(id: c_r.city_id).try(:name).titleize
+      end
       arr.join(",")
     end
     # row :created_at
