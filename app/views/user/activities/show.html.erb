@@ -24,11 +24,12 @@
 							  <div class="col-md-5">
 							   <ul class="city-img6">
 							   <% @activity.photos.each do |img| %>
+							   <%if img.status %>
 								<li class="city-6-images enlarge">
 								  <img class="img-responsive" src= <%= img.image.url %> style="width:100%; height:70px;">
 								  <span>Image Courtesy: <%= img.image_credit%></span>
 							    </li>
-
+							    <%end%>
 							    <%end%>
 								
 							   </ul>

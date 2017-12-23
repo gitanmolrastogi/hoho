@@ -13,11 +13,12 @@
 	  <div class="col-md-5">
 	   <ul class="city-img6">
 	   <% @city.photos.each do |image| %>
+	   <% if image.status%>
 		<li class="city-6-images enlarge">
 		  <img class="img-responsive"  src="<%= image.image.url %>" style="width:100%; height:70px;">
 		  <span> Image Courtesy: <%= image.image_credit%> </span>
 	    </li>
-
+	    <% end %>
 	    <%end %>
 	   </ul>
 	  </div>

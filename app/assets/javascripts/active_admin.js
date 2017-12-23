@@ -1666,11 +1666,7 @@ $('#edit_category').validate({
                 required: true,
                 maxlength: 50
                 
-            },
-            "home_page_image[image]": {
-                required: true             
-
-            },
+            }
         },
 
         messages:{

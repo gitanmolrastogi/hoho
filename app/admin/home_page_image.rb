@@ -16,7 +16,7 @@ batch_action :destroy do |ids|
   end
 
 filter :status
-permit_params :image,:image_credit, :status
+permit_params :image,:image_credit, :status,:id
 index do
     selectable_column
     column :image do |img|
@@ -42,8 +42,8 @@ show :title=> "Image" do |ad|
 end
 
  form do |f|
-    f.inputs "New Home Page Image" do     
-      f.input :image,:as => :file, label: "Image (preferable 1600 x 900 px)"
+    f.inputs "New Home Page Image", :multipart => true do     
+      f.input :image,:as => :file, :hint => f.object.image.present? ? image_tag(f.object.image.url, :width => 200, :height => 200) : ""
       f.input :status ,:as => :select, :collection => ['Active','Inactive'] ,:include_blank => false
       f.input :image_credit, :input_html => {:maxlength => 100}
     end
