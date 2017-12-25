@@ -6,14 +6,15 @@ class User::ActivitiesController < ApplicationController
   # end
 
   def check_for_activities
-    if Activity.count == 0 or Activity.where("start_date >= ?", Date.current).count == 0
+    if Activity.count == 0 or Activity.where("start_date >= ? AND is_active = ?", Date.current, true).count == 0
         redirect_to dashboard_path 
         flash[:warning] = "Currently there are no activities available in any city"
     end
   end
 
   def index
-    @activities = Activity.where("end_date > ?" ,Date.current)
+    #@activities = Activity.where("end_date > ?" ,Date.current)
+    @activities = Activity.where("start_date >= ? AND is_active = ?" ,Date.current, true)
   	@activities = @activities.paginate(:page => params[:page] , :per_page => 5)
   end
 

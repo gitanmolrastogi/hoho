@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220070629) do
+ActiveRecord::Schema.define(version: 20171225064433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20171220070629) do
     t.text     "information"
     t.integer  "city_id"
     t.integer  "category_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.date     "start_date"
     t.date     "end_date"
     t.time     "start_time"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20171220070629) do
     t.integer  "price"
     t.string   "image"
     t.string   "image_credit"
+    t.boolean  "is_active",    default: true
     t.index ["category_id"], name: "index_activities_on_category_id", using: :btree
     t.index ["city_id"], name: "index_activities_on_city_id", using: :btree
   end

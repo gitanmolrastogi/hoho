@@ -1,9 +1,20 @@
 ActiveAdmin.register Activity do
-
+config.remove_action_item(:destroy)
 filter :name
 filter :overview
 filter :information
 permit_params :start_date ,:end_date ,:start_time,:end_time ,:price,:name ,:overview ,:information ,:city_id, :category_id , :image, :image_credit , photos_attributes: [:id, :image ,:image_credit, :status ,:_destroy]
+
+member_action :block, method: :get do 
+  activity = Activity.find_by(id: params[:id]) 
+        
+        if activity.present?
+            status = !(activity.is_active)
+            activity.update_attributes(:is_active => status)
+        end
+       redirect_to :back
+end
+
 
 index do |f|
      selectable_column
@@ -31,7 +42,31 @@ index do |f|
         time.end_time.present? ? time.end_time.strftime("%I:%M %p") : "00:00"
     end
     column :price,as: :string
-    actions name: "Actions"
+    #actions name: "Actions"
+    column :is_active do |a|
+      if a.is_active
+        '<i class = "status_tag yes"> Unblocked </i>'.html_safe
+      else
+        '<i class = "status_tag no"> Blocked </i>'.html_safe
+      end
+    end
+    column "Actions" do |f|
+      a do 
+        link_to "view", admin_activity_path(f)
+      end
+      a do 
+        link_to "edit", edit_admin_activity_path(f)
+    end
+    a do 
+      if f.is_active
+         link_to "block", block_admin_activity_path(f),
+              data: { confirm: 'Are you sure you want to Block?' }
+      else
+         link_to "unblock", block_admin_activity_path(f),
+              data: { confirm: 'Are you sure you want to Unblock?' }
+      end
+    end
+  end
   end
 
 show :title=> "Activity Details" do |activity|
@@ -82,7 +117,7 @@ form do |f|
   	f.input :name, :input_html => {:maxlength => 100}
   	f.input :overview, :as => :ckeditor
   	f.input :information, :as => :ckeditor
-    f.inputs "Please select atleast 2 images for the city." do
+    f.inputs "Please select atleast 2 images for the activity." do
           f.has_many :photos  do |l|
               l.input :image , as: :file , :hint => l.object.image.present? ? image_tag(l.object.image.url, :width => 200, :height => 200) : "",:input_html=>{:required=> false,:accept=>"Image/*"}
               l.input :image_credit
@@ -115,7 +150,7 @@ end
            return redirect_to :back, :alert => "Please Select at least two images for city" if (params[:activity][:photos_attributes].count < 2)
              super do |success,failure|
                success.html { redirect_to admin_activities_path ,notice: 'Activity is successfully created.' }
-               failure.html { redirect_to :back, :alert => "Please Select at least two images for city" }
+               failure.html { redirect_to :back, :alert => "Please Select at least two images for activity." }
              end
          end  
     end
