@@ -1,5 +1,5 @@
 ActiveAdmin.register Category do
-
+config.remove_action_item(:destroy)
 before_filter :downcase_category
 filter :name
 permit_params :name, :image, :info, :image_credit
@@ -13,6 +13,17 @@ permit_params :name, :image, :info, :image_credit
 #   end
 #   actions
 # end
+
+member_action :block, method: :get do 
+  category = Category.find_by(id: params[:id]) 
+        
+        if category.present?
+            status = !(category.is_active)
+            category.update_attributes(:is_active => status)
+        end
+       redirect_to :back
+end
+
 
 form do |f|
     f.inputs do
@@ -37,7 +48,30 @@ index do |f|
         sanitize(body.info.truncate(50).html_safe)
      end
      # column :created_at
-    actions name: "Actions"
+     column "Status" do |a|
+      if a.is_active
+        '<i class = "status_tag yes"> Unblocked </i>'.html_safe
+      else
+        '<i class = "status_tag no"> Blocked </i>'.html_safe
+      end
+    end
+    column "Actions" do |f|
+      a do 
+        link_to "view", admin_category_path(f)
+      end
+      a do 
+        link_to "edit", edit_admin_category_path(f)
+    end
+    a do 
+      if f.is_active
+         link_to "block", block_admin_category_path(f),
+              data: { confirm: 'Are you sure you want to Block?' }
+      else
+         link_to "unblock", block_admin_category_path(f),
+              data: { confirm: 'Are you sure you want to Unblock?' }
+      end
+    end
+  end
   end
 
 

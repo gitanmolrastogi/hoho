@@ -43,7 +43,7 @@ index do |f|
     end
     column :price,as: :string
     #actions name: "Actions"
-    column :is_active do |a|
+    column "Status" do |a|
       if a.is_active
         '<i class = "status_tag yes"> Unblocked </i>'.html_safe
       else
@@ -98,6 +98,7 @@ show :title=> "Activity Details" do |activity|
       end 
       row :price
       end
+      
 
     # row  :status
    end
